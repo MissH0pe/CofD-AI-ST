@@ -591,30 +591,108 @@ if supernaturalflags['vampire']:
             psdiscdist.append(disciplineset[0])
             (chartable[firstname+surname])['disciplines'] = []
             if psdiscdist[0] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4, 'Lord of the Land': 5}}])
+                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast’s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit’s Touch': 3, 'Lay Open the Mind': 4, 'Twilight Projection': 5}}])
             elif psdiscdist[0] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4}}])
+                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast’s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit’s Touch': 3, 'Lay Open the Mind': 4}}])
             elif psdiscdist[0] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3}}])
+                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast’s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit’s Touch': 3}}])
             elif psdiscdist[0] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2}}])
+                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast’s Hackles': 1, 'Uncanny Perception': 2}}])
             elif psdiscdist[0] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Feral Whispers': 1}}])
+                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast’s Hackles': 1}}])
             else:
                 (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0]}}])
             (chartable[firstname+surname])['disciplines'].append([{'celerity': {'level': psdiscdist[1]}}])
             if psdiscdist[2] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast’s Skin': 3, 'Unnatural Aspect': 4, 'Primeval Miasma': 5}}])
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4, 'Oubliette': 5}}])
             elif psdiscdist[2] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast’s Skin': 3, 'Unnatural Aspect': 4}}])
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4}}])
             elif psdiscdist[2] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast’s Skin': 3}}])
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3}}])
             elif psdiscdist[2] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Unmarked Grave': 1, 'Predatory Aspect': 2}}])
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2}}])
             elif psdiscdist[2] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Unmarked Grave': 1}}])
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1}}])
             else:
                 (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2]}}])
+    elif (chartable[firstname+surname])['clan'] == 'Mekhet':
+        if (chartable[firstname+surname])['bloodline'] == 'None':
+            psdiscdist = []
+            discrandnum = random.randint(0, 2)
+            disciplinedist = [[3, 0, 0], [2, 1, 0], [1, 1, 1]]
+            disciplineset = disciplinedist[discrandnum]
+            discrandnum1 = random.randint(0, 2)
+            discrandnum2 = random.randint(0, 1)
+            psdiscdist.append(disciplineset[discrandnum1])
+            disciplineset.pop(discrandnum1)
+            psdiscdist.append(disciplineset[discrandnum2])
+            disciplineset.pop(discrandnum2)
+            psdiscdist.append(disciplineset[0])
+            (chartable[firstname+surname])['disciplines'] = []
+            if psdiscdist[0] == 5:
+                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2, 'The Grand Delusion': 3, 'Waking Nightmare': 4, 'Mortal Terror': 5}}])
+            elif psdiscdist[0] == 4:
+                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2, 'The Grand Delusion': 3, 'Waking Nightmare': 4}}])
+            elif psdiscdist[0] == 3:
+                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2, 'The Grand Delusion': 3}}])
+            elif psdiscdist[0] == 2:
+                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2}}])
+            elif psdiscdist[0] == 1:
+                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1}}])
+            else:
+                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0]}}])
+            if psdiscdist[1] == 5:
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4, 'Oubliette': 5}}])
+            elif psdiscdist[1] == 4:
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4}}])
+            elif psdiscdist[1] == 3:
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3}}])
+            elif psdiscdist[1] == 2:
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2}}])
+            elif psdiscdist[1] == 1:
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1}}])
+            else:
+                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1]}}])
+            (chartable[firstname+surname])['disciplines'].append([{'vigor': {'level': psdiscdist[2]}}])
+    elif (chartable[firstname+surname])['clan'] == 'Ventrue':
+        if (chartable[firstname+surname])['bloodline'] == 'None':
+            psdiscdist = []
+            discrandnum = random.randint(0, 2)
+            disciplinedist = [[3, 0, 0], [2, 1, 0], [1, 1, 1]]
+            disciplineset = disciplinedist[discrandnum]
+            discrandnum1 = random.randint(0, 2)
+            discrandnum2 = random.randint(0, 1)
+            psdiscdist.append(disciplineset[discrandnum1])
+            disciplineset.pop(discrandnum1)
+            psdiscdist.append(disciplineset[discrandnum2])
+            disciplineset.pop(discrandnum2)
+            psdiscdist.append(disciplineset[0])
+            (chartable[firstname+surname])['disciplines'] = []
+            if psdiscdist[0] == 5:
+                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4, 'Lord of the Land': 5}}])
+            elif psdiscdist[0] == 4:
+                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4}}])
+            elif psdiscdist[0] == 3:
+                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3}}])
+            elif psdiscdist[0] == 2:
+                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2}}])
+            elif psdiscdist[0] == 1:
+                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1}}])
+            else:
+                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0]}}])
+            if psdiscdist[1] == 5:
+                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2, 'Entombed Command': 3, 'The Lying Mind': 4, 'Possession': 5}}])
+            elif psdiscdist[1] == 4:
+                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2, 'Entombed Command': 3, 'The Lying Mind': 4}}])
+            elif psdiscdist[1] == 3:
+                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2, 'Entombed Command': 3}}])
+            elif psdiscdist[1] == 2:
+                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2}}])
+            elif psdiscdist[1] == 1:
+                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1}}])
+            else:
+                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1]}}])
+            (chartable[firstname+surname])['disciplines'].append([{'resilience': {'level': psdiscdist[2]}}])
 
 
 #daeva celerity majesty vigor

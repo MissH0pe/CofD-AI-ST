@@ -77,22 +77,12 @@ chartable[firstname+surname] = {'name': firstname + ' ' + surname,
 'survival': 0,
 'weaponry': 0},
 
-'merits': {},
+'merits': [],
 
 'aspirations': {},
 
 'notes': {}
 }
-
-(chartable[firstname+surname])['speed'] = 5 + ((chartable[firstname+surname])['stats'])['strength'] + ((chartable[firstname+surname])['stats'])['dexterity']
-((chartable[firstname+surname])['health'])['maxhealth'] = (chartable[firstname+surname])['size'] + ((chartable[firstname+surname])['stats'])['stamina']
-(chartable[firstname+surname])['initiativemod'] = ((chartable[firstname+surname])['stats'])['dexterity'] + ((chartable[firstname+surname])['stats'])['composure']
-if ((chartable[firstname+surname])['stats'])['wits'] < ((chartable[firstname+surname])['stats'])['dexterity']:
-    (chartable[firstname+surname])['defense'] = ((chartable[firstname+surname])['stats'])['wits'] + ((chartable[firstname+surname])['skills'])['athletics']
-else:
-    (chartable[firstname+surname])['defense'] = ((chartable[firstname+surname])['stats'])['dexterity'] + ((chartable[firstname+surname])['skills'])['athletics']
-(chartable[firstname+surname])['permanentwillpower'] = ((chartable[firstname+surname])['stats'])['resolve'] + ((chartable[firstname+surname])['stats'])['composure']
-(chartable[firstname+surname])['temporarywillpower'] = ((chartable[firstname+surname])['stats'])['resolve'] + ((chartable[firstname+surname])['stats'])['composure']
 
 prirandnum = random.randint(0, 3)
 pristatdist = [[5, 2, 1], [4, 3, 1], [4, 2, 2], [3, 3, 2]]
@@ -449,23 +439,63 @@ if supernaturalflags['vampire']:
 
     (chartable[firstname+surname])['covenant'] = covenantslist[random.randint(0, 5)]
 
+    mask = ''
+    dirge = ''
+
+    with open("maskanddirge.txt") as f:
+        randnum1 = random.randint(0, 26)
+        randnum2 = random.randint(0, 26)
+        nonemptylines = [line.strip("\n") for line in f if line != "\n"]
+        for i, line in enumerate(nonemptylines):
+            if i == randnum1:
+                mask = line
+            if i == randnum2:
+                dirge = line
+
+    maskarray = mask.split(']')
+    dirgearray = dirge.split(']')
+
+    (chartable[firstname+surname])['mask'] = {'maskname': maskarray[0],
+    'description': maskarray[1],
+    'singlewillpower': maskarray[2],
+    'allwillpower': maskarray[3]}
+
+    (chartable[firstname+surname])['dirge'] = {'dirgename':dirgearray[0],
+    'description': dirgearray[1],
+    'singlewillpower': dirgearray[2],
+    'allwillpower': dirgearray[3]}
+
+    touchstone = ''
+
+    with open("touchstones.txt") as f:
+        randnum = random.randint(0, 26)
+        nonemptylines = [line.strip("\n") for line in f if line != "\n"]
+        for i, line in enumerate(nonemptylines):
+            if i == randnum:
+                touchstone = line
+
+    touchstonearray = touchstone.split(']')
+
     humnum = random.randint(0, 9)
     if humnum == 0:
         (chartable[firstname+surname])['humanity'] = {'totalhumanity': (chartable[firstname+surname])['integrity'] - 1,
-        'touchstone1': 'None',
-        'touchstone1desc': 'None'}
+        'touchstone1': touchstonearray[0],
+        'touchstone1desc': touchstonearray[1]}
     elif humnum == 9:
         (chartable[firstname+surname])['humanity'] = {'totalhumanity': (chartable[firstname+surname])['integrity'] + 1,
-        'touchstone1': 'None',
-        'touchstone1desc': 'None'}
+        'touchstone1': touchstonearray[0],
+        'touchstone1desc': touchstonearray[1]}
     else:
         (chartable[firstname+surname])['humanity'] = {'totalhumanity': (chartable[firstname+surname])['integrity'],
-        'touchstone1': 'None',
-        'touchstone1desc': 'None'}
+        'touchstone1': touchstonearray[0],
+        'touchstone1desc': touchstonearray[1]}
     (chartable[firstname+surname]).pop('integrity')
 
     (chartable[firstname+surname])['bloodpotency'] = 1
     (chartable[firstname+surname])['vitae'] = {'maxvitae': 10, 'currentvitae': 0}
+
+    (chartable[firstname+surname])['merits'].append({'haven': {'location': 0, 'security': 0, 'size': 0, 'adjs': []},
+    'courtrank': 'none'})
 
     if (chartable[firstname+surname])['clan'] == 'Daeva':
         if (chartable[firstname+surname])['bloodline'] == 'None':
@@ -564,11 +594,11 @@ if supernaturalflags['vampire']:
             else:
                 (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0]}}])
             if psdiscdist[1] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast’s Skin': 3, 'Unnatural Aspect': 4, 'Primeval Miasma': 5}}])
+                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast\'s Skin': 3, 'Unnatural Aspect': 4, 'Primeval Miasma': 5}}])
             elif psdiscdist[1] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast’s Skin': 3, 'Unnatural Aspect': 4}}])
+                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast\'s Skin': 3, 'Unnatural Aspect': 4}}])
             elif psdiscdist[1] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast’s Skin': 3}}])
+                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast\'s Skin': 3}}])
             elif psdiscdist[1] == 2:
                 (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2}}])
             elif psdiscdist[1] == 1:
@@ -591,15 +621,15 @@ if supernaturalflags['vampire']:
             psdiscdist.append(disciplineset[0])
             (chartable[firstname+surname])['disciplines'] = []
             if psdiscdist[0] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast’s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit’s Touch': 3, 'Lay Open the Mind': 4, 'Twilight Projection': 5}}])
+                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast''s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit\'s Touch': 3, 'Lay Open the Mind': 4, 'Twilight Projection': 5}}])
             elif psdiscdist[0] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast’s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit’s Touch': 3, 'Lay Open the Mind': 4}}])
+                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit\'s Touch': 3, 'Lay Open the Mind': 4}}])
             elif psdiscdist[0] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast’s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit’s Touch': 3}}])
+                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit\'s Touch': 3}}])
             elif psdiscdist[0] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast’s Hackles': 1, 'Uncanny Perception': 2}}])
+                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1, 'Uncanny Perception': 2}}])
             elif psdiscdist[0] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast’s Hackles': 1}}])
+                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1}}])
             else:
                 (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0]}}])
             (chartable[firstname+surname])['disciplines'].append([{'celerity': {'level': psdiscdist[1]}}])
@@ -694,12 +724,14 @@ if supernaturalflags['vampire']:
                 (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1]}}])
             (chartable[firstname+surname])['disciplines'].append([{'resilience': {'level': psdiscdist[2]}}])
 
-
-#daeva celerity majesty vigor
-#gangrel animalism protean resilience
-#mekhet auspex celerity obfuscate
-#nosferatu nightmare obfuscate vigor
-#ventrue animalism dominate resilience
+(chartable[firstname+surname])['speed'] = 5 + ((chartable[firstname+surname])['stats'])['strength'] + ((chartable[firstname+surname])['stats'])['dexterity']
+((chartable[firstname+surname])['health'])['maxhealth'] = (chartable[firstname+surname])['size'] + ((chartable[firstname+surname])['stats'])['stamina']
+(chartable[firstname+surname])['initiativemod'] = ((chartable[firstname+surname])['stats'])['dexterity'] + ((chartable[firstname+surname])['stats'])['composure']
+if ((chartable[firstname+surname])['stats'])['wits'] < ((chartable[firstname+surname])['stats'])['dexterity']:
+    (chartable[firstname+surname])['defense'] = ((chartable[firstname+surname])['stats'])['wits'] + ((chartable[firstname+surname])['skills'])['athletics']
+else:
+    (chartable[firstname+surname])['defense'] = ((chartable[firstname+surname])['stats'])['dexterity'] + ((chartable[firstname+surname])['skills'])['athletics']
+(chartable[firstname+surname])['willpower'] =  {'permanentwillpower': ((chartable[firstname+surname])['stats'])['resolve'] + ((chartable[firstname+surname])['stats'])['composure'], 'temporarywillpower': ((chartable[firstname+surname])['stats'])['resolve'] + ((chartable[firstname+surname])['stats'])['composure']}
 
 with open(file, 'w') as f:
     json.dump(chartable, f)

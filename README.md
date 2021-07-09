@@ -1,1 +1,1 @@
-# VtR-AI-ST
+# Vampire the Requiem AI Storyteller

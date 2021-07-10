@@ -1,7 +1,8 @@
 import json
 
 converse = {'p':{},'n':{}}
-id = 0
+pid = 0
+nid = 0
 
 with open("evaconverse.txt") as f:
     nonemptylines = [line.strip("\n") for line in f if line != "\n"]
@@ -9,15 +10,18 @@ with open("evaconverse.txt") as f:
         array = line.split(']')
         if len(array) == 3:
             if array[0] == 'p':
-                (converse['p'])[id] = {'requires': array[1], 'dialogue': array[2]}
+                (converse['p'])[pid] = {'requires': int(array[1]), 'dialogue': array[2], 'said': False}
+                pid += 1
             else:
-                (converse['n'])[id] = {'requires': array[1], 'dialogue': array[2]}
+                (converse['n'])[nid] = {'requires': int(array[1]), 'dialogue': array[2], 'said': False}
+                nid += 1
         else:
             if array[0] == 'p':
-                (converse['p'])[id] = {'requires': array[1], 'dialogue': array[2], 'unlocks': array[3]}
+                (converse['p'])[pid] = {'requires': int(array[1]), 'dialogue': array[2], 'unlocks': int(array[3]), 'said': False}
+                pid += 1
             else:
-                (converse['n'])[id] = {'requires': array[1], 'dialogue': array[2], 'unlocks': array[3]}
-        id += 1
+                (converse['n'])[nid] = {'requires': int(array[1]), 'dialogue': array[2], 'unlocks': int(array[3]), 'said': False}
+                nid += 1
 
 with open('evaconverse.json', 'w') as f:
     json.dump(converse, f)

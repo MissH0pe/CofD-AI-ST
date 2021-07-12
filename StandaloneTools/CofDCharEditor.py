@@ -1,0 +1,142 @@
+import sys
+import json
+from PySide6 import QtCore, QtWidgets, QtGui
+
+class MyWidget(QtWidgets.QWidget):
+
+    def savedef(self):
+        stats = {'name': self.box1.text(), 'mask': self.box2.text(), 'clan': self.box3.text(), 'player': self.box4.text(), 'dirge': self.box5.text(), 'bloodline': self.box6.text(), 'chronicle': self.box7.text(), 'concept': self.box8.text(), 'covenant': self.box9.text(), 'intelligence': self.box10.text(), 'strength': self.box11.text(), 'presence': self.box12.text(), 'wits': self.box13.text(), 'dexterity': self.box14.text(), 'manipulation': self.box15.text(), 'resolve': self.box16.text(), 'stamina': self.box17.text(), 'composure': self.box18.text()}
+        with open(self.saveloc.text()+'.json', 'w') as f:
+            json.dump(stats, f)
+
+    def __init__(self):
+        super(MyWidget, self).__init__()
+
+        self.setGeometry(300, 75, 1024, 768)
+        self.setWindowTitle('Vampire the Requiem Character Editor')
+
+        self.save = QtWidgets.QPushButton('Save')
+        self.save.clicked.connect(self.savedef)
+
+        self.title = QtWidgets.QLabel(self)
+        self.title.setText("Vampire the Requiem Interactive Character Sheet")
+
+        self.label1 = QtWidgets.QLabel(self)
+        self.label2 = QtWidgets.QLabel(self)
+        self.label3 = QtWidgets.QLabel(self)
+        self.label1.setText("Name: ")
+        self.label2.setText("Mask: ")
+        self.label3.setText("Clan: ")
+        self.box1 = QtWidgets.QLineEdit(self)
+        self.box2 = QtWidgets.QLineEdit(self)
+        self.box3 = QtWidgets.QLineEdit(self)
+        self.label4 = QtWidgets.QLabel(self)
+        self.label5 = QtWidgets.QLabel(self)
+        self.label6 = QtWidgets.QLabel(self)
+        self.label4.setText("Player: ")
+        self.label5.setText("Dirge: ")
+        self.label6.setText("Bloodline: ")
+        self.box4 = QtWidgets.QLineEdit(self)
+        self.box5 = QtWidgets.QLineEdit(self)
+        self.box6 = QtWidgets.QLineEdit(self)
+        self.label7 = QtWidgets.QLabel(self)
+        self.label8 = QtWidgets.QLabel(self)
+        self.label9 = QtWidgets.QLabel(self)
+        self.label7.setText("Chronicle: ")
+        self.label8.setText("Concept: ")
+        self.label9.setText("Covenant: ")
+        self.box7 = QtWidgets.QLineEdit(self)
+        self.box8 = QtWidgets.QLineEdit(self)
+        self.box9 = QtWidgets.QLineEdit(self)
+
+        self.cat1 = QtWidgets.QLabel(self)
+        self.cat1.setText("Attributes")
+
+        self.label10 = QtWidgets.QLabel(self)
+        self.label11 = QtWidgets.QLabel(self)
+        self.label12 = QtWidgets.QLabel(self)
+        self.label10.setText("Intelligence: ")
+        self.label11.setText("Strength: ")
+        self.label12.setText("Presence: ")
+        self.box10 = QtWidgets.QLineEdit(self)
+        self.box11 = QtWidgets.QLineEdit(self)
+        self.box12 = QtWidgets.QLineEdit(self)
+        self.label13 = QtWidgets.QLabel(self)
+        self.label14 = QtWidgets.QLabel(self)
+        self.label15 = QtWidgets.QLabel(self)
+        self.label13.setText("Wits: ")
+        self.label14.setText("Dexterity: ")
+        self.label15.setText("Manipulation: ")
+        self.box13 = QtWidgets.QLineEdit(self)
+        self.box14 = QtWidgets.QLineEdit(self)
+        self.box15 = QtWidgets.QLineEdit(self)
+        self.label16 = QtWidgets.QLabel(self)
+        self.label17 = QtWidgets.QLabel(self)
+        self.label18 = QtWidgets.QLabel(self)
+        self.label16.setText("Resolve: ")
+        self.label17.setText("Stamina: ")
+        self.label18.setText("Composure: ")
+        self.box16 = QtWidgets.QLineEdit(self)
+        self.box17 = QtWidgets.QLineEdit(self)
+        self.box18 = QtWidgets.QLineEdit(self)
+
+        self.saveloclabel = QtWidgets.QLabel(self)
+        self.saveloclabel.setText("Save Location: ")
+        self.saveloc = QtWidgets.QLineEdit(self)
+
+        self.layout = QtWidgets.QGridLayout(self)
+        self.layout.addWidget(self.save, 0, 0)
+        self.layout.addWidget(self.saveloclabel, 0, 1)
+        self.layout.addWidget(self.saveloc, 0, 2)
+
+        self.layout.addWidget(self.title, 1, 3)
+
+        self.layout.addWidget(self.label1, 2, 0)
+        self.layout.addWidget(self.box1, 2, 1)
+        self.layout.addWidget(self.label2, 2, 2)
+        self.layout.addWidget(self.box2, 2, 3)
+        self.layout.addWidget(self.label3, 2, 4)
+        self.layout.addWidget(self.box3, 2, 5)
+        self.layout.addWidget(self.label4, 3, 0)
+        self.layout.addWidget(self.box4, 3, 1)
+        self.layout.addWidget(self.label5, 3, 2)
+        self.layout.addWidget(self.box5, 3, 3)
+        self.layout.addWidget(self.label6, 3, 4)
+        self.layout.addWidget(self.box6, 3, 5)
+        self.layout.addWidget(self.label7, 4, 0)
+        self.layout.addWidget(self.box7, 4, 1)
+        self.layout.addWidget(self.label8, 4, 2)
+        self.layout.addWidget(self.box8, 4, 3)
+        self.layout.addWidget(self.label9, 4, 4)
+        self.layout.addWidget(self.box9, 4, 5)
+
+        self.layout.addWidget(self.cat1, 5, 3)
+
+        self.layout.addWidget(self.label10, 6, 0)
+        self.layout.addWidget(self.box10, 6, 1)
+        self.layout.addWidget(self.label11, 6, 2)
+        self.layout.addWidget(self.box11, 6, 3)
+        self.layout.addWidget(self.label12, 6, 4)
+        self.layout.addWidget(self.box12, 6, 5)
+        self.layout.addWidget(self.label13, 7, 0)
+        self.layout.addWidget(self.box13, 7, 1)
+        self.layout.addWidget(self.label14, 7, 2)
+        self.layout.addWidget(self.box14, 7, 3)
+        self.layout.addWidget(self.label15, 7, 4)
+        self.layout.addWidget(self.box15, 7, 5)
+        self.layout.addWidget(self.label16, 8, 0)
+        self.layout.addWidget(self.box16, 8, 1)
+        self.layout.addWidget(self.label17, 8, 2)
+        self.layout.addWidget(self.box17, 8, 3)
+        self.layout.addWidget(self.label18, 8, 4)
+        self.layout.addWidget(self.box18, 8, 5)
+
+        self.setLayout(self.layout)
+
+app = QtWidgets.QApplication([])
+
+widget = MyWidget()
+widget.resize(1024, 768)
+widget.show()
+
+sys.exit(app.exec())

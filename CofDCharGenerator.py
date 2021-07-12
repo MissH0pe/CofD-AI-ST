@@ -33,7 +33,7 @@ else:
 clanslist = ['Daeva', 'Gangrel', 'Mekhet', 'Nosferatu', 'Ventrue']
 covenantslist = ['The Carthian Movement', 'The Circle of the Crone', 'The Invictus', 'The Lancea et Sanctum', 'The Ordo Dracul', 'Unaligned']
 
-chartable[firstname+surname] = {'name': firstname + ' ' + surname,
+chartable[firstname+' '+surname] = {'name': firstname + ' ' + surname,
 
 'supernaturaltags': [],
 

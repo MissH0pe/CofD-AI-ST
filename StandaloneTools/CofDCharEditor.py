@@ -132,18 +132,13 @@ class MyWidget(QtWidgets.QWidget):
                 self.boxstreetwise.setText(stats['skills']['streetwise'])
                 self.boxsubterfuge.setText(stats['skills']['subterfuge'])
                 self.occultflag = [False, False, False]
-                for x in stats['supernaturaltags']:
-                    if x == 'vampire':
-                        self.boxclan.setText(stats['clan'])
-                        self.boxbloodline.setText(stats['bloodline'])
-                        self.boxcovenant.setText(stats['covenant'])
-                        self.boxmask.setText(stats['mask'])
-                        self.boxdirge.setText(stats['dirge'])
-                        self.occultflag[0] = True
+
                 if stats['merits'][0][1] > self.meritcount:
+                    self.oldmeritcount = self.meritcount
                     self.meritcount = stats['merits'][0][1]
 
                     self.makesheet()
+                print(stats['merits'][0][1])
                 if stats['merits'][0][1] >= 1:
                     self.meritnamebox1.setText(stats['merits'][1][0])
                     self.meritlevelbox1.setText(stats['merits'][1][1])
@@ -204,6 +199,15 @@ class MyWidget(QtWidgets.QWidget):
                 if stats['merits'][0][1] >= 20:
                     self.meritnamebox20.setText(stats['merits'][20][0])
                     self.meritlevelbox20.setText(stats['merits'][20][1])
+                
+                for x in stats['supernaturaltags']:
+                    if x == 'vampire':
+                        self.boxclan.setText(stats['clan'])
+                        self.boxbloodline.setText(stats['bloodline'])
+                        self.boxcovenant.setText(stats['covenant'])
+                        self.boxmask.setText(stats['mask'])
+                        self.boxdirge.setText(stats['dirge'])
+                        self.occultflag[0] = True
         else:
             stats = {}
 

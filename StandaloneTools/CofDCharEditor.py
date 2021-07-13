@@ -8,7 +8,7 @@ class MyWidget(QtWidgets.QWidget):
 #if importing this charater to a table i need to make sure that it's added under a in that is the name with the space
 
     def savedef(self):
-        stats = {'name': self.boxname.text(), 'supernaturaltags': [], 'player': self.boxplayer.text(), 'chronicle': self.boxchronicle.text(), 'concept': self.boxconcept.text(), 'intelligence': self.boxintelligence.text(), 'strength': self.boxstrength.text(), 'presence': self.boxpresence.text(), 'wits': self.boxwits.text(), 'dexterity': self.boxdexterity.text(), 'manipulation': self.boxmanipulation.text(), 'resolve': self.boxresolve.text(), 'stamina': self.boxstamina.text(), 'composure': self.boxcomposure.text()}
+        stats = {'name': self.boxname.text(), 'supernaturaltags': [], 'player': self.boxplayer.text(), 'chronicle': self.boxchronicle.text(), 'concept': self.boxconcept.text(), 'stats': {'intelligence': self.boxintelligence.text(), 'strength': self.boxstrength.text(), 'presence': self.boxpresence.text(), 'wits': self.boxwits.text(), 'dexterity': self.boxdexterity.text(), 'manipulation': self.boxmanipulation.text(), 'resolve': self.boxresolve.text(), 'stamina': self.boxstamina.text(), 'composure': self.boxcomposure.text()}, 'skills': {'academics': self.boxacademics.text(), 'computer': self.boxcomputer.text(), 'crafts': self.boxcrafts.text(), 'investigation': self.boxinvestigation.text(), 'medicine': self.boxmedicine.text(), 'occult': self.boxoccult.text(), 'politics': self.boxpolitics.text(), 'science': self.boxscience.text(), 'athletics': self.boxathletics.text(), 'brawl': self.boxbrawl.text(), 'drive': self.boxdrive.text(), 'firearms': self.boxfirearms.text(), 'larceny': self.boxlarceny.text(), 'stealth': self.boxstealth.text(), 'survival': self.boxsurvival.text(), 'weaponry': self.boxweaponry.text(), 'animalken': self.boxanimalken.text(), 'empathy': self.boxempathy.text(), 'expression': self.boxexpression.text(), 'intimidation': self.boxintimidation.text(), 'persuasion': self.boxpersuasion.text(), 'socialize': self.boxsocialize.text(), 'streetwise': self.boxstreetwise.text(), 'subterfuge': self.boxsubterfuge.text()}}
         if self.occultflag[0]:
             stats['supernaturaltags'].append('vampire')
             stats['mask'] = self.boxmask.text()
@@ -28,15 +28,39 @@ class MyWidget(QtWidgets.QWidget):
                 self.boxplayer.setText(stats['player'])
                 self.boxchronicle.setText(stats['chronicle'])
                 self.boxconcept.setText(stats['concept'])
-                self.boxintelligence.setText(stats['intelligence'])
-                self.boxstrength.setText(stats['strength'])
-                self.boxpresence.setText(stats['presence'])
-                self.boxwits.setText(stats['wits'])
-                self.boxdexterity.setText(stats['dexterity'])
-                self.boxmanipulation.setText(stats['manipulation'])
-                self.boxresolve.setText(stats['resolve'])
-                self.boxstamina.setText(stats['stamina'])
-                self.boxcomposure.setText(stats['composure'])
+                self.boxintelligence.setText(stats['stats']['intelligence'])
+                self.boxstrength.setText(stats['stats']['strength'])
+                self.boxpresence.setText(stats['stats']['presence'])
+                self.boxwits.setText(stats['stats']['wits'])
+                self.boxdexterity.setText(stats['stats']['dexterity'])
+                self.boxmanipulation.setText(stats['stats']['manipulation'])
+                self.boxresolve.setText(stats['stats']['resolve'])
+                self.boxstamina.setText(stats['stats']['stamina'])
+                self.boxcomposure.setText(stats['stats']['composure'])
+                self.boxacademics.setText(stats['skills']['academics'])
+                self.boxcomputer.setText(stats['skills']['computer'])
+                self.boxcrafts.setText(stats['skills']['crafts'])
+                self.boxinvestigation.setText(stats['skills']['investigation'])
+                self.boxmedicine.setText(stats['skills']['medicine'])
+                self.boxoccult.setText(stats['skills']['occult'])
+                self.boxpolitics.setText(stats['skills']['politics'])
+                self.boxscience.setText(stats['skills']['science'])
+                self.boxathletics.setText(stats['skills']['athletics'])
+                self.boxbrawl.setText(stats['skills']['brawl'])
+                self.boxdrive.setText(stats['skills']['drive'])
+                self.boxfirearms.setText(stats['skills']['firearms'])
+                self.boxlarceny.setText(stats['skills']['larceny'])
+                self.boxstealth.setText(stats['skills']['stealth'])
+                self.boxsurvival.setText(stats['skills']['survival'])
+                self.boxweaponry.setText(stats['skills']['weaponry'])
+                self.boxanimalken.setText(stats['skills']['animalken'])
+                self.boxempathy.setText(stats['skills']['empathy'])
+                self.boxexpression.setText(stats['skills']['expression'])
+                self.boxintimidation.setText(stats['skills']['intimidation'])
+                self.boxpersuasion.setText(stats['skills']['persuasion'])
+                self.boxsocialize.setText(stats['skills']['socialize'])
+                self.boxstreetwise.setText(stats['skills']['streetwise'])
+                self.boxsubterfuge.setText(stats['skills']['subterfuge'])
                 self.occultflag = [False, False, False]
                 if stats['supernaturaltags'][0]:
                     self.boxclan.setText(stats['clan'])
@@ -57,21 +81,18 @@ class MyWidget(QtWidgets.QWidget):
         #     stats[self.boxname.text()]['bloodline'] = self.boxbloodline.text()
         #     stats[self.boxname.text()]['covenant'] = self.boxcovenant.text(),
 
-
     def makesheet(self):
-        self.name = QtWidgets.QLabel(self)
-        self.name.setText("Name: ")
-        self.boxname = QtWidgets.QLineEdit(self)
-        self.player = QtWidgets.QLabel(self)
-        self.player.setText("Player: ")
-        self.boxplayer = QtWidgets.QLineEdit(self)
-        self.chronicle = QtWidgets.QLabel(self)
-        self.chronicle.setText("Chronicle: ")
-        self.boxchronicle = QtWidgets.QLineEdit(self)
+        #begin layout
 
-        self.concept = QtWidgets.QLabel(self)
-        self.boxconcept = QtWidgets.QLineEdit(self)
-        self.concept.setText("Concept: ")
+        self.layout.addWidget(self.name, 2, 0)
+        self.layout.addWidget(self.boxname, 2, 1)
+        self.layout.addWidget(self.player, 2, 2)
+        self.layout.addWidget(self.boxplayer, 2, 3)
+        self.layout.addWidget(self.chronicle, 2, 4)
+        self.layout.addWidget(self.boxchronicle, 2, 5)
+
+        self.layout.addWidget(self.concept, 3, 0)
+        self.layout.addWidget(self.boxconcept, 3, 1)
 
         if self.occultflag[0]:
             self.clan = QtWidgets.QLabel(self)
@@ -90,6 +111,207 @@ class MyWidget(QtWidgets.QWidget):
             self.dirge = QtWidgets.QLabel(self)
             self.dirge.setText("Dirge: ")
             self.boxdirge = QtWidgets.QLineEdit(self)
+            
+            self.oplinecounter += 1
+            self.layout.addWidget(self.clan, 3 + self.oplinecounter, 0)
+            self.layout.addWidget(self.boxclan, 3 + self.oplinecounter, 1)
+            self.layout.addWidget(self.bloodline, 3 + self.oplinecounter, 2)
+            self.layout.addWidget(self.boxbloodline, 3 + self.oplinecounter, 3)
+            self.layout.addWidget(self.covenant, 3 + self.oplinecounter, 4)
+            self.layout.addWidget(self.boxcovenant, 3 + self.oplinecounter, 5)
+
+            self.oplinecounter += 1
+            self.layout.addWidget(self.mask, 3 + self.oplinecounter, 0)
+            self.layout.addWidget(self.boxmask, 3 + self.oplinecounter, 1)
+            self.layout.addWidget(self.dirge, 3 + self.oplinecounter, 2)
+            self.layout.addWidget(self.boxdirge, 3 + self.oplinecounter, 3)
+
+        self.layout.addWidget(self.cat1, 4 + self.oplinecounter, 3)
+
+        self.layout.addWidget(self.intelligence, 5 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxintelligence, 5 + self.oplinecounter, 1)
+        self.layout.addWidget(self.strength, 5 + self.oplinecounter, 2)
+        self.layout.addWidget(self.boxstrength, 5 + self.oplinecounter, 3)
+        self.layout.addWidget(self.presence, 5 + self.oplinecounter, 4)
+        self.layout.addWidget(self.boxpresence, 5 + self.oplinecounter, 5)
+        self.layout.addWidget(self.wits, 6 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxwits, 6 + self.oplinecounter, 1)
+        self.layout.addWidget(self.dexterity, 6 + self.oplinecounter, 2)
+        self.layout.addWidget(self.boxdexterity, 6 + self.oplinecounter, 3)
+        self.layout.addWidget(self.manipulation, 6 + self.oplinecounter, 4)
+        self.layout.addWidget(self.boxmanipulation, 6 + self.oplinecounter, 5)
+        self.layout.addWidget(self.resolve, 7 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxresolve, 7 + self.oplinecounter, 1)
+        self.layout.addWidget(self.stamina, 7 + self.oplinecounter, 2)
+        self.layout.addWidget(self.boxstamina, 7 + self.oplinecounter, 3)
+        self.layout.addWidget(self.composure, 7 + self.oplinecounter, 4)
+        self.layout.addWidget(self.boxcomposure, 7 + self.oplinecounter, 5)
+
+        self.layout.addWidget(self.cat2, 8 + self.oplinecounter, 1)
+        self.layout.addWidget(self.subcat1, 9 + self.oplinecounter, 1)
+        self.layout.addWidget(self.desc1, 10 + self.oplinecounter, 1)
+
+        self.layout.addWidget(self.academics, 11 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxacademics, 11 + self.oplinecounter, 1)
+        self.layout.addWidget(self.computer, 12 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxcomputer, 12 + self.oplinecounter, 1)
+        self.layout.addWidget(self.crafts, 13 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxcrafts, 13 + self.oplinecounter, 1)
+        self.layout.addWidget(self.investigation, 14 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxinvestigation, 14 + self.oplinecounter, 1)
+        self.layout.addWidget(self.medicine, 15 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxmedicine, 15 + self.oplinecounter, 1)
+        self.layout.addWidget(self.occult, 16 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxoccult, 16 + self.oplinecounter, 1)
+        self.layout.addWidget(self.politics, 17 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxpolitics, 17 + self.oplinecounter, 1)
+        self.layout.addWidget(self.science, 18 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxscience, 18 + self.oplinecounter, 1)
+
+        self.layout.addWidget(self.subcat2, 19 + self.oplinecounter, 1)
+        self.layout.addWidget(self.desc2, 20 + self.oplinecounter, 1)
+
+        self.layout.addWidget(self.athletics, 21 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxathletics, 21 + self.oplinecounter, 1)
+        self.layout.addWidget(self.brawl, 22 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxbrawl, 22 + self.oplinecounter, 1)
+        self.layout.addWidget(self.drive, 23 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxdrive, 23 + self.oplinecounter, 1)
+        self.layout.addWidget(self.firearms, 24 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxfirearms, 24 + self.oplinecounter, 1)
+        self.layout.addWidget(self.larceny, 25 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxlarceny, 25 + self.oplinecounter, 1)
+        self.layout.addWidget(self.stealth, 26 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxstealth, 26 + self.oplinecounter, 1)
+        self.layout.addWidget(self.survival, 27 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxsurvival, 27 + self.oplinecounter, 1)
+        self.layout.addWidget(self.weaponry, 28 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxweaponry, 28 + self.oplinecounter, 1)
+
+        self.layout.addWidget(self.subcat3, 29 + self.oplinecounter, 1)
+        self.layout.addWidget(self.desc3, 30 + self.oplinecounter, 1)
+
+        self.layout.addWidget(self.animalken, 31 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxanimalken, 31 + self.oplinecounter, 1)
+        self.layout.addWidget(self.empathy, 32 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxempathy, 32 + self.oplinecounter, 1)
+        self.layout.addWidget(self.expression, 33 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxexpression, 33 + self.oplinecounter, 1)
+        self.layout.addWidget(self.intimidation, 34 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxintimidation, 34 + self.oplinecounter, 1)
+        self.layout.addWidget(self.persuasion, 35 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxpersuasion, 35 + self.oplinecounter, 1)
+        self.layout.addWidget(self.socialize, 36 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxsocialize, 36 + self.oplinecounter, 1)
+        self.layout.addWidget(self.streetwise, 37 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxstreetwise, 37 + self.oplinecounter, 1)
+        self.layout.addWidget(self.subterfuge, 38 + self.oplinecounter, 0)
+        self.layout.addWidget(self.boxsubterfuge, 38 + self.oplinecounter, 1)
+
+        self.setLayout(self.layout)
+        self.setGeometry(300, 75, 1024, 768)
+
+    def vamptoggledef(self):
+        self.vamptoggle.setChecked(True)
+        if self.vamptoggle.isChecked():
+            self.occultflag[0] = True
+        else:
+            self.occultflag[0] = False
+        self.makesheet()
+
+    def settingsdef(self):
+        self.settings = QtWidgets.QWidget()
+        self.settings.setWindowTitle('Settings')
+        self.settings.setGeometry(400, 150, 384, 512)
+        self.settings.show()
+        self.settingslayout = QtWidgets.QGridLayout(self.settings)
+
+        self.settingstitle = QtWidgets.QLabel()
+        self.settingstitle.setText("Settings")
+        self.settingstitle.setFont(self.titlefont)
+        self.vamplabel = QtWidgets.QLabel()
+        self.vamplabel.setText("Character is Vampire: ")
+        self.vamptoggle = QtWidgets.QCheckBox()
+        self.vamptoggle.clicked.connect(self.vamptoggledef)
+
+        self.settingslayout.addWidget(self.settingstitle, 0, 1, 0, 5)
+        self.settingslayout.addWidget(self.vamplabel, 1, 0)
+        self.settingslayout.addWidget(self.vamptoggle, 1, 1)
+        self.setLayout(self.layout)
+
+    def __init__(self):
+        super(MyWidget, self).__init__()
+
+        self.setGeometry(300, 75, 1024, 768)
+        self.setWindowTitle('Chronicles of Darkness Interactive Character Sheet')
+
+        self.oplinecounter = 0
+
+        self.occultflag = [False, False, False]
+
+        self.title = QtWidgets.QLabel()
+
+        pixMap = QtGui.QPixmap.fromImage('CofD.png')
+
+        self.title.setPixmap( pixMap )
+        self.title.show()
+
+        self.settings = QtWidgets.QPushButton('')
+        self.settings.setIcon(QtGui.QIcon('gear.png'))
+        self.settings.clicked.connect(self.settingsdef)
+
+        self.titlefont = QtGui.QFont()
+        self.titlefont.setFamily("stcaiyun")  # Set Font
+        self.titlefont.setBold(True)  # Bold
+        # font.setItalic(True)  # tilt
+        self.titlefont.setPointSize(16)  # Set font size
+
+        self.subtitlefont = QtGui.QFont()
+        self.subtitlefont.setFamily("stcaiyun")  # Set Font
+        # self.subtitlefont.setBold(True)  # Bold
+        # font.setItalic(True)  # tilt
+        self.subtitlefont.setPointSize(12)  # Set font size
+
+        self.save = QtWidgets.QPushButton('Save')
+        self.save.clicked.connect(self.savedef)
+        self.load = QtWidgets.QPushButton('Load')
+        self.load.clicked.connect(self.loaddef)
+
+        # self.title = QtWidgets.QLabel(self)
+        # self.title.setText("CofD Interactive Character Sheet")
+        # self.title.setFont(self.titlefont)
+
+        self.saveloclabel = QtWidgets.QLabel(self)
+        self.saveloclabel.setText("Save Location: ")
+        self.saveloc = QtWidgets.QLineEdit(self)
+        self.loadloclabel = QtWidgets.QLabel(self)
+        self.loadloclabel.setText("Load Location: ")
+        self.loadloc = QtWidgets.QLineEdit(self)
+
+        self.layout = QtWidgets.QGridLayout(self)
+        self.layout.addWidget(self.saveloclabel, 0, 0)
+        self.layout.addWidget(self.saveloc, 0, 1)
+        self.layout.addWidget(self.save, 0, 2)
+        self.layout.addWidget(self.load, 0, 3)
+        self.layout.addWidget(self.loadloclabel, 0, 4)
+        self.layout.addWidget(self.loadloc, 0, 5)
+
+        self.layout.addWidget(self.title, 1, 2, 1, 6)
+        self.layout.addWidget(self.settings, 0, 6)
+
+        self.name = QtWidgets.QLabel(self)
+        self.name.setText("Name: ")
+        self.boxname = QtWidgets.QLineEdit(self)
+        self.player = QtWidgets.QLabel(self)
+        self.player.setText("Player: ")
+        self.boxplayer = QtWidgets.QLineEdit(self)
+        self.chronicle = QtWidgets.QLabel(self)
+        self.chronicle.setText("Chronicle: ")
+        self.boxchronicle = QtWidgets.QLineEdit(self)
+
+        self.concept = QtWidgets.QLabel(self)
+        self.boxconcept = QtWidgets.QLineEdit(self)
+        self.concept.setText("Concept: ")
 
         self.cat1 = QtWidgets.QLabel(self)
         self.cat1.setText("Attributes")
@@ -219,178 +441,6 @@ class MyWidget(QtWidgets.QWidget):
         self.subterfuge.setText("Weaponry: ")
         self.boxsubterfuge = QtWidgets.QLineEdit(self)
 
-        #begin layout
-
-        self.layout.addWidget(self.name, 2, 0)
-        self.layout.addWidget(self.boxname, 2, 1)
-        self.layout.addWidget(self.player, 2, 2)
-        self.layout.addWidget(self.boxplayer, 2, 3)
-        self.layout.addWidget(self.chronicle, 2, 4)
-        self.layout.addWidget(self.boxchronicle, 2, 5)
-
-        self.layout.addWidget(self.concept, 3, 0)
-        self.layout.addWidget(self.boxconcept, 3, 1)
-
-        if self.occultflag[0]:
-            self.oplinecounter += 1
-            self.layout.addWidget(self.clan, 3 + self.oplinecounter, 0)
-            self.layout.addWidget(self.boxclan, 3 + self.oplinecounter, 1)
-            self.layout.addWidget(self.bloodline, 3 + self.oplinecounter, 2)
-            self.layout.addWidget(self.boxbloodline, 3 + self.oplinecounter, 3)
-            self.layout.addWidget(self.covenant, 3 + self.oplinecounter, 4)
-            self.layout.addWidget(self.boxcovenant, 3 + self.oplinecounter, 5)
-
-            self.oplinecounter += 1
-            self.layout.addWidget(self.mask, 3 + self.oplinecounter, 0)
-            self.layout.addWidget(self.boxmask, 3 + self.oplinecounter, 1)
-            self.layout.addWidget(self.dirge, 3 + self.oplinecounter, 2)
-            self.layout.addWidget(self.boxdirge, 3 + self.oplinecounter, 3)
-
-        self.layout.addWidget(self.cat1, 4 + self.oplinecounter, 3)
-
-        self.layout.addWidget(self.intelligence, 5 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxintelligence, 5 + self.oplinecounter, 1)
-        self.layout.addWidget(self.strength, 5 + self.oplinecounter, 2)
-        self.layout.addWidget(self.boxstrength, 5 + self.oplinecounter, 3)
-        self.layout.addWidget(self.presence, 5 + self.oplinecounter, 4)
-        self.layout.addWidget(self.boxpresence, 5 + self.oplinecounter, 5)
-        self.layout.addWidget(self.wits, 6 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxwits, 6 + self.oplinecounter, 1)
-        self.layout.addWidget(self.dexterity, 6 + self.oplinecounter, 2)
-        self.layout.addWidget(self.boxdexterity, 6 + self.oplinecounter, 3)
-        self.layout.addWidget(self.manipulation, 6 + self.oplinecounter, 4)
-        self.layout.addWidget(self.boxmanipulation, 6 + self.oplinecounter, 5)
-        self.layout.addWidget(self.resolve, 7 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxresolve, 7 + self.oplinecounter, 1)
-        self.layout.addWidget(self.stamina, 7 + self.oplinecounter, 2)
-        self.layout.addWidget(self.boxstamina, 7 + self.oplinecounter, 3)
-        self.layout.addWidget(self.composure, 7 + self.oplinecounter, 4)
-        self.layout.addWidget(self.boxcomposure, 7 + self.oplinecounter, 5)
-
-        self.layout.addWidget(self.cat2, 8 + self.oplinecounter, 1)
-        self.layout.addWidget(self.subcat1, 9 + self.oplinecounter, 1)
-        self.layout.addWidget(self.desc1, 10 + self.oplinecounter, 1)
-
-        self.layout.addWidget(self.academics, 11 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxacademics, 11 + self.oplinecounter, 1)
-        self.layout.addWidget(self.computer, 12 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxcomputer, 12 + self.oplinecounter, 1)
-        self.layout.addWidget(self.crafts, 13 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxcrafts, 13 + self.oplinecounter, 1)
-        self.layout.addWidget(self.investigation, 14 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxinvestigation, 14 + self.oplinecounter, 1)
-        self.layout.addWidget(self.medicine, 15 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxmedicine, 15 + self.oplinecounter, 1)
-        self.layout.addWidget(self.occult, 16 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxoccult, 16 + self.oplinecounter, 1)
-        self.layout.addWidget(self.politics, 17 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxpolitics, 17 + self.oplinecounter, 1)
-        self.layout.addWidget(self.science, 18 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxscience, 18 + self.oplinecounter, 1)
-
-        self.layout.addWidget(self.subcat2, 19 + self.oplinecounter, 1)
-        self.layout.addWidget(self.desc2, 20 + self.oplinecounter, 1)
-
-        self.layout.addWidget(self.athletics, 21 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxathletics, 21 + self.oplinecounter, 1)
-        self.layout.addWidget(self.brawl, 22 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxbrawl, 22 + self.oplinecounter, 1)
-        self.layout.addWidget(self.drive, 23 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxdrive, 23 + self.oplinecounter, 1)
-        self.layout.addWidget(self.firearms, 24 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxfirearms, 24 + self.oplinecounter, 1)
-        self.layout.addWidget(self.larceny, 25 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxlarceny, 25 + self.oplinecounter, 1)
-        self.layout.addWidget(self.stealth, 26 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxstealth, 26 + self.oplinecounter, 1)
-        self.layout.addWidget(self.survival, 27 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxsurvival, 27 + self.oplinecounter, 1)
-        self.layout.addWidget(self.weaponry, 28 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxweaponry, 28 + self.oplinecounter, 1)
-
-        self.layout.addWidget(self.subcat3, 29 + self.oplinecounter, 1)
-        self.layout.addWidget(self.desc3, 30 + self.oplinecounter, 1)
-
-        self.layout.addWidget(self.animalken, 31 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxanimalken, 31 + self.oplinecounter, 1)
-        self.layout.addWidget(self.empathy, 32 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxempathy, 32 + self.oplinecounter, 1)
-        self.layout.addWidget(self.expression, 33 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxexpression, 33 + self.oplinecounter, 1)
-        self.layout.addWidget(self.intimidation, 34 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxintimidation, 34 + self.oplinecounter, 1)
-        self.layout.addWidget(self.persuasion, 35 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxpersuasion, 35 + self.oplinecounter, 1)
-        self.layout.addWidget(self.socialize, 36 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxsocialize, 36 + self.oplinecounter, 1)
-        self.layout.addWidget(self.streetwise, 37 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxstreetwise, 37 + self.oplinecounter, 1)
-        self.layout.addWidget(self.subterfuge, 38 + self.oplinecounter, 0)
-        self.layout.addWidget(self.boxsubterfuge, 38 + self.oplinecounter, 1)
-
-        self.setLayout(self.layout)
-        self.setGeometry(300, 75, 1024, 768)
-
-    def __init__(self):
-        super(MyWidget, self).__init__()
-
-        self.setGeometry(300, 75, 1024, 768)
-        self.setWindowTitle('Chronicles of Darkness Interactive Character Sheet')
-
-        self.oplinecounter = 0
-
-        self.occultflag = [True, False, False]
-
-        self.title = QtWidgets.QLabel()
-
-        pixMap = QtGui.QPixmap.fromImage('CofD.png')
-
-        self.title.setPixmap( pixMap )
-        self.title.show()
-
-        self.settings = QtWidgets.QPushButton('')
-        self.settings.setIcon(QtGui.QIcon('gear.png'))
-
-        self.titlefont = QtGui.QFont()
-        self.titlefont.setFamily("stcaiyun")  # Set Font
-        self.titlefont.setBold(True)  # Bold
-        # font.setItalic(True)  # tilt
-        self.titlefont.setPointSize(16)  # Set font size
-
-        self.subtitlefont = QtGui.QFont()
-        self.subtitlefont.setFamily("stcaiyun")  # Set Font
-        # self.subtitlefont.setBold(True)  # Bold
-        # font.setItalic(True)  # tilt
-        self.subtitlefont.setPointSize(12)  # Set font size
-
-
-        self.save = QtWidgets.QPushButton('Save')
-        self.save.clicked.connect(self.savedef)
-        self.load = QtWidgets.QPushButton('Load')
-        self.load.clicked.connect(self.loaddef)
-
-        # self.title = QtWidgets.QLabel(self)
-        # self.title.setText("CofD Interactive Character Sheet")
-        # self.title.setFont(self.titlefont)
-
-        self.saveloclabel = QtWidgets.QLabel(self)
-        self.saveloclabel.setText("Save Location: ")
-        self.saveloc = QtWidgets.QLineEdit(self)
-        self.loadloclabel = QtWidgets.QLabel(self)
-        self.loadloclabel.setText("Load Location: ")
-        self.loadloc = QtWidgets.QLineEdit(self)
-
-        self.layout = QtWidgets.QGridLayout(self)
-        self.layout.addWidget(self.saveloclabel, 0, 0)
-        self.layout.addWidget(self.saveloc, 0, 1)
-        self.layout.addWidget(self.save, 0, 2)
-        self.layout.addWidget(self.load, 0, 3)
-        self.layout.addWidget(self.loadloclabel, 0, 4)
-        self.layout.addWidget(self.loadloc, 0, 5)
-
-        self.layout.addWidget(self.title, 1, 2, 1, 6)
-        self.layout.addWidget(self.settings, 0, 6)
-
         self.makesheet()
 
 app = QtWidgets.QApplication([])
@@ -400,6 +450,9 @@ widget.resize(1024, 768)
 widget.show()
 
 w = QtWidgets.QWidget()
+
+w.setWindowTitle('Chronicles of Darkness Interactive Character Sheet')
+
 layout = QtWidgets.QVBoxLayout(w)
 scroll = QtWidgets.QScrollArea()
 

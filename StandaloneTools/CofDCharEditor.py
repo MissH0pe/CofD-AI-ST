@@ -217,6 +217,202 @@ class MyWidget(QtWidgets.QWidget):
         #     stats[self.boxname.text()]['covenant'] = self.boxcovenant.text(),
 
     def makesheet(self):
+        #make here delete all stuff in here if not in first run
+        if self.makesheetflag:
+            self.layout.removeWidget(self.cat3)
+            self.cat3.deleteLater()
+            self.cat3 = None
+            self.layout.removeWidget(self.merits)
+            self.merits.deleteLater()
+            self.merits = None
+            self.layout.removeWidget(self.meritslevel)
+            self.meritslevel.deleteLater()
+            self.meritslevel = None
+
+            self.meritcounter = 0
+            if self.oldmeritcount >= 1:
+                self.layout.removeWidget(self.meritnamebox1)
+                self.meritnamebox1.deleteLater()
+                self.meritnamebox1 = None
+                self.layout.removeWidget(self.meritlevelbox1)
+                self.meritlevelbox1.deleteLater()
+                self.meritlevelbox1 = None
+                # self.meritnamebox1 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox1 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 2:
+                self.layout.removeWidget(self.meritnamebox2)
+                self.meritnamebox2.deleteLater()
+                self.meritnamebox2 = None
+                self.layout.removeWidget(self.meritlevelbox2)
+                self.meritlevelbox2.deleteLater()
+                self.meritlevelbox2 = None
+                # self.meritnamebox2 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox2 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 3:
+                self.layout.removeWidget(self.meritnamebox3)
+                self.meritnamebox3.deleteLater()
+                self.meritnamebox3 = None
+                self.layout.removeWidget(self.meritlevelbox3)
+                self.meritlevelbox3.deleteLater()
+                self.meritlevelbox3 = None
+                # self.meritnamebox3 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox3 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 4:
+                self.layout.removeWidget(self.meritnamebox4)
+                self.meritnamebox4.deleteLater()
+                self.meritnamebox4 = None
+                self.layout.removeWidget(self.meritlevelbox4)
+                self.meritlevelbox4.deleteLater()
+                self.meritlevelbox4 = None
+                # self.meritnamebox4 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox4 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 5:
+                self.layout.removeWidget(self.meritnamebox5)
+                self.meritnamebox5.deleteLater()
+                self.meritnamebox5 = None
+                self.layout.removeWidget(self.meritlevelbox5)
+                self.meritlevelbox5.deleteLater()
+                self.meritlevelbox5 = None
+                # self.meritnamebox5 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox5 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 6:
+                self.layout.removeWidget(self.meritnamebox6)
+                self.meritnamebox6.deleteLater()
+                self.meritnamebox6 = None
+                self.layout.removeWidget(self.meritlevelbox6)
+                self.meritlevelbox6.deleteLater()
+                self.meritlevelbox6 = None
+                # self.meritnamebox6 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox6 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 7:
+                self.layout.removeWidget(self.meritnamebox7)
+                self.meritnamebox7.deleteLater()
+                self.meritnamebox7 = None
+                self.layout.removeWidget(self.meritlevelbox7)
+                self.meritlevelbox7.deleteLater()
+                self.meritlevelbox7 = None
+                # self.meritnamebox7 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox7 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 8:
+                self.layout.removeWidget(self.meritnamebox8)
+                self.meritnamebox8.deleteLater()
+                self.meritnamebox8 = None
+                self.layout.removeWidget(self.meritlevelbox8)
+                self.meritlevelbox8.deleteLater()
+                self.meritlevelbox8 = None
+                # self.meritnamebox8 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox8 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 9:
+                self.layout.removeWidget(self.meritnamebox9)
+                self.meritnamebox9.deleteLater()
+                self.meritnamebox9 = None
+                self.layout.removeWidget(self.meritlevelbox9)
+                self.meritlevelbox9.deleteLater()
+                self.meritlevelbox9 = None
+                # self.meritnamebox9 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox9 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 10:
+                self.layout.removeWidget(self.meritnamebox10)
+                self.meritnamebox10.deleteLater()
+                self.meritnamebox10 = None
+                self.layout.removeWidget(self.meritlevelbox10)
+                self.meritlevelbox10.deleteLater()
+                self.meritlevelbox10 = None
+                # self.meritnamebox10 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox10 = QtWidgets.QLineEdit(self)
+                self.meritcounter -= 1
+            if self.oldmeritcount >= 11:
+                self.layout.removeWidget(self.meritnamebox11)
+                self.meritnamebox11.deleteLater()
+                self.meritnamebox11 = None
+                self.layout.removeWidget(self.meritlevelbox11)
+                self.meritlevelbox11.deleteLater()
+                self.meritlevelbox11 = None
+                # self.meritnamebox11 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox11 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 12:
+                self.layout.removeWidget(self.meritnamebox12)
+                self.meritnamebox12.deleteLater()
+                self.meritnamebox12 = None
+                self.layout.removeWidget(self.meritlevelbox12)
+                self.meritlevelbox12.deleteLater()
+                self.meritlevelbox12 = None
+                # self.meritnamebox12 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox12 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 13:
+                self.layout.removeWidget(self.meritnamebox13)
+                self.meritnamebox13.deleteLater()
+                self.meritnamebox13 = None
+                self.layout.removeWidget(self.meritlevelbox13)
+                self.meritlevelbox13.deleteLater()
+                self.meritlevelbox13 = None
+                # self.meritnamebox13 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox13 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 14:
+                self.layout.removeWidget(self.meritnamebox14)
+                self.meritnamebox14.deleteLater()
+                self.meritnamebox14 = None
+                self.layout.removeWidget(self.meritlevelbox14)
+                self.meritlevelbox14.deleteLater()
+                self.meritlevelbox14 = None
+                # self.meritnamebox14 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox14 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 15:
+                self.layout.removeWidget(self.meritnamebox15)
+                self.meritnamebox15.deleteLater()
+                self.meritnamebox15 = None
+                self.layout.removeWidget(self.meritlevelbox15)
+                self.meritlevelbox15.deleteLater()
+                self.meritlevelbox15 = None
+                # self.meritnamebox15 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox15 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 16:
+                self.layout.removeWidget(self.meritnamebox16)
+                self.meritnamebox16.deleteLater()
+                self.meritnamebox16 = None
+                self.layout.removeWidget(self.meritlevelbox16)
+                self.meritlevelbox16.deleteLater()
+                self.meritlevelbox16 = None
+                # self.meritnamebox16 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox16 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 17:
+                self.layout.removeWidget(self.meritnamebox17)
+                self.meritnamebox17.deleteLater()
+                self.meritnamebox17 = None
+                self.layout.removeWidget(self.meritlevelbox17)
+                self.meritlevelbox17.deleteLater()
+                self.meritlevelbox17 = None
+                # self.meritnamebox17 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox17 = QtWidgets.QLineEdit(self)
+                self.meritcounter -= 1
+            if self.oldmeritcount >= 18:
+                self.layout.removeWidget(self.meritnamebox18)
+                self.meritnamebox18.deleteLater()
+                self.meritnamebox18 = None
+                self.layout.removeWidget(self.meritlevelbox18)
+                self.meritlevelbox18.deleteLater()
+                self.meritlevelbox18 = None
+                # self.meritnamebox18 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox18 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 19:
+                self.layout.removeWidget(self.meritnamebox19)
+                self.meritnamebox19.deleteLater()
+                self.meritnamebox19 = None
+                self.layout.removeWidget(self.meritlevelbox19)
+                self.meritlevelbox19.deleteLater()
+                self.meritlevelbox19 = None
+                # self.meritnamebox19 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox19 = QtWidgets.QLineEdit(self)
+            if self.oldmeritcount >= 20:
+                self.layout.removeWidget(self.meritnamebox20)
+                self.meritnamebox20.deleteLater()
+                self.meritnamebox20 = None
+                self.layout.removeWidget(self.meritlevelbox20)
+                self.meritlevelbox20.deleteLater()
+                self.meritlevelbox20 = None
+                # self.meritnamebox20 = QtWidgets.QLineEdit(self)
+                # self.meritlevelbox20 = QtWidgets.QLineEdit(self)
+
         #other traits
         self.cat3 = QtWidgets.QLabel(self)
         self.cat3.setText("Other Traits")
@@ -417,206 +613,11 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.subterfuge, 38 + self.oplinecounter, 0)
         self.layout.addWidget(self.boxsubterfuge, 38 + self.oplinecounter, 1)
 
-        #other traits
-        self.cat3 = QtWidgets.QLabel(self)
-        self.cat3.setText("Other Traits")
-        self.cat3.setFont(self.titlefont)
-
-        self.merits = QtWidgets.QLabel(self)
-        self.merits.setText("Merits")
-        self.merits.setFont(self.subtitlefont)
-        self.meritslevel = QtWidgets.QLabel(self)
-        self.meritslevel.setText("Level")
-
         self.layout.addWidget(self.cat3, 8 + self.oplinecounter, 4)
         self.layout.addWidget(self.merits, 9 + self.oplinecounter, 2)
         self.layout.addWidget(self.meritslevel, 9 + self.oplinecounter, 3)
 
         #merits
-
-        self.meritcounter = 0
-        if self.oldmeritcount >= 1:
-            self.layout.removeWidget(self.meritnamebox1)
-            self.meritnamebox1.deleteLater()
-            self.meritnamebox1 = None
-            self.layout.removeWidget(self.meritlevelbox1)
-            self.meritlevelbox1.deleteLater()
-            self.meritlevelbox1 = None
-            self.meritnamebox1 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox1 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 2:
-            self.layout.removeWidget(self.meritnamebox2)
-            self.meritnamebox2.deleteLater()
-            self.meritnamebox2 = None
-            self.layout.removeWidget(self.meritlevelbox2)
-            self.meritlevelbox2.deleteLater()
-            self.meritlevelbox2 = None
-            self.meritnamebox2 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox2 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 3:
-            self.layout.removeWidget(self.meritnamebox3)
-            self.meritnamebox3.deleteLater()
-            self.meritnamebox3 = None
-            self.layout.removeWidget(self.meritlevelbox3)
-            self.meritlevelbox3.deleteLater()
-            self.meritlevelbox3 = None
-            self.meritnamebox3 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox3 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 4:
-            self.layout.removeWidget(self.meritnamebox4)
-            self.meritnamebox4.deleteLater()
-            self.meritnamebox4 = None
-            self.layout.removeWidget(self.meritlevelbox4)
-            self.meritlevelbox4.deleteLater()
-            self.meritlevelbox4 = None
-            self.meritnamebox4 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox4 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 5:
-            self.layout.removeWidget(self.meritnamebox5)
-            self.meritnamebox5.deleteLater()
-            self.meritnamebox5 = None
-            self.layout.removeWidget(self.meritlevelbox5)
-            self.meritlevelbox5.deleteLater()
-            self.meritlevelbox5 = None
-            self.meritnamebox5 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox5 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 6:
-            self.layout.removeWidget(self.meritnamebox6)
-            self.meritnamebox6.deleteLater()
-            self.meritnamebox6 = None
-            self.layout.removeWidget(self.meritlevelbox6)
-            self.meritlevelbox6.deleteLater()
-            self.meritlevelbox6 = None
-            self.meritnamebox6 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox6 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 7:
-            self.layout.removeWidget(self.meritnamebox7)
-            self.meritnamebox7.deleteLater()
-            self.meritnamebox7 = None
-            self.layout.removeWidget(self.meritlevelbox7)
-            self.meritlevelbox7.deleteLater()
-            self.meritlevelbox7 = None
-            self.meritnamebox7 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox7 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 8:
-            self.layout.removeWidget(self.meritnamebox8)
-            self.meritnamebox8.deleteLater()
-            self.meritnamebox8 = None
-            self.layout.removeWidget(self.meritlevelbox8)
-            self.meritlevelbox8.deleteLater()
-            self.meritlevelbox8 = None
-            self.meritnamebox8 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox8 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 9:
-            self.layout.removeWidget(self.meritnamebox9)
-            self.meritnamebox9.deleteLater()
-            self.meritnamebox9 = None
-            self.layout.removeWidget(self.meritlevelbox9)
-            self.meritlevelbox9.deleteLater()
-            self.meritlevelbox9 = None
-            self.meritnamebox9 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox9 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 10:
-            self.layout.removeWidget(self.meritnamebox10)
-            self.meritnamebox10.deleteLater()
-            self.meritnamebox10 = None
-            self.layout.removeWidget(self.meritlevelbox10)
-            self.meritlevelbox10.deleteLater()
-            self.meritlevelbox10 = None
-            self.meritnamebox10 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox10 = QtWidgets.QLineEdit(self)
-            self.meritcounter -= 1
-        if self.oldmeritcount >= 11:
-            self.layout.removeWidget(self.meritnamebox11)
-            self.meritnamebox11.deleteLater()
-            self.meritnamebox11 = None
-            self.layout.removeWidget(self.meritlevelbox11)
-            self.meritlevelbox11.deleteLater()
-            self.meritlevelbox11 = None
-            self.meritnamebox11 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox11 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 12:
-            self.layout.removeWidget(self.meritnamebox12)
-            self.meritnamebox12.deleteLater()
-            self.meritnamebox12 = None
-            self.layout.removeWidget(self.meritlevelbox12)
-            self.meritlevelbox12.deleteLater()
-            self.meritlevelbox12 = None
-            self.meritnamebox12 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox12 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 13:
-            self.layout.removeWidget(self.meritnamebox13)
-            self.meritnamebox13.deleteLater()
-            self.meritnamebox13 = None
-            self.layout.removeWidget(self.meritlevelbox13)
-            self.meritlevelbox13.deleteLater()
-            self.meritlevelbox13 = None
-            self.meritnamebox13 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox13 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 14:
-            self.layout.removeWidget(self.meritnamebox14)
-            self.meritnamebox14.deleteLater()
-            self.meritnamebox14 = None
-            self.layout.removeWidget(self.meritlevelbox14)
-            self.meritlevelbox14.deleteLater()
-            self.meritlevelbox14 = None
-            self.meritnamebox14 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox14 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 15:
-            self.layout.removeWidget(self.meritnamebox15)
-            self.meritnamebox15.deleteLater()
-            self.meritnamebox15 = None
-            self.layout.removeWidget(self.meritlevelbox15)
-            self.meritlevelbox15.deleteLater()
-            self.meritlevelbox15 = None
-            self.meritnamebox15 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox15 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 16:
-            self.layout.removeWidget(self.meritnamebox16)
-            self.meritnamebox16.deleteLater()
-            self.meritnamebox16 = None
-            self.layout.removeWidget(self.meritlevelbox16)
-            self.meritlevelbox16.deleteLater()
-            self.meritlevelbox16 = None
-            self.meritnamebox16 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox16 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 17:
-            self.layout.removeWidget(self.meritnamebox17)
-            self.meritnamebox17.deleteLater()
-            self.meritnamebox17 = None
-            self.layout.removeWidget(self.meritlevelbox17)
-            self.meritlevelbox17.deleteLater()
-            self.meritlevelbox17 = None
-            self.meritnamebox17 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox17 = QtWidgets.QLineEdit(self)
-            self.meritcounter -= 1
-        if self.oldmeritcount >= 18:
-            self.layout.removeWidget(self.meritnamebox18)
-            self.meritnamebox18.deleteLater()
-            self.meritnamebox18 = None
-            self.layout.removeWidget(self.meritlevelbox18)
-            self.meritlevelbox18.deleteLater()
-            self.meritlevelbox18 = None
-            self.meritnamebox18 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox18 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 19:
-            self.layout.removeWidget(self.meritnamebox19)
-            self.meritnamebox19.deleteLater()
-            self.meritnamebox19 = None
-            self.layout.removeWidget(self.meritlevelbox19)
-            self.meritlevelbox19.deleteLater()
-            self.meritlevelbox19 = None
-            self.meritnamebox19 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox19 = QtWidgets.QLineEdit(self)
-        if self.oldmeritcount >= 20:
-            self.layout.removeWidget(self.meritnamebox20)
-            self.meritnamebox20.deleteLater()
-            self.meritnamebox20 = None
-            self.layout.removeWidget(self.meritlevelbox20)
-            self.meritlevelbox20.deleteLater()
-            self.meritlevelbox20 = None
-            self.meritnamebox20 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox20 = QtWidgets.QLineEdit(self)
         self.meritcounter = 0
         if self.meritcount >= 1:
             self.meritcounter += 1
@@ -702,22 +703,24 @@ class MyWidget(QtWidgets.QWidget):
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
 
+        self.makesheetflag = True
+
     def vamptoggledef(self):
         if self.vamptoggle.isChecked():
             self.vamptoggle.setChecked(True)
             self.occultflag[0] = True
             self.oldmeritcount = 5
 
-            self.layout.removeWidget(self.cat3)
-            self.cat3.deleteLater()
-            self.cat3 = None
-
-            self.layout.removeWidget(self.merits)
-            self.merits.deleteLater()
-            self.merits = None
-            self.layout.removeWidget(self.meritslevel)
-            self.meritslevel.deleteLater()
-            self.meritslevel = None
+            # self.layout.removeWidget(self.cat3)
+            # self.cat3.deleteLater()
+            # self.cat3 = None
+            #
+            # self.layout.removeWidget(self.merits)
+            # self.merits.deleteLater()
+            # self.merits = None
+            # self.layout.removeWidget(self.meritslevel)
+            # self.meritslevel.deleteLater()
+            # self.meritslevel = None
         else:
             self.vamptoggle.setChecked(False)
             self.occultflag[0] = False
@@ -807,6 +810,7 @@ class MyWidget(QtWidgets.QWidget):
         self.meritcount = 5 #max 20
 
         self.runonce1 = True
+        self.makesheetflag = False
 
         self.occultflag = [False, False, False]
 

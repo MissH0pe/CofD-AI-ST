@@ -432,10 +432,10 @@ if supernaturalflags['vampire']:
 
     (chartable[firstname+surname])['bloodline'] = 'None'
 
-    if (chartable[firstname+surname])['clan'] == 'Daeva':
-        randomnum = random.randint(0, 99)
-        if randomnum == 0: #later change the 0 to less than whatever the number of bloodlines is and then randomly pull from an array of daeva bloodlines and based on the randomnum use that from array
-            (chartable[firstname+surname])['bloodline'] = 'Septemi'
+    # if (chartable[firstname+surname])['clan'] == 'Daeva':
+    #     randomnum = random.randint(0, 99)
+    #     if randomnum == 0: #later change the 0 to less than whatever the number of bloodlines is and then randomly pull from an array of daeva bloodlines and based on the randomnum use that from array
+    #         (chartable[firstname+surname])['bloodline'] = 'Septemi'
 
     (chartable[firstname+surname])['covenant'] = covenantslist[random.randint(0, 5)]
 
@@ -525,7 +525,7 @@ if supernaturalflags['vampire']:
             else:
                 (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1]}}])
             (chartable[firstname+surname])['disciplines'].append([{'vigor': {'level': psdiscdist[2]}}])
-        elif (chartable[firstname+surname])['bloodline'] == 'Septemi':
+        elif (chartable[firstname+surname])['bloodline'] == 'Septemi': #sample code for how a bloodline will work, disabled so this won't run and will later be moved to an updated 1st edition bloodlines file that can be used but the code is being kept here now until all of the bloodlines are added
             psdiscdist = []
             discrandnum = random.randint(0, 2)
             disciplinedist = [[3, 0, 0, 0], [2, 1, 0, 0], [1, 1, 1, 0]]

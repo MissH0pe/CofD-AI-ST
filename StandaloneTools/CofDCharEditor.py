@@ -15,7 +15,7 @@ class MyWidget(QtWidgets.QWidget):
                 json.dump(backup, f)
 
         stats = {'name': self.boxname.text(), 'supernaturaltags': [], 'player': self.boxplayer.text(), 'chronicle': self.boxchronicle.text(), 'concept': self.boxconcept.text(), 'stats': {'intelligence': self.boxintelligence.text(), 'strength': self.boxstrength.text(), 'presence': self.boxpresence.text(), 'wits': self.boxwits.text(), 'dexterity': self.boxdexterity.text(), 'manipulation': self.boxmanipulation.text(), 'resolve': self.boxresolve.text(), 'stamina': self.boxstamina.text(), 'composure': self.boxcomposure.text()}, 'skills': {'academics': self.boxacademics.text(), 'computer': self.boxcomputer.text(), 'crafts': self.boxcrafts.text(), 'investigation': self.boxinvestigation.text(), 'medicine': self.boxmedicine.text(), 'occult': self.boxoccult.text(), 'politics': self.boxpolitics.text(), 'science': self.boxscience.text(), 'athletics': self.boxathletics.text(), 'brawl': self.boxbrawl.text(), 'drive': self.boxdrive.text(), 'firearms': self.boxfirearms.text(), 'larceny': self.boxlarceny.text(), 'stealth': self.boxstealth.text(), 'survival': self.boxsurvival.text(), 'weaponry': self.boxweaponry.text(), 'animalken': self.boxanimalken.text(), 'empathy': self.boxempathy.text(), 'expression': self.boxexpression.text(), 'intimidation': self.boxintimidation.text(), 'persuasion': self.boxpersuasion.text(), 'socialize': self.boxsocialize.text(), 'streetwise': self.boxstreetwise.text(), 'subterfuge': self.boxsubterfuge.text()}}
-        if self.occultflag[0]:
+        if self.occultflag[0] == True:
             stats['supernaturaltags'].append('vampire')
             stats['mask'] = self.boxmask.text()
             stats['dirge'] = self.boxdirge.text()
@@ -132,13 +132,14 @@ class MyWidget(QtWidgets.QWidget):
                 self.boxstreetwise.setText(stats['skills']['streetwise'])
                 self.boxsubterfuge.setText(stats['skills']['subterfuge'])
                 self.occultflag = [False, False, False]
-                if stats['supernaturaltags'][0]:
-                    self.boxclan.setText(stats['clan'])
-                    self.boxbloodline.setText(stats['bloodline'])
-                    self.boxcovenant.setText(stats['covenant'])
-                    self.boxmask.setText(stats['mask'])
-                    self.boxdirge.setText(stats['dirge'])
-                    self.occultflag[0] = True
+                for x in stats['supernaturaltags']:
+                    if x == 'vampire':
+                        self.boxclan.setText(stats['clan'])
+                        self.boxbloodline.setText(stats['bloodline'])
+                        self.boxcovenant.setText(stats['covenant'])
+                        self.boxmask.setText(stats['mask'])
+                        self.boxdirge.setText(stats['dirge'])
+                        self.occultflag[0] = True
                 if stats['merits'][0][1] > self.meritcount:
                     self.meritcount = stats['merits'][0][1]
 

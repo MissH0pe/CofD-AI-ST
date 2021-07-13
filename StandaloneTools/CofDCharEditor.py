@@ -8,6 +8,12 @@ class MyWidget(QtWidgets.QWidget):
 #if importing this charater to a table i need to make sure that it's added under a in that is the name with the space
 
     def savedef(self):
+        if path.exists(self.saveloc.text()+'.json'):
+            with open(self.saveloc.text()+'.json') as f:
+                backup = json.load(f)
+            with open(self.saveloc.text()+'backup.json', 'w') as f:
+                json.dump(backup, f)
+
         stats = {'name': self.boxname.text(), 'supernaturaltags': [], 'player': self.boxplayer.text(), 'chronicle': self.boxchronicle.text(), 'concept': self.boxconcept.text(), 'stats': {'intelligence': self.boxintelligence.text(), 'strength': self.boxstrength.text(), 'presence': self.boxpresence.text(), 'wits': self.boxwits.text(), 'dexterity': self.boxdexterity.text(), 'manipulation': self.boxmanipulation.text(), 'resolve': self.boxresolve.text(), 'stamina': self.boxstamina.text(), 'composure': self.boxcomposure.text()}, 'skills': {'academics': self.boxacademics.text(), 'computer': self.boxcomputer.text(), 'crafts': self.boxcrafts.text(), 'investigation': self.boxinvestigation.text(), 'medicine': self.boxmedicine.text(), 'occult': self.boxoccult.text(), 'politics': self.boxpolitics.text(), 'science': self.boxscience.text(), 'athletics': self.boxathletics.text(), 'brawl': self.boxbrawl.text(), 'drive': self.boxdrive.text(), 'firearms': self.boxfirearms.text(), 'larceny': self.boxlarceny.text(), 'stealth': self.boxstealth.text(), 'survival': self.boxsurvival.text(), 'weaponry': self.boxweaponry.text(), 'animalken': self.boxanimalken.text(), 'empathy': self.boxempathy.text(), 'expression': self.boxexpression.text(), 'intimidation': self.boxintimidation.text(), 'persuasion': self.boxpersuasion.text(), 'socialize': self.boxsocialize.text(), 'streetwise': self.boxstreetwise.text(), 'subterfuge': self.boxsubterfuge.text()}}
         if self.occultflag[0]:
             stats['supernaturaltags'].append('vampire')
@@ -210,7 +216,18 @@ class MyWidget(QtWidgets.QWidget):
         #     stats[self.boxname.text()]['covenant'] = self.boxcovenant.text(),
 
     def makesheet(self):
-    #initialize merits
+        #other traits
+        self.cat3 = QtWidgets.QLabel(self)
+        self.cat3.setText("Other Traits")
+        self.cat3.setFont(self.titlefont)
+
+        self.merits = QtWidgets.QLabel(self)
+        self.merits.setText("Merits")
+        self.merits.setFont(self.subtitlefont)
+        self.meritslevel = QtWidgets.QLabel(self)
+        self.meritslevel.setText("Level")
+
+        #initialize merits
         if self.meritcount >= 1:
             self.meritnamebox1 = QtWidgets.QLineEdit(self)
             self.meritlevelbox1 = QtWidgets.QLineEdit(self)
@@ -399,9 +416,22 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.subterfuge, 38 + self.oplinecounter, 0)
         self.layout.addWidget(self.boxsubterfuge, 38 + self.oplinecounter, 1)
 
+        #other traits
+        self.cat3 = QtWidgets.QLabel(self)
+        self.cat3.setText("Other Traits")
+        self.cat3.setFont(self.titlefont)
+
+        self.merits = QtWidgets.QLabel(self)
+        self.merits.setText("Merits")
+        self.merits.setFont(self.subtitlefont)
+        self.meritslevel = QtWidgets.QLabel(self)
+        self.meritslevel.setText("Level")
+
         self.layout.addWidget(self.cat3, 8 + self.oplinecounter, 4)
         self.layout.addWidget(self.merits, 9 + self.oplinecounter, 2)
         self.layout.addWidget(self.meritslevel, 9 + self.oplinecounter, 3)
+
+        #merits
 
         self.meritcounter = 0
         if self.oldmeritcount >= 1:
@@ -676,6 +706,17 @@ class MyWidget(QtWidgets.QWidget):
             self.vamptoggle.setChecked(True)
             self.occultflag[0] = True
             self.oldmeritcount = 5
+
+            self.layout.removeWidget(self.cat3)
+            self.cat3.deleteLater()
+            self.cat3 = None
+
+            self.layout.removeWidget(self.merits)
+            self.merits.deleteLater()
+            self.merits = None
+            self.layout.removeWidget(self.meritslevel)
+            self.meritslevel.deleteLater()
+            self.meritslevel = None
         else:
             self.vamptoggle.setChecked(False)
             self.occultflag[0] = False
@@ -959,16 +1000,6 @@ class MyWidget(QtWidgets.QWidget):
         self.subterfuge = QtWidgets.QLabel(self)
         self.subterfuge.setText("Weaponry: ")
         self.boxsubterfuge = QtWidgets.QLineEdit(self)
-
-        self.cat3 = QtWidgets.QLabel(self)
-        self.cat3.setText("Other Traits")
-        self.cat3.setFont(self.titlefont)
-
-        self.merits = QtWidgets.QLabel(self)
-        self.merits.setText("Merits")
-        self.merits.setFont(self.subtitlefont)
-        self.meritslevel = QtWidgets.QLabel(self)
-        self.meritslevel.setText("Level")
 
         self.makesheet()
 

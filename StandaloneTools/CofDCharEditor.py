@@ -17,68 +17,69 @@ class MyWidget(QtWidgets.QWidget):
             stats['bloodline'] = self.boxbloodline.text()
             stats['covenant'] = self.boxcovenant.text()
         self.filledmerits = 0
-        stats['merits'] = {}
+        stats['merits'] = []
+        stats['merits'].append(['filledmerits', 0])
         if self.meritcount >= 1 and self.meritnamebox1.text() != "" and self.meritlevelbox1.text() != "":
-            stats['merits'][self.meritnamebox1.text()] = self.meritlevelbox1.text()
+            stats['merits'].append([self.meritnamebox1.text(), self.meritlevelbox1.text()])
             self.filledmerits +=1
         if self.meritcount >= 2 and self.meritnamebox2.text() != "" and self.meritlevelbox2.text() != "":
-            stats['merits'][self.meritnamebox2.text()] = self.meritlevelbox2.text()
+            stats['merits'].append([self.meritnamebox2.text(), self.meritlevelbox2.text()])
             self.filledmerits +=1
         if self.meritcount >= 3 and self.meritnamebox3.text() != "" and self.meritlevelbox3.text() != "":
-            stats['merits'][self.meritnamebox3.text()] = self.meritlevelbox3.text()
+            stats['merits'].append([self.meritnamebox3.text(), self.meritlevelbox3.text()])
             self.filledmerits +=1
         if self.meritcount >= 4 and self.meritnamebox4.text() != "" and self.meritlevelbox4.text() != "":
-            stats['merits'][self.meritnamebox4.text()] = self.meritlevelbox4.text()
+            stats['merits'].append([self.meritnamebox4.text(), self.meritlevelbox4.text()])
             self.filledmerits +=1
         if self.meritcount >= 5 and self.meritnamebox5.text() != "" and self.meritlevelbox5.text() != "":
-            stats['merits'][self.meritnamebox5.text()] = self.meritlevelbox5.text()
+            stats['merits'].append([self.meritnamebox5.text(), self.meritlevelbox5.text()])
             self.filledmerits +=1
         if self.meritcount >= 6 and self.meritnamebox6.text() != "" and self.meritlevelbox6.text() != "":
-            stats['merits'][self.meritnamebox6.text()] = self.meritlevelbox6.text()
+            stats['merits'].append([self.meritnamebox6.text(), self.meritlevelbox6.text()])
             self.filledmerits +=1
         if self.meritcount >= 7 and self.meritnamebox7.text() != "" and self.meritlevelbox7.text() != "":
-            stats['merits'][self.meritnamebox7.text()] = self.meritlevelbox7.text()
+            stats['merits'].append([self.meritnamebox7.text(), self.meritlevelbox7.text()])
             self.filledmerits +=1
         if self.meritcount >= 8 and self.meritnamebox8.text() != "" and self.meritlevelbox8.text() != "":
-            stats['merits'][self.meritnamebox8.text()] = self.meritlevelbox8.text()
+            stats['merits'].append([self.meritnamebox8.text(), self.meritlevelbox8.text()])
             self.filledmerits +=1
         if self.meritcount >= 9 and self.meritnamebox9.text() != "" and self.meritlevelbox9.text() != "":
-            stats['merits'][self.meritnamebox9.text()] = self.meritlevelbox9.text()
+            stats['merits'].append([self.meritnamebox9.text(), self.meritlevelbox9.text()])
             self.filledmerits +=1
         if self.meritcount >= 10 and self.meritnamebox10.text() != "" and self.meritlevelbox10.text() != "":
-            stats['merits'][self.meritnamebox10.text()] = self.meritlevelbox10.text()
+            stats['merits'].append([self.meritnamebox10.text(), self.meritlevelbox10.text()])
             self.filledmerits +=1
         if self.meritcount >= 11 and self.meritnamebox11.text() != "" and self.meritlevelbox11.text() != "":
-            stats['merits'][self.meritnamebox11.text()] = self.meritlevelbox11.text()
+            stats['merits'].append([self.meritnamebox11.text(), self.meritlevelbox11.text()])
             self.filledmerits +=1
         if self.meritcount >= 12 and self.meritnamebox12.text() != "" and self.meritlevelbox12.text() != "":
-            stats['merits'][self.meritnamebox12.text()] = self.meritlevelbox12.text()
+            stats['merits'].append([self.meritnamebox12.text(), self.meritlevelbox12.text()])
             self.filledmerits +=1
         if self.meritcount >= 13 and self.meritnamebox13.text() != "" and self.meritlevelbox13.text() != "":
-            stats['merits'][self.meritnamebox13.text()] = self.meritlevelbox13.text()
+            stats['merits'].append([self.meritnamebox13.text(), self.meritlevelbox13.text()])
             self.filledmerits +=1
         if self.meritcount >= 14 and self.meritnamebox14.text() != "" and self.meritlevelbox14.text() != "":
-            stats['merits'][self.meritnamebox14.text()] = self.meritlevelbox14.text()
+            stats['merits'].append([self.meritnamebox14.text(), self.meritlevelbox14.text()])
             self.filledmerits +=1
         if self.meritcount >= 15 and self.meritnamebox15.text() != "" and self.meritlevelbox15.text() != "":
-            stats['merits'][self.meritnamebox15.text()] = self.meritlevelbox15.text()
+            stats['merits'].append([self.meritnamebox15.text(), self.meritlevelbox15.text()])
             self.filledmerits +=1
         if self.meritcount >= 16 and self.meritnamebox16.text() != "" and self.meritlevelbox16.text() != "":
-            stats['merits'][self.meritnamebox16.text()] = self.meritlevelbox16.text()
+            stats['merits'].append([self.meritnamebox16.text(), self.meritlevelbox16.text()])
             self.filledmerits +=1
         if self.meritcount >= 17 and self.meritnamebox17.text() != "" and self.meritlevelbox17.text() != "":
-            stats['merits'][self.meritnamebox17.text()] = self.meritlevelbox17.text()
+            stats['merits'].append([self.meritnamebox17.text(), self.meritlevelbox17.text()])
             self.filledmerits +=1
         if self.meritcount >= 18 and self.meritnamebox18.text() != "" and self.meritlevelbox18.text() != "":
-            stats['merits'][self.meritnamebox18.text()] = self.meritlevelbox18.text()
+            stats['merits'].append([self.meritnamebox18.text(), self.meritlevelbox18.text()])
             self.filledmerits +=1
         if self.meritcount >= 19 and self.meritnamebox19.text() != "" and self.meritlevelbox19.text() != "":
-            stats['merits'][self.meritnamebox19.text()] = self.meritlevelbox19.text()
+            stats['merits'].append([self.meritnamebox19.text(), self.meritlevelbox19.text()])
             self.filledmerits +=1
         if self.meritcount >= 20 and self.meritnamebox20.text() != "" and self.meritlevelbox20.text() != "":
-            stats['merits'][self.meritnamebox20.text()] = self.meritlevelbox20.text()
+            stats['merits'].append([self.meritnamebox20.text(), self.meritlevelbox20.text()])
             self.filledmerits +=1
-        stats['merits']['filledmerits'] = self.filledmerits
+        stats['merits'][0] = ['filledmerits', self.filledmerits]
 
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
@@ -132,6 +133,70 @@ class MyWidget(QtWidgets.QWidget):
                     self.boxmask.setText(stats['mask'])
                     self.boxdirge.setText(stats['dirge'])
                     self.occultflag[0] = True
+                if stats['merits'][0][1] > self.meritcount:
+                    self.meritcount = stats['merits'][0][1]
+
+                    self.makesheet()
+                if stats['merits'][0][1] >= 1:
+                    self.meritnamebox1.setText(stats['merits'][1][0])
+                    self.meritlevelbox1.setText(stats['merits'][1][1])
+                if stats['merits'][0][1] >= 2:
+                    self.meritnamebox2.setText(stats['merits'][2][0])
+                    self.meritlevelbox2.setText(stats['merits'][2][1])
+                if stats['merits'][0][1] >= 3:
+                    self.meritnamebox3.setText(stats['merits'][3][0])
+                    self.meritlevelbox3.setText(stats['merits'][3][1])
+                if stats['merits'][0][1] >= 4:
+                    self.meritnamebox4.setText(stats['merits'][4][0])
+                    self.meritlevelbox4.setText(stats['merits'][4][1])
+                if stats['merits'][0][1] >= 5:
+                    self.meritnamebox5.setText(stats['merits'][5][0])
+                    self.meritlevelbox5.setText(stats['merits'][5][1])
+                if stats['merits'][0][1] >= 6:
+                    self.meritnamebox6.setText(stats['merits'][6][0])
+                    self.meritlevelbox6.setText(stats['merits'][6][1])
+                if stats['merits'][0][1] >= 7:
+                    self.meritnamebox7.setText(stats['merits'][7][0])
+                    self.meritlevelbox7.setText(stats['merits'][7][1])
+                if stats['merits'][0][1] >= 8:
+                    self.meritnamebox8.setText(stats['merits'][8][0])
+                    self.meritlevelbox8.setText(stats['merits'][8][1])
+                if stats['merits'][0][1] >= 9:
+                    self.meritnamebox9.setText(stats['merits'][9][0])
+                    self.meritlevelbox9.setText(stats['merits'][9][1])
+                if stats['merits'][0][1] >= 10:
+                    self.meritnamebox10.setText(stats['merits'][10][0])
+                    self.meritlevelbox10.setText(stats['merits'][10][1])
+                if stats['merits'][0][1] >= 11:
+                    self.meritnamebox11.setText(stats['merits'][11][0])
+                    self.meritlevelbox11.setText(stats['merits'][11][1])
+                if stats['merits'][0][1] >= 12:
+                    self.meritnamebox12.setText(stats['merits'][12][0])
+                    self.meritlevelbox12.setText(stats['merits'][12][1])
+                if stats['merits'][0][1] >= 13:
+                    self.meritnamebox13.setText(stats['merits'][13][0])
+                    self.meritlevelbox13.setText(stats['merits'][13][1])
+                if stats['merits'][0][1] >= 14:
+                    self.meritnamebox14.setText(stats['merits'][14][0])
+                    self.meritlevelbox14.setText(stats['merits'][14][1])
+                if stats['merits'][0][1] >= 15:
+                    self.meritnamebox15.setText(stats['merits'][15][0])
+                    self.meritlevelbox15.setText(stats['merits'][15][1])
+                if stats['merits'][0][1] >= 16:
+                    self.meritnamebox16.setText(stats['merits'][16][0])
+                    self.meritlevelbox16.setText(stats['merits'][16][1])
+                if stats['merits'][0][1] >= 17:
+                    self.meritnamebox17.setText(stats['merits'][17][0])
+                    self.meritlevelbox17.setText(stats['merits'][17][1])
+                if stats['merits'][0][1] >= 18:
+                    self.meritnamebox18.setText(stats['merits'][18][0])
+                    self.meritlevelbox18.setText(stats['merits'][18][1])
+                if stats['merits'][0][1] >= 19:
+                    self.meritnamebox19.setText(stats['merits'][19][0])
+                    self.meritlevelbox19.setText(stats['merits'][19][1])
+                if stats['merits'][0][1] >= 20:
+                    self.meritnamebox20.setText(stats['merits'][20][0])
+                    self.meritlevelbox20.setText(stats['merits'][20][1])
         else:
             stats = {}
 
@@ -219,7 +284,7 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.concept, 3, 0)
         self.layout.addWidget(self.boxconcept, 3, 1)
 
-        if self.occultflag[0]:
+        if self.occultflag[0] and self.runonce1:
             self.clan = QtWidgets.QLabel(self)
             self.clan.setText("Clan: ")
             self.boxclan = QtWidgets.QLineEdit(self)
@@ -250,6 +315,7 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.boxmask, 3 + self.oplinecounter, 1)
             self.layout.addWidget(self.dirge, 3 + self.oplinecounter, 2)
             self.layout.addWidget(self.boxdirge, 3 + self.oplinecounter, 3)
+            self.runonce1 = False
 
         self.layout.addWidget(self.cat1, 4 + self.oplinecounter, 3)
 
@@ -338,6 +404,189 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.meritslevel, 9 + self.oplinecounter, 3)
 
         self.meritcounter = 0
+        if self.oldmeritcount >= 1:
+            self.layout.removeWidget(self.meritnamebox1)
+            self.meritnamebox1.deleteLater()
+            self.meritnamebox1 = None
+            self.layout.removeWidget(self.meritlevelbox1)
+            self.meritlevelbox1.deleteLater()
+            self.meritlevelbox1 = None
+            self.meritnamebox1 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox1 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 2:
+            self.layout.removeWidget(self.meritnamebox2)
+            self.meritnamebox2.deleteLater()
+            self.meritnamebox2 = None
+            self.layout.removeWidget(self.meritlevelbox2)
+            self.meritlevelbox2.deleteLater()
+            self.meritlevelbox2 = None
+            self.meritnamebox2 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox2 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 3:
+            self.layout.removeWidget(self.meritnamebox3)
+            self.meritnamebox3.deleteLater()
+            self.meritnamebox3 = None
+            self.layout.removeWidget(self.meritlevelbox3)
+            self.meritlevelbox3.deleteLater()
+            self.meritlevelbox3 = None
+            self.meritnamebox3 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox3 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 4:
+            self.layout.removeWidget(self.meritnamebox4)
+            self.meritnamebox4.deleteLater()
+            self.meritnamebox4 = None
+            self.layout.removeWidget(self.meritlevelbox4)
+            self.meritlevelbox4.deleteLater()
+            self.meritlevelbox4 = None
+            self.meritnamebox4 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox4 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 5:
+            self.layout.removeWidget(self.meritnamebox5)
+            self.meritnamebox5.deleteLater()
+            self.meritnamebox5 = None
+            self.layout.removeWidget(self.meritlevelbox5)
+            self.meritlevelbox5.deleteLater()
+            self.meritlevelbox5 = None
+            self.meritnamebox5 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox5 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 6:
+            self.layout.removeWidget(self.meritnamebox6)
+            self.meritnamebox6.deleteLater()
+            self.meritnamebox6 = None
+            self.layout.removeWidget(self.meritlevelbox6)
+            self.meritlevelbox6.deleteLater()
+            self.meritlevelbox6 = None
+            self.meritnamebox6 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox6 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 7:
+            self.layout.removeWidget(self.meritnamebox7)
+            self.meritnamebox7.deleteLater()
+            self.meritnamebox7 = None
+            self.layout.removeWidget(self.meritlevelbox7)
+            self.meritlevelbox7.deleteLater()
+            self.meritlevelbox7 = None
+            self.meritnamebox7 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox7 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 8:
+            self.layout.removeWidget(self.meritnamebox8)
+            self.meritnamebox8.deleteLater()
+            self.meritnamebox8 = None
+            self.layout.removeWidget(self.meritlevelbox8)
+            self.meritlevelbox8.deleteLater()
+            self.meritlevelbox8 = None
+            self.meritnamebox8 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox8 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 9:
+            self.layout.removeWidget(self.meritnamebox9)
+            self.meritnamebox9.deleteLater()
+            self.meritnamebox9 = None
+            self.layout.removeWidget(self.meritlevelbox9)
+            self.meritlevelbox9.deleteLater()
+            self.meritlevelbox9 = None
+            self.meritnamebox9 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox9 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 10:
+            self.layout.removeWidget(self.meritnamebox10)
+            self.meritnamebox10.deleteLater()
+            self.meritnamebox10 = None
+            self.layout.removeWidget(self.meritlevelbox10)
+            self.meritlevelbox10.deleteLater()
+            self.meritlevelbox10 = None
+            self.meritnamebox10 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox10 = QtWidgets.QLineEdit(self)
+            self.meritcounter -= 1
+        if self.oldmeritcount >= 11:
+            self.layout.removeWidget(self.meritnamebox11)
+            self.meritnamebox11.deleteLater()
+            self.meritnamebox11 = None
+            self.layout.removeWidget(self.meritlevelbox11)
+            self.meritlevelbox11.deleteLater()
+            self.meritlevelbox11 = None
+            self.meritnamebox11 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox11 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 12:
+            self.layout.removeWidget(self.meritnamebox12)
+            self.meritnamebox12.deleteLater()
+            self.meritnamebox12 = None
+            self.layout.removeWidget(self.meritlevelbox12)
+            self.meritlevelbox12.deleteLater()
+            self.meritlevelbox12 = None
+            self.meritnamebox12 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox12 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 13:
+            self.layout.removeWidget(self.meritnamebox13)
+            self.meritnamebox13.deleteLater()
+            self.meritnamebox13 = None
+            self.layout.removeWidget(self.meritlevelbox13)
+            self.meritlevelbox13.deleteLater()
+            self.meritlevelbox13 = None
+            self.meritnamebox13 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox13 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 14:
+            self.layout.removeWidget(self.meritnamebox14)
+            self.meritnamebox14.deleteLater()
+            self.meritnamebox14 = None
+            self.layout.removeWidget(self.meritlevelbox14)
+            self.meritlevelbox14.deleteLater()
+            self.meritlevelbox14 = None
+            self.meritnamebox14 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox14 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 15:
+            self.layout.removeWidget(self.meritnamebox15)
+            self.meritnamebox15.deleteLater()
+            self.meritnamebox15 = None
+            self.layout.removeWidget(self.meritlevelbox15)
+            self.meritlevelbox15.deleteLater()
+            self.meritlevelbox15 = None
+            self.meritnamebox15 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox15 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 16:
+            self.layout.removeWidget(self.meritnamebox16)
+            self.meritnamebox16.deleteLater()
+            self.meritnamebox16 = None
+            self.layout.removeWidget(self.meritlevelbox16)
+            self.meritlevelbox16.deleteLater()
+            self.meritlevelbox16 = None
+            self.meritnamebox16 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox16 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 17:
+            self.layout.removeWidget(self.meritnamebox17)
+            self.meritnamebox17.deleteLater()
+            self.meritnamebox17 = None
+            self.layout.removeWidget(self.meritlevelbox17)
+            self.meritlevelbox17.deleteLater()
+            self.meritlevelbox17 = None
+            self.meritnamebox17 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox17 = QtWidgets.QLineEdit(self)
+            self.meritcounter -= 1
+        if self.oldmeritcount >= 18:
+            self.layout.removeWidget(self.meritnamebox18)
+            self.meritnamebox18.deleteLater()
+            self.meritnamebox18 = None
+            self.layout.removeWidget(self.meritlevelbox18)
+            self.meritlevelbox18.deleteLater()
+            self.meritlevelbox18 = None
+            self.meritnamebox18 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox18 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 19:
+            self.layout.removeWidget(self.meritnamebox19)
+            self.meritnamebox19.deleteLater()
+            self.meritnamebox19 = None
+            self.layout.removeWidget(self.meritlevelbox19)
+            self.meritlevelbox19.deleteLater()
+            self.meritlevelbox19 = None
+            self.meritnamebox19 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox19 = QtWidgets.QLineEdit(self)
+        if self.oldmeritcount >= 20:
+            self.layout.removeWidget(self.meritnamebox20)
+            self.meritnamebox20.deleteLater()
+            self.meritnamebox20 = None
+            self.layout.removeWidget(self.meritlevelbox20)
+            self.meritlevelbox20.deleteLater()
+            self.meritlevelbox20 = None
+            self.meritnamebox20 = QtWidgets.QLineEdit(self)
+            self.meritlevelbox20 = QtWidgets.QLineEdit(self)
+        self.meritcounter = 0
         if self.meritcount >= 1:
             self.meritcounter += 1
             self.layout.addWidget(self.meritnamebox1, 10 + self.oplinecounter + self.meritcounter, 2)
@@ -423,13 +672,11 @@ class MyWidget(QtWidgets.QWidget):
         self.setGeometry(300, 75, 1024, 768)
 
     def vamptoggledef(self):
-        # print('test')
         if self.vamptoggle.isChecked():
             self.vamptoggle.setChecked(True)
             self.occultflag[0] = True
-            # print('test3')
+            self.oldmeritcount = 5
         else:
-            # print('test2')
             self.vamptoggle.setChecked(False)
             self.occultflag[0] = False
             self.layout.removeWidget(self.clan)
@@ -463,10 +710,12 @@ class MyWidget(QtWidgets.QWidget):
             self.boxdirge.deleteLater()
             self.boxdirge = None
             self.oplinecounter -= 2
-
+            self.oldmeritcount = 5
+            self.runonce1 = True
         self.makesheet()
 
     def meritdef(self):
+        self.oldmeritcount = self.meritcount
         self.meritcount = int(self.meritslotsbox.text())
 
         self.makesheet()
@@ -512,7 +761,10 @@ class MyWidget(QtWidgets.QWidget):
 
         self.oplinecounter = 0
 
+        self.oldmeritcount = 0
         self.meritcount = 5 #max 20
+
+        self.runonce1 = True
 
         self.occultflag = [False, False, False]
 

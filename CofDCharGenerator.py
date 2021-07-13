@@ -77,7 +77,7 @@ chartable[firstname+' '+surname] = {'name': firstname + ' ' + surname,
 'survival': 0,
 'weaponry': 0},
 
-'merits': [],
+'merits': [['filledmerits', 0]],
 
 'aspirations': {},
 

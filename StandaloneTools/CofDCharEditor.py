@@ -291,6 +291,8 @@ class MyWidget(QtWidgets.QWidget):
 
         stats['size'] = 5 + self.sizebonus
 
+        stats['speed'] = int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus
+
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
 
@@ -537,6 +539,9 @@ class MyWidget(QtWidgets.QWidget):
 
                 self.sizeval.setText(str(stats['size']))
                 self.sizebonus = stats['size'] - 5
+
+                self.speedval.setText(str(stats['speed']))
+                self.speedbonus = stats['speed'] - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat
 
                 for x in stats['supernaturaltags']:
                     if x == 'vampire':
@@ -978,6 +983,19 @@ class MyWidget(QtWidgets.QWidget):
             self.sizebonusbox.deleteLater()
             self.sizebonusbox = None
 
+            self.layout.removeWidget(self.speed)
+            self.speed.deleteLater()
+            self.speed = None
+            self.layout.removeWidget(self.speedval)
+            self.speedval.deleteLater()
+            self.speedval = None
+            self.layout.removeWidget(self.speedbonuslabel)
+            self.speedbonuslabel.deleteLater()
+            self.speedbonuslabel = None
+            self.layout.removeWidget(self.speedbonusbox)
+            self.speedbonusbox.deleteLater()
+            self.speedbonusbox = None
+
         #other traits
         self.cat3 = QtWidgets.QLabel(self)
         self.cat3.setText("Other Traits")
@@ -1197,6 +1215,15 @@ class MyWidget(QtWidgets.QWidget):
         self.sizebonuslabel = QtWidgets.QLabel(self)
         self.sizebonuslabel.setText("Size Bonus: ")
         self.sizebonusbox = QtWidgets.QLineEdit(self)
+
+        self.speed = QtWidgets.QLabel(self)
+        self.speed.setText("Speed: ")
+        self.speedval = QtWidgets.QLabel(self)
+        self.speedval.setText(str(int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus))
+
+        self.speedbonuslabel = QtWidgets.QLabel(self)
+        self.speedbonuslabel.setText("Speed Bonus: ")
+        self.speedbonusbox = QtWidgets.QLineEdit(self)
 
         #begin layout
 
@@ -1568,6 +1595,30 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.sizebonuslabel, 10 + self.oplinecounter, 4)
         self.layout.addWidget(self.sizebonusbox, 10 + self.oplinecounter, 5)
 
+        self.layout.addWidget(self.speed, 11 + self.oplinecounter, 4)
+        self.layout.addWidget(self.speedval, 11 + self.oplinecounter, 5)
+        self.layout.addWidget(self.speedbonuslabel, 12 + self.oplinecounter, 4)
+        self.layout.addWidget(self.speedbonusbox, 12 + self.oplinecounter, 5)
+
+        # if self.boxintelligence.textChanged():
+        #     self.intelligencestat = int(self.boxintelligence.text())
+        # if self.boxwits.textChanged():
+        #     self.witsstat = int(self.boxwits.text())
+        # if self.boxresolve.textChanged():
+        #     self.resolvestat = int(self.boxresolve.text())
+        # if self.boxstrength.textChanged():
+        #     self.strengthstat = int(self.boxstrength.text())
+        # if self.boxdexterity.textChanged():
+        #     self.dexteritystat = int(self.boxdexterity.text())
+        # if self.boxstamina.textChanged():
+        #     self.staminastat = int(self.boxstamina.text())
+        # if self.boxpresence.textChanged():
+        #     self.presencestat = int(self.boxpresence.text())
+        # if self.boxmanipulation.textChanged():
+        #     self.manipulationstat = int(self.boxmanipulation.text())
+        # if self.boxcomposure.textChanged():
+        #     self.composurestat = int(self.boxcomposure.text())
+
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
 
@@ -1708,6 +1759,18 @@ class MyWidget(QtWidgets.QWidget):
         self.aspirationcount = 5
 
         self.sizebonus = 0
+
+        self.speedbonus = 0
+
+        self.intelligencestat = 1
+        self.witsstat = 1
+        self.resolvestat = 1
+        self.strengthstat = 1
+        self.dexteritystat = 1
+        self.staminastat = 1
+        self.presencestat = 1
+        self.manipulationstat = 1
+        self.composurestat = 1
 
         self.runonce1 = True
         self.makesheetflag = False

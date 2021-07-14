@@ -13,7 +13,7 @@ class MyWidget(QtWidgets.QWidget):
             if self.occultflag[0]:
                 f.write('True# Is Vampire\n')
             else:
-                f.write('True# Is Vampire\n')
+                f.write('False# Is Vampire\n')
 
     def savedef(self):
         if path.exists(self.saveloc.text()+'.json'):

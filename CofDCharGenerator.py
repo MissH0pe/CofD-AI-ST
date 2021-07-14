@@ -125,67 +125,67 @@ secstat = random.randint(0, 1)
 
 if pristat == 0:
     if secstat == 0:
-        ((chartable[firstname+surname])['stats'])['intelligence'] = postshiftpristatdist[0]
-        ((chartable[firstname+surname])['stats'])['wits'] = postshiftpristatdist[1]
-        ((chartable[firstname+surname])['stats'])['resolve'] = postshiftpristatdist[2]
-        ((chartable[firstname+surname])['stats'])['strength'] = postshiftsecstatdist[0]
-        ((chartable[firstname+surname])['stats'])['dexterity'] = postshiftsecstatdist[1]
-        ((chartable[firstname+surname])['stats'])['stamina'] = postshiftsecstatdist[2]
-        ((chartable[firstname+surname])['stats'])['presence'] = postshiftterstatdist[0]
-        ((chartable[firstname+surname])['stats'])['manipulation'] = postshiftterstatdist[1]
-        ((chartable[firstname+surname])['stats'])['composure'] = postshiftterstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['intelligence'] = postshiftpristatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['wits'] = postshiftpristatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['resolve'] = postshiftpristatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['strength'] = postshiftsecstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['dexterity'] = postshiftsecstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['stamina'] = postshiftsecstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['presence'] = postshiftterstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['manipulation'] = postshiftterstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['composure'] = postshiftterstatdist[2]
     else:
-        ((chartable[firstname+surname])['stats'])['intelligence'] = postshiftpristatdist[0]
-        ((chartable[firstname+surname])['stats'])['wits'] = postshiftpristatdist[1]
-        ((chartable[firstname+surname])['stats'])['resolve'] = postshiftpristatdist[2]
-        ((chartable[firstname+surname])['stats'])['presence'] = postshiftsecstatdist[0]
-        ((chartable[firstname+surname])['stats'])['manipulation'] = postshiftsecstatdist[1]
-        ((chartable[firstname+surname])['stats'])['composure'] = postshiftsecstatdist[2]
-        ((chartable[firstname+surname])['stats'])['strength'] = postshiftterstatdist[0]
-        ((chartable[firstname+surname])['stats'])['dexterity'] = postshiftterstatdist[1]
-        ((chartable[firstname+surname])['stats'])['stamina'] = postshiftterstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['intelligence'] = postshiftpristatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['wits'] = postshiftpristatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['resolve'] = postshiftpristatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['presence'] = postshiftsecstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['manipulation'] = postshiftsecstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['composure'] = postshiftsecstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['strength'] = postshiftterstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['dexterity'] = postshiftterstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['stamina'] = postshiftterstatdist[2]
 elif pristat == 1:
     if secstat == 0:
-        ((chartable[firstname+surname])['stats'])['strength'] = postshiftpristatdist[0]
-        ((chartable[firstname+surname])['stats'])['dexterity'] = postshiftpristatdist[1]
-        ((chartable[firstname+surname])['stats'])['stamina'] = postshiftpristatdist[2]
-        ((chartable[firstname+surname])['stats'])['intelligence'] = postshiftsecstatdist[0]
-        ((chartable[firstname+surname])['stats'])['wits'] = postshiftsecstatdist[1]
-        ((chartable[firstname+surname])['stats'])['resolve'] = postshiftsecstatdist[2]
-        ((chartable[firstname+surname])['stats'])['presence'] = postshiftterstatdist[0]
-        ((chartable[firstname+surname])['stats'])['manipulation'] = postshiftterstatdist[1]
-        ((chartable[firstname+surname])['stats'])['composure'] = postshiftterstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['strength'] = postshiftpristatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['dexterity'] = postshiftpristatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['stamina'] = postshiftpristatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['intelligence'] = postshiftsecstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['wits'] = postshiftsecstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['resolve'] = postshiftsecstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['presence'] = postshiftterstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['manipulation'] = postshiftterstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['composure'] = postshiftterstatdist[2]
     else:
-        ((chartable[firstname+surname])['stats'])['strength'] = postshiftpristatdist[0]
-        ((chartable[firstname+surname])['stats'])['dexterity'] = postshiftpristatdist[1]
-        ((chartable[firstname+surname])['stats'])['stamina'] = postshiftpristatdist[2]
-        ((chartable[firstname+surname])['stats'])['presence'] = postshiftsecstatdist[0]
-        ((chartable[firstname+surname])['stats'])['manipulation'] = postshiftsecstatdist[1]
-        ((chartable[firstname+surname])['stats'])['composure'] = postshiftsecstatdist[2]
-        ((chartable[firstname+surname])['stats'])['intelligence'] = postshiftterstatdist[0]
-        ((chartable[firstname+surname])['stats'])['wits'] = postshiftterstatdist[1]
-        ((chartable[firstname+surname])['stats'])['resolve'] = postshiftterstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['strength'] = postshiftpristatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['dexterity'] = postshiftpristatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['stamina'] = postshiftpristatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['presence'] = postshiftsecstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['manipulation'] = postshiftsecstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['composure'] = postshiftsecstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['intelligence'] = postshiftterstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['wits'] = postshiftterstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['resolve'] = postshiftterstatdist[2]
 else:
     if secstat == 0:
-        ((chartable[firstname+surname])['stats'])['presence'] = postshiftpristatdist[0]
-        ((chartable[firstname+surname])['stats'])['manipulation'] = postshiftpristatdist[1]
-        ((chartable[firstname+surname])['stats'])['composure'] = postshiftpristatdist[2]
-        ((chartable[firstname+surname])['stats'])['intelligence'] = postshiftsecstatdist[0]
-        ((chartable[firstname+surname])['stats'])['wits'] = postshiftsecstatdist[1]
-        ((chartable[firstname+surname])['stats'])['resolve'] = postshiftsecstatdist[2]
-        ((chartable[firstname+surname])['stats'])['strength'] = postshiftterstatdist[0]
-        ((chartable[firstname+surname])['stats'])['dexterity'] = postshiftterstatdist[1]
-        ((chartable[firstname+surname])['stats'])['stamina'] = postshiftterstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['presence'] = postshiftpristatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['manipulation'] = postshiftpristatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['composure'] = postshiftpristatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['intelligence'] = postshiftsecstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['wits'] = postshiftsecstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['resolve'] = postshiftsecstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['strength'] = postshiftterstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['dexterity'] = postshiftterstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['stamina'] = postshiftterstatdist[2]
     else:
-        ((chartable[firstname+surname])['stats'])['presence'] = postshiftpristatdist[0]
-        ((chartable[firstname+surname])['stats'])['manipulation'] = postshiftpristatdist[1]
-        ((chartable[firstname+surname])['stats'])['composure'] = postshiftpristatdist[2]
-        ((chartable[firstname+surname])['stats'])['strength'] = postshiftsecstatdist[0]
-        ((chartable[firstname+surname])['stats'])['dexterity'] = postshiftsecstatdist[1]
-        ((chartable[firstname+surname])['stats'])['stamina'] = postshiftsecstatdist[2]
-        ((chartable[firstname+surname])['stats'])['intelligence'] = postshiftterstatdist[0]
-        ((chartable[firstname+surname])['stats'])['wits'] = postshiftterstatdist[1]
-        ((chartable[firstname+surname])['stats'])['resolve'] = postshiftterstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['presence'] = postshiftpristatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['manipulation'] = postshiftpristatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['composure'] = postshiftpristatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['strength'] = postshiftsecstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['dexterity'] = postshiftsecstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['stamina'] = postshiftsecstatdist[2]
+        ((chartable[firstname + ' ' + surname])['stats'])['intelligence'] = postshiftterstatdist[0]
+        ((chartable[firstname + ' ' + surname])['stats'])['wits'] = postshiftterstatdist[1]
+        ((chartable[firstname + ' ' + surname])['stats'])['resolve'] = postshiftterstatdist[2]
 
 prirandnum = random.randint(0, 23)
 priskilldist = [[5, 5, 1, 0, 0, 0, 0, 0], [5, 4, 2, 0, 0, 0, 0, 0], [5, 4, 1, 1, 0, 0, 0, 0], [5, 3, 3, 0, 0, 0, 0, 0], [5, 3, 2, 1, 0, 0, 0, 0], [5, 3, 1, 1, 1, 0, 0, 0], [5, 2, 1, 1, 1, 1, 0, 0], [5, 1, 1, 1, 1, 1, 1, 0], [4, 4, 3, 0, 0, 0, 0, 0], [4, 4, 2, 1, 0, 0, 0, 0], [4, 4, 1, 1, 1, 0, 0, 0], [4, 3, 3, 1, 0, 0, 0, 0], [4, 3, 2, 1, 1, 0, 0, 0], [4, 3, 1, 1, 1, 1, 0, 0], [4, 2, 1, 1, 1, 1, 1, 0], [4, 1, 1, 1, 1, 1, 1, 1], [3, 3, 3, 2, 0, 0, 0, 0], [3, 3, 3, 1, 1, 0, 0, 0], [3, 3, 2, 2, 1, 0, 0, 0], [3, 2, 2, 2, 2, 0, 0, 0], [3, 2, 2, 2, 1, 1, 0, 0], [3, 2, 2, 1, 1, 1, 1, 0], [3, 2, 1, 1, 1, 1, 1, 1], [2, 2, 2, 1, 1, 1, 1, 1]]
@@ -273,171 +273,171 @@ secskill = random.randint(0, 1)
 
 if priskill == 0:
     if secskill == 0:
-        ((chartable[firstname+surname])['skills'])['academics'] = postshiftpriskilldist[0]
-        ((chartable[firstname+surname])['skills'])['computer'] = postshiftpriskilldist[1]
-        ((chartable[firstname+surname])['skills'])['crafts'] = postshiftpriskilldist[2]
-        ((chartable[firstname+surname])['skills'])['investigation'] = postshiftpriskilldist[3]
-        ((chartable[firstname+surname])['skills'])['medicine'] = postshiftpriskilldist[4]
-        ((chartable[firstname+surname])['skills'])['occult'] = postshiftpriskilldist[5]
-        ((chartable[firstname+surname])['skills'])['politics'] = postshiftpriskilldist[6]
-        ((chartable[firstname+surname])['skills'])['science'] = postshiftpriskilldist[7]
-        ((chartable[firstname+surname])['skills'])['athletics'] = postshiftsecskilldist[0]
-        ((chartable[firstname+surname])['skills'])['brawl'] = postshiftsecskilldist[1]
-        ((chartable[firstname+surname])['skills'])['drive'] = postshiftsecskilldist[2]
-        ((chartable[firstname+surname])['skills'])['firearms'] = postshiftsecskilldist[3]
-        ((chartable[firstname+surname])['skills'])['larceny'] = postshiftsecskilldist[4]
-        ((chartable[firstname+surname])['skills'])['stealth'] = postshiftsecskilldist[5]
-        ((chartable[firstname+surname])['skills'])['survival'] = postshiftsecskilldist[6]
-        ((chartable[firstname+surname])['skills'])['weaponry'] = postshiftsecskilldist[7]
-        ((chartable[firstname+surname])['skills'])['animalken'] = postshiftterskilldist[0]
-        ((chartable[firstname+surname])['skills'])['empathy'] = postshiftterskilldist[1]
-        ((chartable[firstname+surname])['skills'])['expression'] = postshiftterskilldist[2]
-        ((chartable[firstname+surname])['skills'])['intimidation'] = postshiftterskilldist[3]
-        ((chartable[firstname+surname])['skills'])['persuasion'] = postshiftterskilldist[4]
-        ((chartable[firstname+surname])['skills'])['socialize'] = postshiftterskilldist[5]
-        ((chartable[firstname+surname])['skills'])['streetwise'] = postshiftterskilldist[6]
-        ((chartable[firstname+surname])['skills'])['subterfuge'] = postshiftterskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['academics'] = postshiftpriskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['computer'] = postshiftpriskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['crafts'] = postshiftpriskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['investigation'] = postshiftpriskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['medicine'] = postshiftpriskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['occult'] = postshiftpriskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['politics'] = postshiftpriskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['science'] = postshiftpriskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['athletics'] = postshiftsecskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['brawl'] = postshiftsecskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['drive'] = postshiftsecskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['firearms'] = postshiftsecskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['larceny'] = postshiftsecskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['stealth'] = postshiftsecskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['survival'] = postshiftsecskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['weaponry'] = postshiftsecskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['animalken'] = postshiftterskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['empathy'] = postshiftterskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['expression'] = postshiftterskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['intimidation'] = postshiftterskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['persuasion'] = postshiftterskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['socialize'] = postshiftterskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['streetwise'] = postshiftterskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['subterfuge'] = postshiftterskilldist[7]
     else:
-        ((chartable[firstname+surname])['skills'])['academics'] = postshiftpriskilldist[0]
-        ((chartable[firstname+surname])['skills'])['computer'] = postshiftpriskilldist[1]
-        ((chartable[firstname+surname])['skills'])['crafts'] = postshiftpriskilldist[2]
-        ((chartable[firstname+surname])['skills'])['investigation'] = postshiftpriskilldist[3]
-        ((chartable[firstname+surname])['skills'])['medicine'] = postshiftpriskilldist[4]
-        ((chartable[firstname+surname])['skills'])['occult'] = postshiftpriskilldist[5]
-        ((chartable[firstname+surname])['skills'])['politics'] = postshiftpriskilldist[6]
-        ((chartable[firstname+surname])['skills'])['science'] = postshiftpriskilldist[7]
-        ((chartable[firstname+surname])['skills'])['animalken'] = postshiftsecskilldist[0]
-        ((chartable[firstname+surname])['skills'])['empathy'] = postshiftsecskilldist[1]
-        ((chartable[firstname+surname])['skills'])['expression'] = postshiftsecskilldist[2]
-        ((chartable[firstname+surname])['skills'])['intimidation'] = postshiftsecskilldist[3]
-        ((chartable[firstname+surname])['skills'])['persuasion'] = postshiftsecskilldist[4]
-        ((chartable[firstname+surname])['skills'])['socialize'] = postshiftsecskilldist[5]
-        ((chartable[firstname+surname])['skills'])['streetwise'] = postshiftsecskilldist[6]
-        ((chartable[firstname+surname])['skills'])['subterfuge'] = postshiftsecskilldist[7]
-        ((chartable[firstname+surname])['skills'])['athletics'] = postshiftterskilldist[0]
-        ((chartable[firstname+surname])['skills'])['brawl'] = postshiftterskilldist[1]
-        ((chartable[firstname+surname])['skills'])['drive'] = postshiftterskilldist[2]
-        ((chartable[firstname+surname])['skills'])['firearms'] = postshiftterskilldist[3]
-        ((chartable[firstname+surname])['skills'])['larceny'] = postshiftterskilldist[4]
-        ((chartable[firstname+surname])['skills'])['stealth'] = postshiftterskilldist[5]
-        ((chartable[firstname+surname])['skills'])['survival'] = postshiftterskilldist[6]
-        ((chartable[firstname+surname])['skills'])['weaponry'] = postshiftterskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['academics'] = postshiftpriskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['computer'] = postshiftpriskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['crafts'] = postshiftpriskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['investigation'] = postshiftpriskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['medicine'] = postshiftpriskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['occult'] = postshiftpriskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['politics'] = postshiftpriskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['science'] = postshiftpriskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['animalken'] = postshiftsecskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['empathy'] = postshiftsecskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['expression'] = postshiftsecskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['intimidation'] = postshiftsecskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['persuasion'] = postshiftsecskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['socialize'] = postshiftsecskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['streetwise'] = postshiftsecskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['subterfuge'] = postshiftsecskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['athletics'] = postshiftterskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['brawl'] = postshiftterskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['drive'] = postshiftterskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['firearms'] = postshiftterskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['larceny'] = postshiftterskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['stealth'] = postshiftterskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['survival'] = postshiftterskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['weaponry'] = postshiftterskilldist[7]
 elif priskill == 1:
     if secskill == 0:
-        ((chartable[firstname+surname])['skills'])['athletics'] = postshiftpriskilldist[0]
-        ((chartable[firstname+surname])['skills'])['brawl'] = postshiftpriskilldist[1]
-        ((chartable[firstname+surname])['skills'])['drive'] = postshiftpriskilldist[2]
-        ((chartable[firstname+surname])['skills'])['firearms'] = postshiftpriskilldist[3]
-        ((chartable[firstname+surname])['skills'])['larceny'] = postshiftpriskilldist[4]
-        ((chartable[firstname+surname])['skills'])['stealth'] = postshiftpriskilldist[5]
-        ((chartable[firstname+surname])['skills'])['survival'] = postshiftpriskilldist[6]
-        ((chartable[firstname+surname])['skills'])['weaponry'] = postshiftpriskilldist[7]
-        ((chartable[firstname+surname])['skills'])['academics'] = postshiftsecskilldist[0]
-        ((chartable[firstname+surname])['skills'])['computer'] = postshiftsecskilldist[1]
-        ((chartable[firstname+surname])['skills'])['crafts'] = postshiftsecskilldist[2]
-        ((chartable[firstname+surname])['skills'])['investigation'] = postshiftsecskilldist[3]
-        ((chartable[firstname+surname])['skills'])['medicine'] = postshiftsecskilldist[4]
-        ((chartable[firstname+surname])['skills'])['occult'] = postshiftsecskilldist[5]
-        ((chartable[firstname+surname])['skills'])['politics'] = postshiftsecskilldist[6]
-        ((chartable[firstname+surname])['skills'])['science'] = postshiftsecskilldist[7]
-        ((chartable[firstname+surname])['skills'])['animalken'] = postshiftterskilldist[0]
-        ((chartable[firstname+surname])['skills'])['empathy'] = postshiftterskilldist[1]
-        ((chartable[firstname+surname])['skills'])['expression'] = postshiftterskilldist[2]
-        ((chartable[firstname+surname])['skills'])['intimidation'] = postshiftterskilldist[3]
-        ((chartable[firstname+surname])['skills'])['persuasion'] = postshiftterskilldist[4]
-        ((chartable[firstname+surname])['skills'])['socialize'] = postshiftterskilldist[5]
-        ((chartable[firstname+surname])['skills'])['streetwise'] = postshiftterskilldist[6]
-        ((chartable[firstname+surname])['skills'])['subterfuge'] = postshiftterskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['athletics'] = postshiftpriskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['brawl'] = postshiftpriskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['drive'] = postshiftpriskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['firearms'] = postshiftpriskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['larceny'] = postshiftpriskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['stealth'] = postshiftpriskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['survival'] = postshiftpriskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['weaponry'] = postshiftpriskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['academics'] = postshiftsecskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['computer'] = postshiftsecskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['crafts'] = postshiftsecskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['investigation'] = postshiftsecskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['medicine'] = postshiftsecskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['occult'] = postshiftsecskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['politics'] = postshiftsecskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['science'] = postshiftsecskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['animalken'] = postshiftterskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['empathy'] = postshiftterskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['expression'] = postshiftterskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['intimidation'] = postshiftterskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['persuasion'] = postshiftterskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['socialize'] = postshiftterskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['streetwise'] = postshiftterskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['subterfuge'] = postshiftterskilldist[7]
     else:
-        ((chartable[firstname+surname])['skills'])['athletics'] = postshiftpriskilldist[0]
-        ((chartable[firstname+surname])['skills'])['brawl'] = postshiftpriskilldist[1]
-        ((chartable[firstname+surname])['skills'])['drive'] = postshiftpriskilldist[2]
-        ((chartable[firstname+surname])['skills'])['firearms'] = postshiftpriskilldist[3]
-        ((chartable[firstname+surname])['skills'])['larceny'] = postshiftpriskilldist[4]
-        ((chartable[firstname+surname])['skills'])['stealth'] = postshiftpriskilldist[5]
-        ((chartable[firstname+surname])['skills'])['survival'] = postshiftpriskilldist[6]
-        ((chartable[firstname+surname])['skills'])['weaponry'] = postshiftpriskilldist[7]
-        ((chartable[firstname+surname])['skills'])['animalken'] = postshiftsecskilldist[0]
-        ((chartable[firstname+surname])['skills'])['empathy'] = postshiftsecskilldist[1]
-        ((chartable[firstname+surname])['skills'])['expression'] = postshiftsecskilldist[2]
-        ((chartable[firstname+surname])['skills'])['intimidation'] = postshiftsecskilldist[3]
-        ((chartable[firstname+surname])['skills'])['persuasion'] = postshiftsecskilldist[4]
-        ((chartable[firstname+surname])['skills'])['socialize'] = postshiftsecskilldist[5]
-        ((chartable[firstname+surname])['skills'])['streetwise'] = postshiftsecskilldist[6]
-        ((chartable[firstname+surname])['skills'])['subterfuge'] = postshiftsecskilldist[7]
-        ((chartable[firstname+surname])['skills'])['academics'] = postshiftterskilldist[0]
-        ((chartable[firstname+surname])['skills'])['computer'] = postshiftterskilldist[1]
-        ((chartable[firstname+surname])['skills'])['crafts'] = postshiftterskilldist[2]
-        ((chartable[firstname+surname])['skills'])['investigation'] = postshiftterskilldist[3]
-        ((chartable[firstname+surname])['skills'])['medicine'] = postshiftterskilldist[4]
-        ((chartable[firstname+surname])['skills'])['occult'] = postshiftterskilldist[5]
-        ((chartable[firstname+surname])['skills'])['politics'] = postshiftterskilldist[6]
-        ((chartable[firstname+surname])['skills'])['science'] = postshiftterskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['athletics'] = postshiftpriskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['brawl'] = postshiftpriskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['drive'] = postshiftpriskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['firearms'] = postshiftpriskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['larceny'] = postshiftpriskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['stealth'] = postshiftpriskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['survival'] = postshiftpriskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['weaponry'] = postshiftpriskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['animalken'] = postshiftsecskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['empathy'] = postshiftsecskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['expression'] = postshiftsecskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['intimidation'] = postshiftsecskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['persuasion'] = postshiftsecskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['socialize'] = postshiftsecskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['streetwise'] = postshiftsecskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['subterfuge'] = postshiftsecskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['academics'] = postshiftterskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['computer'] = postshiftterskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['crafts'] = postshiftterskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['investigation'] = postshiftterskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['medicine'] = postshiftterskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['occult'] = postshiftterskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['politics'] = postshiftterskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['science'] = postshiftterskilldist[7]
 else:
     if secskill == 0:
-        ((chartable[firstname+surname])['skills'])['animalken'] = postshiftpriskilldist[0]
-        ((chartable[firstname+surname])['skills'])['empathy'] = postshiftpriskilldist[1]
-        ((chartable[firstname+surname])['skills'])['expression'] = postshiftpriskilldist[2]
-        ((chartable[firstname+surname])['skills'])['intimidation'] = postshiftpriskilldist[3]
-        ((chartable[firstname+surname])['skills'])['persuasion'] = postshiftpriskilldist[4]
-        ((chartable[firstname+surname])['skills'])['socialize'] = postshiftpriskilldist[5]
-        ((chartable[firstname+surname])['skills'])['streetwise'] = postshiftpriskilldist[6]
-        ((chartable[firstname+surname])['skills'])['subterfuge'] = postshiftpriskilldist[7]
-        ((chartable[firstname+surname])['skills'])['academics'] = postshiftsecskilldist[0]
-        ((chartable[firstname+surname])['skills'])['computer'] = postshiftsecskilldist[1]
-        ((chartable[firstname+surname])['skills'])['crafts'] = postshiftsecskilldist[2]
-        ((chartable[firstname+surname])['skills'])['investigation'] = postshiftsecskilldist[3]
-        ((chartable[firstname+surname])['skills'])['medicine'] = postshiftsecskilldist[4]
-        ((chartable[firstname+surname])['skills'])['occult'] = postshiftsecskilldist[5]
-        ((chartable[firstname+surname])['skills'])['politics'] = postshiftsecskilldist[6]
-        ((chartable[firstname+surname])['skills'])['science'] = postshiftsecskilldist[7]
-        ((chartable[firstname+surname])['skills'])['athletics'] = postshiftterskilldist[0]
-        ((chartable[firstname+surname])['skills'])['brawl'] = postshiftterskilldist[1]
-        ((chartable[firstname+surname])['skills'])['drive'] = postshiftterskilldist[2]
-        ((chartable[firstname+surname])['skills'])['firearms'] = postshiftterskilldist[3]
-        ((chartable[firstname+surname])['skills'])['larceny'] = postshiftterskilldist[4]
-        ((chartable[firstname+surname])['skills'])['stealth'] = postshiftterskilldist[5]
-        ((chartable[firstname+surname])['skills'])['survival'] = postshiftterskilldist[6]
-        ((chartable[firstname+surname])['skills'])['weaponry'] = postshiftterskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['animalken'] = postshiftpriskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['empathy'] = postshiftpriskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['expression'] = postshiftpriskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['intimidation'] = postshiftpriskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['persuasion'] = postshiftpriskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['socialize'] = postshiftpriskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['streetwise'] = postshiftpriskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['subterfuge'] = postshiftpriskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['academics'] = postshiftsecskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['computer'] = postshiftsecskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['crafts'] = postshiftsecskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['investigation'] = postshiftsecskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['medicine'] = postshiftsecskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['occult'] = postshiftsecskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['politics'] = postshiftsecskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['science'] = postshiftsecskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['athletics'] = postshiftterskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['brawl'] = postshiftterskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['drive'] = postshiftterskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['firearms'] = postshiftterskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['larceny'] = postshiftterskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['stealth'] = postshiftterskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['survival'] = postshiftterskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['weaponry'] = postshiftterskilldist[7]
     else:
-        ((chartable[firstname+surname])['skills'])['animalken'] = postshiftpriskilldist[0]
-        ((chartable[firstname+surname])['skills'])['empathy'] = postshiftpriskilldist[1]
-        ((chartable[firstname+surname])['skills'])['expression'] = postshiftpriskilldist[2]
-        ((chartable[firstname+surname])['skills'])['intimidation'] = postshiftpriskilldist[3]
-        ((chartable[firstname+surname])['skills'])['persuasion'] = postshiftpriskilldist[4]
-        ((chartable[firstname+surname])['skills'])['socialize'] = postshiftpriskilldist[5]
-        ((chartable[firstname+surname])['skills'])['streetwise'] = postshiftpriskilldist[6]
-        ((chartable[firstname+surname])['skills'])['subterfuge'] = postshiftpriskilldist[7]
-        ((chartable[firstname+surname])['skills'])['athletics'] = postshiftsecskilldist[0]
-        ((chartable[firstname+surname])['skills'])['brawl'] = postshiftsecskilldist[1]
-        ((chartable[firstname+surname])['skills'])['drive'] = postshiftsecskilldist[2]
-        ((chartable[firstname+surname])['skills'])['firearms'] = postshiftsecskilldist[3]
-        ((chartable[firstname+surname])['skills'])['larceny'] = postshiftsecskilldist[4]
-        ((chartable[firstname+surname])['skills'])['stealth'] = postshiftsecskilldist[5]
-        ((chartable[firstname+surname])['skills'])['survival'] = postshiftsecskilldist[6]
-        ((chartable[firstname+surname])['skills'])['weaponry'] = postshiftsecskilldist[7]
-        ((chartable[firstname+surname])['skills'])['academics'] = postshiftterskilldist[0]
-        ((chartable[firstname+surname])['skills'])['computer'] = postshiftterskilldist[1]
-        ((chartable[firstname+surname])['skills'])['crafts'] = postshiftterskilldist[2]
-        ((chartable[firstname+surname])['skills'])['investigation'] = postshiftterskilldist[3]
-        ((chartable[firstname+surname])['skills'])['medicine'] = postshiftterskilldist[4]
-        ((chartable[firstname+surname])['skills'])['occult'] = postshiftterskilldist[5]
-        ((chartable[firstname+surname])['skills'])['politics'] = postshiftterskilldist[6]
-        ((chartable[firstname+surname])['skills'])['science'] = postshiftterskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['animalken'] = postshiftpriskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['empathy'] = postshiftpriskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['expression'] = postshiftpriskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['intimidation'] = postshiftpriskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['persuasion'] = postshiftpriskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['socialize'] = postshiftpriskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['streetwise'] = postshiftpriskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['subterfuge'] = postshiftpriskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['athletics'] = postshiftsecskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['brawl'] = postshiftsecskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['drive'] = postshiftsecskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['firearms'] = postshiftsecskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['larceny'] = postshiftsecskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['stealth'] = postshiftsecskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['survival'] = postshiftsecskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['weaponry'] = postshiftsecskilldist[7]
+        ((chartable[firstname + ' ' + surname])['skills'])['academics'] = postshiftterskilldist[0]
+        ((chartable[firstname + ' ' + surname])['skills'])['computer'] = postshiftterskilldist[1]
+        ((chartable[firstname + ' ' + surname])['skills'])['crafts'] = postshiftterskilldist[2]
+        ((chartable[firstname + ' ' + surname])['skills'])['investigation'] = postshiftterskilldist[3]
+        ((chartable[firstname + ' ' + surname])['skills'])['medicine'] = postshiftterskilldist[4]
+        ((chartable[firstname + ' ' + surname])['skills'])['occult'] = postshiftterskilldist[5]
+        ((chartable[firstname + ' ' + surname])['skills'])['politics'] = postshiftterskilldist[6]
+        ((chartable[firstname + ' ' + surname])['skills'])['science'] = postshiftterskilldist[7]
 
 if supernaturalflags['vampire']:
-    (chartable[firstname+surname])['supernaturaltags'].append('vampire')
+    (chartable[firstname + ' ' + surname])['supernaturaltags'].append('vampire')
 
-    (chartable[firstname+surname])['clan'] = clanslist[random.randint(0, 4)]
+    (chartable[firstname + ' ' + surname])['clan'] = clanslist[random.randint(0, 4)]
 
-    (chartable[firstname+surname])['bloodline'] = 'None'
+    (chartable[firstname + ' ' + surname])['bloodline'] = 'None'
 
-    # if (chartable[firstname+surname])['clan'] == 'Daeva':
+    # if (chartable[firstname + ' ' + surname])['clan'] == 'Daeva':
     #     randomnum = random.randint(0, 99)
     #     if randomnum == 0: #later change the 0 to less than whatever the number of bloodlines is and then randomly pull from an array of daeva bloodlines and based on the randomnum use that from array
-    #         (chartable[firstname+surname])['bloodline'] = 'Septemi'
+    #         (chartable[firstname + ' ' + surname])['bloodline'] = 'Septemi'
 
-    (chartable[firstname+surname])['covenant'] = covenantslist[random.randint(0, 5)]
+    (chartable[firstname + ' ' + surname])['covenant'] = covenantslist[random.randint(0, 5)]
 
     mask = ''
     dirge = ''
@@ -455,12 +455,12 @@ if supernaturalflags['vampire']:
     maskarray = mask.split(']')
     dirgearray = dirge.split(']')
 
-    (chartable[firstname+surname])['mask'] = {'maskname': maskarray[0],
+    (chartable[firstname + ' ' + surname])['mask'] = {'maskname': maskarray[0],
     'description': maskarray[1],
     'singlewillpower': maskarray[2],
     'allwillpower': maskarray[3]}
 
-    (chartable[firstname+surname])['dirge'] = {'dirgename':dirgearray[0],
+    (chartable[firstname + ' ' + surname])['dirge'] = {'dirgename':dirgearray[0],
     'description': dirgearray[1],
     'singlewillpower': dirgearray[2],
     'allwillpower': dirgearray[3]}
@@ -478,27 +478,27 @@ if supernaturalflags['vampire']:
 
     humnum = random.randint(0, 9)
     if humnum == 0:
-        (chartable[firstname+surname])['humanity'] = {'totalhumanity': (chartable[firstname+surname])['integrity'] - 1,
+        (chartable[firstname + ' ' + surname])['humanity'] = {'totalhumanity': (chartable[firstname + ' ' + surname])['integrity'] - 1,
         'touchstone1': touchstonearray[0],
-        'touchstone1desc': touchstonearray[1]}
+        'touchstone1desc': ''}
     elif humnum == 9:
-        (chartable[firstname+surname])['humanity'] = {'totalhumanity': (chartable[firstname+surname])['integrity'] + 1,
+        (chartable[firstname + ' ' + surname])['humanity'] = {'totalhumanity': (chartable[firstname + ' ' + surname])['integrity'] + 1,
         'touchstone1': touchstonearray[0],
-        'touchstone1desc': touchstonearray[1]}
+        'touchstone1desc': ''}
     else:
-        (chartable[firstname+surname])['humanity'] = {'totalhumanity': (chartable[firstname+surname])['integrity'],
+        (chartable[firstname + ' ' + surname])['humanity'] = {'totalhumanity': (chartable[firstname + ' ' + surname])['integrity'],
         'touchstone1': touchstonearray[0],
-        'touchstone1desc': touchstonearray[1]}
-    (chartable[firstname+surname]).pop('integrity')
+        'touchstone1desc': ''}
+    (chartable[firstname + ' ' + surname]).pop('integrity')
 
-    (chartable[firstname+surname])['bloodpotency'] = 1
-    (chartable[firstname+surname])['vitae'] = {'maxvitae': 10, 'currentvitae': 0}
+    (chartable[firstname + ' ' + surname])['bloodpotency'] = 1
+    (chartable[firstname + ' ' + surname])['vitae'] = {'maxvitae': 10, 'currentvitae': 0}
 
-    (chartable[firstname+surname])['merits'].append({'haven': {'location': 0, 'security': 0, 'size': 0, 'adjs': []},
+    (chartable[firstname + ' ' + surname])['merits'].append({'haven': {'location': 0, 'security': 0, 'size': 0, 'adjs': []},
     'courtrank': 'none'})
 
-    if (chartable[firstname+surname])['clan'] == 'Daeva':
-        if (chartable[firstname+surname])['bloodline'] == 'None':
+    if (chartable[firstname + ' ' + surname])['clan'] == 'Daeva':
+        if (chartable[firstname + ' ' + surname])['bloodline'] == 'None':
             psdiscdist = []
             discrandnum = random.randint(0, 2)
             disciplinedist = [[3, 0, 0], [2, 1, 0], [1, 1, 1]]
@@ -510,22 +510,22 @@ if supernaturalflags['vampire']:
             psdiscdist.append(disciplineset[discrandnum2])
             disciplineset.pop(discrandnum2)
             psdiscdist.append(disciplineset[0])
-            (chartable[firstname+surname])['disciplines'] = []
-            (chartable[firstname+surname])['disciplines'].append([{'celerity': {'level': psdiscdist[0]}}])
+            (chartable[firstname + ' ' + surname])['disciplines'] = []
+            (chartable[firstname + ' ' + surname])['disciplines'].append([{'celerity': {'level': psdiscdist[0]}}])
             if psdiscdist[1] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1], 'awe': 1, 'Confidant': 2, 'Green Eyes': 3, 'Loyalty': 4, 'Idol': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1], 'awe': 1, 'Confidant': 2, 'Green Eyes': 3, 'Loyalty': 4, 'Idol': 5}}])
             elif psdiscdist[1] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1], 'awe': 1, 'Confidant': 2, 'Green Eyes': 3, 'Loyalty': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1], 'awe': 1, 'Confidant': 2, 'Green Eyes': 3, 'Loyalty': 4}}])
             elif psdiscdist[1] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1], 'awe': 1, 'Confidant': 2, 'Green Eyes': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1], 'awe': 1, 'Confidant': 2, 'Green Eyes': 3}}])
             elif psdiscdist[1] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1], 'awe': 1, 'Confidant': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1], 'awe': 1, 'Confidant': 2}}])
             elif psdiscdist[1] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1], 'awe': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1], 'awe': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1]}}])
-            (chartable[firstname+surname])['disciplines'].append([{'vigor': {'level': psdiscdist[2]}}])
-        elif (chartable[firstname+surname])['bloodline'] == 'Septemi': #sample code for how a bloodline will work, disabled so this won't run and will later be moved to an updated 1st edition bloodlines file that can be used but the code is being kept here now until all of the bloodlines are added
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[1]}}])
+            (chartable[firstname + ' ' + surname])['disciplines'].append([{'vigor': {'level': psdiscdist[2]}}])
+        elif (chartable[firstname + ' ' + surname])['bloodline'] == 'Septemi': #sample code for how a bloodline will work, disabled so this won't run and will later be moved to an updated 1st edition bloodlines file that can be used but the code is being kept here now until all of the bloodlines are added
             psdiscdist = []
             discrandnum = random.randint(0, 2)
             disciplinedist = [[3, 0, 0, 0], [2, 1, 0, 0], [1, 1, 1, 0]]
@@ -540,35 +540,35 @@ if supernaturalflags['vampire']:
             psdiscdist.append(disciplineset[discrandnum3])
             disciplineset.pop(discrandnum3)
             psdiscdist.append(disciplineset[0])
-            (chartable[firstname+surname])['disciplines'] = []
+            (chartable[firstname + ' ' + surname])['disciplines'] = []
             if psdiscdist[0] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0], 'Buttress the Soul': 1, 'The Light of Truth': 2, 'Cleanse the Mind': 3, 'Banish the Summoned Servitor': 4, 'Break the Weave': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0], 'Buttress the Soul': 1, 'The Light of Truth': 2, 'Cleanse the Mind': 3, 'Banish the Summoned Servitor': 4, 'Break the Weave': 5}}])
             elif psdiscdist[0] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0], 'Buttress the Soul': 1, 'The Light of Truth': 2, 'Cleanse the Mind': 3, 'Banish the Summoned Servitor': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0], 'Buttress the Soul': 1, 'The Light of Truth': 2, 'Cleanse the Mind': 3, 'Banish the Summoned Servitor': 4}}])
             elif psdiscdist[0] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0], 'Buttress the Soul': 1, 'The Light of Truth': 2, 'Cleanse the Mind': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0], 'Buttress the Soul': 1, 'The Light of Truth': 2, 'Cleanse the Mind': 3}}])
             elif psdiscdist[0] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0], 'Buttress the Soul': 1, 'The Light of Truth': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0], 'Buttress the Soul': 1, 'The Light of Truth': 2}}])
             elif psdiscdist[0] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0], 'Buttress the Soul': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0], 'Buttress the Soul': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0]}}])
-            (chartable[firstname+surname])['disciplines'].append([{'celerity': {'level': psdiscdist[1]}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'abjurism': {'level': psdiscdist[0]}}])
+            (chartable[firstname + ' ' + surname])['disciplines'].append([{'celerity': {'level': psdiscdist[1]}}])
             if psdiscdist[2] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2], 'Awe': 1, 'Confidant': 2, 'Green Eyes': 3, 'Loyalty': 4, 'Idol': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2], 'Awe': 1, 'Confidant': 2, 'Green Eyes': 3, 'Loyalty': 4, 'Idol': 5}}])
             elif psdiscdist[2] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2], 'Awe': 1, 'Confidant': 2, 'Green Eyes': 3, 'Loyalty': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2], 'Awe': 1, 'Confidant': 2, 'Green Eyes': 3, 'Loyalty': 4}}])
             elif psdiscdist[2] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2], 'Awe': 1, 'Confidant': 2, 'Green Eyes': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2], 'Awe': 1, 'Confidant': 2, 'Green Eyes': 3}}])
             elif psdiscdist[2] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2], 'Awe': 1, 'Confidant': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2], 'Awe': 1, 'Confidant': 2}}])
             elif psdiscdist[2] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2], 'Awe': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2], 'Awe': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2]}}])
-            (chartable[firstname+surname])['disciplines'].append([{'vigor': {'level': psdiscdist[3]}}])
-    elif (chartable[firstname+surname])['clan'] == 'Gangrel':
-        if (chartable[firstname+surname])['bloodline'] == 'None':
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'majesty': {'level': psdiscdist[2]}}])
+            (chartable[firstname + ' ' + surname])['disciplines'].append([{'vigor': {'level': psdiscdist[3]}}])
+    elif (chartable[firstname + ' ' + surname])['clan'] == 'Gangrel':
+        if (chartable[firstname + ' ' + surname])['bloodline'] == 'None':
             psdiscdist = []
             discrandnum = random.randint(0, 2)
             disciplinedist = [[3, 0, 0], [2, 1, 0], [1, 1, 1]]
@@ -580,34 +580,34 @@ if supernaturalflags['vampire']:
             psdiscdist.append(disciplineset[discrandnum2])
             disciplineset.pop(discrandnum2)
             psdiscdist.append(disciplineset[0])
-            (chartable[firstname+surname])['disciplines'] = []
+            (chartable[firstname + ' ' + surname])['disciplines'] = []
             if psdiscdist[0] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4, 'Lord of the Land': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4, 'Lord of the Land': 5}}])
             elif psdiscdist[0] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4}}])
             elif psdiscdist[0] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3}}])
             elif psdiscdist[0] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2}}])
             elif psdiscdist[0] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0]}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0]}}])
             if psdiscdist[1] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast\'s Skin': 3, 'Unnatural Aspect': 4, 'Primeval Miasma': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast\'s Skin': 3, 'Unnatural Aspect': 4, 'Primeval Miasma': 5}}])
             elif psdiscdist[1] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast\'s Skin': 3, 'Unnatural Aspect': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast\'s Skin': 3, 'Unnatural Aspect': 4}}])
             elif psdiscdist[1] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast\'s Skin': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2, 'Beast\'s Skin': 3}}])
             elif psdiscdist[1] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1, 'Predatory Aspect': 2}}])
             elif psdiscdist[1] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'protean': {'level': psdiscdist[1], 'Unmarked Grave': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'protean': {'level': psdiscdist[1]}}])
-            (chartable[firstname+surname])['disciplines'].append([{'resilience': {'level': psdiscdist[2]}}])
-    elif (chartable[firstname+surname])['clan'] == 'Mekhet':
-        if (chartable[firstname+surname])['bloodline'] == 'None':
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'protean': {'level': psdiscdist[1]}}])
+            (chartable[firstname + ' ' + surname])['disciplines'].append([{'resilience': {'level': psdiscdist[2]}}])
+    elif (chartable[firstname + ' ' + surname])['clan'] == 'Mekhet':
+        if (chartable[firstname + ' ' + surname])['bloodline'] == 'None':
             psdiscdist = []
             discrandnum = random.randint(0, 2)
             disciplinedist = [[3, 0, 0], [2, 1, 0], [1, 1, 1]]
@@ -619,34 +619,34 @@ if supernaturalflags['vampire']:
             psdiscdist.append(disciplineset[discrandnum2])
             disciplineset.pop(discrandnum2)
             psdiscdist.append(disciplineset[0])
-            (chartable[firstname+surname])['disciplines'] = []
+            (chartable[firstname + ' ' + surname])['disciplines'] = []
             if psdiscdist[0] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast''s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit\'s Touch': 3, 'Lay Open the Mind': 4, 'Twilight Projection': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast''s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit\'s Touch': 3, 'Lay Open the Mind': 4, 'Twilight Projection': 5}}])
             elif psdiscdist[0] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit\'s Touch': 3, 'Lay Open the Mind': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit\'s Touch': 3, 'Lay Open the Mind': 4}}])
             elif psdiscdist[0] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit\'s Touch': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1, 'Uncanny Perception': 2, 'The Spirit\'s Touch': 3}}])
             elif psdiscdist[0] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1, 'Uncanny Perception': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1, 'Uncanny Perception': 2}}])
             elif psdiscdist[0] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0], 'Beast\'s Hackles': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0]}}])
-            (chartable[firstname+surname])['disciplines'].append([{'celerity': {'level': psdiscdist[1]}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'auspex': {'level': psdiscdist[0]}}])
+            (chartable[firstname + ' ' + surname])['disciplines'].append([{'celerity': {'level': psdiscdist[1]}}])
             if psdiscdist[2] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4, 'Oubliette': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4, 'Oubliette': 5}}])
             elif psdiscdist[2] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4}}])
             elif psdiscdist[2] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3}}])
             elif psdiscdist[2] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1, 'Touch of Shadow': 2}}])
             elif psdiscdist[2] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2], 'Face in the Crowd': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2]}}])
-    elif (chartable[firstname+surname])['clan'] == 'Mekhet':
-        if (chartable[firstname+surname])['bloodline'] == 'None':
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[2]}}])
+    elif (chartable[firstname + ' ' + surname])['clan'] == 'Mekhet':
+        if (chartable[firstname + ' ' + surname])['bloodline'] == 'None':
             psdiscdist = []
             discrandnum = random.randint(0, 2)
             disciplinedist = [[3, 0, 0], [2, 1, 0], [1, 1, 1]]
@@ -658,34 +658,34 @@ if supernaturalflags['vampire']:
             psdiscdist.append(disciplineset[discrandnum2])
             disciplineset.pop(discrandnum2)
             psdiscdist.append(disciplineset[0])
-            (chartable[firstname+surname])['disciplines'] = []
+            (chartable[firstname + ' ' + surname])['disciplines'] = []
             if psdiscdist[0] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2, 'The Grand Delusion': 3, 'Waking Nightmare': 4, 'Mortal Terror': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2, 'The Grand Delusion': 3, 'Waking Nightmare': 4, 'Mortal Terror': 5}}])
             elif psdiscdist[0] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2, 'The Grand Delusion': 3, 'Waking Nightmare': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2, 'The Grand Delusion': 3, 'Waking Nightmare': 4}}])
             elif psdiscdist[0] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2, 'The Grand Delusion': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2, 'The Grand Delusion': 3}}])
             elif psdiscdist[0] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1, 'Face of the Beast': 2}}])
             elif psdiscdist[0] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0], 'Dread Presence': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0]}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'nightmare': {'level': psdiscdist[0]}}])
             if psdiscdist[1] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4, 'Oubliette': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4, 'Oubliette': 5}}])
             elif psdiscdist[1] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3, 'The Familiar Stranger': 4}}])
             elif psdiscdist[1] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2, 'Cloak of Night': 3}}])
             elif psdiscdist[1] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1, 'Touch of Shadow': 2}}])
             elif psdiscdist[1] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1], 'Face in the Crowd': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1]}}])
-            (chartable[firstname+surname])['disciplines'].append([{'vigor': {'level': psdiscdist[2]}}])
-    elif (chartable[firstname+surname])['clan'] == 'Ventrue':
-        if (chartable[firstname+surname])['bloodline'] == 'None':
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'obfuscate': {'level': psdiscdist[1]}}])
+            (chartable[firstname + ' ' + surname])['disciplines'].append([{'vigor': {'level': psdiscdist[2]}}])
+    elif (chartable[firstname + ' ' + surname])['clan'] == 'Ventrue':
+        if (chartable[firstname + ' ' + surname])['bloodline'] == 'None':
             psdiscdist = []
             discrandnum = random.randint(0, 2)
             disciplinedist = [[3, 0, 0], [2, 1, 0], [1, 1, 1]]
@@ -697,41 +697,41 @@ if supernaturalflags['vampire']:
             psdiscdist.append(disciplineset[discrandnum2])
             disciplineset.pop(discrandnum2)
             psdiscdist.append(disciplineset[0])
-            (chartable[firstname+surname])['disciplines'] = []
+            (chartable[firstname + ' ' + surname])['disciplines'] = []
             if psdiscdist[0] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4, 'Lord of the Land': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4, 'Lord of the Land': 5}}])
             elif psdiscdist[0] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3, 'Feral Infection': 4}}])
             elif psdiscdist[0] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2, 'Summon the Hunt': 3}}])
             elif psdiscdist[0] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1, 'Raise the Familiar': 2}}])
             elif psdiscdist[0] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0], 'Feral Whispers': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0]}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'animalism': {'level': psdiscdist[0]}}])
             if psdiscdist[1] == 5:
-                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2, 'Entombed Command': 3, 'The Lying Mind': 4, 'Possession': 5}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2, 'Entombed Command': 3, 'The Lying Mind': 4, 'Possession': 5}}])
             elif psdiscdist[1] == 4:
-                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2, 'Entombed Command': 3, 'The Lying Mind': 4}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2, 'Entombed Command': 3, 'The Lying Mind': 4}}])
             elif psdiscdist[1] == 3:
-                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2, 'Entombed Command': 3}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2, 'Entombed Command': 3}}])
             elif psdiscdist[1] == 2:
-                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1, 'Iron Edict': 2}}])
             elif psdiscdist[1] == 1:
-                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1], 'Mesmerize': 1}}])
             else:
-                (chartable[firstname+surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1]}}])
-            (chartable[firstname+surname])['disciplines'].append([{'resilience': {'level': psdiscdist[2]}}])
+                (chartable[firstname + ' ' + surname])['disciplines'].append([{'dominate': {'level': psdiscdist[1]}}])
+            (chartable[firstname + ' ' + surname])['disciplines'].append([{'resilience': {'level': psdiscdist[2]}}])
 
-(chartable[firstname+surname])['speed'] = 5 + ((chartable[firstname+surname])['stats'])['strength'] + ((chartable[firstname+surname])['stats'])['dexterity']
-((chartable[firstname+surname])['health'])['maxhealth'] = (chartable[firstname+surname])['size'] + ((chartable[firstname+surname])['stats'])['stamina']
-(chartable[firstname+surname])['initiativemod'] = ((chartable[firstname+surname])['stats'])['dexterity'] + ((chartable[firstname+surname])['stats'])['composure']
-if ((chartable[firstname+surname])['stats'])['wits'] < ((chartable[firstname+surname])['stats'])['dexterity']:
-    (chartable[firstname+surname])['defense'] = ((chartable[firstname+surname])['stats'])['wits'] + ((chartable[firstname+surname])['skills'])['athletics']
+(chartable[firstname + ' ' + surname])['speed'] = 5 + ((chartable[firstname + ' ' + surname])['stats'])['strength'] + ((chartable[firstname + ' ' + surname])['stats'])['dexterity']
+((chartable[firstname + ' ' + surname])['health'])['maxhealth'] = (chartable[firstname + ' ' + surname])['size'] + ((chartable[firstname + ' ' + surname])['stats'])['stamina']
+(chartable[firstname + ' ' + surname])['initiativemod'] = ((chartable[firstname + ' ' + surname])['stats'])['dexterity'] + ((chartable[firstname + ' ' + surname])['stats'])['composure']
+if ((chartable[firstname + ' ' + surname])['stats'])['wits'] < ((chartable[firstname + ' ' + surname])['stats'])['dexterity']:
+    (chartable[firstname + ' ' + surname])['defense'] = ((chartable[firstname + ' ' + surname])['stats'])['wits'] + ((chartable[firstname + ' ' + surname])['skills'])['athletics']
 else:
-    (chartable[firstname+surname])['defense'] = ((chartable[firstname+surname])['stats'])['dexterity'] + ((chartable[firstname+surname])['skills'])['athletics']
-(chartable[firstname+surname])['willpower'] =  {'permanentwillpower': ((chartable[firstname+surname])['stats'])['resolve'] + ((chartable[firstname+surname])['stats'])['composure'], 'temporarywillpower': ((chartable[firstname+surname])['stats'])['resolve'] + ((chartable[firstname+surname])['stats'])['composure']}
+    (chartable[firstname + ' ' + surname])['defense'] = ((chartable[firstname + ' ' + surname])['stats'])['dexterity'] + ((chartable[firstname + ' ' + surname])['skills'])['athletics']
+(chartable[firstname + ' ' + surname])['willpower'] =  {'permanentwillpower': ((chartable[firstname + ' ' + surname])['stats'])['resolve'] + ((chartable[firstname + ' ' + surname])['stats'])['composure'], 'temporarywillpower': ((chartable[firstname + ' ' + surname])['stats'])['resolve'] + ((chartable[firstname + ' ' + surname])['stats'])['composure']}
 
 with open(file, 'w') as f:
     json.dump(chartable, f)

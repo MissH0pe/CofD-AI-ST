@@ -15,7 +15,7 @@ class MyWidget(QtWidgets.QWidget):
                 json.dump(backup, f)
 
         stats = {'name': self.boxname.text(), 'supernaturaltags': [], 'player': self.boxplayer.text(), 'chronicle': self.boxchronicle.text(), 'concept': self.boxconcept.text(), 'stats': {'intelligence': self.boxintelligence.text(), 'strength': self.boxstrength.text(), 'presence': self.boxpresence.text(), 'wits': self.boxwits.text(), 'dexterity': self.boxdexterity.text(), 'manipulation': self.boxmanipulation.text(), 'resolve': self.boxresolve.text(), 'stamina': self.boxstamina.text(), 'composure': self.boxcomposure.text()}, 'skills': {'academics': self.boxacademics.text(), 'computer': self.boxcomputer.text(), 'crafts': self.boxcrafts.text(), 'investigation': self.boxinvestigation.text(), 'medicine': self.boxmedicine.text(), 'occult': self.boxoccult.text(), 'politics': self.boxpolitics.text(), 'science': self.boxscience.text(), 'athletics': self.boxathletics.text(), 'brawl': self.boxbrawl.text(), 'drive': self.boxdrive.text(), 'firearms': self.boxfirearms.text(), 'larceny': self.boxlarceny.text(), 'stealth': self.boxstealth.text(), 'survival': self.boxsurvival.text(), 'weaponry': self.boxweaponry.text(), 'animalken': self.boxanimalken.text(), 'empathy': self.boxempathy.text(), 'expression': self.boxexpression.text(), 'intimidation': self.boxintimidation.text(), 'persuasion': self.boxpersuasion.text(), 'socialize': self.boxsocialize.text(), 'streetwise': self.boxstreetwise.text(), 'subterfuge': self.boxsubterfuge.text()}}
-        print(self.occultflag[0])
+        # print(self.occultflag[0])
         if self.occultflag[0] == True:
             stats['supernaturaltags'].append('vampire')
             stats['mask'] = self.boxmask.text()
@@ -281,6 +281,8 @@ class MyWidget(QtWidgets.QWidget):
         stats['conditions'][0] = ['filledconditions', self.filledconditions]
         stats['banes'][0] = ['filledbanes', self.filledbanes]
 
+        stats['size'] = 5 + self.sizebonus
+
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
 
@@ -522,6 +524,9 @@ class MyWidget(QtWidgets.QWidget):
                     self.banenamebox19.setText(stats['banes'][19][0])
                 if stats['banes'][0][1] >= 20:
                     self.banenamebox20.setText(stats['banes'][20][0])
+
+                self.sizeval.setText(str(stats['size']))
+                self.sizebonus = stats['size'] - 5
 
                 for x in stats['supernaturaltags']:
                     if x == 'vampire':
@@ -954,6 +959,12 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.removeWidget(self.sizeval)
             self.sizeval.deleteLater()
             self.sizeval = None
+            self.layout.removeWidget(self.sizebonuslabel)
+            self.sizebonuslabel.deleteLater()
+            self.sizebonuslabel = None
+            self.layout.removeWidget(self.sizebonusbox)
+            self.sizebonusbox.deleteLater()
+            self.sizebonusbox = None
 
         #other traits
         self.cat3 = QtWidgets.QLabel(self)
@@ -965,12 +976,6 @@ class MyWidget(QtWidgets.QWidget):
         self.merits.setFont(self.subtitlefont)
         self.meritslevel = QtWidgets.QLabel(self)
         self.meritslevel.setText("Level")
-
-        self.size = QtWidgets.QLabel(self)
-        self.size.setText("Size: ")
-        self.sizeval = QtWidgets.QLabel(self)
-        playersize = 5 + self.sizebonus
-        self.sizeval.setText(str(playersize))
 
         #initialize merits
         if self.meritcount >= 1:
@@ -1169,6 +1174,17 @@ class MyWidget(QtWidgets.QWidget):
             self.banenamebox19 = QtWidgets.QLineEdit(self)
         if self.aspirationcount >= 20:
             self.banenamebox20 = QtWidgets.QLineEdit(self)
+
+        #begin other traits
+
+        self.size = QtWidgets.QLabel(self)
+        self.size.setText("Size: ")
+        self.sizeval = QtWidgets.QLabel(self)
+        self.sizeval.setText(str(5 + self.sizebonus))
+
+        self.sizebonuslabel = QtWidgets.QLabel(self)
+        self.sizebonuslabel.setText("Size Bonus: ")
+        self.sizebonusbox = QtWidgets.QLineEdit(self)
 
         #begin layout
 
@@ -1537,6 +1553,8 @@ class MyWidget(QtWidgets.QWidget):
 
         self.layout.addWidget(self.size, 9 + self.oplinecounter, 4)
         self.layout.addWidget(self.sizeval, 9 + self.oplinecounter, 5)
+        self.layout.addWidget(self.sizebonuslabel, 10 + self.oplinecounter, 4)
+        self.layout.addWidget(self.sizebonusbox, 10 + self.oplinecounter, 5)
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)

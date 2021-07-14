@@ -87,6 +87,135 @@ class MyWidget(QtWidgets.QWidget):
             self.filledmerits +=1
         stats['merits'][0] = ['filledmerits', self.filledmerits]
 
+        self.filledaspirations = 0
+        stats['aspirations'] = []
+        stats['aspirations'].append(['filledaspirations', 0])                                      #remove the != part and condition num from 1
+        self.filledconditions = 0
+        stats['conditions'] = []
+        stats['conditions'].append(['filledconditions', 0])
+        if self.aspirationcount >= 1 and self.aspirationnamebox1.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox1.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 1 and self.conditionnamebox1.text() != "":
+            stats['conditions'].append([self.conditionnamebox1.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 2 and self.aspirationnamebox2.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox2.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 2 and self.conditionnamebox2.text() != "":
+            stats['conditions'].append([self.conditionnamebox2.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 3 and self.aspirationnamebox3.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox3.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 3 and self.conditionnamebox3.text() != "":
+            stats['conditions'].append([self.conditionnamebox3.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 4 and self.aspirationnamebox4.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox4.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 4 and self.conditionnamebox4.text() != "":
+            stats['conditions'].append([self.conditionnamebox4.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 5 and self.aspirationnamebox5.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox5.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 5 and self.conditionnamebox5.text() != "":
+            stats['conditions'].append([self.conditionnamebox5.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 6 and self.aspirationnamebox6.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox6.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 6 and self.conditionnamebox6.text() != "":
+            stats['conditions'].append([self.conditionnamebox6.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 7 and self.aspirationnamebox7.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox7.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 7 and self.conditionnamebox7.text() != "":
+            stats['conditions'].append([self.conditionnamebox7.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 8 and self.aspirationnamebox8.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox8.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 8 and self.conditionnamebox8.text() != "":
+            stats['conditions'].append([self.conditionnamebox8.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 9 and self.aspirationnamebox9.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox9.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 9 and self.conditionnamebox9.text() != "":
+            stats['conditions'].append([self.conditionnamebox9.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 10 and self.aspirationnamebox10.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox10.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 10 and self.conditionnamebox10.text() != "":
+            stats['conditions'].append([self.conditionnamebox10.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 11 and self.aspirationnamebox11.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox11.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 11 and self.conditionnamebox11.text() != "":
+            stats['conditions'].append([self.conditionnamebox11.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 12 and self.aspirationnamebox12.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox12.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 12 and self.conditionnamebox12.text() != "":
+            stats['conditions'].append([self.conditionnamebox12.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 13 and self.aspirationnamebox13.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox13.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 13 and self.conditionnamebox13.text() != "":
+            stats['conditions'].append([self.conditionnamebox13.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 14 and self.aspirationnamebox14.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox14.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 14 and self.conditionnamebox14.text() != "":
+            stats['conditions'].append([self.conditionnamebox14.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 15 and self.aspirationnamebox15.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox15.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 15 and self.conditionnamebox15.text() != "":
+            stats['conditions'].append([self.conditionnamebox15.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 16 and self.aspirationnamebox16.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox16.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 16 and self.conditionnamebox16.text() != "":
+            stats['conditions'].append([self.conditionnamebox16.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 17 and self.aspirationnamebox17.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox17.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 17 and self.conditionnamebox17.text() != "":
+            stats['conditions'].append([self.conditionnamebox17.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 18 and self.aspirationnamebox18.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox18.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 18 and self.conditionnamebox18.text() != "":
+            stats['conditions'].append([self.conditionnamebox18.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 19 and self.aspirationnamebox19.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox19.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 19 and self.conditionnamebox19.text() != "":
+            stats['conditions'].append([self.conditionnamebox19.text()])
+            self.filledconditions +=1
+        if self.aspirationcount >= 20 and self.aspirationnamebox20.text() != "":
+            stats['aspirations'].append([self.aspirationnamebox20.text()])
+            self.filledaspirations +=1
+        if self.aspirationcount >= 20 and self.conditionnamebox20.text() != "":
+            stats['conditions'].append([self.conditionnamebox20.text()])
+            self.filledconditions +=1
+        stats['aspirations'][0] = ['filledaspirations', self.filledaspirations]
+        stats['conditions'][0] = ['filledconditions', self.filledconditions]
+
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
 
@@ -138,7 +267,7 @@ class MyWidget(QtWidgets.QWidget):
                     self.meritcount = stats['merits'][0][1]
 
                     self.makesheet()
-                print(stats['merits'][0][1])
+                # print(stats['merits'][0][1])
                 if stats['merits'][0][1] >= 1:
                     self.meritnamebox1.setText(stats['merits'][1][0])
                     self.meritlevelbox1.setText(stats['merits'][1][1])
@@ -199,7 +328,94 @@ class MyWidget(QtWidgets.QWidget):
                 if stats['merits'][0][1] >= 20:
                     self.meritnamebox20.setText(stats['merits'][20][0])
                     self.meritlevelbox20.setText(stats['merits'][20][1])
-                
+
+                if stats['aspirations'][0][1] > self.aspirationcount or stats['conditions'][0][1] > self.aspirationcount:
+                    self.oldaspirationcount = self.aspirationcount
+                    self.aspirationcount = stats['aspirations'][0][1]
+
+                    self.makesheet()
+                # print(stats['merits'][0][1])
+                if stats['aspirations'][0][1] >= 1:
+                    self.aspirationnamebox1.setText(stats['aspirations'][1][0])
+                if stats['conditions'][0][1] >= 1:
+                    self.conditionnamebox1.setText(stats['conditions'][1][0])
+                if stats['aspirations'][0][1] >= 2:
+                    self.aspirationnamebox2.setText(stats['aspirations'][2][0])
+                if stats['conditions'][0][1] >= 2:
+                    self.conditionnamebox2.setText(stats['conditions'][2][0])
+                if stats['aspirations'][0][1] >= 3:
+                    self.aspirationnamebox3.setText(stats['aspirations'][3][0])
+                if stats['conditions'][0][1] >= 3:
+                    self.conditionnamebox3.setText(stats['conditions'][3][0])
+                if stats['aspirations'][0][1] >= 4:
+                    self.aspirationnamebox4.setText(stats['aspirations'][4][0])
+                if stats['conditions'][0][1] >= 4:
+                    self.conditionnamebox4.setText(stats['conditions'][4][0])
+                if stats['aspirations'][0][1] >= 5:
+                    self.aspirationnamebox5.setText(stats['aspirations'][5][0])
+                if stats['conditions'][0][1] >= 5:
+                    self.conditionnamebox5.setText(stats['conditions'][5][0])
+                if stats['aspirations'][0][1] >= 6:
+                    self.aspirationnamebox6.setText(stats['aspirations'][6][0])
+                if stats['conditions'][0][1] >= 6:
+                    self.conditionnamebox6.setText(stats['conditions'][6][0])
+                if stats['aspirations'][0][1] >= 7:
+                    self.aspirationnamebox7.setText(stats['aspirations'][7][0])
+                if stats['conditions'][0][1] >= 7:
+                    self.conditionnamebox7.setText(stats['conditions'][7][0])
+                if stats['aspirations'][0][1] >= 8:
+                    self.aspirationnamebox8.setText(stats['aspirations'][8][0])
+                if stats['conditions'][0][1] >= 8:
+                    self.conditionnamebox8.setText(stats['conditions'][8][0])
+                if stats['aspirations'][0][1] >= 9:
+                    self.aspirationnamebox9.setText(stats['aspirations'][9][0])
+                if stats['conditions'][0][1] >= 9:
+                    self.conditionnamebox9.setText(stats['conditions'][9][0])
+                if stats['aspirations'][0][1] >= 10:
+                    self.aspirationnamebox10.setText(stats['aspirations'][10][0])
+                if stats['conditions'][0][1] >= 10:
+                    self.conditionnamebox10.setText(stats['conditions'][10][0])
+                if stats['aspirations'][0][1] >= 11:
+                    self.aspirationnamebox11.setText(stats['aspirations'][11][0])
+                if stats['conditions'][0][1] >= 11:
+                    self.conditionnamebox11.setText(stats['conditions'][11][0])
+                if stats['aspirations'][0][1] >= 12:
+                    self.aspirationnamebox12.setText(stats['aspirations'][12][0])
+                if stats['conditions'][0][1] >= 12:
+                    self.conditionnamebox12.setText(stats['conditions'][12][0])
+                if stats['aspirations'][0][1] >= 13:
+                    self.aspirationnamebox13.setText(stats['aspirations'][13][0])
+                if stats['conditions'][0][1] >= 13:
+                    self.conditionnamebox13.setText(stats['conditions'][13][0])
+                if stats['aspirations'][0][1] >= 14:
+                    self.aspirationnamebox14.setText(stats['aspirations'][14][0])
+                if stats['conditions'][0][1] >= 14:
+                    self.conditionnamebox14.setText(stats['conditions'][14][0])
+                if stats['aspirations'][0][1] >= 15:
+                    self.aspirationnamebox15.setText(stats['aspirations'][15][0])
+                if stats['conditions'][0][1] >= 15:
+                    self.conditionnamebox15.setText(stats['conditions'][15][0])
+                if stats['aspirations'][0][1] >= 16:
+                    self.aspirationnamebox16.setText(stats['aspirations'][16][0])
+                if stats['conditions'][0][1] >= 16:
+                    self.conditionnamebox16.setText(stats['conditions'][16][0])
+                if stats['aspirations'][0][1] >= 17:
+                    self.aspirationnamebox17.setText(stats['aspirations'][17][0])
+                if stats['conditions'][0][1] >= 17:
+                    self.conditionnamebox17.setText(stats['conditions'][17][0])
+                if stats['aspirations'][0][1] >= 18:
+                    self.aspirationnamebox18.setText(stats['aspirations'][18][0])
+                if stats['conditions'][0][1] >= 18:
+                    self.conditionnamebox18.setText(stats['conditions'][18][0])
+                if stats['aspirations'][0][1] >= 19:
+                    self.aspirationnamebox19.setText(stats['aspirations'][19][0])
+                if stats['conditions'][0][1] >= 19:
+                    self.conditionnamebox19.setText(stats['conditions'][19][0])
+                if stats['aspirations'][0][1] >= 20:
+                    self.aspirationnamebox20.setText(stats['aspirations'][20][0])
+                if stats['conditions'][0][1] >= 20:
+                    self.conditionnamebox20.setText(stats['conditions'][20][0])
+
                 for x in stats['supernaturaltags']:
                     if x == 'vampire':
                         self.boxclan.setText(stats['clan'])
@@ -324,7 +540,6 @@ class MyWidget(QtWidgets.QWidget):
                 self.meritlevelbox10 = None
                 # self.meritnamebox10 = QtWidgets.QLineEdit(self)
                 # self.meritlevelbox10 = QtWidgets.QLineEdit(self)
-                self.meritcounter -= 1
             if self.oldmeritcount >= 11:
                 self.layout.removeWidget(self.meritnamebox11)
                 self.meritnamebox11.deleteLater()
@@ -388,7 +603,6 @@ class MyWidget(QtWidgets.QWidget):
                 self.meritlevelbox17 = None
                 # self.meritnamebox17 = QtWidgets.QLineEdit(self)
                 # self.meritlevelbox17 = QtWidgets.QLineEdit(self)
-                self.meritcounter -= 1
             if self.oldmeritcount >= 18:
                 self.layout.removeWidget(self.meritnamebox18)
                 self.meritnamebox18.deleteLater()
@@ -416,6 +630,155 @@ class MyWidget(QtWidgets.QWidget):
                 self.meritlevelbox20 = None
                 # self.meritnamebox20 = QtWidgets.QLineEdit(self)
                 # self.meritlevelbox20 = QtWidgets.QLineEdit(self)
+
+            self.layout.removeWidget(self.aspirations)
+            self.aspirations.deleteLater()
+            self.aspirations = None
+            self.layout.removeWidget(self.conditions)
+            self.conditions.deleteLater()
+            self.conditions = None
+
+            self.aspirationcounter = 0
+            if self.oldaspirationcount >= 1:
+                self.layout.removeWidget(self.aspirationnamebox1)
+                self.aspirationnamebox1.deleteLater()
+                self.aspirationnamebox1 = None
+                self.layout.removeWidget(self.conditionnamebox1)
+                self.conditionnamebox1.deleteLater()
+                self.conditionnamebox1 = None
+            if self.oldaspirationcount >= 2:
+                self.layout.removeWidget(self.aspirationnamebox2)
+                self.aspirationnamebox2.deleteLater()
+                self.aspirationnamebox2 = None
+                self.layout.removeWidget(self.conditionnamebox2)
+                self.conditionnamebox2.deleteLater()
+                self.conditionnamebox2 = None
+            if self.oldaspirationcount >= 3:
+                self.layout.removeWidget(self.aspirationnamebox3)
+                self.aspirationnamebox3.deleteLater()
+                self.aspirationnamebox3 = None
+                self.layout.removeWidget(self.conditionnamebox3)
+                self.conditionnamebox3.deleteLater()
+                self.conditionnamebox3 = None
+            if self.oldaspirationcount >= 4:
+                self.layout.removeWidget(self.aspirationnamebox4)
+                self.aspirationnamebox4.deleteLater()
+                self.aspirationnamebox4 = None
+                self.layout.removeWidget(self.conditionnamebox4)
+                self.conditionnamebox4.deleteLater()
+                self.conditionnamebox4 = None
+            if self.oldaspirationcount >= 5:
+                self.layout.removeWidget(self.aspirationnamebox5)
+                self.aspirationnamebox5.deleteLater()
+                self.aspirationnamebox5 = None
+                self.layout.removeWidget(self.conditionnamebox5)
+                self.conditionnamebox5.deleteLater()
+                self.conditionnamebox5 = None
+            if self.oldaspirationcount >= 6:
+                self.layout.removeWidget(self.aspirationnamebox6)
+                self.aspirationnamebox6.deleteLater()
+                self.aspirationnamebox6 = None
+                self.layout.removeWidget(self.conditionnamebox6)
+                self.conditionnamebox6.deleteLater()
+                self.conditionnamebox6 = None
+            if self.oldaspirationcount >= 7:
+                self.layout.removeWidget(self.aspirationnamebox7)
+                self.aspirationnamebox7.deleteLater()
+                self.aspirationnamebox7 = None
+                self.layout.removeWidget(self.conditionnamebox7)
+                self.conditionnamebox7.deleteLater()
+                self.conditionnamebox7 = None
+            if self.oldaspirationcount >= 8:
+                self.layout.removeWidget(self.aspirationnamebox8)
+                self.aspirationnamebox8.deleteLater()
+                self.aspirationnamebox8 = None
+                self.layout.removeWidget(self.conditionnamebox8)
+                self.conditionnamebox8.deleteLater()
+                self.conditionnamebox8 = None
+            if self.oldaspirationcount >= 9:
+                self.layout.removeWidget(self.aspirationnamebox9)
+                self.aspirationnamebox9.deleteLater()
+                self.aspirationnamebox9 = None
+                self.layout.removeWidget(self.conditionnamebox9)
+                self.conditionnamebox9.deleteLater()
+                self.conditionnamebox9 = None
+            if self.oldaspirationcount >= 10:
+                self.layout.removeWidget(self.aspirationnamebox10)
+                self.aspirationnamebox10.deleteLater()
+                self.aspirationnamebox10 = None
+                self.layout.removeWidget(self.conditionnamebox10)
+                self.conditionnamebox10.deleteLater()
+                self.conditionnamebox10 = None
+            if self.oldaspirationcount >= 11:
+                self.layout.removeWidget(self.aspirationnamebox11)
+                self.aspirationnamebox11.deleteLater()
+                self.aspirationnamebox11 = None
+                self.layout.removeWidget(self.conditionnamebox11)
+                self.conditionnamebox11.deleteLater()
+                self.conditionnamebox11 = None
+            if self.oldaspirationcount >= 12:
+                self.layout.removeWidget(self.aspirationnamebox12)
+                self.aspirationnamebox12.deleteLater()
+                self.aspirationnamebox12 = None
+                self.layout.removeWidget(self.conditionnamebox12)
+                self.conditionnamebox12.deleteLater()
+                self.conditionnamebox12 = None
+            if self.oldaspirationcount >= 13:
+                self.layout.removeWidget(self.aspirationnamebox13)
+                self.aspirationnamebox13.deleteLater()
+                self.aspirationnamebox13 = None
+                self.layout.removeWidget(self.conditionnamebox13)
+                self.conditionnamebox13.deleteLater()
+                self.conditionnamebox13 = None
+            if self.oldaspirationcount >= 14:
+                self.layout.removeWidget(self.aspirationnamebox14)
+                self.aspirationnamebox14.deleteLater()
+                self.aspirationnamebox14 = None
+                self.layout.removeWidget(self.conditionnamebox14)
+                self.conditionnamebox14.deleteLater()
+                self.conditionnamebox14 = None
+            if self.oldaspirationcount >= 15:
+                self.layout.removeWidget(self.aspirationnamebox15)
+                self.aspirationnamebox15.deleteLater()
+                self.aspirationnamebox15 = None
+                self.layout.removeWidget(self.conditionnamebox15)
+                self.conditionnamebox15.deleteLater()
+                self.conditionnamebox15 = None
+            if self.oldaspirationcount >= 16:
+                self.layout.removeWidget(self.aspirationnamebox16)
+                self.aspirationnamebox16.deleteLater()
+                self.aspirationnamebox16 = None
+                self.layout.removeWidget(self.conditionnamebox16)
+                self.conditionnamebox16.deleteLater()
+                self.conditionnamebox16 = None
+            if self.oldaspirationcount >= 17:
+                self.layout.removeWidget(self.aspirationnamebox17)
+                self.aspirationnamebox17.deleteLater()
+                self.aspirationnamebox17 = None
+                self.layout.removeWidget(self.conditionnamebox17)
+                self.conditionnamebox17.deleteLater()
+                self.conditionnamebox17 = None
+            if self.oldaspirationcount >= 18:
+                self.layout.removeWidget(self.aspirationnamebox18)
+                self.aspirationnamebox18.deleteLater()
+                self.aspirationnamebox18 = None
+                self.layout.removeWidget(self.conditionnamebox18)
+                self.conditionnamebox18.deleteLater()
+                self.conditionnamebox18 = None
+            if self.oldaspirationcount >= 19:
+                self.layout.removeWidget(self.aspirationnamebox19)
+                self.aspirationnamebox19.deleteLater()
+                self.aspirationnamebox19 = None
+                self.layout.removeWidget(self.conditionnamebox19)
+                self.conditionnamebox19.deleteLater()
+                self.conditionnamebox19 = None
+            if self.oldaspirationcount >= 20:
+                self.layout.removeWidget(self.aspirationnamebox20)
+                self.aspirationnamebox20.deleteLater()
+                self.aspirationnamebox20 = None
+                self.layout.removeWidget(self.conditionnamebox20)
+                self.conditionnamebox20.deleteLater()
+                self.conditionnamebox20 = None
 
         #other traits
         self.cat3 = QtWidgets.QLabel(self)
@@ -489,6 +852,97 @@ class MyWidget(QtWidgets.QWidget):
         if self.meritcount >= 20:
             self.meritnamebox20 = QtWidgets.QLineEdit(self)
             self.meritlevelbox20 = QtWidgets.QLineEdit(self)
+
+        #begin aspirations
+        self.aspirations = QtWidgets.QLabel(self)
+        self.aspirations.setText("Aspirations")
+        self.aspirations.setFont(self.subtitlefont)
+
+        self.conditions = QtWidgets.QLabel(self)
+        self.conditions.setText("Conditions")
+        self.conditions.setFont(self.subtitlefont)
+
+        if self.aspirationcount >= 1:
+            self.aspirationnamebox1 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 2:
+            self.aspirationnamebox2 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 3:
+            self.aspirationnamebox3 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 4:
+            self.aspirationnamebox4 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 5:
+            self.aspirationnamebox5 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 6:
+            self.aspirationnamebox6 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 7:
+            self.aspirationnamebox7 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 8:
+            self.aspirationnamebox8 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 9:
+            self.aspirationnamebox9 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 10:
+            self.aspirationnamebox10 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 11:
+            self.aspirationnamebox11 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 12:
+            self.aspirationnamebox12 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 13:
+            self.aspirationnamebox13 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 14:
+            self.aspirationnamebox14 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 15:
+            self.aspirationnamebox15 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 16:
+            self.aspirationnamebox16 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 17:
+            self.aspirationnamebox17 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 18:
+            self.aspirationnamebox18 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 19:
+            self.aspirationnamebox19 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 20:
+            self.aspirationnamebox20 = QtWidgets.QLineEdit(self)
+
+        if self.aspirationcount >= 1:
+            self.conditionnamebox1 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 2:
+            self.conditionnamebox2 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 3:
+            self.conditionnamebox3 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 4:
+            self.conditionnamebox4 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 5:
+            self.conditionnamebox5 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 6:
+            self.conditionnamebox6 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 7:
+            self.conditionnamebox7 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 8:
+            self.conditionnamebox8 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 9:
+            self.conditionnamebox9 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 10:
+            self.conditionnamebox10 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 11:
+            self.conditionnamebox11 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 12:
+            self.conditionnamebox12 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 13:
+            self.conditionnamebox13 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 14:
+            self.conditionnamebox14 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 15:
+            self.conditionnamebox15 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 16:
+            self.conditionnamebox16 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 17:
+            self.conditionnamebox17 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 18:
+            self.conditionnamebox18 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 19:
+            self.conditionnamebox19 = QtWidgets.QLineEdit(self)
+        if self.aspirationcount >= 20:
+            self.conditionnamebox20 = QtWidgets.QLineEdit(self)
 
         #begin layout
 
@@ -625,84 +1079,170 @@ class MyWidget(QtWidgets.QWidget):
         self.meritcounter = 0
         if self.meritcount >= 1:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox1, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox1, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox1, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox1, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 2:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox2, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox2, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox2, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox2, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 3:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox3, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox3, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox3, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox3, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 4:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox4, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox4, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox4, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox4, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 5:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox5, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox5, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox5, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox5, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 6:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox6, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox6, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox6, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox6, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 7:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox7, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox7, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox7, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox7, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 8:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox8, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox8, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox8, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox8, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 9:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox9, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox9, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox9, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox9, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 10:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox10, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox10, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox10, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox10, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 11:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox11, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox11, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox11, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox11, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 12:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox12, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox12, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox12, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox12, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 13:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox13, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox13, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox13, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox13, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 14:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox14, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox14, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox14, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox14, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 15:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox15, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox15, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox15, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox15, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 16:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox16, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox16, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox16, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox16, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 17:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox17, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox17, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox17, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox17, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 18:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox18, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox18, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox18, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox18, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 19:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox19, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox19, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox19, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox19, 9 + self.oplinecounter + self.meritcounter, 3)
         if self.meritcount >= 20:
             self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox20, 10 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox20, 10 + self.oplinecounter + self.meritcounter, 3)
+            self.layout.addWidget(self.meritnamebox20, 9 + self.oplinecounter + self.meritcounter, 2)
+            self.layout.addWidget(self.meritlevelbox20, 9 + self.oplinecounter + self.meritcounter, 3)
+
+        self.layout.addWidget(self.aspirations, 10 + self.oplinecounter + self.meritcounter, 2)
+
+        self.layout.addWidget(self.conditions, 10 + self.oplinecounter + self.meritcounter, 3)
+
+        self.aspirationcounter = 0
+        if self.aspirationcount >= 1:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox1, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox1, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 2:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox2, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox2, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 3:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox3, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox3, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 4:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox4, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox4, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 5:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox5, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox5, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 6:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox6, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox6, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 7:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox7, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox7, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 8:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox8, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox8, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 9:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox9, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox9, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 10:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox10, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox10, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 11:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox11, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox11, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 12:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox12, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox12, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 13:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox13, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox13, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 14:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox14, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox14, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 15:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox15, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox15, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 16:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox16, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox16, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 17:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox17, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox17, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 18:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox18, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox18, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 19:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox19, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox19, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        if self.aspirationcount >= 20:
+            self.aspirationcounter += 1
+            self.layout.addWidget(self.aspirationnamebox20, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.layout.addWidget(self.conditionnamebox20, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
@@ -714,6 +1254,7 @@ class MyWidget(QtWidgets.QWidget):
             self.vamptoggle.setChecked(True)
             self.occultflag[0] = True
             self.oldmeritcount = 5
+            self.oldaspirationcount = 5
 
             # self.layout.removeWidget(self.cat3)
             # self.cat3.deleteLater()
@@ -812,6 +1353,9 @@ class MyWidget(QtWidgets.QWidget):
 
         self.oldmeritcount = 0
         self.meritcount = 5 #max 20
+
+        self.oldaspirationcount = 0
+        self.aspirationcount = 5
 
         self.runonce1 = True
         self.makesheetflag = False

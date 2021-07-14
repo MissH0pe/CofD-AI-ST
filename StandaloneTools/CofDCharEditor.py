@@ -1677,6 +1677,10 @@ class MyWidget(QtWidgets.QWidget):
             with open('settings.txt') as f:
                 nonemptylines = [line.strip("\n") for line in f if line != "\n"]
                 for i, line in enumerate(nonemptylines):
+                    if i == 0:
+                        splitline = line.split('#')
+                        self.oldmeritcount = self.meritcount
+                        self.meritcount = int(splitline[0])
                     if i == 1:
                         # print('test')
                         splitline = line.split('#')

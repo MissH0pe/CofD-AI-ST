@@ -293,6 +293,15 @@ class MyWidget(QtWidgets.QWidget):
 
         stats['speed'] = int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus
 
+        if self.dexteritystat <= self.witsstat:
+            stats['defense'] = self.athleticsskill + self.dexteritystat + self.defensebonus
+        else:
+            stats['defense'] = self.athleticsskill + self.witsstat + self.defensebonus
+
+        stats['armor'] = self.armorbonus
+
+        stats['initiative'] = self.composurestat + self.dexteritystat + self.initiativebonus
+
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
 
@@ -542,6 +551,19 @@ class MyWidget(QtWidgets.QWidget):
 
                 self.speedval.setText(str(stats['speed']))
                 self.speedbonus = stats['speed'] - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat
+
+                if self.dexteritystat <= self.witsstat:
+                    self.defenseval.setText(str(stats['defense']))
+                    self.defensebonus = stats['defense'] - self.athleticsskill - self.dexteritystat
+                else:
+                    self.defenseval.setText(str(stats['defense']))
+                    self.defensebonus = stats['defense'] - self.athleticsskill - self.witsstat
+
+                self.armorval.setText(str(stats['armor']))
+                self.armorbonus = stats['armor']
+
+                self.initiativeval.setText(str(stats['initiative']))
+                self.initiativebonus = stats['initiative'] - self.composurestat - self.dexteritystat
 
                 for x in stats['supernaturaltags']:
                     if x == 'vampire':
@@ -996,6 +1018,45 @@ class MyWidget(QtWidgets.QWidget):
             self.speedbonusbox.deleteLater()
             self.speedbonusbox = None
 
+            self.layout.removeWidget(self.defense)
+            self.defense.deleteLater()
+            self.defense = None
+            self.layout.removeWidget(self.defenseval)
+            self.defenseval.deleteLater()
+            self.defenseval = None
+            self.layout.removeWidget(self.defensebonuslabel)
+            self.defensebonuslabel.deleteLater()
+            self.defensebonuslabel = None
+            self.layout.removeWidget(self.defensebonusbox)
+            self.defensebonusbox.deleteLater()
+            self.defensebonusbox = None
+
+            self.layout.removeWidget(self.armor)
+            self.armor.deleteLater()
+            self.armor = None
+            self.layout.removeWidget(self.armorval)
+            self.armorval.deleteLater()
+            self.armorval = None
+            self.layout.removeWidget(self.armorbonuslabel)
+            self.armorbonuslabel.deleteLater()
+            self.armorbonuslabel = None
+            self.layout.removeWidget(self.armorbonusbox)
+            self.armorbonusbox.deleteLater()
+            self.armorbonusbox = None
+
+            self.layout.removeWidget(self.initiative)
+            self.initiative.deleteLater()
+            self.initiative = None
+            self.layout.removeWidget(self.initiativeval)
+            self.initiativeval.deleteLater()
+            self.initiativeval = None
+            self.layout.removeWidget(self.initiativebonuslabel)
+            self.initiativebonuslabel.deleteLater()
+            self.initiativebonuslabel = None
+            self.layout.removeWidget(self.initiativebonusbox)
+            self.initiativebonusbox.deleteLater()
+            self.initiativebonusbox = None
+
         #other traits
         self.cat3 = QtWidgets.QLabel(self)
         self.cat3.setText("Other Traits")
@@ -1224,6 +1285,36 @@ class MyWidget(QtWidgets.QWidget):
         self.speedbonuslabel = QtWidgets.QLabel(self)
         self.speedbonuslabel.setText("Speed Bonus: ")
         self.speedbonusbox = QtWidgets.QLineEdit(self)
+
+        self.defense = QtWidgets.QLabel(self)
+        self.defense.setText("Defense: ")
+        self.defenseval = QtWidgets.QLabel(self)
+        if self.dexteritystat <= self.witsstat:
+            self.defenseval.setText(str(self.athleticsskill + self.dexteritystat + self.defensebonus))
+        else:
+            self.defenseval.setText(str(self.athleticsskill + self.witsstat + self.defensebonus))
+
+        self.defensebonuslabel = QtWidgets.QLabel(self)
+        self.defensebonuslabel.setText("Defense Bonus: ")
+        self.defensebonusbox = QtWidgets.QLineEdit(self)
+
+        self.armor = QtWidgets.QLabel(self)
+        self.armor.setText("Armor: ")
+        self.armorval = QtWidgets.QLabel(self)
+        self.armorval.setText(str(self.armorbonus))
+
+        self.armorbonuslabel = QtWidgets.QLabel(self)
+        self.armorbonuslabel.setText("Armor Bonus: ")
+        self.armorbonusbox = QtWidgets.QLineEdit(self)
+
+        self.initiative = QtWidgets.QLabel(self)
+        self.initiative.setText("Initiative Mod: ")
+        self.initiativeval = QtWidgets.QLabel(self)
+        self.initiativeval.setText(str(self.composurestat + self.dexteritystat + self.initiativebonus))
+
+        self.initiativebonuslabel = QtWidgets.QLabel(self)
+        self.initiativebonuslabel.setText("Initiative Bonus: ")
+        self.initiativebonusbox = QtWidgets.QLineEdit(self)
 
         #begin layout
 
@@ -1600,6 +1691,21 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.speedbonuslabel, 12 + self.oplinecounter, 4)
         self.layout.addWidget(self.speedbonusbox, 12 + self.oplinecounter, 5)
 
+        self.layout.addWidget(self.defense, 13 + self.oplinecounter, 4)
+        self.layout.addWidget(self.defenseval, 13 + self.oplinecounter, 5)
+        self.layout.addWidget(self.defensebonuslabel, 14 + self.oplinecounter, 4)
+        self.layout.addWidget(self.defensebonusbox, 14 + self.oplinecounter, 5)
+
+        self.layout.addWidget(self.armor, 15 + self.oplinecounter, 4)
+        self.layout.addWidget(self.armorval, 15 + self.oplinecounter, 5)
+        self.layout.addWidget(self.armorbonuslabel, 16 + self.oplinecounter, 4)
+        self.layout.addWidget(self.armorbonusbox, 16 + self.oplinecounter, 5)
+
+        self.layout.addWidget(self.initiative, 17 + self.oplinecounter, 4)
+        self.layout.addWidget(self.initiativeval, 17 + self.oplinecounter, 5)
+        self.layout.addWidget(self.initiativebonuslabel, 18 + self.oplinecounter, 4)
+        self.layout.addWidget(self.initiativebonusbox, 18 + self.oplinecounter, 5)
+
         # if self.boxintelligence.textChanged():
         #     self.intelligencestat = int(self.boxintelligence.text())
         # if self.boxwits.textChanged():
@@ -1762,6 +1868,12 @@ class MyWidget(QtWidgets.QWidget):
 
         self.speedbonus = 0
 
+        self.defensebonus = 0
+
+        self.armorbonus = 0
+
+        self.initiativebonus = 0
+
         self.intelligencestat = 1
         self.witsstat = 1
         self.resolvestat = 1
@@ -1771,6 +1883,8 @@ class MyWidget(QtWidgets.QWidget):
         self.presencestat = 1
         self.manipulationstat = 1
         self.composurestat = 1
+
+        self.athleticsskill = -1
 
         self.runonce1 = True
         self.makesheetflag = False

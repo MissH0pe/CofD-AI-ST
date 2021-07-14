@@ -587,6 +587,56 @@ class MyWidget(QtWidgets.QWidget):
         #     stats[self.boxname.text()]['bloodline'] = self.boxbloodline.text()
         #     stats[self.boxname.text()]['covenant'] = self.boxcovenant.text(),
 
+    def updatestatsdef(self):
+        self.intelligencestat = int(self.boxintelligence.text())
+        self.witsstat = int(self.boxwits.text())
+        self.resolvestat = int(self.boxresolve.text())
+        self.strengthstat = int(self.boxstrength.text())
+        self.dexteritystat = int(self.boxdexterity.text())
+        self.staminastat = int(self.boxstamina.text())
+        self.presencestat = int(self.boxpresence.text())
+        self.manipulationstat = int(self.boxmanipulation.text())
+        self.composurestat = int(self.boxcomposure.text())
+        self.athleticsskill = int(self.boxathletics.text())
+
+
+        self.layout.removeWidget(self.sizeval)
+        self.sizeval.deleteLater()
+        self.sizeval = None
+        self.layout.removeWidget(self.speedval)
+        self.speedval.deleteLater()
+        self.speedval = None
+        self.layout.removeWidget(self.defenseval)
+        self.defenseval.deleteLater()
+        self.defenseval = None
+        self.layout.removeWidget(self.armorval)
+        self.armorval.deleteLater()
+        self.armorval = None
+        self.layout.removeWidget(self.initiativeval)
+        self.initiativeval.deleteLater()
+        self.initiativeval = None
+
+
+        self.sizeval = QtWidgets.QLabel(self)
+        self.sizeval.setText(str(5 + self.sizebonus))
+        self.speedval = QtWidgets.QLabel(self)
+        self.speedval.setText(str(int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus))
+        self.defenseval = QtWidgets.QLabel(self)
+        if self.dexteritystat <= self.witsstat:
+            self.defenseval.setText(str(self.athleticsskill + self.dexteritystat + self.defensebonus))
+        else:
+            self.defenseval.setText(str(self.athleticsskill + self.witsstat + self.defensebonus))
+        self.armorval = QtWidgets.QLabel(self)
+        self.armorval.setText(str(self.armorbonus))
+        self.initiativeval = QtWidgets.QLabel(self)
+        self.initiativeval.setText(str(self.composurestat + self.dexteritystat + self.initiativebonus))
+
+        self.layout.addWidget(self.sizeval, 9 + self.oplinecounter, 5)
+        self.layout.addWidget(self.speedval, 11 + self.oplinecounter, 5)
+        self.layout.addWidget(self.defenseval, 13 + self.oplinecounter, 5)
+        self.layout.addWidget(self.armorval, 15 + self.oplinecounter, 5)
+        self.layout.addWidget(self.initiativeval, 17 + self.oplinecounter, 5)
+
     def makesheet(self):
         #make here delete all stuff in here if not in first run
         if self.makesheetflag:
@@ -992,6 +1042,10 @@ class MyWidget(QtWidgets.QWidget):
                 self.banenamebox20.deleteLater()
                 self.banenamebox20 = None
 
+            self.layout.removeWidget(self.updatestats)
+            self.updatestats.deleteLater()
+            self.updatestats = None
+
             self.layout.removeWidget(self.size)
             self.size.deleteLater()
             self.size = None
@@ -1267,6 +1321,9 @@ class MyWidget(QtWidgets.QWidget):
             self.banenamebox20 = QtWidgets.QLineEdit(self)
 
         #begin other traits
+
+        self.updatestats = QtWidgets.QPushButton('Update Derived Stats')
+        self.updatestats.clicked.connect(self.updatestatsdef)
 
         self.size = QtWidgets.QLabel(self)
         self.size.setText("Size: ")
@@ -1681,6 +1738,8 @@ class MyWidget(QtWidgets.QWidget):
             self.banecounter += 1
             self.layout.addWidget(self.banenamebox20, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
 
+        self.layout.addWidget(self.updatestats, 8 + self.oplinecounter, 5)
+
         self.layout.addWidget(self.size, 9 + self.oplinecounter, 4)
         self.layout.addWidget(self.sizeval, 9 + self.oplinecounter, 5)
         self.layout.addWidget(self.sizebonuslabel, 10 + self.oplinecounter, 4)
@@ -1705,25 +1764,6 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.initiativeval, 17 + self.oplinecounter, 5)
         self.layout.addWidget(self.initiativebonuslabel, 18 + self.oplinecounter, 4)
         self.layout.addWidget(self.initiativebonusbox, 18 + self.oplinecounter, 5)
-
-        # if self.boxintelligence.textChanged():
-        #     self.intelligencestat = int(self.boxintelligence.text())
-        # if self.boxwits.textChanged():
-        #     self.witsstat = int(self.boxwits.text())
-        # if self.boxresolve.textChanged():
-        #     self.resolvestat = int(self.boxresolve.text())
-        # if self.boxstrength.textChanged():
-        #     self.strengthstat = int(self.boxstrength.text())
-        # if self.boxdexterity.textChanged():
-        #     self.dexteritystat = int(self.boxdexterity.text())
-        # if self.boxstamina.textChanged():
-        #     self.staminastat = int(self.boxstamina.text())
-        # if self.boxpresence.textChanged():
-        #     self.presencestat = int(self.boxpresence.text())
-        # if self.boxmanipulation.textChanged():
-        #     self.manipulationstat = int(self.boxmanipulation.text())
-        # if self.boxcomposure.textChanged():
-        #     self.composurestat = int(self.boxcomposure.text())
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)

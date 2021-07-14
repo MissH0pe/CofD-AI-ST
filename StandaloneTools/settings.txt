@@ -1,0 +1,2 @@
+5# Merit Slots Displayed Count
+True# Is Vampire

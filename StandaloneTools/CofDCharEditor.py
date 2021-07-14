@@ -7,6 +7,14 @@ class MyWidget(QtWidgets.QWidget):
 
 #if importing this charater to a table i need to make sure that it's added under a in that is the name with the space
 
+    def savesettings(self):
+        with open('settings.txt', 'w') as f:
+            f.write(str(self.meritcount)+'# Merit Slots Displayed Count\n')
+            if self.occultflag[0]:
+                f.write('True# Is Vampire\n')
+            else:
+                f.write('True# Is Vampire\n')
+
     def savedef(self):
         if path.exists(self.saveloc.text()+'.json'):
             with open(self.saveloc.text()+'.json') as f:
@@ -286,6 +294,8 @@ class MyWidget(QtWidgets.QWidget):
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
 
+        self.savesettings()
+
     def loaddef(self):
         if path.exists(self.loadloc.text()+'.json'):
             with open(self.loadloc.text()+'.json') as f:
@@ -536,6 +546,8 @@ class MyWidget(QtWidgets.QWidget):
                         self.boxmask.setText(stats['mask'])
                         self.boxdirge.setText(stats['dirge'])
                         self.occultflag[0] = True
+
+                self.savesettings()
         else:
             stats = {}
 
@@ -1565,8 +1577,8 @@ class MyWidget(QtWidgets.QWidget):
         if self.vamptoggle.isChecked():
             self.vamptoggle.setChecked(True)
             self.occultflag[0] = True
-            self.oldmeritcount = 5
-            self.oldaspirationcount = 5
+            self.oldmeritcount = self.meritcount
+            self.oldaspirationcount = self.aspirationcount
 
             # self.layout.removeWidget(self.cat3)
             # self.cat3.deleteLater()
@@ -1614,11 +1626,16 @@ class MyWidget(QtWidgets.QWidget):
             self.oplinecounter -= 2
             self.oldmeritcount = 5
             self.runonce1 = True
+
+        self.savesettings()
+
         self.makesheet()
 
     def meritdef(self):
         self.oldmeritcount = self.meritcount
         self.meritcount = int(self.meritslotsbox.text())
+
+        self.savesettings()
 
         self.makesheet()
 
@@ -1654,6 +1671,23 @@ class MyWidget(QtWidgets.QWidget):
         self.settingslayout.addWidget(self.meritslotsbox, 2, 1)
         self.settingslayout.addWidget(self.meritslotsupdate, 2, 2)
         self.setLayout(self.layout)
+
+    def initsettings(self):
+        if path.exists('settings.txt'):
+            with open('settings.txt') as f:
+                nonemptylines = [line.strip("\n") for line in f if line != "\n"]
+                for i, line in enumerate(nonemptylines):
+                    if i == 1:
+                        # print('test')
+                        splitline = line.split('#')
+                        if splitline[0] == 'True':
+                            # print('test2')
+                            self.occultflag[0] = True
+                            self.oldmeritcount = self.meritcount
+                            self.oldaspirationcount = self.aspirationcount
+
+        self.resize(1024, 768)
+        self.makesheet()
 
     def __init__(self):
         super(MyWidget, self).__init__()
@@ -1868,7 +1902,7 @@ class MyWidget(QtWidgets.QWidget):
         self.subterfuge.setText("Weaponry: ")
         self.boxsubterfuge = QtWidgets.QLineEdit(self)
 
-        self.makesheet()
+        self.initsettings()
 
 app = QtWidgets.QApplication([])
 

@@ -35,6 +35,46 @@ class MyWidget(QtWidgets.QWidget):
 
         stats = {'name': self.boxname.text(), 'supernaturaltags': [], 'player': self.boxplayer.text(), 'chronicle': self.boxchronicle.text(), 'concept': self.boxconcept.text(), 'stats': {'intelligence': self.boxintelligence.text(), 'strength': self.boxstrength.text(), 'presence': self.boxpresence.text(), 'wits': self.boxwits.text(), 'dexterity': self.boxdexterity.text(), 'manipulation': self.boxmanipulation.text(), 'resolve': self.boxresolve.text(), 'stamina': self.boxstamina.text(), 'composure': self.boxcomposure.text()}, 'skills': {'academics': self.boxacademics.text(), 'computer': self.boxcomputer.text(), 'crafts': self.boxcrafts.text(), 'investigation': self.boxinvestigation.text(), 'medicine': self.boxmedicine.text(), 'occult': self.boxoccult.text(), 'politics': self.boxpolitics.text(), 'science': self.boxscience.text(), 'athletics': self.boxathletics.text(), 'brawl': self.boxbrawl.text(), 'drive': self.boxdrive.text(), 'firearms': self.boxfirearms.text(), 'larceny': self.boxlarceny.text(), 'stealth': self.boxstealth.text(), 'survival': self.boxsurvival.text(), 'weaponry': self.boxweaponry.text(), 'animalken': self.boxanimalken.text(), 'empathy': self.boxempathy.text(), 'expression': self.boxexpression.text(), 'intimidation': self.boxintimidation.text(), 'persuasion': self.boxpersuasion.text(), 'socialize': self.boxsocialize.text(), 'streetwise': self.boxstreetwise.text(), 'subterfuge': self.boxsubterfuge.text()}}
 
+        if self.maxhealthmodbox.text() != "":
+            stats['health'] = {'maxhealth': int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat}
+        else:
+            stats['health'] = {'maxhealth': int(self.sizeval.text()) + self.staminastat}
+        if self.bashingdamagebox.text() != "":
+            stats['health']['bashingdamage'] = int(self.bashingdamagebox.text())
+        else:
+            stats['health']['bashingdamage'] = 0
+        if self.lethaldamagebox.text() != "":
+            stats['health']['lethaldamage'] = int(self.lethaldamagebox.text())
+        else:
+            stats['health']['lethaldamage'] = 0
+        if self.aggravateddamagebox.text() != "":
+            stats['health']['aggravateddamage'] = int(self.aggravateddamagebox.text())
+        else:
+            stats['health']['aggravateddamage'] = 0
+
+        self.maxhealthmodlabel = QtWidgets.QLabel(self)
+        self.maxhealthmodlabel.setText("Max Health Mod: ")
+        self.maxhealthmodbox = QtWidgets.QLineEdit(self)
+
+        self.maxhealthlabel = QtWidgets.QLabel(self)
+        self.maxhealthlabel.setText("Max Health: ")
+        self.maxhealthbox = QtWidgets.QLabel(self)
+        if self.maxhealthmodbox.text() != "":
+            self.maxhealthbox.setText(str(int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat))
+        else:
+            self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
+        self.bashingdamagelabel = QtWidgets.QLabel(self)
+        self.bashingdamagelabel.setText("Bashing Damage: ")
+        self.bashingdamagebox = QtWidgets.QLineEdit(self)
+
+        self.lethaldamagelabel = QtWidgets.QLabel(self)
+        self.lethaldamagelabel.setText("Lethal Damage: ")
+        self.lethaldamagebox = QtWidgets.QLineEdit(self)
+
+        self.aggravateddamagelabel = QtWidgets.QLabel(self)
+        self.aggravateddamagelabel.setText("Aggravated Damage: ")
+        self.aggravateddamagebox = QtWidgets.QLineEdit(self)
+
         if self.vvflag == True:
             stats['supernaturaltags'].append('human')
             stats['vice'] = self.boxvice.text()
@@ -404,6 +444,41 @@ class MyWidget(QtWidgets.QWidget):
             self.initiativebonusbox.deleteLater()
             self.initiativebonusbox = None
 
+            self.layout.removeWidget(self.healthlabel)
+            self.healthlabel.deleteLater()
+            self.healthlabel = None
+
+            self.layout.removeWidget(self.maxhealthlabel)
+            self.maxhealthlabel.deleteLater()
+            self.maxhealthlabel = None
+            self.layout.removeWidget(self.maxhealthbox)
+            self.maxhealthbox.deleteLater()
+            self.maxhealthbox = None
+            self.layout.removeWidget(self.maxhealthmodlabel)
+            self.maxhealthmodlabel.deleteLater()
+            self.maxhealthmodlabel = None
+            self.layout.removeWidget(self.maxhealthmodbox)
+            self.maxhealthmodbox.deleteLater()
+            self.maxhealthmodbox = None
+            self.layout.removeWidget(self.bashingdamagelabel)
+            self.bashingdamagelabel.deleteLater()
+            self.bashingdamagelabel = None
+            self.layout.removeWidget(self.bashingdamagebox)
+            self.bashingdamagebox.deleteLater()
+            self.bashingdamagebox = None
+            self.layout.removeWidget(self.lethaldamagelabel)
+            self.lethaldamagelabel.deleteLater()
+            self.lethaldamagelabel = None
+            self.layout.removeWidget(self.lethaldamagebox)
+            self.lethaldamagebox.deleteLater()
+            self.lethaldamagebox = None
+            self.layout.removeWidget(self.aggravateddamagelabel)
+            self.aggravateddamagelabel.deleteLater()
+            self.aggravateddamagelabel = None
+            self.layout.removeWidget(self.aggravateddamagebox)
+            self.aggravateddamagebox.deleteLater()
+            self.aggravateddamagebox = None
+
             if self.occultflag[0]:
                 self.layout.removeWidget(self.disciplines)
                 self.disciplines.deleteLater()
@@ -521,6 +596,33 @@ class MyWidget(QtWidgets.QWidget):
         self.initiativebonuslabel = QtWidgets.QLabel(self)
         self.initiativebonuslabel.setText("Initiative Bonus: ")
         self.initiativebonusbox = QtWidgets.QLineEdit(self)
+
+        self.healthlabel = QtWidgets.QLabel(self)
+        self.healthlabel.setText("Health")
+        self.healthlabel.setFont(self.subtitlefont)
+
+        self.maxhealthmodlabel = QtWidgets.QLabel(self)
+        self.maxhealthmodlabel.setText("Max Health Mod: ")
+        self.maxhealthmodbox = QtWidgets.QLineEdit(self)
+
+        self.maxhealthlabel = QtWidgets.QLabel(self)
+        self.maxhealthlabel.setText("Max Health: ")
+        self.maxhealthbox = QtWidgets.QLabel(self)
+        if self.maxhealthmodbox.text() != "":
+            self.maxhealthbox.setText(str(int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat))
+        else:
+            self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
+        self.bashingdamagelabel = QtWidgets.QLabel(self)
+        self.bashingdamagelabel.setText("Bashing Damage: ")
+        self.bashingdamagebox = QtWidgets.QLineEdit(self)
+
+        self.lethaldamagelabel = QtWidgets.QLabel(self)
+        self.lethaldamagelabel.setText("Lethal Damage: ")
+        self.lethaldamagebox = QtWidgets.QLineEdit(self)
+
+        self.aggravateddamagelabel = QtWidgets.QLabel(self)
+        self.aggravateddamagelabel.setText("Aggravated Damage: ")
+        self.aggravateddamagebox = QtWidgets.QLineEdit(self)
 
         if self.occultflag[0]:
             self.disciplines = QtWidgets.QLabel(self)
@@ -749,6 +851,19 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.initiativeval, 17 + self.oplinecounter, 5)
         self.layout.addWidget(self.initiativebonuslabel, 18 + self.oplinecounter, 4)
         self.layout.addWidget(self.initiativebonusbox, 18 + self.oplinecounter, 5)
+
+        self.layout.addWidget(self.healthlabel, 19 + self.oplinecounter, 5)
+
+        self.layout.addWidget(self.maxhealthlabel, 20 + self.oplinecounter, 4)
+        self.layout.addWidget(self.maxhealthbox, 20 + self.oplinecounter, 5)
+        self.layout.addWidget(self.maxhealthmodlabel, 21 + self.oplinecounter, 4)
+        self.layout.addWidget(self.maxhealthmodbox, 21 + self.oplinecounter, 5)
+        self.layout.addWidget(self.bashingdamagelabel, 22 + self.oplinecounter, 4)
+        self.layout.addWidget(self.bashingdamagebox, 22 + self.oplinecounter, 5)
+        self.layout.addWidget(self.lethaldamagelabel, 23 + self.oplinecounter, 4)
+        self.layout.addWidget(self.lethaldamagebox, 23 + self.oplinecounter, 5)
+        self.layout.addWidget(self.aggravateddamagelabel, 24 + self.oplinecounter, 4)
+        self.layout.addWidget(self.aggravateddamagebox, 24 + self.oplinecounter, 5)
 
         if self.occultflag[0]:
             self.layout.addWidget(self.disciplines, 12 + self.oplinecounter + self.mabc, 2)

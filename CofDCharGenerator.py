@@ -40,8 +40,7 @@ chartable[firstname+' '+surname] = {'name': firstname + ' ' + surname,
 'stats': {'intelligence': 1, 'strength': 1, 'presence': 1, 'wits': 1, 'dexterity': 1, 'manipulation': 1, 'resolve': 1, 'stamina': 1, 'composure': 1},
 
 'health':
-{'maxhealth': 5,
-'injuries': {'bashingdmg': 0, 'lethaldmg': 0, 'aggravateddmg': 0}},
+{'maxhealth': 5, 'bashingdamage': 0, 'lethaldamage': 0, 'aggravateddamage': 0},
 
 'integrity': 7,
 

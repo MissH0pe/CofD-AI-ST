@@ -112,6 +112,89 @@ class MyWidget(QtWidgets.QWidget):
             else:
                 stats['vitae']['currentvitae'] = 0
 
+            stats['humanity'] = {}
+            stats['humanity']['humanityarray'] = []
+            if self.humanitybox1.text() != "":
+                stats['humanity']['touchstone1'] = self.humanitybox1.text()
+            else:
+                stats['humanity']['touchstone1'] = ""
+            if self.humanitycheck1.isChecked():
+                stats['humanity']['humanityarray'].append(True)
+            else:
+                stats['humanity']['humanityarray'].append(False)
+            if self.humanitybox2.text() != "":
+                stats['humanity']['touchstone2'] = self.humanitybox2.text()
+            else:
+                stats['humanity']['touchstone2'] = ""
+            if self.humanitycheck2.isChecked():
+                stats['humanity']['humanityarray'].append(True)
+            else:
+                stats['humanity']['humanityarray'].append(False)
+            if self.humanitybox3.text() != "":
+                stats['humanity']['touchstone3'] = self.humanitybox3.text()
+            else:
+                stats['humanity']['touchstone3'] = ""
+            if self.humanitycheck3.isChecked():
+                stats['humanity']['humanityarray'].append(True)
+            else:
+                stats['humanity']['humanityarray'].append(False)
+            if self.humanitybox4.text() != "":
+                stats['humanity']['touchstone4'] = self.humanitybox4.text()
+            else:
+                stats['humanity']['touchstone4'] = ""
+            if self.humanitycheck4.isChecked():
+                stats['humanity']['humanityarray'].append(True)
+            else:
+                stats['humanity']['humanityarray'].append(False)
+            if self.humanitybox5.text() != "":
+                stats['humanity']['touchstone5'] = self.humanitybox5.text()
+            else:
+                stats['humanity']['touchstone5'] = ""
+            if self.humanitycheck5.isChecked():
+                stats['humanity']['humanityarray'].append(True)
+            else:
+                stats['humanity']['humanityarray'].append(False)
+            if self.humanitybox6.text() != "":
+                stats['humanity']['touchstone6'] = self.humanitybox6.text()
+            else:
+                stats['humanity']['touchstone6'] = ""
+            if self.humanitycheck6.isChecked():
+                stats['humanity']['humanityarray'].append(True)
+            else:
+                stats['humanity']['humanityarray'].append(False)
+            if self.humanitybox7.text() != "":
+                stats['humanity']['touchstone7'] = self.humanitybox7.text()
+            else:
+                stats['humanity']['touchstone7'] = ""
+            if self.humanitycheck7.isChecked():
+                stats['humanity']['humanityarray'].append(True)
+            else:
+                stats['humanity']['humanityarray'].append(False)
+            if self.humanitybox8.text() != "":
+                stats['humanity']['touchstone8'] = self.humanitybox8.text()
+            else:
+                stats['humanity']['touchstone8'] = ""
+            if self.humanitycheck8.isChecked():
+                stats['humanity']['humanityarray'].append(True)
+            else:
+                stats['humanity']['humanityarray'].append(False)
+            if self.humanitybox9.text() != "":
+                stats['humanity']['touchstone9'] = self.humanitybox9.text()
+            else:
+                stats['humanity']['touchstone9'] = ""
+            if self.humanitycheck9.isChecked():
+                stats['humanity']['humanityarray'].append(True)
+            else:
+                stats['humanity']['humanityarray'].append(False)
+            if self.humanitybox10.text() != "":
+                stats['humanity']['touchstone10'] = self.humanitybox10.text()
+            else:
+                stats['humanity']['touchstone10'] = ""
+            if self.humanitycheck10.isChecked():
+                stats['humanity']['humanityarray'].append(True)
+            else:
+                stats['humanity']['humanityarray'].append(False)
+
         self.filledmerits = 0
         stats['merits'] = []
         stats['merits'].append(['filledmerits', 0])
@@ -174,148 +257,233 @@ class MyWidget(QtWidgets.QWidget):
 
         self.savesettings()
 
+    def humanitycheckdef(self, num):
+        if num == 1:
+            # print('test')
+            if self.humanitycheck1.isChecked():
+                self.humanitycheck1.setChecked(True)
+            else:
+                self.humanitycheck1.setChecked(False)
+        elif num == 2:
+            if self.humanitycheck2.isChecked():
+                self.humanitycheck2.setChecked(True)
+            else:
+                self.humanitycheck2.setChecked(False)
+        elif num == 3:
+            if self.humanitycheck3.isChecked():
+                self.humanitycheck3.setChecked(True)
+            else:
+                self.humanitycheck3.setChecked(False)
+        elif num == 4:
+            if self.humanitycheck4.isChecked():
+                self.humanitycheck4.setChecked(True)
+            else:
+                self.humanitycheck4.setChecked(False)
+        elif num == 5:
+            if self.humanitycheck5.isChecked():
+                self.humanitycheck5.setChecked(True)
+            else:
+                self.humanitycheck5.setChecked(False)
+        elif num == 6:
+            if self.humanitycheck6.isChecked():
+                self.humanitycheck6.setChecked(True)
+            else:
+                self.humanitycheck6.setChecked(False)
+        elif num == 7:
+            if self.humanitycheck7.isChecked():
+                self.humanitycheck7.setChecked(True)
+            else:
+                self.humanitycheck7.setChecked(False)
+        elif num == 8:
+            if self.humanitycheck8.isChecked():
+                self.humanitycheck8.setChecked(True)
+            else:
+                self.humanitycheck8.setChecked(False)
+        elif num == 9:
+            if self.humanitycheck9.isChecked():
+                self.humanitycheck9.setChecked(True)
+            else:
+                self.humanitycheck9.setChecked(False)
+        elif num == 10:
+            if self.humanitycheck10.isChecked():
+                self.humanitycheck10.setChecked(True)
+            else:
+                self.humanitycheck10.setChecked(False)
+
     def loaddef(self):
         if path.exists(self.loadloc.text()+'.json'):
             with open(self.loadloc.text()+'.json') as f:
                 stats = json.load(f)
-                self.boxname.setText(stats['name'])
-                self.boxplayer.setText(stats['player'])
-                self.boxchronicle.setText(stats['chronicle'])
-                self.boxconcept.setText(stats['concept'])
-                self.boxintelligence.setText(stats['stats']['intelligence'])
-                self.boxstrength.setText(stats['stats']['strength'])
-                self.boxpresence.setText(stats['stats']['presence'])
-                self.boxwits.setText(stats['stats']['wits'])
-                self.boxdexterity.setText(stats['stats']['dexterity'])
-                self.boxmanipulation.setText(stats['stats']['manipulation'])
-                self.boxresolve.setText(stats['stats']['resolve'])
-                self.boxstamina.setText(stats['stats']['stamina'])
-                self.boxcomposure.setText(stats['stats']['composure'])
-                self.boxacademics.setText(stats['skills']['academics'])
-                self.boxcomputer.setText(stats['skills']['computer'])
-                self.boxcrafts.setText(stats['skills']['crafts'])
-                self.boxinvestigation.setText(stats['skills']['investigation'])
-                self.boxmedicine.setText(stats['skills']['medicine'])
-                self.boxoccult.setText(stats['skills']['occult'])
-                self.boxpolitics.setText(stats['skills']['politics'])
-                self.boxscience.setText(stats['skills']['science'])
-                self.boxathletics.setText(stats['skills']['athletics'])
-                self.boxbrawl.setText(stats['skills']['brawl'])
-                self.boxdrive.setText(stats['skills']['drive'])
-                self.boxfirearms.setText(stats['skills']['firearms'])
-                self.boxlarceny.setText(stats['skills']['larceny'])
-                self.boxstealth.setText(stats['skills']['stealth'])
-                self.boxsurvival.setText(stats['skills']['survival'])
-                self.boxweaponry.setText(stats['skills']['weaponry'])
-                self.boxanimalken.setText(stats['skills']['animalken'])
-                self.boxempathy.setText(stats['skills']['empathy'])
-                self.boxexpression.setText(stats['skills']['expression'])
-                self.boxintimidation.setText(stats['skills']['intimidation'])
-                self.boxpersuasion.setText(stats['skills']['persuasion'])
-                self.boxsocialize.setText(stats['skills']['socialize'])
-                self.boxstreetwise.setText(stats['skills']['streetwise'])
-                self.boxsubterfuge.setText(stats['skills']['subterfuge'])
+                self.boxname.setText(stats.get('name'))
+                self.boxplayer.setText(stats.get('player'))
+                self.boxchronicle.setText(stats.get('chronicle'))
+                self.boxconcept.setText(stats.get('concept'))
+                self.boxintelligence.setText(stats.get('stats').get('intelligence'))
+                self.boxstrength.setText(stats.get('stats').get('strength'))
+                self.boxpresence.setText(stats.get('stats').get('presence'))
+                self.boxwits.setText(stats.get('stats').get('wits'))
+                self.boxdexterity.setText(stats.get('stats').get('dexterity'))
+                self.boxmanipulation.setText(stats.get('stats').get('manipulation'))
+                self.boxresolve.setText(stats.get('stats').get('resolve'))
+                self.boxstamina.setText(stats.get('stats').get('stamina'))
+                self.boxcomposure.setText(stats.get('stats').get('composure'))
+                self.boxacademics.setText(stats.get('skills').get('academics'))
+                self.boxcomputer.setText(stats.get('skills').get('computer'))
+                self.boxcrafts.setText(stats.get('skills').get('crafts'))
+                self.boxinvestigation.setText(stats.get('skills').get('investigation'))
+                self.boxmedicine.setText(stats.get('skills').get('medicine'))
+                self.boxoccult.setText(stats.get('skills').get('occult'))
+                self.boxpolitics.setText(stats.get('skills').get('politics'))
+                self.boxscience.setText(stats.get('skills').get('science'))
+                self.boxathletics.setText(stats.get('skills').get('athletics'))
+                self.boxbrawl.setText(stats.get('skills').get('brawl'))
+                self.boxdrive.setText(stats.get('skills').get('drive'))
+                self.boxfirearms.setText(stats.get('skills').get('firearms'))
+                self.boxlarceny.setText(stats.get('skills').get('larceny'))
+                self.boxstealth.setText(stats.get('skills').get('stealth'))
+                self.boxsurvival.setText(stats.get('skills').get('survival'))
+                self.boxweaponry.setText(stats.get('skills').get('weaponry'))
+                self.boxanimalken.setText(stats.get('skills').get('animalken'))
+                self.boxempathy.setText(stats.get('skills').get('empathy'))
+                self.boxexpression.setText(stats.get('skills').get('expression'))
+                self.boxintimidation.setText(stats.get('skills').get('intimidation'))
+                self.boxpersuasion.setText(stats.get('skills').get('persuasion'))
+                self.boxsocialize.setText(stats.get('skills').get('socialize'))
+                self.boxstreetwise.setText(stats.get('skills').get('streetwise'))
+                self.boxsubterfuge.setText(stats.get('skills').get('subterfuge'))
                 # self.occultflag = [False, False, False]
 
-                if stats['merits'][0][1] > self.meritcount:
+                if stats.get('merits')[0][1] > self.meritcount:
                     self.oldmeritcount = self.meritcount
-                    self.meritcount = stats['merits'][0][1]
+                    self.meritcount = stats.get('merits')[0][1]
 
                     self.makesheet()
                 # print(stats['merits'][0][1])
-                for x in range(stats['merits'][0][1]):
-                    if stats['merits'][0][1] >= x:
-                        self.meritnamebox[x].setText(stats['merits'][x+1][0])
-                        self.meritlevelbox[x].setText(stats['merits'][x+1][1])
+                for x in range(stats.get('merits')[0][1]):
+                    if stats.get('merits')[0][1] >= x:
+                        self.meritnamebox[x].setText(stats.get('merits')[x+1][0])
+                        self.meritlevelbox[x].setText(stats.get('merits')[x+1][1])
 
-                if stats['aspirations'][0][1] > self.aspirationcount:
+                if stats.get('aspirations')[0][1] > self.aspirationcount:
                     self.oldaspirationcount = self.aspirationcount
-                    self.aspirationcount = stats['aspirations'][0][1]
+                    self.aspirationcount = stats.get('aspirations')[0][1]
 
                     self.makesheet()
 
-                if stats['conditions'][0][1] > self.conditioncount:
+                if stats.get('conditions')[0][1] > self.conditioncount:
                     self.oldconditioncount = self.conditioncount
-                    self.conditioncount = stats['conditions'][0][1]
+                    self.conditioncount = stats.get('conditions')[0][1]
 
                     self.makesheet()
 
-                if stats['banes'][0][1] > self.banecount:
+                if stats.get('banes')[0][1] > self.banecount:
                     self.oldbanecount = self.banecount
-                    self.banecount = stats['banes'][0][1]
+                    self.banecount = stats.get('banes')[0][1]
 
                     self.makesheet()
 
-                for x in range(stats['aspirations'][0][1]):
-                    if stats['aspirations'][0][1] >= x:
-                        self.aspirationnamebox[x].setText(stats['aspirations'][x+1][0])
-                for x in range(stats['conditions'][0][1]):
-                    if stats['conditions'][0][1] >= x:
-                        self.conditionnamebox[x].setText(stats['conditions'][x+1][0])
-                for x in range(stats['banes'][0][1]):
-                    if stats['banes'][0][1] >= x:
-                        self.banenamebox[x].setText(stats['banes'][x+1][0])
+                for x in range(stats.get('aspirations')[0][1]):
+                    if stats.get('aspirations')[0][1] >= x:
+                        self.aspirationnamebox[x].setText(stats.get('aspirations')[x+1][0])
+                for x in range(stats.get('conditions')[0][1]):
+                    if stats.get('conditions')[0][1] >= x:
+                        self.conditionnamebox[x].setText(stats.get('conditions')[x+1][0])
+                for x in range(stats.get('banes')[0][1]):
+                    if stats.get('banes')[0][1] >= x:
+                        self.banenamebox[x].setText(stats.get('banes')[x+1][0])
 
-                self.sizeval.setText(str(stats['size']))
-                self.sizebonus = stats['size'] - 5
-                self.sizebonusbox.setText(str(stats['size'] - 5))
+                self.sizeval.setText(str(stats.get('size')))
+                self.sizebonus = stats.get('size') - 5
+                self.sizebonusbox.setText(str(stats.get('size') - 5))
 
-                self.speedval.setText(str(stats['speed']))
-                self.speedbonus = stats['speed'] - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat
-                self.speedbonusbox.setText(str(stats['speed'] - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat))
+                self.speedval.setText(str(stats.get('speed')))
+                self.speedbonus = stats.get('speed') - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat
+                self.speedbonusbox.setText(str(stats.get('speed') - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat))
 
                 if self.dexteritystat <= self.witsstat:
-                    self.defenseval.setText(str(stats['defense']))
-                    self.defensebonus = stats['defense'] - self.athleticsskill - self.dexteritystat
-                    self.defensebonusbox.setText(str(stats['defense'] - self.athleticsskill - self.dexteritystat))
+                    self.defenseval.setText(str(stats.get('defense')))
+                    self.defensebonus = stats.get('defense') - self.athleticsskill - self.dexteritystat
+                    self.defensebonusbox.setText(str(stats.get('defense') - self.athleticsskill - self.dexteritystat))
                 else:
-                    self.defenseval.setText(str(stats['defense']))
-                    self.defensebonus = stats['defense'] - self.athleticsskill - self.witsstat
-                    self.defensebonusbox.setText(str(stats['defense'] - self.athleticsskill - self.witsstat))
+                    self.defenseval.setText(str(stats.get('defense')))
+                    self.defensebonus = stats.get('defense') - self.athleticsskill - self.witsstat
+                    self.defensebonusbox.setText(str(stats.get('defense') - self.athleticsskill - self.witsstat))
 
-                self.armorval.setText(str(stats['armor']))
-                self.armorbonus = stats['armor']
-                self.armorbonusbox.setText(str(stats['armor']))
+                self.armorval.setText(str(stats.get('armor')))
+                self.armorbonus = stats.get('armor')
+                self.armorbonusbox.setText(str(stats.get('armor')))
 
-                self.initiativeval.setText(str(stats['initiative']))
-                self.initiativebonus = stats['initiative'] - self.composurestat - self.dexteritystat
-                self.initiativebonusbox.setText(str(stats['initiative'] - self.composurestat - self.dexteritystat))
+                self.initiativeval.setText(str(stats.get('initiative')))
+                self.initiativebonus = stats.get('initiative') - self.composurestat - self.dexteritystat
+                self.initiativebonusbox.setText(str(stats.get('initiative') - self.composurestat - self.dexteritystat))
 
-                self.maxhealthbox.setText(str(stats['health']['maxhealth']))
-                self.maxhealthmodbox.setText(str(stats['health']['maxhealth'] - self.staminastat - int(self.sizeval.text())))
-                self.bashingdamagebox.setText(str(stats['health']['bashingdamage']))
-                self.lethaldamagebox.setText(str(stats['health']['lethaldamage']))
-                self.aggravateddamagebox.setText(str(stats['health']['aggravateddamage']))
+                self.maxhealthbox.setText(str(stats.get('health').get('maxhealth')))
+                self.maxhealthmodbox.setText(str(stats.get('health').get('maxhealth') - self.staminastat - int(self.sizeval.text())))
+                self.bashingdamagebox.setText(str(stats.get('health').get('bashingdamage')))
+                self.lethaldamagebox.setText(str(stats.get('health').get('lethaldamage')))
+                self.aggravateddamagebox.setText(str(stats.get('health').get('aggravateddamage')))
 
-                self.willpowerdotbox.setText(str(stats['willpower']['willpowerdot']))
-                self.willpowerpointbox.setText(str(stats['willpower']['willpowerpoint']))
+                self.willpowerdotbox.setText(str(stats.get('willpower').get('willpowerdot')))
+                self.willpowerpointbox.setText(str(stats.get('willpower').get('willpowerpoint')))
 
-                for x in stats['supernaturaltags']:
+                for x in stats.get('supernaturaltags'):
                     if x == 'human':
-                        self.boxvice.setText(stats['vice'])
-                        self.boxvirtue.setText(stats['virtue'])
+                        self.boxvice.setText(stats.get('vice'))
+                        self.boxvirtue.setText(stats.get('virtue'))
                     if x == 'vampire':
-                        self.boxclan.setText(stats['clan'])
-                        self.boxbloodline.setText(stats['bloodline'])
-                        self.boxcovenant.setText(stats['covenant'])
-                        self.boxmask.setText(stats['mask'])
-                        self.boxdirge.setText(stats['dirge'])
+                        self.boxclan.setText(stats.get('clan'))
+                        self.boxbloodline.setText(stats.get('bloodline'))
+                        self.boxcovenant.setText(stats.get('covenant'))
+                        self.boxmask.setText(stats.get('mask'))
+                        self.boxdirge.setText(stats.get('dirge'))
                         self.occultflag[0] = True
-                        if stats['disciplines'][0][1] > self.disciplinecount:
+                        if stats.get('disciplines')[0][1] > self.disciplinecount:
                             self.olddisciplinecount = self.disciplinecount
-                            self.disciplinecount = stats['disciplines'][0][1]
+                            self.disciplinecount = stats.get('disciplines')[0][1]
 
                             self.makesheet()
 
-                        for x in range(stats['disciplines'][0][1]):
-                            if stats['disciplines'][0][1] >= x:
-                                self.disciplinenamebox[x].setText(stats['disciplines'][x+1][0])
-                                self.disciplinelevelbox[x].setText(stats['disciplines'][x+1][1])
+                        for x in range(stats.get('disciplines')[0][1]):
+                            if stats.get('disciplines')[0][1] >= x:
+                                self.disciplinenamebox[x].setText(stats.get('disciplines')[x+1][0])
+                                self.disciplinelevelbox[x].setText(stats.get('disciplines')[x+1][1])
 
-                        self.bloodpotencybox.setText(str(stats['bloodpotency']))
+                        self.bloodpotencybox.setText(str(stats.get('bloodpotency')))
 
-                        self.maxvitaebox.setText(str(stats['vitae']['maxvitae']))
-                        self.currentvitaebox.setText(str(stats['vitae']['currentvitae']))
+                        self.maxvitaebox.setText(str(stats.get('vitae').get('maxvitae')))
+                        self.currentvitaebox.setText(str(stats.get('vitae').get('currentvitae')))
+
+                        self.humanitybox1.setText(str(stats.get('humanity').get('touchstone1')))
+                        # print(stats.get('humanity').get('humanityarray')[0] == True)
+                        if stats.get('humanity').get('humanityarray')[0]:
+                            self.humanitycheck1.setChecked(True)
+                        self.humanitybox2.setText(str(stats.get('humanity').get('touchstone2')))
+                        if stats.get('humanity').get('humanityarray')[1]:
+                            self.humanitycheck2.setChecked(True)
+                        self.humanitybox3.setText(str(stats.get('humanity').get('touchstone3')))
+                        if stats.get('humanity').get('humanityarray')[2]:
+                            self.humanitycheck3.setChecked(True)
+                        self.humanitybox4.setText(str(stats.get('humanity').get('touchstone4')))
+                        if stats.get('humanity').get('humanityarray')[3]:
+                            self.humanitycheck4.setChecked(True)
+                        self.humanitybox5.setText(str(stats.get('humanity').get('touchstone5')))
+                        if stats.get('humanity').get('humanityarray')[4]:
+                            self.humanitycheck5.setChecked(True)
+                        self.humanitybox6.setText(str(stats.get('humanity').get('touchstone6')))
+                        if stats.get('humanity').get('humanityarray')[5]:
+                            self.humanitycheck6.setChecked(True)
+                        self.humanitybox7.setText(str(stats.get('humanity').get('touchstone7')))
+                        if stats.get('humanity').get('humanityarray')[6]:
+                            self.humanitycheck7.setChecked(True)
+                        self.humanitybox8.setText(str(stats.get('humanity').get('touchstone8')))
+                        if stats.get('humanity').get('humanityarray')[7]:
+                            self.humanitycheck8.setChecked(True)
+                        self.humanitybox9.setText(str(stats.get('humanity').get('touchstone9')))
+                        if stats.get('humanity').get('humanityarray')[8]:
+                            self.humanitycheck9.setChecked(True)
+                        self.humanitybox10.setText(str(stats.get('humanity').get('touchstone10')))
+                        if stats.get('humanity').get('humanityarray')[9]:
+                            self.humanitycheck10.setChecked(True)
 
                 self.savesettings()
         else:
@@ -542,16 +710,18 @@ class MyWidget(QtWidgets.QWidget):
             self.willpowerpointbox = None
 
             if self.occultflag[0]:
-                self.layout.removeWidget(self.disciplines)
-                self.disciplines.deleteLater()
-                self.disciplines = None
+                # self.layout.removeWidget(self.disciplines)
+                # self.disciplines.deleteLater()
+                # self.disciplines = None
                 self.layout.removeWidget(self.disciplineslevel)
                 self.disciplineslevel.deleteLater()
                 self.disciplineslevel = None
 
                 self.disciplinecounter = 0
+                self.olddisciplinecount = self.disciplinecount
+                self.disciplinecount = 0
                 for x in range(self.olddisciplinecount):
-                    if self.olddisciplinecount >= x + 1:
+                    if self.olddisciplinecount >= x:
                         self.layout.removeWidget(self.disciplinenamebox[x])
                         self.disciplinenamebox[x].deleteLater()
                         self.disciplinenamebox[x] = None
@@ -560,42 +730,138 @@ class MyWidget(QtWidgets.QWidget):
                         self.disciplinelevelbox[x] = None
 
                 self.layout.removeWidget(self.bloodpotencytitle)
-                self.bloodpotencytitle.deleteLater()
-                self.bloodpotencytitle = None
+                # self.bloodpotencytitle.deleteLater()
+                # self.bloodpotencytitle = None
 
                 self.layout.removeWidget(self.bloodpotencylabel)
-                self.bloodpotencylabel.deleteLater()
-                self.bloodpotencylabel = None
+                # self.bloodpotencylabel.deleteLater()
+                # self.bloodpotencylabel = None
                 self.layout.removeWidget(self.bloodpotencybox)
                 self.bloodpotencybox.deleteLater()
                 self.bloodpotencybox = None
 
                 self.layout.removeWidget(self.vitaetitle)
-                self.vitaetitle.deleteLater()
-                self.vitaetitle = None
+                # self.vitaetitle.deleteLater()
+                # self.vitaetitle = None
 
                 self.layout.removeWidget(self.maxvitaelabel)
-                self.maxvitaelabel.deleteLater()
-                self.maxvitaelabel = None
+                # self.maxvitaelabel.deleteLater()
+                # self.maxvitaelabel = None
                 self.layout.removeWidget(self.maxvitaebox)
                 self.maxvitaebox.deleteLater()
                 self.maxvitaebox = None
                 self.layout.removeWidget(self.currentvitaelabel)
-                self.currentvitaelabel.deleteLater()
-                self.currentvitaelabel = None
+                # self.currentvitaelabel.deleteLater()
+                # self.currentvitaelabel = None
                 self.layout.removeWidget(self.currentvitaebox)
                 self.currentvitaebox.deleteLater()
                 self.currentvitaebox = None
 
+
+                self.layout.removeWidget(self.humanitytitle)
+
+                self.layout.removeWidget(self.num1)
+                self.layout.removeWidget(self.humanitybox1)
+                self.humanitybox1.deleteLater()
+                self.humanitybox1 = None
+
+                self.layout.removeWidget(self.num2)
+                self.layout.removeWidget(self.humanitybox2)
+                self.humanitybox2.deleteLater()
+                self.humanitybox2 = None
+
+                self.layout.removeWidget(self.num3)
+                self.layout.removeWidget(self.humanitybox3)
+                self.humanitybox3.deleteLater()
+                self.humanitybox3 = None
+
+                self.layout.removeWidget(self.num4)
+                self.layout.removeWidget(self.humanitybox4)
+                self.humanitybox4.deleteLater()
+                self.humanitybox4 = None
+
+                self.layout.removeWidget(self.num5)
+                self.layout.removeWidget(self.humanitybox5)
+                self.humanitybox5.deleteLater()
+                self.humanitybox5 = None
+
+                self.layout.removeWidget(self.num6)
+                self.layout.removeWidget(self.humanitybox6)
+                self.humanitybox6.deleteLater()
+                self.humanitybox6 = None
+
+                self.layout.removeWidget(self.num7)
+                self.layout.removeWidget(self.humanitybox7)
+                self.humanitybox7.deleteLater()
+                self.humanitybox7 = None
+
+                self.layout.removeWidget(self.num8)
+                self.layout.removeWidget(self.humanitybox8)
+                self.humanitybox8.deleteLater()
+                self.humanitybox8 = None
+
+                self.layout.removeWidget(self.num9)
+                self.layout.removeWidget(self.humanitybox9)
+                self.humanitybox9.deleteLater()
+                self.humanitybox9 = None
+
+                self.layout.removeWidget(self.num10)
+                self.layout.removeWidget(self.humanitybox10)
+                self.humanitybox10.deleteLater()
+                self.humanitybox10 = None
+
+                self.layout.removeWidget(self.humanitycheck1)
+                self.humanitycheck1.deleteLater()
+                self.humanitycheck1 = None
+
+                self.layout.removeWidget(self.humanitycheck2)
+                self.humanitycheck2.deleteLater()
+                self.humanitycheck2 = None
+
+                self.layout.removeWidget(self.humanitycheck3)
+                self.humanitycheck3.deleteLater()
+                self.humanitycheck3 = None
+
+                self.layout.removeWidget(self.humanitycheck4)
+                self.humanitycheck4.deleteLater()
+                self.humanitycheck4 = None
+
+                self.layout.removeWidget(self.humanitycheck5)
+                self.humanitycheck5.deleteLater()
+                self.humanitycheck5 = None
+
+                self.layout.removeWidget(self.humanitycheck6)
+                self.humanitycheck6.deleteLater()
+                self.humanitycheck6 = None
+
+                self.layout.removeWidget(self.humanitycheck7)
+                self.humanitycheck7.deleteLater()
+                self.humanitycheck7 = None
+
+                self.layout.removeWidget(self.humanitycheck8)
+                self.humanitycheck8.deleteLater()
+                self.humanitycheck8 = None
+
+                self.layout.removeWidget(self.humanitycheck9)
+                self.humanitycheck9.deleteLater()
+                self.humanitycheck9 = None
+
+                self.layout.removeWidget(self.humanitycheck10)
+                self.humanitycheck10.deleteLater()
+                self.humanitycheck10 = None
+
         #other traits
         self.cat3 = QtWidgets.QLabel(self)
+        self.allwidgets['cat3'] = True
         self.cat3.setText("Other Traits")
         self.cat3.setFont(self.titlefont)
 
         self.merits = QtWidgets.QLabel(self)
+        self.allwidgets['merits'] = True
         self.merits.setText("Merits")
         self.merits.setFont(self.subtitlefont)
         self.meritslevel = QtWidgets.QLabel(self)
+        self.allwidgets['meritslevel'] = True
         self.meritslevel.setText("Level")
 
         #initialize merits
@@ -742,6 +1008,7 @@ class MyWidget(QtWidgets.QWidget):
                     self.disciplinenamebox.append(QtWidgets.QLineEdit(self))
                     self.disciplinelevelbox.append(QtWidgets.QLineEdit(self))
 
+
             self.bloodpotencytitle = QtWidgets.QLabel(self)
             self.bloodpotencytitle.setText("Blood Potency")
             self.bloodpotencytitle.setFont(self.subtitlefont)
@@ -761,6 +1028,64 @@ class MyWidget(QtWidgets.QWidget):
             self.currentvitaelabel = QtWidgets.QLabel(self)
             self.currentvitaelabel.setText("Current Vitae: ")
             self.currentvitaebox = QtWidgets.QLineEdit(self)
+
+
+            self.humanitytitle = QtWidgets.QLabel(self)
+            self.humanitytitle.setText("Humanity")
+            self.humanitytitle.setFont(self.subtitlefont)
+
+            self.num1 = QtWidgets.QLabel(self)
+            self.num1.setText("1")
+            self.num2 = QtWidgets.QLabel(self)
+            self.num2.setText("2")
+            self.num3 = QtWidgets.QLabel(self)
+            self.num3.setText("3")
+            self.num4 = QtWidgets.QLabel(self)
+            self.num4.setText("4")
+            self.num5 = QtWidgets.QLabel(self)
+            self.num5.setText("5")
+            self.num6 = QtWidgets.QLabel(self)
+            self.num6.setText("6")
+            self.num7 = QtWidgets.QLabel(self)
+            self.num7.setText("7")
+            self.num8 = QtWidgets.QLabel(self)
+            self.num8.setText("8")
+            self.num9 = QtWidgets.QLabel(self)
+            self.num9.setText("9")
+            self.num10 = QtWidgets.QLabel(self)
+            self.num10.setText("10")
+
+            self.humanitybox1 = QtWidgets.QLineEdit(self)
+            self.humanitybox2 = QtWidgets.QLineEdit(self)
+            self.humanitybox3 = QtWidgets.QLineEdit(self)
+            self.humanitybox4 = QtWidgets.QLineEdit(self)
+            self.humanitybox5 = QtWidgets.QLineEdit(self)
+            self.humanitybox6 = QtWidgets.QLineEdit(self)
+            self.humanitybox7 = QtWidgets.QLineEdit(self)
+            self.humanitybox8 = QtWidgets.QLineEdit(self)
+            self.humanitybox9 = QtWidgets.QLineEdit(self)
+            self.humanitybox10 = QtWidgets.QLineEdit(self)
+
+            self.humanitycheck1 = QtWidgets.QCheckBox()
+            self.humanitycheck1.clicked.connect(self.humanitycheckdef(1))
+            self.humanitycheck2 = QtWidgets.QCheckBox()
+            self.humanitycheck2.clicked.connect(self.humanitycheckdef(2))
+            self.humanitycheck3 = QtWidgets.QCheckBox()
+            self.humanitycheck3.clicked.connect(self.humanitycheckdef(3))
+            self.humanitycheck4 = QtWidgets.QCheckBox()
+            self.humanitycheck4.clicked.connect(self.humanitycheckdef(4))
+            self.humanitycheck5 = QtWidgets.QCheckBox()
+            self.humanitycheck5.clicked.connect(self.humanitycheckdef(5))
+            self.humanitycheck6 = QtWidgets.QCheckBox()
+            self.humanitycheck6.clicked.connect(self.humanitycheckdef(6))
+            self.humanitycheck7 = QtWidgets.QCheckBox()
+            self.humanitycheck7.clicked.connect(self.humanitycheckdef(7))
+            self.humanitycheck8 = QtWidgets.QCheckBox()
+            self.humanitycheck8.clicked.connect(self.humanitycheckdef(8))
+            self.humanitycheck9 = QtWidgets.QCheckBox()
+            self.humanitycheck9.clicked.connect(self.humanitycheckdef(9))
+            self.humanitycheck10 = QtWidgets.QCheckBox()
+            self.humanitycheck10.clicked.connect(self.humanitycheckdef(10))
 
         #begin layout
 
@@ -1024,6 +1349,59 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.currentvitaelabel, 27 + self.oplinecounter + self.otoplinecounter, 4)
             self.layout.addWidget(self.currentvitaebox, 27 + self.oplinecounter + self.otoplinecounter, 5)
 
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.humanitytitle, 27 + self.oplinecounter + self.otoplinecounter, 5)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.num1, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.humanitybox1, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitycheck1, 27 + self.oplinecounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.num2, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.humanitybox2, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitycheck2, 27 + self.oplinecounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.num3, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.humanitybox3, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitycheck3, 27 + self.oplinecounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.num4, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.humanitybox4, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitycheck4, 27 + self.oplinecounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.num5, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.humanitybox5, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitycheck5, 27 + self.oplinecounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.num6, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.humanitybox6, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitycheck6, 27 + self.oplinecounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.num7, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.humanitybox7, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitycheck7, 27 + self.oplinecounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.num8, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.humanitybox8, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitycheck8, 27 + self.oplinecounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.num9, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.humanitybox9, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitycheck9, 27 + self.oplinecounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.num10, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.humanitybox10, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitycheck10, 27 + self.oplinecounter + self.otoplinecounter, 6)
+
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
 
@@ -1034,7 +1412,7 @@ class MyWidget(QtWidgets.QWidget):
             self.humantoggle.setChecked(True)
             self.vvflag = True
         else:
-            self.vamptoggle.setChecked(False)
+            self.humantoggle.setChecked(False)
             self.vvflag = False
             self.layout.removeWidget(self.vice)
             self.vice.deleteLater()
@@ -1099,19 +1477,139 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.removeWidget(self.disciplines)
             self.disciplines.deleteLater()
             self.disciplines = None
-            self.layout.removeWidget(self.disciplineslevel)
-            self.disciplineslevel.deleteLater()
-            self.disciplineslevel = None
+            # self.layout.removeWidget(self.disciplineslevel)
+            # self.disciplineslevel.deleteLater()
+            # self.disciplineslevel = None
 
             self.disciplinecounter = 0
-            for x in range(self.olddisciplinecount):
-                if self.olddisciplinecount >= x + 1:
-                    self.layout.removeWidget(self.disciplinenamebox[x])
-                    self.disciplinenamebox[x].deleteLater()
-                    self.disciplinenamebox[x] = None
-                    self.layout.removeWidget(self.disciplinelevelbox[x])
-                    self.disciplinelevelbox[x].deleteLater()
-                    self.disciplinelevelbox[x] = None
+            # for x in range(self.olddisciplinecount):
+            #     if self.olddisciplinecount >= x:
+            #         self.layout.removeWidget(self.disciplinenamebox[x])
+            #         self.disciplinenamebox[x].deleteLater()
+            #         self.disciplinenamebox[x] = None
+            #         self.layout.removeWidget(self.disciplinelevelbox[x])
+            #         self.disciplinelevelbox[x].deleteLater()
+            #         self.disciplinelevelbox[x] = None
+
+            self.layout.removeWidget(self.bloodpotencytitle)
+            self.bloodpotencytitle.deleteLater()
+            self.bloodpotencytitle = None
+
+            self.layout.removeWidget(self.bloodpotencylabel)
+            self.bloodpotencylabel.deleteLater()
+            self.bloodpotencylabel = None
+            self.layout.removeWidget(self.bloodpotencybox)
+            self.bloodpotencybox.deleteLater()
+            self.bloodpotencybox = None
+
+            self.layout.removeWidget(self.vitaetitle)
+            self.vitaetitle.deleteLater()
+            self.vitaetitle = None
+
+            self.layout.removeWidget(self.maxvitaelabel)
+            self.maxvitaelabel.deleteLater()
+            self.maxvitaelabel = None
+            self.layout.removeWidget(self.maxvitaebox)
+            self.maxvitaebox.deleteLater()
+            self.maxvitaebox = None
+            self.layout.removeWidget(self.currentvitaelabel)
+            self.currentvitaelabel.deleteLater()
+            self.currentvitaelabel = None
+            self.layout.removeWidget(self.currentvitaebox)
+            self.currentvitaebox.deleteLater()
+            self.currentvitaebox = None
+
+            self.layout.removeWidget(self.humanitytitle)
+
+            self.layout.removeWidget(self.num1)
+            self.layout.removeWidget(self.humanitybox1)
+            self.humanitybox1.deleteLater()
+            self.humanitybox1 = None
+
+            self.layout.removeWidget(self.num2)
+            self.layout.removeWidget(self.humanitybox2)
+            self.humanitybox2.deleteLater()
+            self.humanitybox2 = None
+
+            self.layout.removeWidget(self.num3)
+            self.layout.removeWidget(self.humanitybox3)
+            self.humanitybox3.deleteLater()
+            self.humanitybox3 = None
+
+            self.layout.removeWidget(self.num4)
+            self.layout.removeWidget(self.humanitybox4)
+            self.humanitybox4.deleteLater()
+            self.humanitybox4 = None
+
+            self.layout.removeWidget(self.num5)
+            self.layout.removeWidget(self.humanitybox5)
+            self.humanitybox5.deleteLater()
+            self.humanitybox5 = None
+
+            self.layout.removeWidget(self.num6)
+            self.layout.removeWidget(self.humanitybox6)
+            self.humanitybox6.deleteLater()
+            self.humanitybox6 = None
+
+            self.layout.removeWidget(self.num7)
+            self.layout.removeWidget(self.humanitybox7)
+            self.humanitybox7.deleteLater()
+            self.humanitybox7 = None
+
+            self.layout.removeWidget(self.num8)
+            self.layout.removeWidget(self.humanitybox8)
+            self.humanitybox8.deleteLater()
+            self.humanitybox8 = None
+
+            self.layout.removeWidget(self.num9)
+            self.layout.removeWidget(self.humanitybox9)
+            self.humanitybox9.deleteLater()
+            self.humanitybox9 = None
+
+            self.layout.removeWidget(self.num10)
+            self.layout.removeWidget(self.humanitybox10)
+            self.humanitybox10.deleteLater()
+            self.humanitybox10 = None
+
+            self.layout.removeWidget(self.humanitycheck1)
+            self.humanitycheck1.deleteLater()
+            self.humanitycheck1 = None
+
+            self.layout.removeWidget(self.humanitycheck2)
+            self.humanitycheck2.deleteLater()
+            self.humanitycheck2 = None
+
+            self.layout.removeWidget(self.humanitycheck3)
+            self.humanitycheck3.deleteLater()
+            self.humanitycheck3 = None
+
+            self.layout.removeWidget(self.humanitycheck4)
+            self.humanitycheck4.deleteLater()
+            self.humanitycheck4 = None
+
+            self.layout.removeWidget(self.humanitycheck5)
+            self.humanitycheck5.deleteLater()
+            self.humanitycheck5 = None
+
+            self.layout.removeWidget(self.humanitycheck6)
+            self.humanitycheck6.deleteLater()
+            self.humanitycheck6 = None
+
+            self.layout.removeWidget(self.humanitycheck7)
+            self.humanitycheck7.deleteLater()
+            self.humanitycheck7 = None
+
+            self.layout.removeWidget(self.humanitycheck8)
+            self.humanitycheck8.deleteLater()
+            self.humanitycheck8 = None
+
+            self.layout.removeWidget(self.humanitycheck9)
+            self.humanitycheck9.deleteLater()
+            self.humanitycheck9 = None
+
+            self.layout.removeWidget(self.humanitycheck10)
+            self.humanitycheck10.deleteLater()
+            self.humanitycheck10 = None
 
             self.oplinecounter -= 2
             self.oldmeritcount = 5
@@ -1294,6 +1792,8 @@ class MyWidget(QtWidgets.QWidget):
         self.setGeometry(300, 75, 1024, 768)
         self.setWindowTitle('Chronicles of Darkness Interactive Character Sheet')
 
+        self.allwidgets = {}
+
         self.oplinecounter = 0
 
         self.oldmeritcount = 0
@@ -1310,6 +1810,8 @@ class MyWidget(QtWidgets.QWidget):
 
         self.olddisciplinecount = 0
         self.disciplinecount = 5
+
+        self.wasvamp = False
 
         self.sizebonus = 0
 
@@ -1348,6 +1850,7 @@ class MyWidget(QtWidgets.QWidget):
         self.title.show()
 
         self.settings = QtWidgets.QPushButton('')
+        self.allwidgets['settings'] = True
         self.settings.setIcon(QtGui.QIcon('gear.png'))
         self.settings.clicked.connect(self.settingsdef)
 
@@ -1364,8 +1867,10 @@ class MyWidget(QtWidgets.QWidget):
         self.subtitlefont.setPointSize(12)  # Set font size
 
         self.save = QtWidgets.QPushButton('Save')
+        self.allwidgets['save'] = True
         self.save.clicked.connect(self.savedef)
         self.load = QtWidgets.QPushButton('Load')
+        self.allwidgets['load'] = True
         self.load.clicked.connect(self.loaddef)
 
         # self.title = QtWidgets.QLabel(self)
@@ -1373,11 +1878,15 @@ class MyWidget(QtWidgets.QWidget):
         # self.title.setFont(self.titlefont)
 
         self.saveloclabel = QtWidgets.QLabel(self)
+        self.allwidgets['saveloclabel'] = True
         self.saveloclabel.setText("Save Location: ")
         self.saveloc = QtWidgets.QLineEdit(self)
+        self.allwidgets['saveloc'] = True
         self.loadloclabel = QtWidgets.QLabel(self)
+        self.allwidgets['loadloclabel'] = True
         self.loadloclabel.setText("Load Location: ")
         self.loadloc = QtWidgets.QLineEdit(self)
+        self.allwidgets['loadloc'] = True
 
         self.layout = QtWidgets.QGridLayout(self)
         self.layout.addWidget(self.saveloclabel, 0, 0)
@@ -1391,146 +1900,261 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.settings, 0, 6)
 
         self.name = QtWidgets.QLabel(self)
+        self.allwidgets['name'] = True
         self.name.setText("Name: ")
         self.boxname = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxname'] = True
         self.player = QtWidgets.QLabel(self)
+        self.allwidgets['player'] = True
         self.player.setText("Player: ")
         self.boxplayer = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxplayer'] = True
         self.chronicle = QtWidgets.QLabel(self)
+        self.allwidgets['chronicle'] = True
         self.chronicle.setText("Chronicle: ")
         self.boxchronicle = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxchronicle'] = True
 
         self.concept = QtWidgets.QLabel(self)
+        self.allwidgets['concept'] = True
         self.boxconcept = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxconcept'] = True
         self.concept.setText("Concept: ")
 
         self.cat1 = QtWidgets.QLabel(self)
+        self.allwidgets['cat1'] = True
         self.cat1.setText("Attributes")
         self.cat1.setFont(self.titlefont)
 
         self.intelligence = QtWidgets.QLabel(self)
+        self.allwidgets['intelligence'] = True
         self.intelligence.setText("Intelligence: ")
         self.boxintelligence = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxintelligence'] = True
+        self.boxintelligence.setText("1")
         self.strength = QtWidgets.QLabel(self)
+        self.allwidgets['strength'] = True
         self.strength.setText("Strength: ")
         self.boxstrength = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxstrength'] = True
+        self.boxstrength.setText("1")
         self.presence = QtWidgets.QLabel(self)
+        self.allwidgets['presence'] = True
         self.presence.setText("Presence: ")
         self.boxpresence = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxpresence'] = True
+        self.boxpresence.setText("1")
         self.wits = QtWidgets.QLabel(self)
+        self.allwidgets['wits'] = True
         self.wits.setText("Wits: ")
         self.dexterity = QtWidgets.QLabel(self)
+        self.allwidgets['dexterity'] = True
         self.boxwits = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxwits'] = True
+        self.boxwits.setText("1")
         self.dexterity.setText("Dexterity: ")
         self.boxdexterity = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxdexterity'] = True
+        self.boxdexterity.setText("1")
         self.manipulation = QtWidgets.QLabel(self)
+        self.allwidgets['manipulation'] = True
         self.manipulation.setText("Manipulation: ")
         self.boxmanipulation = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxmanipulation'] = True
+        self.boxmanipulation.setText("1")
         self.resolve = QtWidgets.QLabel(self)
+        self.allwidgets['resolve'] = True
         self.resolve.setText("Resolve: ")
         self.boxresolve = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxresolve'] = True
+        self.boxresolve.setText("1")
         self.stamina = QtWidgets.QLabel(self)
+        self.allwidgets['stamina'] = True
         self.stamina.setText("Stamina: ")
         self.boxstamina = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxstamina'] = True
+        self.boxstamina.setText("1")
         self.composure = QtWidgets.QLabel(self)
+        self.allwidgets['composure'] = True
         self.composure.setText("Composure: ")
         self.boxcomposure = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxcomposure'] = True
+        self.boxcomposure.setText("1")
 
         self.cat2 = QtWidgets.QLabel(self)
+        self.allwidgets['cat2'] = True
         self.cat2.setText("Skills")
         self.cat2.setFont(self.titlefont)
         self.subcat1 = QtWidgets.QLabel(self)
+        self.allwidgets['subcat1'] = True
         self.subcat1.setText("Mental")
         self.subcat1.setFont(self.subtitlefont)
         self.desc1 = QtWidgets.QLabel(self)
+        self.allwidgets['desc1'] = True
         self.desc1.setText("(-3 unskilled)")
 
         self.academics = QtWidgets.QLabel(self)
+        self.allwidgets['academics'] = True
         self.academics.setText("Academics: ")
         self.boxacademics = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxacademics'] = True
+        self.boxacademics.setText("0")
         self.computer = QtWidgets.QLabel(self)
+        self.allwidgets['computer'] = True
         self.computer.setText("Computer: ")
         self.boxcomputer = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxcomputer'] = True
+        self.boxcomputer.setText("0")
         self.crafts = QtWidgets.QLabel(self)
+        self.allwidgets['crafts'] = True
         self.crafts.setText("Crafts: ")
         self.boxcrafts = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxcrafts'] = True
+        self.boxcrafts.setText("0")
         self.investigation = QtWidgets.QLabel(self)
+        self.allwidgets['investigation'] = True
         self.investigation.setText("Investigation: ")
         self.boxinvestigation = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxinvestigation'] = True
+        self.boxinvestigation.setText("0")
         self.medicine = QtWidgets.QLabel(self)
+        self.allwidgets['medicine'] = True
         self.medicine.setText("Medicine: ")
         self.boxmedicine = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxmedicine'] = True
+        self.boxmedicine.setText("0")
         self.occult = QtWidgets.QLabel(self)
+        self.allwidgets['occult'] = True
         self.occult.setText("Occult: ")
         self.boxoccult = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxoccult'] = True
+        self.boxoccult.setText("0")
         self.politics = QtWidgets.QLabel(self)
+        self.allwidgets['politics'] = True
         self.politics.setText("Politics: ")
         self.boxpolitics = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxpolitics'] = True
+        self.boxpolitics.setText("0")
         self.science = QtWidgets.QLabel(self)
+        self.allwidgets['science'] = True
         self.science.setText("Science: ")
         self.boxscience = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxscience'] = True
+        self.boxscience.setText("0")
 
         self.subcat2 = QtWidgets.QLabel(self)
+        self.allwidgets['subcat2'] = True
         self.subcat2.setText("Physical")
         self.subcat2.setFont(self.subtitlefont)
         self.desc2 = QtWidgets.QLabel(self)
+        self.allwidgets['desc2'] = True
         self.desc2.setText("(-1 unskilled)")
 
         self.athletics = QtWidgets.QLabel(self)
+        self.allwidgets['athletics'] = True
         self.athletics.setText("Athletics: ")
         self.boxathletics = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxathletics'] = True
+        self.boxathletics.setText("0")
         self.brawl = QtWidgets.QLabel(self)
+        self.allwidgets['brawl'] = True
         self.brawl.setText("Brawl: ")
         self.boxbrawl = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxbrawl'] = True
+        self.boxbrawl.setText("0")
         self.drive = QtWidgets.QLabel(self)
+        self.allwidgets['drive'] = True
         self.drive.setText("Drive: ")
         self.boxdrive = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxdrive'] = True
+        self.boxdrive.setText("0")
         self.firearms = QtWidgets.QLabel(self)
+        self.allwidgets['firearms'] = True
         self.firearms.setText("Firearms: ")
         self.boxfirearms = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxfirearms'] = True
+        self.boxfirearms.setText("0")
         self.larceny = QtWidgets.QLabel(self)
+        self.allwidgets['larceny'] = True
         self.larceny.setText("Larceny: ")
         self.boxlarceny = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxlarceny'] = True
+        self.boxlarceny.setText("0")
         self.stealth = QtWidgets.QLabel(self)
+        self.allwidgets['stealth'] = True
         self.stealth.setText("Stealth: ")
         self.boxstealth = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxstealth'] = True
+        self.boxstealth.setText("0")
         self.survival = QtWidgets.QLabel(self)
+        self.allwidgets['survival'] = True
         self.survival.setText("Survival: ")
         self.boxsurvival = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxsurvival'] = True
+        self.boxsurvival.setText("0")
         self.weaponry = QtWidgets.QLabel(self)
+        self.allwidgets['weaponry'] = True
         self.weaponry.setText("Weaponry: ")
         self.boxweaponry = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxweaponry'] = True
+        self.boxweaponry.setText("0")
 
         self.subcat3 = QtWidgets.QLabel(self)
+        self.allwidgets['subcat3'] = True
         self.subcat3.setText("Social")
         self.subcat3.setFont(self.subtitlefont)
         self.desc3 = QtWidgets.QLabel(self)
+        self.allwidgets['desc3'] = True
         self.desc3.setText("(-1 unskilled)")
 
         self.animalken = QtWidgets.QLabel(self)
+        self.allwidgets['animalken'] = True
         self.animalken.setText("Animal Ken: ")
         self.boxanimalken = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxanimalken'] = True
+        self.boxanimalken.setText("0")
         self.empathy = QtWidgets.QLabel(self)
+        self.allwidgets['empathy'] = True
         self.empathy.setText("Empathy: ")
         self.boxempathy = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxempathy'] = True
+        self.boxempathy.setText("0")
         self.expression = QtWidgets.QLabel(self)
+        self.allwidgets['expression'] = True
         self.expression.setText("Expression: ")
         self.boxexpression = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxexpression'] = True
+        self.boxexpression.setText("0")
         self.intimidation = QtWidgets.QLabel(self)
+        self.allwidgets['intimidation'] = True
         self.intimidation.setText("Intimidation: ")
         self.boxintimidation = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxintimidation'] = True
+        self.boxintimidation.setText("0")
         self.persuasion = QtWidgets.QLabel(self)
+        self.allwidgets['persuasion'] = True
         self.persuasion.setText("Persuasion: ")
         self.boxpersuasion = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxpersuasion'] = True
+        self.boxpersuasion.setText("0")
         self.socialize = QtWidgets.QLabel(self)
+        self.allwidgets['socialize'] = True
         self.socialize.setText("Socialize: ")
         self.boxsocialize = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxsocialize'] = True
+        self.boxsocialize.setText("0")
         self.streetwise = QtWidgets.QLabel(self)
+        self.allwidgets['streetwise'] = True
         self.streetwise.setText("Streetwise: ")
         self.boxstreetwise = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxstreetwise'] = True
+        self.boxstreetwise.setText("0")
         self.subterfuge = QtWidgets.QLabel(self)
+        self.allwidgets['subterfuge'] = True
         self.subterfuge.setText("Subterfuge: ")
         self.boxsubterfuge = QtWidgets.QLineEdit(self)
+        self.allwidgets['boxsubterfuge'] = True
+        self.boxsubterfuge.setText("0")
 
         self.initsettings()
 

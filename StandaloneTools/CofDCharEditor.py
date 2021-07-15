@@ -13,8 +13,6 @@ class MyWidget(QtWidgets.QWidget):
             f.write(str(self.aspirationcount)+'# Aspiration Slots Displayed Count\n')
             f.write(str(self.conditioncount)+'# Condition Slots Displayed Count\n')
             f.write(str(self.banecount)+'# Bane Slots Displayed Count\n')
-            if self.occultflag[0]:
-                f.write(str(self.disciplinecount)+'# Discipline Slots Displayed Count\n')
             # print(self.vvflag)
             if self.vvflag:
                 f.write('True# Has a Vice and Virtue\n')
@@ -25,6 +23,8 @@ class MyWidget(QtWidgets.QWidget):
                 f.write('True# Is Vampire\n')
             else:
                 f.write('False# Is Vampire\n')
+            if self.occultflag[0]:
+                f.write(str(self.disciplinecount)+'# Discipline Slots Displayed Count\n')
 
     def savedef(self):
         if path.exists(self.saveloc.text()+'.json'):
@@ -102,6 +102,7 @@ class MyWidget(QtWidgets.QWidget):
             else:
                 stats['bloodpotency'] = 1
 
+            stats['vitae'] = {}
             if self.maxvitaebox.text() != "":
                 stats['vitae']['maxvitae'] = int(self.maxvitaebox.text())
             else:
@@ -1266,13 +1267,9 @@ class MyWidget(QtWidgets.QWidget):
                         self.banecount = int(splitline[0])
                     if i == 4:
                         splitline = line.split('#')
-                        self.olddisciplinecount = self.disciplinecount
-                        self.disciplinecount = int(splitline[0])
-                    if i == 5:
-                        splitline = line.split('#')
                         if splitline[0] == 'True':
                             self.vvflag = True
-                    if i == 6:
+                    if i == 5:
                         # print('test')
                         splitline = line.split('#')
                         if splitline[0] == 'True':
@@ -1282,6 +1279,11 @@ class MyWidget(QtWidgets.QWidget):
                             self.oldaspirationcount = self.aspirationcount
                             self.oldconditioncount = self.conditioncount
                             self.oldbanecount = self.banecount
+                    if i == 6:
+                        if self.occultflag[0] == True:
+                            splitline = line.split('#')
+                            self.olddisciplinecount = self.disciplinecount
+                            self.disciplinecount = int(splitline[0])
 
         self.resize(1024, 768)
         self.makesheet()
@@ -1506,28 +1508,28 @@ class MyWidget(QtWidgets.QWidget):
         self.desc3.setText("(-1 unskilled)")
 
         self.animalken = QtWidgets.QLabel(self)
-        self.animalken.setText("Athletics: ")
+        self.animalken.setText("Animal Ken: ")
         self.boxanimalken = QtWidgets.QLineEdit(self)
         self.empathy = QtWidgets.QLabel(self)
-        self.empathy.setText("Brawl: ")
+        self.empathy.setText("Empathy: ")
         self.boxempathy = QtWidgets.QLineEdit(self)
         self.expression = QtWidgets.QLabel(self)
-        self.expression.setText("Drive: ")
+        self.expression.setText("Expression: ")
         self.boxexpression = QtWidgets.QLineEdit(self)
         self.intimidation = QtWidgets.QLabel(self)
-        self.intimidation.setText("Firearms: ")
+        self.intimidation.setText("Intimidation: ")
         self.boxintimidation = QtWidgets.QLineEdit(self)
         self.persuasion = QtWidgets.QLabel(self)
-        self.persuasion.setText("Larceny: ")
+        self.persuasion.setText("Persuasion: ")
         self.boxpersuasion = QtWidgets.QLineEdit(self)
         self.socialize = QtWidgets.QLabel(self)
-        self.socialize.setText("Stealth: ")
+        self.socialize.setText("Socialize: ")
         self.boxsocialize = QtWidgets.QLineEdit(self)
         self.streetwise = QtWidgets.QLabel(self)
-        self.streetwise.setText("Survival: ")
+        self.streetwise.setText("Streetwise: ")
         self.boxstreetwise = QtWidgets.QLineEdit(self)
         self.subterfuge = QtWidgets.QLabel(self)
-        self.subterfuge.setText("Weaponry: ")
+        self.subterfuge.setText("Subterfuge: ")
         self.boxsubterfuge = QtWidgets.QLineEdit(self)
 
         self.initsettings()

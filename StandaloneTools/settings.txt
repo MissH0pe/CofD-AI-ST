@@ -2,6 +2,6 @@
 5# Aspiration Slots Displayed Count
 5# Condition Slots Displayed Count
 5# Bane Slots Displayed Count
-5# Discipline Slots Displayed Count
 True# Has a Vice and Virtue
 True# Is Vampire
+5# Discipline Slots Displayed Count

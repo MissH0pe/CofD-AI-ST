@@ -13,6 +13,12 @@ class MyWidget(QtWidgets.QWidget):
             f.write(str(self.aspirationcount)+'# Aspiration Slots Displayed Count\n')
             f.write(str(self.conditioncount)+'# Condition Slots Displayed Count\n')
             f.write(str(self.banecount)+'# Bane Slots Displayed Count\n')
+            # print(self.vvflag)
+            if self.vvflag:
+                f.write('True# Has a Vice and Virtue\n')
+            else:
+                f.write('False# Has a Vice and Virtue\n')
+
             if self.occultflag[0]:
                 f.write('True# Is Vampire\n')
             else:
@@ -26,7 +32,12 @@ class MyWidget(QtWidgets.QWidget):
                 json.dump(backup, f)
 
         stats = {'name': self.boxname.text(), 'supernaturaltags': [], 'player': self.boxplayer.text(), 'chronicle': self.boxchronicle.text(), 'concept': self.boxconcept.text(), 'stats': {'intelligence': self.boxintelligence.text(), 'strength': self.boxstrength.text(), 'presence': self.boxpresence.text(), 'wits': self.boxwits.text(), 'dexterity': self.boxdexterity.text(), 'manipulation': self.boxmanipulation.text(), 'resolve': self.boxresolve.text(), 'stamina': self.boxstamina.text(), 'composure': self.boxcomposure.text()}, 'skills': {'academics': self.boxacademics.text(), 'computer': self.boxcomputer.text(), 'crafts': self.boxcrafts.text(), 'investigation': self.boxinvestigation.text(), 'medicine': self.boxmedicine.text(), 'occult': self.boxoccult.text(), 'politics': self.boxpolitics.text(), 'science': self.boxscience.text(), 'athletics': self.boxathletics.text(), 'brawl': self.boxbrawl.text(), 'drive': self.boxdrive.text(), 'firearms': self.boxfirearms.text(), 'larceny': self.boxlarceny.text(), 'stealth': self.boxstealth.text(), 'survival': self.boxsurvival.text(), 'weaponry': self.boxweaponry.text(), 'animalken': self.boxanimalken.text(), 'empathy': self.boxempathy.text(), 'expression': self.boxexpression.text(), 'intimidation': self.boxintimidation.text(), 'persuasion': self.boxpersuasion.text(), 'socialize': self.boxsocialize.text(), 'streetwise': self.boxstreetwise.text(), 'subterfuge': self.boxsubterfuge.text()}}
-        # print(self.occultflag[0])
+
+        if self.vvflag == True:
+            stats['supernaturaltags'].append('human')
+            stats['vice'] = self.boxvice.text()
+            stats['virtue'] = self.boxvirtue.text()
+
         if self.occultflag[0] == True:
             stats['supernaturaltags'].append('vampire')
             stats['mask'] = self.boxmask.text()
@@ -188,6 +199,9 @@ class MyWidget(QtWidgets.QWidget):
                 self.initiativebonus = stats['initiative'] - self.composurestat - self.dexteritystat
 
                 for x in stats['supernaturaltags']:
+                    if x == 'human':
+                        self.boxvice.setText(stats['vice'])
+                        self.boxvirtue.setText(stats['virtue'])
                     if x == 'vampire':
                         self.boxclan.setText(stats['clan'])
                         self.boxbloodline.setText(stats['bloodline'])
@@ -480,6 +494,18 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.concept, 3, 0)
         self.layout.addWidget(self.boxconcept, 3, 1)
 
+        if self.vvflag and self.runonce1:
+            self.virtue = QtWidgets.QLabel(self)
+            self.virtue.setText("Virtue: ")
+            self.boxvirtue = QtWidgets.QLineEdit(self)
+            self.vice = QtWidgets.QLabel(self)
+            self.vice.setText("Vice: ")
+            self.boxvice = QtWidgets.QLineEdit(self)
+            self.layout.addWidget(self.vice, 3, 2)
+            self.layout.addWidget(self.boxvice, 3, 3)
+            self.layout.addWidget(self.virtue, 3, 4)
+            self.layout.addWidget(self.boxvirtue, 3, 5)
+
         if self.occultflag[0] and self.runonce1:
             self.clan = QtWidgets.QLabel(self)
             self.clan.setText("Clan: ")
@@ -669,6 +695,31 @@ class MyWidget(QtWidgets.QWidget):
 
         self.makesheetflag = True
 
+    def humantoggledef(self):
+        if self.humantoggle.isChecked():
+            self.humantoggle.setChecked(True)
+            self.vvflag = True
+        else:
+            self.vamptoggle.setChecked(False)
+            self.vvflag = False
+            self.layout.removeWidget(self.vice)
+            self.vice.deleteLater()
+            self.vice = None
+            self.layout.removeWidget(self.boxvice)
+            self.boxvice.deleteLater()
+            self.boxvice = None
+            self.layout.removeWidget(self.virtue)
+            self.virtue.deleteLater()
+            self.virtue = None
+            self.layout.removeWidget(self.boxvirtue)
+            self.boxvirtue.deleteLater()
+            self.boxvirtue = None
+            self.runonce1 = True
+
+        self.savesettings()
+
+        self.makesheet()
+
     def vamptoggledef(self):
         if self.vamptoggle.isChecked():
             self.vamptoggle.setChecked(True)
@@ -677,17 +728,6 @@ class MyWidget(QtWidgets.QWidget):
             self.oldaspirationcount = self.aspirationcount
             self.oldconditioncount = self.conditioncount
             self.oldbanecount = self.banecount
-
-            # self.layout.removeWidget(self.cat3)
-            # self.cat3.deleteLater()
-            # self.cat3 = None
-            #
-            # self.layout.removeWidget(self.merits)
-            # self.merits.deleteLater()
-            # self.merits = None
-            # self.layout.removeWidget(self.meritslevel)
-            # self.meritslevel.deleteLater()
-            # self.meritslevel = None
         else:
             self.vamptoggle.setChecked(False)
             self.occultflag[0] = False
@@ -772,6 +812,11 @@ class MyWidget(QtWidgets.QWidget):
         self.settingstitle.setText("Settings")
         self.settingstitle.setFont(self.titlefont)
 
+        self.humanlabel = QtWidgets.QLabel()
+        self.humanlabel.setText("Character has a Vice and Virtue: ")
+        self.humantoggle = QtWidgets.QCheckBox()
+        self.humantoggle.clicked.connect(self.humantoggledef)
+
         self.vamplabel = QtWidgets.QLabel()
         self.vamplabel.setText("Character is Vampire: ")
         self.vamptoggle = QtWidgets.QCheckBox()
@@ -805,7 +850,7 @@ class MyWidget(QtWidgets.QWidget):
         self.baneslotsupdate = QtWidgets.QPushButton('Update Bane Slots')
         self.baneslotsupdate.clicked.connect(self.banedef)
 
-        self.settingslayout.addWidget(self.settingstitle, 0, 1, 0, 5)
+        self.settingslayout.addWidget(self.settingstitle, 0, 2, 0, 5)
 
         self.settingslayout.addWidget(self.meritslotslabel, 2, 0)
         self.settingslayout.addWidget(self.meritslotsbox, 2, 1)
@@ -821,8 +866,11 @@ class MyWidget(QtWidgets.QWidget):
         self.settingslayout.addWidget(self.baneslotsbox, 3, 4)
         self.settingslayout.addWidget(self.baneslotsupdate, 3, 5)
 
-        self.settingslayout.addWidget(self.vamplabel, 5, 2)
-        self.settingslayout.addWidget(self.vamptoggle, 5, 3)
+        self.settingslayout.addWidget(self.humanlabel, 5, 2)
+        self.settingslayout.addWidget(self.humantoggle, 5, 3)
+
+        self.settingslayout.addWidget(self.vamplabel, 6, 2)
+        self.settingslayout.addWidget(self.vamptoggle, 6, 3)
         self.setLayout(self.layout)
 
     def initsettings(self):
@@ -847,6 +895,10 @@ class MyWidget(QtWidgets.QWidget):
                         self.oldbanecount = self.banecount
                         self.banecount = int(splitline[0])
                     if i == 4:
+                        splitline = line.split('#')
+                        if splitline[0] == 'True':
+                            self.vvflag = True
+                    if i == 5:
                         # print('test')
                         splitline = line.split('#')
                         if splitline[0] == 'True':
@@ -904,6 +956,8 @@ class MyWidget(QtWidgets.QWidget):
 
         self.runonce1 = True
         self.makesheetflag = False
+
+        self.vvflag = False
 
         self.occultflag = [False, False, False]
 

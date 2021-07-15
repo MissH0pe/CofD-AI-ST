@@ -49,7 +49,7 @@ chartable[firstname+' '+surname] = {'name': firstname + ' ' + surname,
 'initiativemod': 0,
 'defense': 0,
 'armor': 0,
-'willpower': {'permanentwillpower': 0, 'temporarywillpower': 0},
+'willpower': {'willpowerdot': 0, 'willpowerpoint': 0},
 
 'skills':{'academics': 0,
 'animalken': 0,

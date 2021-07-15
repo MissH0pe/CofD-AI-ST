@@ -52,6 +52,16 @@ class MyWidget(QtWidgets.QWidget):
         else:
             stats['health']['aggravateddamage'] = 0
 
+        stats['willpower'] = {}
+        if self.willpowerdotbox.text() != "":
+            stats['willpower']['willpowerdot'] = int(self.willpowerdotbox.text())
+        else:
+            stats['willpower']['willpowerdot'] = 2
+        if self.willpowerpointbox.text() != "":
+            stats['willpower']['willpowerpoint'] = int(self.willpowerpointbox.text())
+        else:
+            stats['willpower']['willpowerpoint'] = 2
+
         self.maxhealthmodlabel = QtWidgets.QLabel(self)
         self.maxhealthmodlabel.setText("Max Health Mod: ")
         self.maxhealthmodbox = QtWidgets.QLineEdit(self)
@@ -87,6 +97,20 @@ class MyWidget(QtWidgets.QWidget):
             stats['clan'] = self.boxclan.text()
             stats['bloodline'] = self.boxbloodline.text()
             stats['covenant'] = self.boxcovenant.text()
+            if self.bloodpotencybox.text() != "":
+                stats['bloodpotency'] = int(self.bloodpotencybox.text())
+            else:
+                stats['bloodpotency'] = 1
+
+            if self.maxvitaebox.text() != "":
+                stats['vitae']['maxvitae'] = int(self.maxvitaebox.text())
+            else:
+                stats['vitae']['maxvitae'] = 10
+            if self.currentvitaebox.text() != "":
+                stats['vitae']['currentvitae'] = int(self.currentvitaebox.text())
+            else:
+                stats['vitae']['currentvitae'] = 0
+
         self.filledmerits = 0
         stats['merits'] = []
         stats['merits'].append(['filledmerits', 0])
@@ -233,22 +257,37 @@ class MyWidget(QtWidgets.QWidget):
 
                 self.sizeval.setText(str(stats['size']))
                 self.sizebonus = stats['size'] - 5
+                self.sizebonusbox.setText(str(stats['size'] - 5))
 
                 self.speedval.setText(str(stats['speed']))
                 self.speedbonus = stats['speed'] - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat
+                self.speedbonusbox.setText(str(stats['speed'] - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat))
 
                 if self.dexteritystat <= self.witsstat:
                     self.defenseval.setText(str(stats['defense']))
                     self.defensebonus = stats['defense'] - self.athleticsskill - self.dexteritystat
+                    self.defensebonusbox.setText(str(stats['defense'] - self.athleticsskill - self.dexteritystat))
                 else:
                     self.defenseval.setText(str(stats['defense']))
                     self.defensebonus = stats['defense'] - self.athleticsskill - self.witsstat
+                    self.defensebonusbox.setText(str(stats['defense'] - self.athleticsskill - self.witsstat))
 
                 self.armorval.setText(str(stats['armor']))
                 self.armorbonus = stats['armor']
+                self.armorbonusbox.setText(str(stats['armor']))
 
                 self.initiativeval.setText(str(stats['initiative']))
                 self.initiativebonus = stats['initiative'] - self.composurestat - self.dexteritystat
+                self.initiativebonusbox.setText(str(stats['initiative'] - self.composurestat - self.dexteritystat))
+
+                self.maxhealthbox.setText(str(stats['health']['maxhealth']))
+                self.maxhealthmodbox.setText(str(stats['health']['maxhealth'] - self.staminastat - int(self.sizeval.text())))
+                self.bashingdamagebox.setText(str(stats['health']['bashingdamage']))
+                self.lethaldamagebox.setText(str(stats['health']['lethaldamage']))
+                self.aggravateddamagebox.setText(str(stats['health']['aggravateddamage']))
+
+                self.willpowerdotbox.setText(str(stats['willpower']['willpowerdot']))
+                self.willpowerpointbox.setText(str(stats['willpower']['willpowerpoint']))
 
                 for x in stats['supernaturaltags']:
                     if x == 'human':
@@ -271,6 +310,11 @@ class MyWidget(QtWidgets.QWidget):
                             if stats['disciplines'][0][1] >= x:
                                 self.disciplinenamebox[x].setText(stats['disciplines'][x+1][0])
                                 self.disciplinelevelbox[x].setText(stats['disciplines'][x+1][1])
+
+                        self.bloodpotencybox.setText(str(stats['bloodpotency']))
+
+                        self.maxvitaebox.setText(str(stats['vitae']['maxvitae']))
+                        self.currentvitaebox.setText(str(stats['vitae']['currentvitae']))
 
                 self.savesettings()
         else:
@@ -479,6 +523,23 @@ class MyWidget(QtWidgets.QWidget):
             self.aggravateddamagebox.deleteLater()
             self.aggravateddamagebox = None
 
+            self.layout.removeWidget(self.willpowerlabel)
+            self.willpowerlabel.deleteLater()
+            self.willpowerlabel = None
+
+            self.layout.removeWidget(self.willpowerdotlabel)
+            self.willpowerdotlabel.deleteLater()
+            self.willpowerdotlabel = None
+            self.layout.removeWidget(self.willpowerdotbox)
+            self.willpowerdotbox.deleteLater()
+            self.willpowerdotbox = None
+            self.layout.removeWidget(self.willpowerpointlabel)
+            self.willpowerpointlabel.deleteLater()
+            self.willpowerpointlabel = None
+            self.layout.removeWidget(self.willpowerpointbox)
+            self.willpowerpointbox.deleteLater()
+            self.willpowerpointbox = None
+
             if self.occultflag[0]:
                 self.layout.removeWidget(self.disciplines)
                 self.disciplines.deleteLater()
@@ -496,6 +557,34 @@ class MyWidget(QtWidgets.QWidget):
                         self.layout.removeWidget(self.disciplinelevelbox[x])
                         self.disciplinelevelbox[x].deleteLater()
                         self.disciplinelevelbox[x] = None
+
+                self.layout.removeWidget(self.bloodpotencytitle)
+                self.bloodpotencytitle.deleteLater()
+                self.bloodpotencytitle = None
+
+                self.layout.removeWidget(self.bloodpotencylabel)
+                self.bloodpotencylabel.deleteLater()
+                self.bloodpotencylabel = None
+                self.layout.removeWidget(self.bloodpotencybox)
+                self.bloodpotencybox.deleteLater()
+                self.bloodpotencybox = None
+
+                self.layout.removeWidget(self.vitaetitle)
+                self.vitaetitle.deleteLater()
+                self.vitaetitle = None
+
+                self.layout.removeWidget(self.maxvitaelabel)
+                self.maxvitaelabel.deleteLater()
+                self.maxvitaelabel = None
+                self.layout.removeWidget(self.maxvitaebox)
+                self.maxvitaebox.deleteLater()
+                self.maxvitaebox = None
+                self.layout.removeWidget(self.currentvitaelabel)
+                self.currentvitaelabel.deleteLater()
+                self.currentvitaelabel = None
+                self.layout.removeWidget(self.currentvitaebox)
+                self.currentvitaebox.deleteLater()
+                self.currentvitaebox = None
 
         #other traits
         self.cat3 = QtWidgets.QLabel(self)
@@ -624,6 +713,19 @@ class MyWidget(QtWidgets.QWidget):
         self.aggravateddamagelabel.setText("Aggravated Damage: ")
         self.aggravateddamagebox = QtWidgets.QLineEdit(self)
 
+        self.willpowerlabel = QtWidgets.QLabel(self)
+        self.willpowerlabel.setText("Willpower")
+        self.willpowerlabel.setFont(self.subtitlefont)
+
+        self.willpowerdotlabel = QtWidgets.QLabel(self)
+        self.willpowerdotlabel.setText("Willpower Dot: ")
+        self.willpowerdotbox = QtWidgets.QLineEdit(self)
+        self.willpowerdotbox.setText(str(self.composurestat + self.resolvestat))
+
+        self.willpowerpointlabel = QtWidgets.QLabel(self)
+        self.willpowerpointlabel.setText("Willpower Point: ")
+        self.willpowerpointbox = QtWidgets.QLineEdit(self)
+
         if self.occultflag[0]:
             self.disciplines = QtWidgets.QLabel(self)
             self.disciplines.setText("Disciplines")
@@ -638,6 +740,26 @@ class MyWidget(QtWidgets.QWidget):
                 if self.disciplinecount >= x:
                     self.disciplinenamebox.append(QtWidgets.QLineEdit(self))
                     self.disciplinelevelbox.append(QtWidgets.QLineEdit(self))
+
+            self.bloodpotencytitle = QtWidgets.QLabel(self)
+            self.bloodpotencytitle.setText("Blood Potency")
+            self.bloodpotencytitle.setFont(self.subtitlefont)
+
+            self.bloodpotencylabel = QtWidgets.QLabel(self)
+            self.bloodpotencylabel.setText("Blood Potency: ")
+            self.bloodpotencybox = QtWidgets.QLineEdit(self)
+
+            self.vitaetitle = QtWidgets.QLabel(self)
+            self.vitaetitle.setText("Vitae")
+            self.vitaetitle.setFont(self.subtitlefont)
+
+            self.maxvitaelabel = QtWidgets.QLabel(self)
+            self.maxvitaelabel.setText("Max Vitae: ")
+            self.maxvitaebox = QtWidgets.QLineEdit(self)
+
+            self.currentvitaelabel = QtWidgets.QLabel(self)
+            self.currentvitaelabel.setText("Current Vitae: ")
+            self.currentvitaebox = QtWidgets.QLineEdit(self)
 
         #begin layout
 
@@ -865,6 +987,13 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.aggravateddamagelabel, 24 + self.oplinecounter, 4)
         self.layout.addWidget(self.aggravateddamagebox, 24 + self.oplinecounter, 5)
 
+        self.layout.addWidget(self.willpowerlabel, 25 + self.oplinecounter, 5)
+
+        self.layout.addWidget(self.willpowerdotlabel, 26 + self.oplinecounter, 4)
+        self.layout.addWidget(self.willpowerdotbox, 26 + self.oplinecounter, 5)
+        self.layout.addWidget(self.willpowerpointlabel, 27 + self.oplinecounter, 4)
+        self.layout.addWidget(self.willpowerpointbox, 27 + self.oplinecounter, 5)
+
         if self.occultflag[0]:
             self.layout.addWidget(self.disciplines, 12 + self.oplinecounter + self.mabc, 2)
             self.layout.addWidget(self.disciplineslevel, 12 + self.oplinecounter + self.mabc, 3)
@@ -876,6 +1005,23 @@ class MyWidget(QtWidgets.QWidget):
                     self.disciplinecounter += 1
                     self.layout.addWidget(self.disciplinenamebox[x], 12 + self.oplinecounter + self.mabc + self.disciplinecounter, 2)
                     self.layout.addWidget(self.disciplinelevelbox[x], 12 + self.oplinecounter + self.mabc + self.disciplinecounter, 3)
+
+            self.otoplinecounter = 1
+            self.layout.addWidget(self.bloodpotencytitle, 27 + self.oplinecounter + self.otoplinecounter, 5)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.bloodpotencylabel, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.bloodpotencybox, 27 + self.oplinecounter + self.otoplinecounter, 5)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.vitaetitle, 27 + self.oplinecounter + self.otoplinecounter, 5)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.maxvitaelabel, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.maxvitaebox, 27 + self.oplinecounter + self.otoplinecounter, 5)
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.currentvitaelabel, 27 + self.oplinecounter + self.otoplinecounter, 4)
+            self.layout.addWidget(self.currentvitaebox, 27 + self.oplinecounter + self.otoplinecounter, 5)
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)

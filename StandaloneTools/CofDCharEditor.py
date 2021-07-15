@@ -5,11 +5,14 @@ from PySide6 import QtCore, QtWidgets, QtGui
 
 class MyWidget(QtWidgets.QWidget):
 
-#if importing this charater to a table i need to make sure that it's added under a in that is the name with the space
+#if importing this character to a table i need to make sure that it's added under a in that is the name with the space
 
     def savesettings(self):
         with open('settings.txt', 'w') as f:
             f.write(str(self.meritcount)+'# Merit Slots Displayed Count\n')
+            f.write(str(self.aspirationcount)+'# Aspiration Slots Displayed Count\n')
+            f.write(str(self.conditioncount)+'# Condition Slots Displayed Count\n')
+            f.write(str(self.banecount)+'# Bane Slots Displayed Count\n')
             if self.occultflag[0]:
                 f.write('True# Is Vampire\n')
             else:
@@ -34,66 +37,10 @@ class MyWidget(QtWidgets.QWidget):
         self.filledmerits = 0
         stats['merits'] = []
         stats['merits'].append(['filledmerits', 0])
-        if self.meritcount >= 1 and self.meritnamebox1.text() != "" and self.meritlevelbox1.text() != "":
-            stats['merits'].append([self.meritnamebox1.text(), self.meritlevelbox1.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 2 and self.meritnamebox2.text() != "" and self.meritlevelbox2.text() != "":
-            stats['merits'].append([self.meritnamebox2.text(), self.meritlevelbox2.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 3 and self.meritnamebox3.text() != "" and self.meritlevelbox3.text() != "":
-            stats['merits'].append([self.meritnamebox3.text(), self.meritlevelbox3.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 4 and self.meritnamebox4.text() != "" and self.meritlevelbox4.text() != "":
-            stats['merits'].append([self.meritnamebox4.text(), self.meritlevelbox4.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 5 and self.meritnamebox5.text() != "" and self.meritlevelbox5.text() != "":
-            stats['merits'].append([self.meritnamebox5.text(), self.meritlevelbox5.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 6 and self.meritnamebox6.text() != "" and self.meritlevelbox6.text() != "":
-            stats['merits'].append([self.meritnamebox6.text(), self.meritlevelbox6.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 7 and self.meritnamebox7.text() != "" and self.meritlevelbox7.text() != "":
-            stats['merits'].append([self.meritnamebox7.text(), self.meritlevelbox7.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 8 and self.meritnamebox8.text() != "" and self.meritlevelbox8.text() != "":
-            stats['merits'].append([self.meritnamebox8.text(), self.meritlevelbox8.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 9 and self.meritnamebox9.text() != "" and self.meritlevelbox9.text() != "":
-            stats['merits'].append([self.meritnamebox9.text(), self.meritlevelbox9.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 10 and self.meritnamebox10.text() != "" and self.meritlevelbox10.text() != "":
-            stats['merits'].append([self.meritnamebox10.text(), self.meritlevelbox10.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 11 and self.meritnamebox11.text() != "" and self.meritlevelbox11.text() != "":
-            stats['merits'].append([self.meritnamebox11.text(), self.meritlevelbox11.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 12 and self.meritnamebox12.text() != "" and self.meritlevelbox12.text() != "":
-            stats['merits'].append([self.meritnamebox12.text(), self.meritlevelbox12.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 13 and self.meritnamebox13.text() != "" and self.meritlevelbox13.text() != "":
-            stats['merits'].append([self.meritnamebox13.text(), self.meritlevelbox13.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 14 and self.meritnamebox14.text() != "" and self.meritlevelbox14.text() != "":
-            stats['merits'].append([self.meritnamebox14.text(), self.meritlevelbox14.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 15 and self.meritnamebox15.text() != "" and self.meritlevelbox15.text() != "":
-            stats['merits'].append([self.meritnamebox15.text(), self.meritlevelbox15.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 16 and self.meritnamebox16.text() != "" and self.meritlevelbox16.text() != "":
-            stats['merits'].append([self.meritnamebox16.text(), self.meritlevelbox16.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 17 and self.meritnamebox17.text() != "" and self.meritlevelbox17.text() != "":
-            stats['merits'].append([self.meritnamebox17.text(), self.meritlevelbox17.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 18 and self.meritnamebox18.text() != "" and self.meritlevelbox18.text() != "":
-            stats['merits'].append([self.meritnamebox18.text(), self.meritlevelbox18.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 19 and self.meritnamebox19.text() != "" and self.meritlevelbox19.text() != "":
-            stats['merits'].append([self.meritnamebox19.text(), self.meritlevelbox19.text()])
-            self.filledmerits +=1
-        if self.meritcount >= 20 and self.meritnamebox20.text() != "" and self.meritlevelbox20.text() != "":
-            stats['merits'].append([self.meritnamebox20.text(), self.meritlevelbox20.text()])
-            self.filledmerits +=1
+        for x in range(self.meritcount):
+            if self.meritcount >= x and self.meritnamebox[x].text() != "" and self.meritlevelbox[x].text() != "":
+                stats['merits'].append([self.meritnamebox[x].text(), self.meritlevelbox[x].text()])
+                self.filledmerits += 1
         stats['merits'][0] = ['filledmerits', self.filledmerits]
 
         self.filledaspirations = 0
@@ -105,186 +52,18 @@ class MyWidget(QtWidgets.QWidget):
         self.filledbanes = 0
         stats['banes'] = []
         stats['banes'].append(['filledbanes', 0])
-        if self.aspirationcount >= 1 and self.aspirationnamebox1.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox1.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 1 and self.conditionnamebox1.text() != "":
-            stats['conditions'].append([self.conditionnamebox1.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 1 and self.banenamebox1.text() != "":
-            stats['banes'].append([self.banenamebox1.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 2 and self.aspirationnamebox2.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox2.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 2 and self.conditionnamebox2.text() != "":
-            stats['conditions'].append([self.conditionnamebox2.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 2 and self.banenamebox2.text() != "":
-            stats['banes'].append([self.banenamebox2.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 3 and self.aspirationnamebox3.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox3.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 3 and self.conditionnamebox3.text() != "":
-            stats['conditions'].append([self.conditionnamebox3.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 3 and self.banenamebox3.text() != "":
-            stats['banes'].append([self.banenamebox3.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 4 and self.aspirationnamebox4.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox4.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 4 and self.conditionnamebox4.text() != "":
-            stats['conditions'].append([self.conditionnamebox4.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 4 and self.banenamebox4.text() != "":
-            stats['banes'].append([self.banenamebox4.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 5 and self.aspirationnamebox5.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox5.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 5 and self.conditionnamebox5.text() != "":
-            stats['conditions'].append([self.conditionnamebox5.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 5 and self.banenamebox5.text() != "":
-            stats['banes'].append([self.banenamebox5.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 6 and self.aspirationnamebox6.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox6.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 6 and self.conditionnamebox6.text() != "":
-            stats['conditions'].append([self.conditionnamebox6.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 6 and self.banenamebox6.text() != "":
-            stats['banes'].append([self.banenamebox6.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 7 and self.aspirationnamebox7.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox7.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 7 and self.conditionnamebox7.text() != "":
-            stats['conditions'].append([self.conditionnamebox7.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 7 and self.banenamebox7.text() != "":
-            stats['banes'].append([self.banenamebox7.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 8 and self.aspirationnamebox8.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox8.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 8 and self.conditionnamebox8.text() != "":
-            stats['conditions'].append([self.conditionnamebox8.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 8 and self.banenamebox8.text() != "":
-            stats['banes'].append([self.banenamebox8.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 9 and self.aspirationnamebox9.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox9.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 9 and self.conditionnamebox9.text() != "":
-            stats['conditions'].append([self.conditionnamebox9.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 9 and self.banenamebox9.text() != "":
-            stats['banes'].append([self.banenamebox9.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 10 and self.aspirationnamebox10.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox10.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 10 and self.conditionnamebox10.text() != "":
-            stats['conditions'].append([self.conditionnamebox10.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 10 and self.banenamebox10.text() != "":
-            stats['banes'].append([self.banenamebox10.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 11 and self.aspirationnamebox11.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox11.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 11 and self.conditionnamebox11.text() != "":
-            stats['conditions'].append([self.conditionnamebox11.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 11 and self.banenamebox11.text() != "":
-            stats['banes'].append([self.banenamebox11.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 12 and self.aspirationnamebox12.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox12.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 12 and self.conditionnamebox12.text() != "":
-            stats['conditions'].append([self.conditionnamebox12.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 12 and self.banenamebox12.text() != "":
-            stats['banes'].append([self.banenamebox12.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 13 and self.aspirationnamebox13.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox13.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 13 and self.conditionnamebox13.text() != "":
-            stats['conditions'].append([self.conditionnamebox13.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 13 and self.banenamebox13.text() != "":
-            stats['banes'].append([self.banenamebox13.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 14 and self.aspirationnamebox14.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox14.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 14 and self.conditionnamebox14.text() != "":
-            stats['conditions'].append([self.conditionnamebox14.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 14 and self.banenamebox14.text() != "":
-            stats['banes'].append([self.banenamebox14.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 15 and self.aspirationnamebox15.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox15.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 15 and self.conditionnamebox15.text() != "":
-            stats['conditions'].append([self.conditionnamebox15.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 15 and self.banenamebox15.text() != "":
-            stats['banes'].append([self.banenamebox15.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 16 and self.aspirationnamebox16.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox16.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 16 and self.conditionnamebox16.text() != "":
-            stats['conditions'].append([self.conditionnamebox16.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 16 and self.banenamebox16.text() != "":
-            stats['banes'].append([self.banenamebox16.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 17 and self.aspirationnamebox17.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox17.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 17 and self.conditionnamebox17.text() != "":
-            stats['conditions'].append([self.conditionnamebox17.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 17 and self.banenamebox17.text() != "":
-            stats['banes'].append([self.banenamebox17.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 18 and self.aspirationnamebox18.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox18.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 18 and self.conditionnamebox18.text() != "":
-            stats['conditions'].append([self.conditionnamebox18.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 18 and self.banenamebox18.text() != "":
-            stats['banes'].append([self.banenamebox18.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 19 and self.aspirationnamebox19.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox19.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 19 and self.conditionnamebox19.text() != "":
-            stats['conditions'].append([self.conditionnamebox19.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 19 and self.banenamebox19.text() != "":
-            stats['banes'].append([self.banenamebox19.text()])
-            self.filledbanes +=1
-        if self.aspirationcount >= 20 and self.aspirationnamebox20.text() != "":
-            stats['aspirations'].append([self.aspirationnamebox20.text()])
-            self.filledaspirations +=1
-        if self.aspirationcount >= 20 and self.conditionnamebox20.text() != "":
-            stats['conditions'].append([self.conditionnamebox20.text()])
-            self.filledconditions +=1
-        if self.aspirationcount >= 20 and self.banenamebox20.text() != "":
-            stats['banes'].append([self.banenamebox20.text()])
-            self.filledbanes +=1
+        for x in range(self.aspirationcount):
+            if self.aspirationcount >= x and self.aspirationnamebox[x].text() != "":
+                stats['aspirations'].append([self.aspirationnamebox[x].text()])
+                self.filledaspirations += 1
+        for x in range(self.conditioncount):
+            if self.conditioncount >= x and self.conditionnamebox[x].text() != "":
+                stats['conditions'].append([self.conditionnamebox[x].text()])
+                self.filledconditions += 1
+        for x in range(self.banecount):
+            if self.banecount >= x and self.banenamebox[x].text() != "":
+                stats['banes'].append([self.banenamebox[x].text()])
+                self.filledbanes += 1
         stats['aspirations'][0] = ['filledaspirations', self.filledaspirations]
         stats['conditions'][0] = ['filledconditions', self.filledconditions]
         stats['banes'][0] = ['filledbanes', self.filledbanes]
@@ -356,195 +135,38 @@ class MyWidget(QtWidgets.QWidget):
 
                     self.makesheet()
                 # print(stats['merits'][0][1])
-                if stats['merits'][0][1] >= 1:
-                    self.meritnamebox1.setText(stats['merits'][1][0])
-                    self.meritlevelbox1.setText(stats['merits'][1][1])
-                if stats['merits'][0][1] >= 2:
-                    self.meritnamebox2.setText(stats['merits'][2][0])
-                    self.meritlevelbox2.setText(stats['merits'][2][1])
-                if stats['merits'][0][1] >= 3:
-                    self.meritnamebox3.setText(stats['merits'][3][0])
-                    self.meritlevelbox3.setText(stats['merits'][3][1])
-                if stats['merits'][0][1] >= 4:
-                    self.meritnamebox4.setText(stats['merits'][4][0])
-                    self.meritlevelbox4.setText(stats['merits'][4][1])
-                if stats['merits'][0][1] >= 5:
-                    self.meritnamebox5.setText(stats['merits'][5][0])
-                    self.meritlevelbox5.setText(stats['merits'][5][1])
-                if stats['merits'][0][1] >= 6:
-                    self.meritnamebox6.setText(stats['merits'][6][0])
-                    self.meritlevelbox6.setText(stats['merits'][6][1])
-                if stats['merits'][0][1] >= 7:
-                    self.meritnamebox7.setText(stats['merits'][7][0])
-                    self.meritlevelbox7.setText(stats['merits'][7][1])
-                if stats['merits'][0][1] >= 8:
-                    self.meritnamebox8.setText(stats['merits'][8][0])
-                    self.meritlevelbox8.setText(stats['merits'][8][1])
-                if stats['merits'][0][1] >= 9:
-                    self.meritnamebox9.setText(stats['merits'][9][0])
-                    self.meritlevelbox9.setText(stats['merits'][9][1])
-                if stats['merits'][0][1] >= 10:
-                    self.meritnamebox10.setText(stats['merits'][10][0])
-                    self.meritlevelbox10.setText(stats['merits'][10][1])
-                if stats['merits'][0][1] >= 11:
-                    self.meritnamebox11.setText(stats['merits'][11][0])
-                    self.meritlevelbox11.setText(stats['merits'][11][1])
-                if stats['merits'][0][1] >= 12:
-                    self.meritnamebox12.setText(stats['merits'][12][0])
-                    self.meritlevelbox12.setText(stats['merits'][12][1])
-                if stats['merits'][0][1] >= 13:
-                    self.meritnamebox13.setText(stats['merits'][13][0])
-                    self.meritlevelbox13.setText(stats['merits'][13][1])
-                if stats['merits'][0][1] >= 14:
-                    self.meritnamebox14.setText(stats['merits'][14][0])
-                    self.meritlevelbox14.setText(stats['merits'][14][1])
-                if stats['merits'][0][1] >= 15:
-                    self.meritnamebox15.setText(stats['merits'][15][0])
-                    self.meritlevelbox15.setText(stats['merits'][15][1])
-                if stats['merits'][0][1] >= 16:
-                    self.meritnamebox16.setText(stats['merits'][16][0])
-                    self.meritlevelbox16.setText(stats['merits'][16][1])
-                if stats['merits'][0][1] >= 17:
-                    self.meritnamebox17.setText(stats['merits'][17][0])
-                    self.meritlevelbox17.setText(stats['merits'][17][1])
-                if stats['merits'][0][1] >= 18:
-                    self.meritnamebox18.setText(stats['merits'][18][0])
-                    self.meritlevelbox18.setText(stats['merits'][18][1])
-                if stats['merits'][0][1] >= 19:
-                    self.meritnamebox19.setText(stats['merits'][19][0])
-                    self.meritlevelbox19.setText(stats['merits'][19][1])
-                if stats['merits'][0][1] >= 20:
-                    self.meritnamebox20.setText(stats['merits'][20][0])
-                    self.meritlevelbox20.setText(stats['merits'][20][1])
+                for x in range(stats['merits'][0][1]):
+                    if stats['merits'][0][1] >= x:
+                        self.meritnamebox[x].setText(stats['merits'][x+1][0])
+                        self.meritlevelbox[x].setText(stats['merits'][x+1][1])
 
-                if stats['aspirations'][0][1] > self.aspirationcount or stats['conditions'][0][1] > self.aspirationcount or stats['banes'][0][1] > self.aspirationcount:
+                if stats['aspirations'][0][1] > self.aspirationcount:
                     self.oldaspirationcount = self.aspirationcount
                     self.aspirationcount = stats['aspirations'][0][1]
 
                     self.makesheet()
-                # print(stats['merits'][0][1])
-                if stats['aspirations'][0][1] >= 1:
-                    self.aspirationnamebox1.setText(stats['aspirations'][1][0])
-                if stats['aspirations'][0][1] >= 2:
-                    self.aspirationnamebox2.setText(stats['aspirations'][2][0])
-                if stats['aspirations'][0][1] >= 3:
-                    self.aspirationnamebox3.setText(stats['aspirations'][3][0])
-                if stats['aspirations'][0][1] >= 4:
-                    self.aspirationnamebox4.setText(stats['aspirations'][4][0])
-                if stats['aspirations'][0][1] >= 5:
-                    self.aspirationnamebox5.setText(stats['aspirations'][5][0])
-                if stats['aspirations'][0][1] >= 6:
-                    self.aspirationnamebox6.setText(stats['aspirations'][6][0])
-                if stats['aspirations'][0][1] >= 7:
-                    self.aspirationnamebox7.setText(stats['aspirations'][7][0])
-                if stats['aspirations'][0][1] >= 8:
-                    self.aspirationnamebox8.setText(stats['aspirations'][8][0])
-                if stats['aspirations'][0][1] >= 9:
-                    self.aspirationnamebox9.setText(stats['aspirations'][9][0])
-                if stats['aspirations'][0][1] >= 10:
-                    self.aspirationnamebox10.setText(stats['aspirations'][10][0])
-                if stats['aspirations'][0][1] >= 11:
-                    self.aspirationnamebox11.setText(stats['aspirations'][11][0])
-                if stats['aspirations'][0][1] >= 12:
-                    self.aspirationnamebox12.setText(stats['aspirations'][12][0])
-                if stats['aspirations'][0][1] >= 13:
-                    self.aspirationnamebox13.setText(stats['aspirations'][13][0])
-                if stats['aspirations'][0][1] >= 14:
-                    self.aspirationnamebox14.setText(stats['aspirations'][14][0])
-                if stats['aspirations'][0][1] >= 15:
-                    self.aspirationnamebox15.setText(stats['aspirations'][15][0])
-                if stats['aspirations'][0][1] >= 16:
-                    self.aspirationnamebox16.setText(stats['aspirations'][16][0])
-                if stats['aspirations'][0][1] >= 17:
-                    self.aspirationnamebox17.setText(stats['aspirations'][17][0])
-                if stats['aspirations'][0][1] >= 18:
-                    self.aspirationnamebox18.setText(stats['aspirations'][18][0])
-                if stats['aspirations'][0][1] >= 19:
-                    self.aspirationnamebox19.setText(stats['aspirations'][19][0])
-                if stats['aspirations'][0][1] >= 20:
-                    self.aspirationnamebox20.setText(stats['aspirations'][20][0])
 
-                if stats['conditions'][0][1] >= 1:
-                    self.conditionnamebox1.setText(stats['conditions'][1][0])
-                if stats['conditions'][0][1] >= 2:
-                    self.conditionnamebox2.setText(stats['conditions'][2][0])
-                if stats['conditions'][0][1] >= 3:
-                    self.conditionnamebox3.setText(stats['conditions'][3][0])
-                if stats['conditions'][0][1] >= 4:
-                    self.conditionnamebox4.setText(stats['conditions'][4][0])
-                if stats['conditions'][0][1] >= 5:
-                    self.conditionnamebox5.setText(stats['conditions'][5][0])
-                if stats['conditions'][0][1] >= 6:
-                    self.conditionnamebox6.setText(stats['conditions'][6][0])
-                if stats['conditions'][0][1] >= 7:
-                    self.conditionnamebox7.setText(stats['conditions'][7][0])
-                if stats['conditions'][0][1] >= 8:
-                    self.conditionnamebox8.setText(stats['conditions'][8][0])
-                if stats['conditions'][0][1] >= 9:
-                    self.conditionnamebox9.setText(stats['conditions'][9][0])
-                if stats['conditions'][0][1] >= 10:
-                    self.conditionnamebox10.setText(stats['conditions'][10][0])
-                if stats['conditions'][0][1] >= 11:
-                    self.conditionnamebox11.setText(stats['conditions'][11][0])
-                if stats['conditions'][0][1] >= 12:
-                    self.conditionnamebox12.setText(stats['conditions'][12][0])
-                if stats['conditions'][0][1] >= 13:
-                    self.conditionnamebox13.setText(stats['conditions'][13][0])
-                if stats['conditions'][0][1] >= 14:
-                    self.conditionnamebox14.setText(stats['conditions'][14][0])
-                if stats['conditions'][0][1] >= 15:
-                    self.conditionnamebox15.setText(stats['conditions'][15][0])
-                if stats['conditions'][0][1] >= 16:
-                    self.conditionnamebox16.setText(stats['conditions'][16][0])
-                if stats['conditions'][0][1] >= 17:
-                    self.conditionnamebox17.setText(stats['conditions'][17][0])
-                if stats['conditions'][0][1] >= 18:
-                    self.conditionnamebox18.setText(stats['conditions'][18][0])
-                if stats['conditions'][0][1] >= 19:
-                    self.conditionnamebox19.setText(stats['conditions'][19][0])
-                if stats['conditions'][0][1] >= 20:
-                    self.conditionnamebox20.setText(stats['conditions'][20][0])
+                if stats['conditions'][0][1] > self.conditioncount:
+                    self.oldconditioncount = self.conditioncount
+                    self.conditioncount = stats['conditions'][0][1]
 
-                if stats['banes'][0][1] >= 1:
-                    self.banenamebox1.setText(stats['banes'][1][0])
-                if stats['banes'][0][1] >= 2:
-                    self.banenamebox2.setText(stats['banes'][2][0])
-                if stats['banes'][0][1] >= 3:
-                    self.banenamebox3.setText(stats['banes'][3][0])
-                if stats['banes'][0][1] >= 4:
-                    self.banenamebox4.setText(stats['banes'][4][0])
-                if stats['banes'][0][1] >= 5:
-                    self.banenamebox5.setText(stats['banes'][5][0])
-                if stats['banes'][0][1] >= 6:
-                    self.banenamebox6.setText(stats['banes'][6][0])
-                if stats['banes'][0][1] >= 7:
-                    self.banenamebox7.setText(stats['banes'][7][0])
-                if stats['banes'][0][1] >= 8:
-                    self.banenamebox8.setText(stats['banes'][8][0])
-                if stats['banes'][0][1] >= 9:
-                    self.banenamebox9.setText(stats['banes'][9][0])
-                if stats['banes'][0][1] >= 10:
-                    self.banenamebox10.setText(stats['banes'][10][0])
-                if stats['banes'][0][1] >= 11:
-                    self.banenamebox11.setText(stats['banes'][11][0])
-                if stats['banes'][0][1] >= 12:
-                    self.banenamebox12.setText(stats['banes'][12][0])
-                if stats['banes'][0][1] >= 13:
-                    self.banenamebox13.setText(stats['banes'][13][0])
-                if stats['banes'][0][1] >= 14:
-                    self.banenamebox14.setText(stats['banes'][14][0])
-                if stats['banes'][0][1] >= 15:
-                    self.banenamebox15.setText(stats['banes'][15][0])
-                if stats['banes'][0][1] >= 16:
-                    self.banenamebox16.setText(stats['banes'][16][0])
-                if stats['banes'][0][1] >= 17:
-                    self.banenamebox17.setText(stats['banes'][17][0])
-                if stats['banes'][0][1] >= 18:
-                    self.banenamebox18.setText(stats['banes'][18][0])
-                if stats['banes'][0][1] >= 19:
-                    self.banenamebox19.setText(stats['banes'][19][0])
-                if stats['banes'][0][1] >= 20:
-                    self.banenamebox20.setText(stats['banes'][20][0])
+                    self.makesheet()
+
+                if stats['banes'][0][1] > self.banecount:
+                    self.oldbanecount = self.banecount
+                    self.banecount = stats['banes'][0][1]
+
+                    self.makesheet()
+
+                for x in range(stats['aspirations'][0][1]):
+                    if stats['aspirations'][0][1] >= x:
+                        self.aspirationnamebox[x].setText(stats['aspirations'][x+1][0])
+                for x in range(stats['conditions'][0][1]):
+                    if stats['conditions'][0][1] >= x:
+                        self.conditionnamebox[x].setText(stats['conditions'][x+1][0])
+                for x in range(stats['banes'][0][1]):
+                    if stats['banes'][0][1] >= x:
+                        self.banenamebox[x].setText(stats['banes'][x+1][0])
 
                 self.sizeval.setText(str(stats['size']))
                 self.sizebonus = stats['size'] - 5
@@ -577,15 +199,6 @@ class MyWidget(QtWidgets.QWidget):
                 self.savesettings()
         else:
             stats = {}
-
-        # stats = {}
-        # stats[] = {'name': self.boxname.text(), 'player': self.boxplayer.text(), 'chronicle': self.boxchronicle.text(), 'concept': self.boxconcept.text(), 'intelligence': self.boxintelligence.text(), 'strength': self.boxstrength.text(), 'presence': self.boxpresence.text(), 'wits': self.boxwits.text(), 'dexterity': self.boxdexterity.text(), 'manipulation': self.boxmanipulation.text(), 'resolve': self.boxresolve.text(), 'stamina': self.boxstamina.text(), 'composure': self.boxcomposure.text()}
-        # if self.occultflag[0]:
-        #     stats[self.boxname.text()]['mask'] = self.boxmask.text()
-        #     stats[self.boxname.text()]['clan'] = self.boxclan.text()
-        #     stats[self.boxname.text()]['dirge'] = self.boxdirge.text()
-        #     stats[self.boxname.text()]['bloodline'] = self.boxbloodline.text()
-        #     stats[self.boxname.text()]['covenant'] = self.boxcovenant.text(),
 
     def updatestatsdef(self):
         self.intelligencestat = int(self.boxintelligence.text())
@@ -651,186 +264,14 @@ class MyWidget(QtWidgets.QWidget):
             self.meritslevel = None
 
             self.meritcounter = 0
-            if self.oldmeritcount >= 1:
-                self.layout.removeWidget(self.meritnamebox1)
-                self.meritnamebox1.deleteLater()
-                self.meritnamebox1 = None
-                self.layout.removeWidget(self.meritlevelbox1)
-                self.meritlevelbox1.deleteLater()
-                self.meritlevelbox1 = None
-                # self.meritnamebox1 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox1 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 2:
-                self.layout.removeWidget(self.meritnamebox2)
-                self.meritnamebox2.deleteLater()
-                self.meritnamebox2 = None
-                self.layout.removeWidget(self.meritlevelbox2)
-                self.meritlevelbox2.deleteLater()
-                self.meritlevelbox2 = None
-                # self.meritnamebox2 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox2 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 3:
-                self.layout.removeWidget(self.meritnamebox3)
-                self.meritnamebox3.deleteLater()
-                self.meritnamebox3 = None
-                self.layout.removeWidget(self.meritlevelbox3)
-                self.meritlevelbox3.deleteLater()
-                self.meritlevelbox3 = None
-                # self.meritnamebox3 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox3 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 4:
-                self.layout.removeWidget(self.meritnamebox4)
-                self.meritnamebox4.deleteLater()
-                self.meritnamebox4 = None
-                self.layout.removeWidget(self.meritlevelbox4)
-                self.meritlevelbox4.deleteLater()
-                self.meritlevelbox4 = None
-                # self.meritnamebox4 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox4 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 5:
-                self.layout.removeWidget(self.meritnamebox5)
-                self.meritnamebox5.deleteLater()
-                self.meritnamebox5 = None
-                self.layout.removeWidget(self.meritlevelbox5)
-                self.meritlevelbox5.deleteLater()
-                self.meritlevelbox5 = None
-                # self.meritnamebox5 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox5 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 6:
-                self.layout.removeWidget(self.meritnamebox6)
-                self.meritnamebox6.deleteLater()
-                self.meritnamebox6 = None
-                self.layout.removeWidget(self.meritlevelbox6)
-                self.meritlevelbox6.deleteLater()
-                self.meritlevelbox6 = None
-                # self.meritnamebox6 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox6 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 7:
-                self.layout.removeWidget(self.meritnamebox7)
-                self.meritnamebox7.deleteLater()
-                self.meritnamebox7 = None
-                self.layout.removeWidget(self.meritlevelbox7)
-                self.meritlevelbox7.deleteLater()
-                self.meritlevelbox7 = None
-                # self.meritnamebox7 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox7 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 8:
-                self.layout.removeWidget(self.meritnamebox8)
-                self.meritnamebox8.deleteLater()
-                self.meritnamebox8 = None
-                self.layout.removeWidget(self.meritlevelbox8)
-                self.meritlevelbox8.deleteLater()
-                self.meritlevelbox8 = None
-                # self.meritnamebox8 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox8 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 9:
-                self.layout.removeWidget(self.meritnamebox9)
-                self.meritnamebox9.deleteLater()
-                self.meritnamebox9 = None
-                self.layout.removeWidget(self.meritlevelbox9)
-                self.meritlevelbox9.deleteLater()
-                self.meritlevelbox9 = None
-                # self.meritnamebox9 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox9 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 10:
-                self.layout.removeWidget(self.meritnamebox10)
-                self.meritnamebox10.deleteLater()
-                self.meritnamebox10 = None
-                self.layout.removeWidget(self.meritlevelbox10)
-                self.meritlevelbox10.deleteLater()
-                self.meritlevelbox10 = None
-                # self.meritnamebox10 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox10 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 11:
-                self.layout.removeWidget(self.meritnamebox11)
-                self.meritnamebox11.deleteLater()
-                self.meritnamebox11 = None
-                self.layout.removeWidget(self.meritlevelbox11)
-                self.meritlevelbox11.deleteLater()
-                self.meritlevelbox11 = None
-                # self.meritnamebox11 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox11 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 12:
-                self.layout.removeWidget(self.meritnamebox12)
-                self.meritnamebox12.deleteLater()
-                self.meritnamebox12 = None
-                self.layout.removeWidget(self.meritlevelbox12)
-                self.meritlevelbox12.deleteLater()
-                self.meritlevelbox12 = None
-                # self.meritnamebox12 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox12 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 13:
-                self.layout.removeWidget(self.meritnamebox13)
-                self.meritnamebox13.deleteLater()
-                self.meritnamebox13 = None
-                self.layout.removeWidget(self.meritlevelbox13)
-                self.meritlevelbox13.deleteLater()
-                self.meritlevelbox13 = None
-                # self.meritnamebox13 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox13 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 14:
-                self.layout.removeWidget(self.meritnamebox14)
-                self.meritnamebox14.deleteLater()
-                self.meritnamebox14 = None
-                self.layout.removeWidget(self.meritlevelbox14)
-                self.meritlevelbox14.deleteLater()
-                self.meritlevelbox14 = None
-                # self.meritnamebox14 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox14 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 15:
-                self.layout.removeWidget(self.meritnamebox15)
-                self.meritnamebox15.deleteLater()
-                self.meritnamebox15 = None
-                self.layout.removeWidget(self.meritlevelbox15)
-                self.meritlevelbox15.deleteLater()
-                self.meritlevelbox15 = None
-                # self.meritnamebox15 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox15 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 16:
-                self.layout.removeWidget(self.meritnamebox16)
-                self.meritnamebox16.deleteLater()
-                self.meritnamebox16 = None
-                self.layout.removeWidget(self.meritlevelbox16)
-                self.meritlevelbox16.deleteLater()
-                self.meritlevelbox16 = None
-                # self.meritnamebox16 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox16 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 17:
-                self.layout.removeWidget(self.meritnamebox17)
-                self.meritnamebox17.deleteLater()
-                self.meritnamebox17 = None
-                self.layout.removeWidget(self.meritlevelbox17)
-                self.meritlevelbox17.deleteLater()
-                self.meritlevelbox17 = None
-                # self.meritnamebox17 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox17 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 18:
-                self.layout.removeWidget(self.meritnamebox18)
-                self.meritnamebox18.deleteLater()
-                self.meritnamebox18 = None
-                self.layout.removeWidget(self.meritlevelbox18)
-                self.meritlevelbox18.deleteLater()
-                self.meritlevelbox18 = None
-                # self.meritnamebox18 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox18 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 19:
-                self.layout.removeWidget(self.meritnamebox19)
-                self.meritnamebox19.deleteLater()
-                self.meritnamebox19 = None
-                self.layout.removeWidget(self.meritlevelbox19)
-                self.meritlevelbox19.deleteLater()
-                self.meritlevelbox19 = None
-                # self.meritnamebox19 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox19 = QtWidgets.QLineEdit(self)
-            if self.oldmeritcount >= 20:
-                self.layout.removeWidget(self.meritnamebox20)
-                self.meritnamebox20.deleteLater()
-                self.meritnamebox20 = None
-                self.layout.removeWidget(self.meritlevelbox20)
-                self.meritlevelbox20.deleteLater()
-                self.meritlevelbox20 = None
-                # self.meritnamebox20 = QtWidgets.QLineEdit(self)
-                # self.meritlevelbox20 = QtWidgets.QLineEdit(self)
+            for x in range(self.oldmeritcount):
+                if self.oldmeritcount >= x + 1:
+                    self.layout.removeWidget(self.meritnamebox[x])
+                    self.meritnamebox[x].deleteLater()
+                    self.meritnamebox[x] = None
+                    self.layout.removeWidget(self.meritlevelbox[x])
+                    self.meritlevelbox[x].deleteLater()
+                    self.meritlevelbox[x] = None
 
             self.layout.removeWidget(self.aspirations)
             self.aspirations.deleteLater()
@@ -840,207 +281,23 @@ class MyWidget(QtWidgets.QWidget):
             self.conditions = None
 
             self.aspirationcounter = 0
+            for x in range(self.oldaspirationcount):
+                if self.oldaspirationcount >= x + 1:
+                    self.layout.removeWidget(self.aspirationnamebox[x])
+                    self.aspirationnamebox[x].deleteLater()
+                    self.aspirationnamebox[x] = None
+            self.conditioncounter = 0
+            for x in range(self.oldconditioncount):
+                if self.oldconditioncount >= x + 1:
+                    self.layout.removeWidget(self.conditionnamebox[x])
+                    self.conditionnamebox[x].deleteLater()
+                    self.conditionnamebox[x] = None
             self.banecounter = 0
-            if self.oldaspirationcount >= 1:
-                self.layout.removeWidget(self.aspirationnamebox1)
-                self.aspirationnamebox1.deleteLater()
-                self.aspirationnamebox1 = None
-                self.layout.removeWidget(self.conditionnamebox1)
-                self.conditionnamebox1.deleteLater()
-                self.conditionnamebox1 = None
-                self.layout.removeWidget(self.banenamebox1)
-                self.banenamebox1.deleteLater()
-                self.banenamebox1 = None
-            if self.oldaspirationcount >= 2:
-                self.layout.removeWidget(self.aspirationnamebox2)
-                self.aspirationnamebox2.deleteLater()
-                self.aspirationnamebox2 = None
-                self.layout.removeWidget(self.conditionnamebox2)
-                self.conditionnamebox2.deleteLater()
-                self.conditionnamebox2 = None
-                self.layout.removeWidget(self.banenamebox2)
-                self.banenamebox2.deleteLater()
-                self.banenamebox2 = None
-            if self.oldaspirationcount >= 3:
-                self.layout.removeWidget(self.aspirationnamebox3)
-                self.aspirationnamebox3.deleteLater()
-                self.aspirationnamebox3 = None
-                self.layout.removeWidget(self.conditionnamebox3)
-                self.conditionnamebox3.deleteLater()
-                self.conditionnamebox3 = None
-                self.layout.removeWidget(self.banenamebox3)
-                self.banenamebox3.deleteLater()
-                self.banenamebox3 = None
-            if self.oldaspirationcount >= 4:
-                self.layout.removeWidget(self.aspirationnamebox4)
-                self.aspirationnamebox4.deleteLater()
-                self.aspirationnamebox4 = None
-                self.layout.removeWidget(self.conditionnamebox4)
-                self.conditionnamebox4.deleteLater()
-                self.conditionnamebox4 = None
-                self.layout.removeWidget(self.banenamebox4)
-                self.banenamebox4.deleteLater()
-                self.banenamebox4 = None
-            if self.oldaspirationcount >= 5:
-                self.layout.removeWidget(self.aspirationnamebox5)
-                self.aspirationnamebox5.deleteLater()
-                self.aspirationnamebox5 = None
-                self.layout.removeWidget(self.conditionnamebox5)
-                self.conditionnamebox5.deleteLater()
-                self.conditionnamebox5 = None
-                self.layout.removeWidget(self.banenamebox5)
-                self.banenamebox5.deleteLater()
-                self.banenamebox5 = None
-            if self.oldaspirationcount >= 6:
-                self.layout.removeWidget(self.aspirationnamebox6)
-                self.aspirationnamebox6.deleteLater()
-                self.aspirationnamebox6 = None
-                self.layout.removeWidget(self.conditionnamebox6)
-                self.conditionnamebox6.deleteLater()
-                self.conditionnamebox6 = None
-                self.layout.removeWidget(self.banenamebox6)
-                self.banenamebox6.deleteLater()
-                self.banenamebox6 = None
-            if self.oldaspirationcount >= 7:
-                self.layout.removeWidget(self.aspirationnamebox7)
-                self.aspirationnamebox7.deleteLater()
-                self.aspirationnamebox7 = None
-                self.layout.removeWidget(self.conditionnamebox7)
-                self.conditionnamebox7.deleteLater()
-                self.conditionnamebox7 = None
-                self.layout.removeWidget(self.banenamebox7)
-                self.banenamebox7.deleteLater()
-                self.banenamebox7 = None
-            if self.oldaspirationcount >= 8:
-                self.layout.removeWidget(self.aspirationnamebox8)
-                self.aspirationnamebox8.deleteLater()
-                self.aspirationnamebox8 = None
-                self.layout.removeWidget(self.conditionnamebox8)
-                self.conditionnamebox8.deleteLater()
-                self.conditionnamebox8 = None
-                self.layout.removeWidget(self.banenamebox8)
-                self.banenamebox8.deleteLater()
-                self.banenamebox8 = None
-            if self.oldaspirationcount >= 9:
-                self.layout.removeWidget(self.aspirationnamebox9)
-                self.aspirationnamebox9.deleteLater()
-                self.aspirationnamebox9 = None
-                self.layout.removeWidget(self.conditionnamebox9)
-                self.conditionnamebox9.deleteLater()
-                self.conditionnamebox9 = None
-                self.layout.removeWidget(self.banenamebox9)
-                self.banenamebox9.deleteLater()
-                self.banenamebox9 = None
-            if self.oldaspirationcount >= 10:
-                self.layout.removeWidget(self.aspirationnamebox10)
-                self.aspirationnamebox10.deleteLater()
-                self.aspirationnamebox10 = None
-                self.layout.removeWidget(self.conditionnamebox10)
-                self.conditionnamebox10.deleteLater()
-                self.conditionnamebox10 = None
-                self.layout.removeWidget(self.banenamebox10)
-                self.banenamebox10.deleteLater()
-                self.banenamebox10 = None
-            if self.oldaspirationcount >= 11:
-                self.layout.removeWidget(self.aspirationnamebox11)
-                self.aspirationnamebox11.deleteLater()
-                self.aspirationnamebox11 = None
-                self.layout.removeWidget(self.conditionnamebox11)
-                self.conditionnamebox11.deleteLater()
-                self.conditionnamebox11 = None
-                self.layout.removeWidget(self.banenamebox11)
-                self.banenamebox11.deleteLater()
-                self.banenamebox11 = None
-            if self.oldaspirationcount >= 12:
-                self.layout.removeWidget(self.aspirationnamebox12)
-                self.aspirationnamebox12.deleteLater()
-                self.aspirationnamebox12 = None
-                self.layout.removeWidget(self.conditionnamebox12)
-                self.conditionnamebox12.deleteLater()
-                self.conditionnamebox12 = None
-                self.layout.removeWidget(self.banenamebox12)
-                self.banenamebox12.deleteLater()
-                self.banenamebox12 = None
-            if self.oldaspirationcount >= 13:
-                self.layout.removeWidget(self.aspirationnamebox13)
-                self.aspirationnamebox13.deleteLater()
-                self.aspirationnamebox13 = None
-                self.layout.removeWidget(self.conditionnamebox13)
-                self.conditionnamebox13.deleteLater()
-                self.conditionnamebox13 = None
-                self.layout.removeWidget(self.banenamebox13)
-                self.banenamebox13.deleteLater()
-                self.banenamebox13 = None
-            if self.oldaspirationcount >= 14:
-                self.layout.removeWidget(self.aspirationnamebox14)
-                self.aspirationnamebox14.deleteLater()
-                self.aspirationnamebox14 = None
-                self.layout.removeWidget(self.conditionnamebox14)
-                self.conditionnamebox14.deleteLater()
-                self.conditionnamebox14 = None
-                self.layout.removeWidget(self.banenamebox14)
-                self.banenamebox14.deleteLater()
-                self.banenamebox14 = None
-            if self.oldaspirationcount >= 15:
-                self.layout.removeWidget(self.aspirationnamebox15)
-                self.aspirationnamebox15.deleteLater()
-                self.aspirationnamebox15 = None
-                self.layout.removeWidget(self.conditionnamebox15)
-                self.conditionnamebox15.deleteLater()
-                self.conditionnamebox15 = None
-                self.layout.removeWidget(self.banenamebox15)
-                self.banenamebox15.deleteLater()
-                self.banenamebox15 = None
-            if self.oldaspirationcount >= 16:
-                self.layout.removeWidget(self.aspirationnamebox16)
-                self.aspirationnamebox16.deleteLater()
-                self.aspirationnamebox16 = None
-                self.layout.removeWidget(self.conditionnamebox16)
-                self.conditionnamebox16.deleteLater()
-                self.conditionnamebox16 = None
-                self.layout.removeWidget(self.banenamebox16)
-                self.banenamebox16.deleteLater()
-                self.banenamebox16 = None
-            if self.oldaspirationcount >= 17:
-                self.layout.removeWidget(self.aspirationnamebox17)
-                self.aspirationnamebox17.deleteLater()
-                self.aspirationnamebox17 = None
-                self.layout.removeWidget(self.conditionnamebox17)
-                self.conditionnamebox17.deleteLater()
-                self.conditionnamebox17 = None
-                self.layout.removeWidget(self.banenamebox17)
-                self.banenamebox17.deleteLater()
-                self.banenamebox17 = None
-            if self.oldaspirationcount >= 18:
-                self.layout.removeWidget(self.aspirationnamebox18)
-                self.aspirationnamebox18.deleteLater()
-                self.aspirationnamebox18 = None
-                self.layout.removeWidget(self.conditionnamebox18)
-                self.conditionnamebox18.deleteLater()
-                self.conditionnamebox18 = None
-                self.layout.removeWidget(self.banenamebox18)
-                self.banenamebox18.deleteLater()
-                self.banenamebox18 = None
-            if self.oldaspirationcount >= 19:
-                self.layout.removeWidget(self.aspirationnamebox19)
-                self.aspirationnamebox19.deleteLater()
-                self.aspirationnamebox19 = None
-                self.layout.removeWidget(self.conditionnamebox19)
-                self.conditionnamebox19.deleteLater()
-                self.conditionnamebox19 = None
-                self.layout.removeWidget(self.banenamebox19)
-                self.banenamebox19.deleteLater()
-                self.banenamebox19 = None
-            if self.oldaspirationcount >= 20:
-                self.layout.removeWidget(self.aspirationnamebox20)
-                self.aspirationnamebox20.deleteLater()
-                self.aspirationnamebox20 = None
-                self.layout.removeWidget(self.conditionnamebox20)
-                self.conditionnamebox20.deleteLater()
-                self.conditionnamebox20 = None
-                self.layout.removeWidget(self.banenamebox20)
-                self.banenamebox20.deleteLater()
-                self.banenamebox20 = None
+            for x in range(self.oldbanecount):
+                if self.oldbanecount >= x + 1:
+                    self.layout.removeWidget(self.banenamebox[x])
+                    self.banenamebox[x].deleteLater()
+                    self.banenamebox[x] = None
 
             self.layout.removeWidget(self.updatestats)
             self.updatestats.deleteLater()
@@ -1123,66 +380,12 @@ class MyWidget(QtWidgets.QWidget):
         self.meritslevel.setText("Level")
 
         #initialize merits
-        if self.meritcount >= 1:
-            self.meritnamebox1 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox1 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 2:
-            self.meritnamebox2 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox2 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 3:
-            self.meritnamebox3 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox3 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 4:
-            self.meritnamebox4 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox4 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 5:
-            self.meritnamebox5 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox5 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 6:
-            self.meritnamebox6 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox6 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 7:
-            self.meritnamebox7 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox7 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 8:
-            self.meritnamebox8 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox8 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 9:
-            self.meritnamebox9 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox9 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 10:
-            self.meritnamebox10 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox10 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 11:
-            self.meritnamebox11 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox11 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 12:
-            self.meritnamebox12 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox12 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 13:
-            self.meritnamebox13 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox13 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 14:
-            self.meritnamebox14 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox14 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 15:
-            self.meritnamebox15 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox15 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 16:
-            self.meritnamebox16 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox16 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 17:
-            self.meritnamebox17 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox17 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 18:
-            self.meritnamebox18 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox18 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 19:
-            self.meritnamebox19 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox19 = QtWidgets.QLineEdit(self)
-        if self.meritcount >= 20:
-            self.meritnamebox20 = QtWidgets.QLineEdit(self)
-            self.meritlevelbox20 = QtWidgets.QLineEdit(self)
+        self.meritnamebox = []
+        self.meritlevelbox = []
+        for x in range(self.meritcount):
+            if self.meritcount >= x:
+                self.meritnamebox.append(QtWidgets.QLineEdit(self))
+                self.meritlevelbox.append(QtWidgets.QLineEdit(self))
 
         #begin aspirations
         self.aspirations = QtWidgets.QLabel(self)
@@ -1193,132 +396,24 @@ class MyWidget(QtWidgets.QWidget):
         self.conditions.setText("Conditions")
         self.conditions.setFont(self.subtitlefont)
 
-        if self.aspirationcount >= 1:
-            self.aspirationnamebox1 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 2:
-            self.aspirationnamebox2 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 3:
-            self.aspirationnamebox3 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 4:
-            self.aspirationnamebox4 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 5:
-            self.aspirationnamebox5 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 6:
-            self.aspirationnamebox6 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 7:
-            self.aspirationnamebox7 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 8:
-            self.aspirationnamebox8 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 9:
-            self.aspirationnamebox9 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 10:
-            self.aspirationnamebox10 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 11:
-            self.aspirationnamebox11 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 12:
-            self.aspirationnamebox12 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 13:
-            self.aspirationnamebox13 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 14:
-            self.aspirationnamebox14 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 15:
-            self.aspirationnamebox15 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 16:
-            self.aspirationnamebox16 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 17:
-            self.aspirationnamebox17 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 18:
-            self.aspirationnamebox18 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 19:
-            self.aspirationnamebox19 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 20:
-            self.aspirationnamebox20 = QtWidgets.QLineEdit(self)
-
-        if self.aspirationcount >= 1:
-            self.conditionnamebox1 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 2:
-            self.conditionnamebox2 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 3:
-            self.conditionnamebox3 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 4:
-            self.conditionnamebox4 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 5:
-            self.conditionnamebox5 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 6:
-            self.conditionnamebox6 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 7:
-            self.conditionnamebox7 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 8:
-            self.conditionnamebox8 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 9:
-            self.conditionnamebox9 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 10:
-            self.conditionnamebox10 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 11:
-            self.conditionnamebox11 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 12:
-            self.conditionnamebox12 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 13:
-            self.conditionnamebox13 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 14:
-            self.conditionnamebox14 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 15:
-            self.conditionnamebox15 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 16:
-            self.conditionnamebox16 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 17:
-            self.conditionnamebox17 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 18:
-            self.conditionnamebox18 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 19:
-            self.conditionnamebox19 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 20:
-            self.conditionnamebox20 = QtWidgets.QLineEdit(self)
-
         self.banes = QtWidgets.QLabel(self)
         self.banes.setText("Banes")
         self.banes.setFont(self.subtitlefont)
 
-        if self.aspirationcount >= 1:
-            self.banenamebox1 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 2:
-            self.banenamebox2 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 3:
-            self.banenamebox3 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 4:
-            self.banenamebox4 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 5:
-            self.banenamebox5 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 6:
-            self.banenamebox6 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 7:
-            self.banenamebox7 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 8:
-            self.banenamebox8 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 9:
-            self.banenamebox9 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 10:
-            self.banenamebox10 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 11:
-            self.banenamebox11 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 12:
-            self.banenamebox12 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 13:
-            self.banenamebox13 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 14:
-            self.banenamebox14 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 15:
-            self.banenamebox15 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 16:
-            self.banenamebox16 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 17:
-            self.banenamebox17 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 18:
-            self.banenamebox18 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 19:
-            self.banenamebox19 = QtWidgets.QLineEdit(self)
-        if self.aspirationcount >= 20:
-            self.banenamebox20 = QtWidgets.QLineEdit(self)
+        self.aspirationnamebox = []
+        for x in range(self.aspirationcount):
+            if self.aspirationcount >= x:
+                self.aspirationnamebox.append(QtWidgets.QLineEdit(self))
+
+        self.conditionnamebox = []
+        for x in range(self.conditioncount):
+            if self.conditioncount >= x:
+                self.conditionnamebox.append(QtWidgets.QLineEdit(self))
+
+        self.banenamebox = []
+        for x in range(self.banecount):
+            if self.banecount >= x:
+                self.banenamebox.append(QtWidgets.QLineEdit(self))
 
         #begin other traits
 
@@ -1507,236 +602,40 @@ class MyWidget(QtWidgets.QWidget):
 
         #merits
         self.meritcounter = 0
-        if self.meritcount >= 1:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox1, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox1, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 2:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox2, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox2, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 3:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox3, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox3, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 4:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox4, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox4, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 5:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox5, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox5, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 6:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox6, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox6, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 7:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox7, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox7, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 8:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox8, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox8, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 9:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox9, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox9, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 10:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox10, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox10, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 11:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox11, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox11, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 12:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox12, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox12, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 13:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox13, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox13, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 14:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox14, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox14, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 15:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox15, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox15, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 16:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox16, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox16, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 17:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox17, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox17, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 18:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox18, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox18, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 19:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox19, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox19, 9 + self.oplinecounter + self.meritcounter, 3)
-        if self.meritcount >= 20:
-            self.meritcounter += 1
-            self.layout.addWidget(self.meritnamebox20, 9 + self.oplinecounter + self.meritcounter, 2)
-            self.layout.addWidget(self.meritlevelbox20, 9 + self.oplinecounter + self.meritcounter, 3)
+        for x in range(self.meritcount):
+            if self.meritcount >= 1:
+                self.meritcounter += 1
+                self.layout.addWidget(self.meritnamebox[x], 9 + self.oplinecounter + self.meritcounter, 2)
+                self.layout.addWidget(self.meritlevelbox[x], 9 + self.oplinecounter + self.meritcounter, 3)
 
         self.layout.addWidget(self.aspirations, 10 + self.oplinecounter + self.meritcounter, 2)
 
         self.layout.addWidget(self.conditions, 10 + self.oplinecounter + self.meritcounter, 3)
 
         self.aspirationcounter = 0
-        if self.aspirationcount >= 1:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox1, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox1, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 2:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox2, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox2, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 3:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox3, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox3, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 4:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox4, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox4, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 5:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox5, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox5, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 6:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox6, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox6, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 7:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox7, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox7, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 8:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox8, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox8, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 9:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox9, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox9, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 10:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox10, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox10, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 11:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox11, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox11, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 12:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox12, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox12, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 13:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox13, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox13, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 14:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox14, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox14, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 15:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox15, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox15, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 16:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox16, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox16, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 17:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox17, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox17, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 18:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox18, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox18, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 19:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox19, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox19, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
-        if self.aspirationcount >= 20:
-            self.aspirationcounter += 1
-            self.layout.addWidget(self.aspirationnamebox20, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
-            self.layout.addWidget(self.conditionnamebox20, 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+        for x in range(self.aspirationcount):
+            if self.aspirationcount >= 1:
+                self.aspirationcounter += 1
+                self.layout.addWidget(self.aspirationnamebox[x], 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+        self.conditioncounter = 0
+        for x in range(self.conditioncount):
+            if self.conditioncount >= 1:
+                self.conditioncounter += 1
+                self.layout.addWidget(self.conditionnamebox[x], 10 + self.oplinecounter + self.meritcounter + self.conditioncounter, 3)
 
-        self.layout.addWidget(self.banes, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+        if self.aspirationcounter <= self.conditioncounter:
+            self.layout.addWidget(self.banes, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+        else:
+            self.layout.addWidget(self.banes, 11 + self.oplinecounter + self.meritcounter + self.conditioncounter, 3)
 
         self.banecounter = 0
-        if self.aspirationcount >= 1:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox1, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 2:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox2, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 3:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox3, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 4:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox4, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 5:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox5, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 6:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox6, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 7:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox7, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 8:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox8, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 9:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox9, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 10:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox10, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 11:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox11, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 12:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox12, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 13:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox13, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 14:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox14, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 15:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox15, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 16:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox16, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 17:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox17, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 18:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox18, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 19:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox19, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
-        if self.aspirationcount >= 20:
-            self.banecounter += 1
-            self.layout.addWidget(self.banenamebox20, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
+        for x in range(self.banecount):
+            if self.banecount >= 1:
+                self.banecounter += 1
+                if self.aspirationcounter <= self.conditioncounter:
+                    self.layout.addWidget(self.banenamebox[x], 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
+                else:
+                    self.layout.addWidget(self.banenamebox[x], 11 + self.oplinecounter + self.meritcounter + self.conditioncounter + self.banecounter, 3)
 
         self.layout.addWidget(self.updatestats, 8 + self.oplinecounter, 5)
 
@@ -1776,6 +675,8 @@ class MyWidget(QtWidgets.QWidget):
             self.occultflag[0] = True
             self.oldmeritcount = self.meritcount
             self.oldaspirationcount = self.aspirationcount
+            self.oldconditioncount = self.conditioncount
+            self.oldbanecount = self.banecount
 
             # self.layout.removeWidget(self.cat3)
             # self.cat3.deleteLater()
@@ -1836,6 +737,30 @@ class MyWidget(QtWidgets.QWidget):
 
         self.makesheet()
 
+    def aspirationdef(self):
+        self.oldaspirationcount = self.aspirationcount
+        self.aspirationcount = int(self.aspirationslotsbox.text())
+
+        self.savesettings()
+
+        self.makesheet()
+
+    def conditiondef(self):
+        self.oldconditioncount = self.conditioncount
+        self.conditioncount = int(self.conditionslotsbox.text())
+
+        self.savesettings()
+
+        self.makesheet()
+
+    def banedef(self):
+        self.oldbanecount = self.banecount
+        self.banecount = int(self.baneslotsbox.text())
+
+        self.savesettings()
+
+        self.makesheet()
+
     def settingsdef(self):
         self.settings = QtWidgets.QWidget()
         self.settings.setWindowTitle('Settings')
@@ -1853,20 +778,51 @@ class MyWidget(QtWidgets.QWidget):
         self.vamptoggle.clicked.connect(self.vamptoggledef)
 
         self.meritslotslabel = QtWidgets.QLabel()
-        self.meritslotslabel.setText("Merit Slots Available (Max 20): ")
+        self.meritslotslabel.setText("Merit Slots Available: ")
         self.meritslotsbox = QtWidgets.QLineEdit()
         self.meritslotsbox.setText(str(self.meritcount))
         self.meritslotsupdate = QtWidgets.QPushButton('Update Merit Slots')
         self.meritslotsupdate.clicked.connect(self.meritdef)
 
-        self.settingslayout.addWidget(self.settingstitle, 0, 1, 0, 5)
+        self.aspirationslotslabel = QtWidgets.QLabel()
+        self.aspirationslotslabel.setText("Aspiration Slots Available: ")
+        self.aspirationslotsbox = QtWidgets.QLineEdit()
+        self.aspirationslotsbox.setText(str(self.aspirationcount))
+        self.aspirationslotsupdate = QtWidgets.QPushButton('Update Aspiration Slots')
+        self.aspirationslotsupdate.clicked.connect(self.aspirationdef)
 
-        self.settingslayout.addWidget(self.vamplabel, 1, 0)
-        self.settingslayout.addWidget(self.vamptoggle, 1, 1)
+        self.conditionslotslabel = QtWidgets.QLabel()
+        self.conditionslotslabel.setText("Condition Slots Available: ")
+        self.conditionslotsbox = QtWidgets.QLineEdit()
+        self.conditionslotsbox.setText(str(self.conditioncount))
+        self.conditionslotsupdate = QtWidgets.QPushButton('Update Condition Slots')
+        self.conditionslotsupdate.clicked.connect(self.conditiondef)
+
+        self.baneslotslabel = QtWidgets.QLabel()
+        self.baneslotslabel.setText("Bane Slots Available: ")
+        self.baneslotsbox = QtWidgets.QLineEdit()
+        self.baneslotsbox.setText(str(self.banecount))
+        self.baneslotsupdate = QtWidgets.QPushButton('Update Bane Slots')
+        self.baneslotsupdate.clicked.connect(self.banedef)
+
+        self.settingslayout.addWidget(self.settingstitle, 0, 1, 0, 5)
 
         self.settingslayout.addWidget(self.meritslotslabel, 2, 0)
         self.settingslayout.addWidget(self.meritslotsbox, 2, 1)
         self.settingslayout.addWidget(self.meritslotsupdate, 2, 2)
+        self.settingslayout.addWidget(self.aspirationslotslabel, 2, 3)
+        self.settingslayout.addWidget(self.aspirationslotsbox, 2, 4)
+        self.settingslayout.addWidget(self.aspirationslotsupdate, 2, 5)
+
+        self.settingslayout.addWidget(self.conditionslotslabel, 3, 0)
+        self.settingslayout.addWidget(self.conditionslotsbox, 3, 1)
+        self.settingslayout.addWidget(self.conditionslotsupdate, 3, 2)
+        self.settingslayout.addWidget(self.baneslotslabel, 3, 3)
+        self.settingslayout.addWidget(self.baneslotsbox, 3, 4)
+        self.settingslayout.addWidget(self.baneslotsupdate, 3, 5)
+
+        self.settingslayout.addWidget(self.vamplabel, 5, 2)
+        self.settingslayout.addWidget(self.vamptoggle, 5, 3)
         self.setLayout(self.layout)
 
     def initsettings(self):
@@ -1879,6 +835,18 @@ class MyWidget(QtWidgets.QWidget):
                         self.oldmeritcount = self.meritcount
                         self.meritcount = int(splitline[0])
                     if i == 1:
+                        splitline = line.split('#')
+                        self.oldaspirationcount = self.aspirationcount
+                        self.aspirationcount = int(splitline[0])
+                    if i == 2:
+                        splitline = line.split('#')
+                        self.oldconditioncount = self.conditioncount
+                        self.conditioncount = int(splitline[0])
+                    if i == 3:
+                        splitline = line.split('#')
+                        self.oldbanecount = self.banecount
+                        self.banecount = int(splitline[0])
+                    if i == 4:
                         # print('test')
                         splitline = line.split('#')
                         if splitline[0] == 'True':
@@ -1886,6 +854,8 @@ class MyWidget(QtWidgets.QWidget):
                             self.occultflag[0] = True
                             self.oldmeritcount = self.meritcount
                             self.oldaspirationcount = self.aspirationcount
+                            self.oldconditioncount = self.conditioncount
+                            self.oldbanecount = self.banecount
 
         self.resize(1024, 768)
         self.makesheet()
@@ -1899,10 +869,16 @@ class MyWidget(QtWidgets.QWidget):
         self.oplinecounter = 0
 
         self.oldmeritcount = 0
-        self.meritcount = 5 #max 20
+        self.meritcount = 5 #no max
 
         self.oldaspirationcount = 0
         self.aspirationcount = 5
+
+        self.oldconditioncount = 0
+        self.conditioncount = 5
+
+        self.oldbanecount = 0
+        self.banecount = 5
 
         self.sizebonus = 0
 

@@ -1,2 +1,5 @@
 5# Merit Slots Displayed Count
+5# Aspiration Slots Displayed Count
+5# Condition Slots Displayed Count
+5# Bane Slots Displayed Count
 True# Is Vampire

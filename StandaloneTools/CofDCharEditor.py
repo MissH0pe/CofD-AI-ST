@@ -13,6 +13,8 @@ class MyWidget(QtWidgets.QWidget):
             f.write(str(self.aspirationcount)+'# Aspiration Slots Displayed Count\n')
             f.write(str(self.conditioncount)+'# Condition Slots Displayed Count\n')
             f.write(str(self.banecount)+'# Bane Slots Displayed Count\n')
+            if self.occultflag[0]:
+                f.write(str(self.disciplinecount)+'# Discipline Slots Displayed Count\n')
             # print(self.vvflag)
             if self.vvflag:
                 f.write('True# Has a Vice and Virtue\n')
@@ -78,6 +80,16 @@ class MyWidget(QtWidgets.QWidget):
         stats['aspirations'][0] = ['filledaspirations', self.filledaspirations]
         stats['conditions'][0] = ['filledconditions', self.filledconditions]
         stats['banes'][0] = ['filledbanes', self.filledbanes]
+
+        if self.occultflag[0]:
+            self.filleddisciplines = 0
+            stats['disciplines'] = []
+            stats['disciplines'].append(['filleddisciplines', 0])
+            for x in range(self.disciplinecount):
+                if self.disciplinecount >= x and self.disciplinenamebox[x].text() != "" and self.disciplinelevelbox[x].text() != "":
+                    stats['disciplines'].append([self.disciplinenamebox[x].text(), self.disciplinelevelbox[x].text()])
+                    self.filleddisciplines += 1
+            stats['disciplines'][0] = ['filleddisciplines', self.filleddisciplines]
 
         stats['size'] = 5 + self.sizebonus
 
@@ -209,6 +221,16 @@ class MyWidget(QtWidgets.QWidget):
                         self.boxmask.setText(stats['mask'])
                         self.boxdirge.setText(stats['dirge'])
                         self.occultflag[0] = True
+                        if stats['disciplines'][0][1] > self.disciplinecount:
+                            self.olddisciplinecount = self.disciplinecount
+                            self.disciplinecount = stats['disciplines'][0][1]
+
+                            self.makesheet()
+
+                        for x in range(stats['disciplines'][0][1]):
+                            if stats['disciplines'][0][1] >= x:
+                                self.disciplinenamebox[x].setText(stats['disciplines'][x+1][0])
+                                self.disciplinelevelbox[x].setText(stats['disciplines'][x+1][1])
 
                 self.savesettings()
         else:
@@ -382,6 +404,24 @@ class MyWidget(QtWidgets.QWidget):
             self.initiativebonusbox.deleteLater()
             self.initiativebonusbox = None
 
+            if self.occultflag[0]:
+                self.layout.removeWidget(self.disciplines)
+                self.disciplines.deleteLater()
+                self.disciplines = None
+                self.layout.removeWidget(self.disciplineslevel)
+                self.disciplineslevel.deleteLater()
+                self.disciplineslevel = None
+
+                self.disciplinecounter = 0
+                for x in range(self.olddisciplinecount):
+                    if self.olddisciplinecount >= x + 1:
+                        self.layout.removeWidget(self.disciplinenamebox[x])
+                        self.disciplinenamebox[x].deleteLater()
+                        self.disciplinenamebox[x] = None
+                        self.layout.removeWidget(self.disciplinelevelbox[x])
+                        self.disciplinelevelbox[x].deleteLater()
+                        self.disciplinelevelbox[x] = None
+
         #other traits
         self.cat3 = QtWidgets.QLabel(self)
         self.cat3.setText("Other Traits")
@@ -482,6 +522,21 @@ class MyWidget(QtWidgets.QWidget):
         self.initiativebonuslabel.setText("Initiative Bonus: ")
         self.initiativebonusbox = QtWidgets.QLineEdit(self)
 
+        if self.occultflag[0]:
+            self.disciplines = QtWidgets.QLabel(self)
+            self.disciplines.setText("Disciplines")
+            self.disciplines.setFont(self.subtitlefont)
+            self.disciplineslevel = QtWidgets.QLabel(self)
+            self.disciplineslevel.setText("Level")
+
+            #initialize disciplines
+            self.disciplinenamebox = []
+            self.disciplinelevelbox = []
+            for x in range(self.disciplinecount):
+                if self.disciplinecount >= x:
+                    self.disciplinenamebox.append(QtWidgets.QLineEdit(self))
+                    self.disciplinelevelbox.append(QtWidgets.QLineEdit(self))
+
         #begin layout
 
         self.layout.addWidget(self.name, 2, 0)
@@ -533,10 +588,10 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.boxcovenant, 3 + self.oplinecounter, 5)
 
             self.oplinecounter += 1
-            self.layout.addWidget(self.mask, 3 + self.oplinecounter, 0)
-            self.layout.addWidget(self.boxmask, 3 + self.oplinecounter, 1)
-            self.layout.addWidget(self.dirge, 3 + self.oplinecounter, 2)
-            self.layout.addWidget(self.boxdirge, 3 + self.oplinecounter, 3)
+            self.layout.addWidget(self.mask, 3 + self.oplinecounter, 1)
+            self.layout.addWidget(self.boxmask, 3 + self.oplinecounter, 2)
+            self.layout.addWidget(self.dirge, 3 + self.oplinecounter, 3)
+            self.layout.addWidget(self.boxdirge, 3 + self.oplinecounter, 4)
             self.runonce1 = False
 
         self.layout.addWidget(self.cat1, 4 + self.oplinecounter, 3)
@@ -638,6 +693,7 @@ class MyWidget(QtWidgets.QWidget):
 
         self.layout.addWidget(self.conditions, 10 + self.oplinecounter + self.meritcounter, 3)
 
+        self.mabc = 0
         self.aspirationcounter = 0
         for x in range(self.aspirationcount):
             if self.aspirationcount >= 1:
@@ -651,8 +707,10 @@ class MyWidget(QtWidgets.QWidget):
 
         if self.aspirationcounter <= self.conditioncounter:
             self.layout.addWidget(self.banes, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 2)
+            self.mabc += self.meritcounter + self.aspirationcounter
         else:
             self.layout.addWidget(self.banes, 11 + self.oplinecounter + self.meritcounter + self.conditioncounter, 3)
+            self.mabc += self.meritcounter + self.conditioncounter
 
         self.banecounter = 0
         for x in range(self.banecount):
@@ -662,6 +720,8 @@ class MyWidget(QtWidgets.QWidget):
                     self.layout.addWidget(self.banenamebox[x], 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 2)
                 else:
                     self.layout.addWidget(self.banenamebox[x], 11 + self.oplinecounter + self.meritcounter + self.conditioncounter + self.banecounter, 3)
+
+        self.mabc += self.banecounter
 
         self.layout.addWidget(self.updatestats, 8 + self.oplinecounter, 5)
 
@@ -689,6 +749,18 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.initiativeval, 17 + self.oplinecounter, 5)
         self.layout.addWidget(self.initiativebonuslabel, 18 + self.oplinecounter, 4)
         self.layout.addWidget(self.initiativebonusbox, 18 + self.oplinecounter, 5)
+
+        if self.occultflag[0]:
+            self.layout.addWidget(self.disciplines, 12 + self.oplinecounter + self.mabc, 2)
+            self.layout.addWidget(self.disciplineslevel, 12 + self.oplinecounter + self.mabc, 3)
+
+            #disciplines
+            self.disciplinecounter = 0
+            for x in range(self.disciplinecount):
+                if self.disciplinecount >= 1:
+                    self.disciplinecounter += 1
+                    self.layout.addWidget(self.disciplinenamebox[x], 12 + self.oplinecounter + self.mabc + self.disciplinecounter, 2)
+                    self.layout.addWidget(self.disciplinelevelbox[x], 12 + self.oplinecounter + self.mabc + self.disciplinecounter, 3)
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
@@ -761,6 +833,24 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.removeWidget(self.boxdirge)
             self.boxdirge.deleteLater()
             self.boxdirge = None
+
+            self.layout.removeWidget(self.disciplines)
+            self.disciplines.deleteLater()
+            self.disciplines = None
+            self.layout.removeWidget(self.disciplineslevel)
+            self.disciplineslevel.deleteLater()
+            self.disciplineslevel = None
+
+            self.disciplinecounter = 0
+            for x in range(self.olddisciplinecount):
+                if self.olddisciplinecount >= x + 1:
+                    self.layout.removeWidget(self.disciplinenamebox[x])
+                    self.disciplinenamebox[x].deleteLater()
+                    self.disciplinenamebox[x] = None
+                    self.layout.removeWidget(self.disciplinelevelbox[x])
+                    self.disciplinelevelbox[x].deleteLater()
+                    self.disciplinelevelbox[x] = None
+
             self.oplinecounter -= 2
             self.oldmeritcount = 5
             self.runonce1 = True
@@ -796,6 +886,14 @@ class MyWidget(QtWidgets.QWidget):
     def banedef(self):
         self.oldbanecount = self.banecount
         self.banecount = int(self.baneslotsbox.text())
+
+        self.savesettings()
+
+        self.makesheet()
+
+    def disciplinedef(self):
+        self.olddisciplinecount = self.disciplinecount
+        self.disciplinecount = int(self.disciplineslotsbox.text())
 
         self.savesettings()
 
@@ -850,6 +948,13 @@ class MyWidget(QtWidgets.QWidget):
         self.baneslotsupdate = QtWidgets.QPushButton('Update Bane Slots')
         self.baneslotsupdate.clicked.connect(self.banedef)
 
+        self.disciplineslotslabel = QtWidgets.QLabel()
+        self.disciplineslotslabel.setText("Discipline Slots Available: ")
+        self.disciplineslotsbox = QtWidgets.QLineEdit()
+        self.disciplineslotsbox.setText(str(self.disciplinecount))
+        self.disciplineslotsupdate = QtWidgets.QPushButton('Update Discipline Slots')
+        self.disciplineslotsupdate.clicked.connect(self.disciplinedef)
+
         self.settingslayout.addWidget(self.settingstitle, 0, 2, 0, 5)
 
         self.settingslayout.addWidget(self.meritslotslabel, 2, 0)
@@ -866,11 +971,15 @@ class MyWidget(QtWidgets.QWidget):
         self.settingslayout.addWidget(self.baneslotsbox, 3, 4)
         self.settingslayout.addWidget(self.baneslotsupdate, 3, 5)
 
-        self.settingslayout.addWidget(self.humanlabel, 5, 2)
-        self.settingslayout.addWidget(self.humantoggle, 5, 3)
+        self.settingslayout.addWidget(self.disciplineslotslabel, 4, 0)
+        self.settingslayout.addWidget(self.disciplineslotsbox, 4, 1)
+        self.settingslayout.addWidget(self.disciplineslotsupdate, 4, 2)
 
-        self.settingslayout.addWidget(self.vamplabel, 6, 2)
-        self.settingslayout.addWidget(self.vamptoggle, 6, 3)
+        self.settingslayout.addWidget(self.humanlabel, 6, 2)
+        self.settingslayout.addWidget(self.humantoggle, 6, 3)
+
+        self.settingslayout.addWidget(self.vamplabel, 7, 2)
+        self.settingslayout.addWidget(self.vamptoggle, 7, 3)
         self.setLayout(self.layout)
 
     def initsettings(self):
@@ -896,9 +1005,13 @@ class MyWidget(QtWidgets.QWidget):
                         self.banecount = int(splitline[0])
                     if i == 4:
                         splitline = line.split('#')
+                        self.olddisciplinecount = self.disciplinecount
+                        self.disciplinecount = int(splitline[0])
+                    if i == 5:
+                        splitline = line.split('#')
                         if splitline[0] == 'True':
                             self.vvflag = True
-                    if i == 5:
+                    if i == 6:
                         # print('test')
                         splitline = line.split('#')
                         if splitline[0] == 'True':
@@ -931,6 +1044,9 @@ class MyWidget(QtWidgets.QWidget):
 
         self.oldbanecount = 0
         self.banecount = 5
+
+        self.olddisciplinecount = 0
+        self.disciplinecount = 5
 
         self.sizebonus = 0
 

@@ -875,52 +875,74 @@ class MyWidget(QtWidgets.QWidget):
 
         self.mabc += self.banecounter
 
-        self.layout.addWidget(self.updatestats, 8 + self.oplinecounter, 6)
+        if self.othertraitsflag != True:
+            self.layout.addWidget(self.updatestats, 8 + self.oplinecounter, 6)
 
         self.layout.addWidget(self.size, 9 + self.oplinecounter, 5)
         self.layout.addWidget(self.sizeval, 9 + self.oplinecounter, 6)
-        self.layout.addWidget(self.sizebonuslabel, 10 + self.oplinecounter, 5)
-        self.layout.addWidget(self.sizebonusbox, 10 + self.oplinecounter, 6)
 
-        self.layout.addWidget(self.speed, 11 + self.oplinecounter, 5)
-        self.layout.addWidget(self.speedval, 11 + self.oplinecounter, 6)
-        self.layout.addWidget(self.speedbonuslabel, 12 + self.oplinecounter, 5)
-        self.layout.addWidget(self.speedbonusbox, 12 + self.oplinecounter, 6)
+        self.otcounter = 0
 
-        self.layout.addWidget(self.defense, 13 + self.oplinecounter, 5)
-        self.layout.addWidget(self.defenseval, 13 + self.oplinecounter, 6)
-        self.layout.addWidget(self.defensebonuslabel, 14 + self.oplinecounter, 5)
-        self.layout.addWidget(self.defensebonusbox, 14 + self.oplinecounter, 6)
+        if self.othertraitsflag != True:
+            self.otcounter += 1
+            self.layout.addWidget(self.sizebonuslabel, 9 + self.oplinecounter + self.otcounter, 5)
+            self.layout.addWidget(self.sizebonusbox, 9 + self.oplinecounter + self.otcounter, 6)
 
-        self.layout.addWidget(self.armor, 15 + self.oplinecounter, 5)
-        self.layout.addWidget(self.armorval, 15 + self.oplinecounter, 6)
-        self.layout.addWidget(self.armorbonuslabel, 16 + self.oplinecounter, 5)
-        self.layout.addWidget(self.armorbonusbox, 16 + self.oplinecounter, 6)
+        self.layout.addWidget(self.speed, 10 + self.oplinecounter + self.otcounter, 5)
+        self.layout.addWidget(self.speedval, 10 + self.oplinecounter + self.otcounter, 6)
 
-        self.layout.addWidget(self.initiative, 17 + self.oplinecounter, 5)
-        self.layout.addWidget(self.initiativeval, 17 + self.oplinecounter, 6)
-        self.layout.addWidget(self.initiativebonuslabel, 18 + self.oplinecounter, 5)
-        self.layout.addWidget(self.initiativebonusbox, 18 + self.oplinecounter, 6)
+        if self.othertraitsflag != True:
+            self.otcounter += 1
+            self.layout.addWidget(self.speedbonuslabel, 10 + self.oplinecounter + self.otcounter, 5)
+            self.layout.addWidget(self.speedbonusbox, 10 + self.oplinecounter + self.otcounter, 6)
 
-        self.layout.addWidget(self.healthlabel, 19 + self.oplinecounter, 6)
+        self.layout.addWidget(self.defense, 11 + self.oplinecounter + self.otcounter, 5)
+        self.layout.addWidget(self.defenseval, 11 + self.oplinecounter + self.otcounter, 6)
 
-        self.layout.addWidget(self.maxhealthlabel, 20 + self.oplinecounter, 5)
-        self.layout.addWidget(self.maxhealthbox, 20 + self.oplinecounter, 6)
-        self.layout.addWidget(self.maxhealthmodlabel, 21 + self.oplinecounter, 5)
-        self.layout.addWidget(self.maxhealthmodbox, 21 + self.oplinecounter, 6)
-        self.layout.addWidget(self.bashingdamagelabel, 22 + self.oplinecounter, 5)
-        self.layout.addWidget(self.bashingdamagebox, 22 + self.oplinecounter, 6)
-        self.layout.addWidget(self.lethaldamagelabel, 23 + self.oplinecounter, 5)
-        self.layout.addWidget(self.lethaldamagebox, 23 + self.oplinecounter, 6)
-        self.layout.addWidget(self.aggravateddamagelabel, 24 + self.oplinecounter, 5)
-        self.layout.addWidget(self.aggravateddamagebox, 24 + self.oplinecounter, 6)
+        if self.othertraitsflag != True:
+            self.otcounter += 1
+            self.layout.addWidget(self.defensebonuslabel, 11 + self.oplinecounter + self.otcounter, 5)
+            self.layout.addWidget(self.defensebonusbox, 11 + self.oplinecounter + self.otcounter, 6)
 
-        self.layout.addWidget(self.willpowerlabel, 25 + self.oplinecounter, 6)
+        self.layout.addWidget(self.armor, 12 + self.oplinecounter + self.otcounter, 5)
+        self.layout.addWidget(self.armorval, 12 + self.oplinecounter + self.otcounter, 6)
 
-        self.layout.addWidget(self.willpowerdotlabel, 26 + self.oplinecounter, 5)
-        self.layout.addWidget(self.willpowerdotbox, 26 + self.oplinecounter, 6)
-        self.layout.addWidget(self.willpowerpointlabel, 27 + self.oplinecounter, 5)
-        self.layout.addWidget(self.willpowerpointbox, 27 + self.oplinecounter, 6)
+        if self.othertraitsflag != True:
+            self.otcounter += 1
+            self.layout.addWidget(self.armorbonuslabel, 12 + self.oplinecounter + self.otcounter, 5)
+            self.layout.addWidget(self.armorbonusbox, 12 + self.oplinecounter + self.otcounter, 6)
+
+        self.layout.addWidget(self.initiative, 13 + self.oplinecounter + self.otcounter, 5)
+        self.layout.addWidget(self.initiativeval, 13 + self.oplinecounter + self.otcounter, 6)
+
+        if self.othertraitsflag != True:
+            self.otcounter += 1
+            self.layout.addWidget(self.initiativebonuslabel, 13 + self.oplinecounter + self.otcounter, 5)
+            self.layout.addWidget(self.initiativebonusbox, 13 + self.oplinecounter, 6)
+
+        self.layout.addWidget(self.healthlabel, 14 + self.oplinecounter + self.otcounter, 6)
+
+        self.layout.addWidget(self.maxhealthlabel, 15 + self.oplinecounter + self.otcounter, 5)
+        self.layout.addWidget(self.maxhealthbox, 15 + self.oplinecounter + self.otcounter, 6)
+
+        if self.othertraitsflag != True:
+            self.otcounter += 1
+            self.layout.addWidget(self.maxhealthmodlabel, 15 + self.oplinecounter + self.otcounter, 5)
+            self.layout.addWidget(self.maxhealthmodbox, 15 + self.oplinecounter + self.otcounter, 6)
+
+        self.layout.addWidget(self.bashingdamagelabel, 16 + self.oplinecounter + self.otcounter, 5)
+        self.layout.addWidget(self.bashingdamagebox, 16 + self.oplinecounter + self.otcounter, 6)
+        self.layout.addWidget(self.lethaldamagelabel, 17 + self.oplinecounter + self.otcounter, 5)
+        self.layout.addWidget(self.lethaldamagebox, 17 + self.oplinecounter + self.otcounter, 6)
+        self.layout.addWidget(self.aggravateddamagelabel, 18 + self.oplinecounter + self.otcounter, 5)
+        self.layout.addWidget(self.aggravateddamagebox, 18 + self.oplinecounter + self.otcounter, 6)
+
+        self.layout.addWidget(self.willpowerlabel, 19 + self.oplinecounter + self.otcounter, 6)
+
+        self.layout.addWidget(self.willpowerdotlabel, 20 + self.oplinecounter + self.otcounter, 5)
+        self.layout.addWidget(self.willpowerdotbox, 20 + self.oplinecounter + self.otcounter, 6)
+        self.layout.addWidget(self.willpowerpointlabel, 21 + self.oplinecounter + self.otcounter, 5)
+        self.layout.addWidget(self.willpowerpointbox, 21 + self.oplinecounter + self.otcounter, 6)
 
         if self.occultflag[0]:
             self.layout.addWidget(self.disciplines, 12 + self.oplinecounter + self.mabc, 3)
@@ -941,74 +963,74 @@ class MyWidget(QtWidgets.QWidget):
             self.saveddisciplinelevels = []
 
             self.otoplinecounter = 1
-            self.layout.addWidget(self.bloodpotencytitle, 27 + self.oplinecounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.bloodpotencytitle, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.bloodpotencylabel, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.bloodpotencybox, 27 + self.oplinecounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.bloodpotencylabel, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.bloodpotencybox, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.vitaetitle, 27 + self.oplinecounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.vitaetitle, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.maxvitaelabel, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.maxvitaebox, 27 + self.oplinecounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.maxvitaelabel, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.maxvitaebox, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
             self.otoplinecounter += 1
-            self.layout.addWidget(self.currentvitaelabel, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.currentvitaebox, 27 + self.oplinecounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.currentvitaelabel, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.currentvitaebox, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.humanitytitle, 27 + self.oplinecounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitytitle, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.num1, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.humanitybox1, 27 + self.oplinecounter + self.otoplinecounter, 6)
-            self.layout.addWidget(self.humanitycheck1, 27 + self.oplinecounter + self.otoplinecounter, 7)
+            self.layout.addWidget(self.num1, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitybox1, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitycheck1, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 7)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.num2, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.humanitybox2, 27 + self.oplinecounter + self.otoplinecounter, 6)
-            self.layout.addWidget(self.humanitycheck2, 27 + self.oplinecounter + self.otoplinecounter, 7)
+            self.layout.addWidget(self.num2, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitybox2, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitycheck2, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 7)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.num3, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.humanitybox3, 27 + self.oplinecounter + self.otoplinecounter, 6)
-            self.layout.addWidget(self.humanitycheck3, 27 + self.oplinecounter + self.otoplinecounter, 7)
+            self.layout.addWidget(self.num3, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitybox3, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitycheck3, 21 + self.oplinecounter  + self.otcounter+ self.otoplinecounter, 7)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.num4, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.humanitybox4, 27 + self.oplinecounter + self.otoplinecounter, 6)
-            self.layout.addWidget(self.humanitycheck4, 27 + self.oplinecounter + self.otoplinecounter, 7)
+            self.layout.addWidget(self.num4, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitybox4, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitycheck4, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 7)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.num5, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.humanitybox5, 27 + self.oplinecounter + self.otoplinecounter, 6)
-            self.layout.addWidget(self.humanitycheck5, 27 + self.oplinecounter + self.otoplinecounter, 7)
+            self.layout.addWidget(self.num5, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitybox5, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitycheck5, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 7)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.num6, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.humanitybox6, 27 + self.oplinecounter + self.otoplinecounter, 6)
-            self.layout.addWidget(self.humanitycheck6, 27 + self.oplinecounter + self.otoplinecounter, 7)
+            self.layout.addWidget(self.num6, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitybox6, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitycheck6, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 7)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.num7, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.humanitybox7, 27 + self.oplinecounter + self.otoplinecounter, 6)
-            self.layout.addWidget(self.humanitycheck7, 27 + self.oplinecounter + self.otoplinecounter, 7)
+            self.layout.addWidget(self.num7, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitybox7, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitycheck7, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 7)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.num8, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.humanitybox8, 27 + self.oplinecounter + self.otoplinecounter, 6)
-            self.layout.addWidget(self.humanitycheck8, 27 + self.oplinecounter + self.otoplinecounter, 7)
+            self.layout.addWidget(self.num8, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitybox8, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitycheck8, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 7)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.num9, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.humanitybox9, 27 + self.oplinecounter + self.otoplinecounter, 6)
-            self.layout.addWidget(self.humanitycheck9, 27 + self.oplinecounter + self.otoplinecounter, 7)
+            self.layout.addWidget(self.num9, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitybox9, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitycheck9, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 7)
 
             self.otoplinecounter += 1
-            self.layout.addWidget(self.num10, 27 + self.oplinecounter + self.otoplinecounter, 5)
-            self.layout.addWidget(self.humanitybox10, 27 + self.oplinecounter + self.otoplinecounter, 6)
-            self.layout.addWidget(self.humanitycheck10, 27 + self.oplinecounter + self.otoplinecounter, 7)
+            self.layout.addWidget(self.num10, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.humanitybox10, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 6)
+            self.layout.addWidget(self.humanitycheck10, 21 + self.oplinecounter + self.otcounter + self.otoplinecounter, 7)
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
@@ -1627,6 +1649,8 @@ class MyWidget(QtWidgets.QWidget):
         self.saveddisciplinenames = []
         self.saveddisciplinelevels = []
 
+        self.othertraitsflag = 1
+
         self.initsettings()
 
         self.title = QtWidgets.QLabel()
@@ -2004,96 +2028,150 @@ class MyWidget(QtWidgets.QWidget):
 
         #begin other traits
 
-        self.updatestats = QtWidgets.QPushButton('Update Derived Stats')
-        self.updatestats.clicked.connect(self.updatestatsdef)
+        if self.othertraitsflag == 0:
+            self.updatestats = QtWidgets.QPushButton('Update Derived Stats')
+            self.updatestats.clicked.connect(self.updatestatsdef)
 
-        self.size = QtWidgets.QLabel(self)
-        self.size.setText("Size: ")
-        self.sizeval = QtWidgets.QLabel(self)
-        self.sizeval.setText(str(5 + self.sizebonus))
+            self.size = QtWidgets.QLabel(self)
+            self.size.setText("Size: ")
+            self.sizeval = QtWidgets.QLabel(self)
+            self.sizeval.setText(str(5 + self.sizebonus))
 
-        self.sizebonuslabel = QtWidgets.QLabel(self)
-        self.sizebonuslabel.setText("Size Bonus: ")
-        self.sizebonusbox = QtWidgets.QLineEdit(self)
+            self.sizebonuslabel = QtWidgets.QLabel(self)
+            self.sizebonuslabel.setText("Size Bonus: ")
+            self.sizebonusbox = QtWidgets.QLineEdit(self)
 
-        self.speed = QtWidgets.QLabel(self)
-        self.speed.setText("Speed: ")
-        self.speedval = QtWidgets.QLabel(self)
-        self.speedval.setText(str(int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus))
+            self.speed = QtWidgets.QLabel(self)
+            self.speed.setText("Speed: ")
+            self.speedval = QtWidgets.QLabel(self)
+            self.speedval.setText(str(int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus))
 
-        self.speedbonuslabel = QtWidgets.QLabel(self)
-        self.speedbonuslabel.setText("Speed Bonus: ")
-        self.speedbonusbox = QtWidgets.QLineEdit(self)
+            self.speedbonuslabel = QtWidgets.QLabel(self)
+            self.speedbonuslabel.setText("Speed Bonus: ")
+            self.speedbonusbox = QtWidgets.QLineEdit(self)
 
-        self.defense = QtWidgets.QLabel(self)
-        self.defense.setText("Defense: ")
-        self.defenseval = QtWidgets.QLabel(self)
-        if self.dexteritystat <= self.witsstat:
-            self.defenseval.setText(str(self.athleticsskill + self.dexteritystat + self.defensebonus))
-        else:
-            self.defenseval.setText(str(self.athleticsskill + self.witsstat + self.defensebonus))
+            self.defense = QtWidgets.QLabel(self)
+            self.defense.setText("Defense: ")
+            self.defenseval = QtWidgets.QLabel(self)
+            if self.dexteritystat <= self.witsstat:
+                self.defenseval.setText(str(self.athleticsskill + self.dexteritystat + self.defensebonus))
+            else:
+                self.defenseval.setText(str(self.athleticsskill + self.witsstat + self.defensebonus))
 
-        self.defensebonuslabel = QtWidgets.QLabel(self)
-        self.defensebonuslabel.setText("Defense Bonus: ")
-        self.defensebonusbox = QtWidgets.QLineEdit(self)
+            self.defensebonuslabel = QtWidgets.QLabel(self)
+            self.defensebonuslabel.setText("Defense Bonus: ")
+            self.defensebonusbox = QtWidgets.QLineEdit(self)
 
-        self.armor = QtWidgets.QLabel(self)
-        self.armor.setText("Armor: ")
-        self.armorval = QtWidgets.QLabel(self)
-        self.armorval.setText(str(self.armorbonus))
+            self.armor = QtWidgets.QLabel(self)
+            self.armor.setText("Armor: ")
+            self.armorval = QtWidgets.QLabel(self)
+            self.armorval.setText(str(self.armorbonus))
 
-        self.armorbonuslabel = QtWidgets.QLabel(self)
-        self.armorbonuslabel.setText("Armor Bonus: ")
-        self.armorbonusbox = QtWidgets.QLineEdit(self)
+            self.armorbonuslabel = QtWidgets.QLabel(self)
+            self.armorbonuslabel.setText("Armor Bonus: ")
+            self.armorbonusbox = QtWidgets.QLineEdit(self)
 
-        self.initiative = QtWidgets.QLabel(self)
-        self.initiative.setText("Initiative Mod: ")
-        self.initiativeval = QtWidgets.QLabel(self)
-        self.initiativeval.setText(str(self.composurestat + self.dexteritystat + self.initiativebonus))
+            self.initiative = QtWidgets.QLabel(self)
+            self.initiative.setText("Initiative Mod: ")
+            self.initiativeval = QtWidgets.QLabel(self)
+            self.initiativeval.setText(str(self.composurestat + self.dexteritystat + self.initiativebonus))
 
-        self.initiativebonuslabel = QtWidgets.QLabel(self)
-        self.initiativebonuslabel.setText("Initiative Bonus: ")
-        self.initiativebonusbox = QtWidgets.QLineEdit(self)
+            self.initiativebonuslabel = QtWidgets.QLabel(self)
+            self.initiativebonuslabel.setText("Initiative Bonus: ")
+            self.initiativebonusbox = QtWidgets.QLineEdit(self)
 
-        self.healthlabel = QtWidgets.QLabel(self)
-        self.healthlabel.setText("Health")
-        self.healthlabel.setFont(self.subtitlefont)
+            self.healthlabel = QtWidgets.QLabel(self)
+            self.healthlabel.setText("Health")
+            self.healthlabel.setFont(self.subtitlefont)
 
-        self.maxhealthmodlabel = QtWidgets.QLabel(self)
-        self.maxhealthmodlabel.setText("Max Health Mod: ")
-        self.maxhealthmodbox = QtWidgets.QLineEdit(self)
+            self.maxhealthmodlabel = QtWidgets.QLabel(self)
+            self.maxhealthmodlabel.setText("Max Health Mod: ")
+            self.maxhealthmodbox = QtWidgets.QLineEdit(self)
 
-        self.maxhealthlabel = QtWidgets.QLabel(self)
-        self.maxhealthlabel.setText("Max Health: ")
-        self.maxhealthbox = QtWidgets.QLabel(self)
-        if self.maxhealthmodbox.text() != "":
-            self.maxhealthbox.setText(str(int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat))
-        else:
-            self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
-        self.bashingdamagelabel = QtWidgets.QLabel(self)
-        self.bashingdamagelabel.setText("Bashing Damage: ")
-        self.bashingdamagebox = QtWidgets.QLineEdit(self)
+            self.maxhealthlabel = QtWidgets.QLabel(self)
+            self.maxhealthlabel.setText("Max Health: ")
+            self.maxhealthbox = QtWidgets.QLabel(self)
+            if self.maxhealthmodbox.text() != "":
+                self.maxhealthbox.setText(str(int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat))
+            else:
+                self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
+            self.bashingdamagelabel = QtWidgets.QLabel(self)
+            self.bashingdamagelabel.setText("Bashing Damage: ")
+            self.bashingdamagebox = QtWidgets.QLineEdit(self)
 
-        self.lethaldamagelabel = QtWidgets.QLabel(self)
-        self.lethaldamagelabel.setText("Lethal Damage: ")
-        self.lethaldamagebox = QtWidgets.QLineEdit(self)
+            self.lethaldamagelabel = QtWidgets.QLabel(self)
+            self.lethaldamagelabel.setText("Lethal Damage: ")
+            self.lethaldamagebox = QtWidgets.QLineEdit(self)
 
-        self.aggravateddamagelabel = QtWidgets.QLabel(self)
-        self.aggravateddamagelabel.setText("Aggravated Damage: ")
-        self.aggravateddamagebox = QtWidgets.QLineEdit(self)
+            self.aggravateddamagelabel = QtWidgets.QLabel(self)
+            self.aggravateddamagelabel.setText("Aggravated Damage: ")
+            self.aggravateddamagebox = QtWidgets.QLineEdit(self)
 
-        self.willpowerlabel = QtWidgets.QLabel(self)
-        self.willpowerlabel.setText("Willpower")
-        self.willpowerlabel.setFont(self.subtitlefont)
+            self.willpowerlabel = QtWidgets.QLabel(self)
+            self.willpowerlabel.setText("Willpower")
+            self.willpowerlabel.setFont(self.subtitlefont)
 
-        self.willpowerdotlabel = QtWidgets.QLabel(self)
-        self.willpowerdotlabel.setText("Willpower Dot: ")
-        self.willpowerdotbox = QtWidgets.QLineEdit(self)
-        self.willpowerdotbox.setText(str(self.composurestat + self.resolvestat))
+            self.willpowerdotlabel = QtWidgets.QLabel(self)
+            self.willpowerdotlabel.setText("Willpower Dot: ")
+            self.willpowerdotbox = QtWidgets.QLineEdit(self)
+            self.willpowerdotbox.setText(str(self.composurestat + self.resolvestat))
 
-        self.willpowerpointlabel = QtWidgets.QLabel(self)
-        self.willpowerpointlabel.setText("Willpower Point: ")
-        self.willpowerpointbox = QtWidgets.QLineEdit(self)
+            self.willpowerpointlabel = QtWidgets.QLabel(self)
+            self.willpowerpointlabel.setText("Willpower Point: ")
+            self.willpowerpointbox = QtWidgets.QLineEdit(self)
+        elif self.othertraitsflag == 1:
+            self.size = QtWidgets.QLabel(self)
+            self.size.setText("Size: ")
+            self.sizeval = QtWidgets.QLineEdit(self)
+
+            self.speed = QtWidgets.QLabel(self)
+            self.speed.setText("Speed: ")
+            self.speedval = QtWidgets.QLineEdit(self)
+
+            self.defense = QtWidgets.QLabel(self)
+            self.defense.setText("Defense: ")
+            self.defenseval = QtWidgets.QLineEdit(self)
+
+            self.armor = QtWidgets.QLabel(self)
+            self.armor.setText("Armor: ")
+            self.armorval = QtWidgets.QLineEdit(self)
+
+            self.initiative = QtWidgets.QLabel(self)
+            self.initiative.setText("Initiative Mod: ")
+            self.initiativeval = QtWidgets.QLineEdit(self)
+
+            self.healthlabel = QtWidgets.QLabel(self)
+            self.healthlabel.setText("Health")
+            self.healthlabel.setFont(self.subtitlefont)
+
+            self.maxhealthlabel = QtWidgets.QLabel(self)
+            self.maxhealthlabel.setText("Max Health: ")
+            self.maxhealthbox = QtWidgets.QLineEdit(self)
+
+            self.bashingdamagelabel = QtWidgets.QLabel(self)
+            self.bashingdamagelabel.setText("Bashing Damage: ")
+            self.bashingdamagebox = QtWidgets.QLineEdit(self)
+
+            self.lethaldamagelabel = QtWidgets.QLabel(self)
+            self.lethaldamagelabel.setText("Lethal Damage: ")
+            self.lethaldamagebox = QtWidgets.QLineEdit(self)
+
+            self.aggravateddamagelabel = QtWidgets.QLabel(self)
+            self.aggravateddamagelabel.setText("Aggravated Damage: ")
+            self.aggravateddamagebox = QtWidgets.QLineEdit(self)
+
+            self.willpowerlabel = QtWidgets.QLabel(self)
+            self.willpowerlabel.setText("Willpower")
+            self.willpowerlabel.setFont(self.subtitlefont)
+
+            self.willpowerdotlabel = QtWidgets.QLabel(self)
+            self.willpowerdotlabel.setText("Willpower Dot: ")
+            self.willpowerdotbox = QtWidgets.QLineEdit(self)
+            self.willpowerdotbox.setText(str(self.composurestat + self.resolvestat))
+
+            self.willpowerpointlabel = QtWidgets.QLabel(self)
+            self.willpowerpointlabel.setText("Willpower Point: ")
+            self.willpowerpointbox = QtWidgets.QLineEdit(self)
 
         if self.vvflag:
             self.virtue = QtWidgets.QLabel(self)

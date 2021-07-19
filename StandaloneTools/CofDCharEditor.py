@@ -45,12 +45,12 @@ class MyWidget(QtWidgets.QWidget):
             if self.maxhealthmodbox.text() != "":
                 stats['health'] = {'maxhealth': int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat}
             else:
-                stats['health'] = {'maxhealth': int(self.sizeval.text()) + self.staminastat}
+                stats['health'] = {'maxhealth': ''}
         elif self.othertraitsflag == 1:
             if self.maxhealthbox.text() != "":
                 stats['health'] = {'maxhealth': int(self.maxhealthbox.text())}
             else:
-                stats['health'] = {'maxhealth': int(self.sizeval.text()) + self.staminastat}
+                stats['health'] = {'maxhealth': ''}
         if self.bashingdamagebox.text() != "":
             stats['health']['bashingdamage'] = int(self.bashingdamagebox.text())
         else:
@@ -86,12 +86,12 @@ class MyWidget(QtWidgets.QWidget):
             if self.maxhealthmodbox.text() != "":
                 self.maxhealthbox.setText(str(int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat))
             else:
-                self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
+                self.maxhealthbox.setText(str(6))
         elif self.othertraitsflag == 1:
             if self.maxhealthbox.text() != "":
                 self.maxhealthbox.setText(str(int(self.maxhealthbox.text())))
             else:
-                self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
+                self.maxhealthbox.setText(str(6))
 
         self.bashingdamagelabel = QtWidgets.QLabel(self)
         self.bashingdamagelabel.setText("Bashing Damage: ")

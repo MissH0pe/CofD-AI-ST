@@ -41,11 +41,16 @@ class MyWidget(QtWidgets.QWidget):
                 json.dump(backup, f)
 
         stats = {'name': self.boxname.text(), 'supernaturaltags': [], 'player': self.boxplayer.text(), 'chronicle': self.boxchronicle.text(), 'concept': self.boxconcept.text(), 'stats': {'intelligence': self.boxintelligence.text(), 'strength': self.boxstrength.text(), 'presence': self.boxpresence.text(), 'wits': self.boxwits.text(), 'dexterity': self.boxdexterity.text(), 'manipulation': self.boxmanipulation.text(), 'resolve': self.boxresolve.text(), 'stamina': self.boxstamina.text(), 'composure': self.boxcomposure.text()}, 'skills': {'academics': self.boxacademics.text(), 'academicsspec': self.boxspecacademics.text(), 'computer': self.boxcomputer.text(), 'computerspec': self.boxspeccomputer.text(), 'crafts': self.boxcrafts.text(), 'craftsspec': self.boxspeccrafts.text(), 'investigation': self.boxinvestigation.text(), 'investigationspec': self.boxspecinvestigation.text(), 'medicine': self.boxmedicine.text(), 'medicinespec': self.boxspecmedicine.text(), 'occult': self.boxoccult.text(), 'occultspec': self.boxspecoccult.text(), 'politics': self.boxpolitics.text(), 'politicsspec': self.boxspecpolitics.text(), 'science': self.boxscience.text(), 'sciencespec': self.boxspecscience.text(), 'athletics': self.boxathletics.text(), 'athleticsspec': self.boxspecathletics.text(), 'brawl': self.boxbrawl.text(), 'brawlspec': self.boxspecbrawl.text(), 'drive': self.boxdrive.text(), 'drivespec': self.boxspecdrive.text(), 'firearms': self.boxfirearms.text(), 'firearmsspec': self.boxspecfirearms.text(), 'larceny': self.boxlarceny.text(), 'larcenyspec': self.boxspeclarceny.text(), 'stealth': self.boxstealth.text(), 'stealthspec': self.boxspecstealth.text(), 'survival': self.boxsurvival.text(), 'survivalspec': self.boxspecsurvival.text(), 'weaponry': self.boxweaponry.text(), 'weaponryspec': self.boxspecweaponry.text(), 'animalken': self.boxanimalken.text(), 'animalkenspec': self.boxspecanimalken.text(), 'empathy': self.boxempathy.text(), 'empathyspec': self.boxspecempathy.text(), 'expression': self.boxexpression.text(), 'expressionspec': self.boxspecexpression.text(), 'intimidation': self.boxintimidation.text(), 'intimidationspec': self.boxspecintimidation.text(), 'persuasion': self.boxpersuasion.text(), 'persuasionspec': self.boxspecpersuasion.text(), 'socialize': self.boxsocialize.text(), 'socializespec': self.boxspecsocialize.text(), 'streetwise': self.boxstreetwise.text(), 'streetwisespec': self.boxspecstreetwise.text(), 'subterfuge': self.boxsubterfuge.text(), 'subterfugespec': self.boxspecsubterfuge.text()}}
-
-        if self.maxhealthmodbox.text() != "":
-            stats['health'] = {'maxhealth': int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat}
-        else:
-            stats['health'] = {'maxhealth': int(self.sizeval.text()) + self.staminastat}
+        if self.othertraitsflag == 0:
+            if self.maxhealthmodbox.text() != "":
+                stats['health'] = {'maxhealth': int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat}
+            else:
+                stats['health'] = {'maxhealth': int(self.sizeval.text()) + self.staminastat}
+        elif self.othertraitsflag == 1:
+            if self.maxhealthbox.text() != "":
+                stats['health'] = {'maxhealth': int(self.maxhealthbox.text())}
+            else:
+                stats['health'] = {'maxhealth': int(self.sizeval.text()) + self.staminastat}
         if self.bashingdamagebox.text() != "":
             stats['health']['bashingdamage'] = int(self.bashingdamagebox.text())
         else:
@@ -69,17 +74,25 @@ class MyWidget(QtWidgets.QWidget):
         else:
             stats['willpower']['willpowerpoint'] = 2
 
-        self.maxhealthmodlabel = QtWidgets.QLabel(self)
-        self.maxhealthmodlabel.setText("Max Health Mod: ")
-        self.maxhealthmodbox = QtWidgets.QLineEdit(self)
+        if self.othertraitsflag == 0:
+            self.maxhealthmodlabel = QtWidgets.QLabel(self)
+            self.maxhealthmodlabel.setText("Max Health Mod: ")
+            self.maxhealthmodbox = QtWidgets.QLineEdit(self)
 
         self.maxhealthlabel = QtWidgets.QLabel(self)
         self.maxhealthlabel.setText("Max Health: ")
         self.maxhealthbox = QtWidgets.QLabel(self)
-        if self.maxhealthmodbox.text() != "":
-            self.maxhealthbox.setText(str(int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat))
-        else:
-            self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
+        if self.othertraitsflag == 0:
+            if self.maxhealthmodbox.text() != "":
+                self.maxhealthbox.setText(str(int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat))
+            else:
+                self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
+        elif self.othertraitsflag == 1:
+            if self.maxhealthbox.text() != "":
+                self.maxhealthbox.setText(str(int(self.maxhealthbox.text())))
+            else:
+                self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
+
         self.bashingdamagelabel = QtWidgets.QLabel(self)
         self.bashingdamagelabel.setText("Bashing Damage: ")
         self.bashingdamagebox = QtWidgets.QLineEdit(self)
@@ -254,18 +267,33 @@ class MyWidget(QtWidgets.QWidget):
                     self.filleddisciplines += 1
             stats['disciplines'][0] = ['filleddisciplines', self.filleddisciplines]
 
-        stats['size'] = 5 + self.sizebonus
+        if self.othertraitsflag == 0:
+            stats['size'] = 5 + self.sizebonus
+        elif self.othertraitsflag == 1:
+            stats['size'] = self.sizeval.text()
 
-        stats['speed'] = int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus
+        if self.othertraitsflag == 0:
+            stats['speed'] = int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus
+        elif self.othertraitsflag == 1:
+            stats['speed'] = self.speedval.text()
 
-        if self.dexteritystat <= self.witsstat:
-            stats['defense'] = self.athleticsskill + self.dexteritystat + self.defensebonus
-        else:
-            stats['defense'] = self.athleticsskill + self.witsstat + self.defensebonus
+        if self.othertraitsflag == 0:
+            if self.dexteritystat <= self.witsstat:
+                stats['defense'] = self.athleticsskill + self.dexteritystat + self.defensebonus
+            else:
+                stats['defense'] = self.athleticsskill + self.witsstat + self.defensebonus
+        elif self.othertraitsflag == 1:
+            stats['defense'] = self.defenseval.text()
 
-        stats['armor'] = self.armorbonus
+        if self.othertraitsflag == 0:
+            stats['armor'] = self.armorbonus
+        elif self.othertraitsflag == 1:
+            stats['armor'] = self.armorval.text()
 
-        stats['initiative'] = self.composurestat + self.dexteritystat + self.initiativebonus
+        if self.othertraitsflag == 0:
+            stats['initiative'] = self.composurestat + self.dexteritystat + self.initiativebonus
+        elif self.othertraitsflag == 1:
+            stats['initiative'] = self.initiativeval.text()
 
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
@@ -435,33 +463,50 @@ class MyWidget(QtWidgets.QWidget):
                     if stats.get('banes')[0][1] >= x:
                         self.banenamebox[x].setText(stats.get('banes')[x+1][0])
 
-                self.sizeval.setText(str(stats.get('size')))
-                self.sizebonus = stats.get('size') - 5
-                self.sizebonusbox.setText(str(stats.get('size') - 5))
+                if self.othertraitsflag == 0:
+                    self.sizeval.setText(str(stats.get('size')))
+                    self.sizebonus = stats.get('size') - 5
+                    self.sizebonusbox.setText(str(stats.get('size') - 5))
 
-                self.speedval.setText(str(stats.get('speed')))
-                self.speedbonus = stats.get('speed') - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat
-                self.speedbonusbox.setText(str(stats.get('speed') - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat))
+                    self.speedval.setText(str(stats.get('speed')))
+                    self.speedbonus = stats.get('speed') - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat
+                    self.speedbonusbox.setText(str(stats.get('speed') - int(self.sizeval.text()) - self.strengthstat - self.dexteritystat))
 
-                if self.dexteritystat <= self.witsstat:
-                    self.defenseval.setText(str(stats.get('defense')))
-                    self.defensebonus = stats.get('defense') - self.athleticsskill - self.dexteritystat
-                    self.defensebonusbox.setText(str(stats.get('defense') - self.athleticsskill - self.dexteritystat))
-                else:
-                    self.defenseval.setText(str(stats.get('defense')))
-                    self.defensebonus = stats.get('defense') - self.athleticsskill - self.witsstat
-                    self.defensebonusbox.setText(str(stats.get('defense') - self.athleticsskill - self.witsstat))
+                    if self.dexteritystat <= self.witsstat:
+                        self.defenseval.setText(str(stats.get('defense')))
+                        self.defensebonus = stats.get('defense') - self.athleticsskill - self.dexteritystat
+                        self.defensebonusbox.setText(str(stats.get('defense') - self.athleticsskill - self.dexteritystat))
+                    else:
+                        self.defenseval.setText(str(stats.get('defense')))
+                        self.defensebonus = stats.get('defense') - self.athleticsskill - self.witsstat
+                        self.defensebonusbox.setText(str(stats.get('defense') - self.athleticsskill - self.witsstat))
 
-                self.armorval.setText(str(stats.get('armor')))
-                self.armorbonus = stats.get('armor')
-                self.armorbonusbox.setText(str(stats.get('armor')))
+                    self.armorval.setText(str(stats.get('armor')))
+                    self.armorbonus = stats.get('armor')
+                    self.armorbonusbox.setText(str(stats.get('armor')))
 
-                self.initiativeval.setText(str(stats.get('initiative')))
-                self.initiativebonus = stats.get('initiative') - self.composurestat - self.dexteritystat
-                self.initiativebonusbox.setText(str(stats.get('initiative') - self.composurestat - self.dexteritystat))
+                    self.initiativeval.setText(str(stats.get('initiative')))
+                    self.initiativebonus = stats.get('initiative') - self.composurestat - self.dexteritystat
+                    self.initiativebonusbox.setText(str(stats.get('initiative') - self.composurestat - self.dexteritystat))
 
-                self.maxhealthbox.setText(str(stats.get('health').get('maxhealth')))
-                self.maxhealthmodbox.setText(str(stats.get('health').get('maxhealth') - self.staminastat - int(self.sizeval.text())))
+                    self.maxhealthbox.setText(str(stats.get('health').get('maxhealth')))
+                    self.maxhealthmodbox.setText(str(stats.get('health').get('maxhealth') - self.staminastat - int(self.sizeval.text())))
+                elif self.othertraitsflag == 1:
+                    self.sizeval.setText(str(stats.get('size')))
+
+                    self.speedval.setText(str(stats.get('speed')))
+
+                    if self.dexteritystat <= self.witsstat:
+                        self.defenseval.setText(str(stats.get('defense')))
+                    else:
+                        self.defenseval.setText(str(stats.get('defense')))
+
+                    self.armorval.setText(str(stats.get('armor')))
+
+                    self.initiativeval.setText(str(stats.get('initiative')))
+
+                    self.maxhealthbox.setText(str(stats.get('health').get('maxhealth')))
+
                 self.bashingdamagebox.setText(str(stats.get('health').get('bashingdamage')))
                 self.lethaldamagebox.setText(str(stats.get('health').get('lethaldamage')))
                 self.aggravateddamagebox.setText(str(stats.get('health').get('aggravateddamage')))
@@ -875,7 +920,7 @@ class MyWidget(QtWidgets.QWidget):
 
         self.mabc += self.banecounter
 
-        if self.othertraitsflag != True:
+        if self.othertraitsflag == 0:
             self.layout.addWidget(self.updatestats, 8 + self.oplinecounter, 6)
 
         self.layout.addWidget(self.size, 9 + self.oplinecounter, 5)
@@ -883,7 +928,7 @@ class MyWidget(QtWidgets.QWidget):
 
         self.otcounter = 0
 
-        if self.othertraitsflag != True:
+        if self.othertraitsflag == 0:
             self.otcounter += 1
             self.layout.addWidget(self.sizebonuslabel, 9 + self.oplinecounter + self.otcounter, 5)
             self.layout.addWidget(self.sizebonusbox, 9 + self.oplinecounter + self.otcounter, 6)
@@ -891,7 +936,7 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.speed, 10 + self.oplinecounter + self.otcounter, 5)
         self.layout.addWidget(self.speedval, 10 + self.oplinecounter + self.otcounter, 6)
 
-        if self.othertraitsflag != True:
+        if self.othertraitsflag == 0:
             self.otcounter += 1
             self.layout.addWidget(self.speedbonuslabel, 10 + self.oplinecounter + self.otcounter, 5)
             self.layout.addWidget(self.speedbonusbox, 10 + self.oplinecounter + self.otcounter, 6)
@@ -899,7 +944,7 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.defense, 11 + self.oplinecounter + self.otcounter, 5)
         self.layout.addWidget(self.defenseval, 11 + self.oplinecounter + self.otcounter, 6)
 
-        if self.othertraitsflag != True:
+        if self.othertraitsflag == 0:
             self.otcounter += 1
             self.layout.addWidget(self.defensebonuslabel, 11 + self.oplinecounter + self.otcounter, 5)
             self.layout.addWidget(self.defensebonusbox, 11 + self.oplinecounter + self.otcounter, 6)
@@ -907,7 +952,7 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.armor, 12 + self.oplinecounter + self.otcounter, 5)
         self.layout.addWidget(self.armorval, 12 + self.oplinecounter + self.otcounter, 6)
 
-        if self.othertraitsflag != True:
+        if self.othertraitsflag == 0:
             self.otcounter += 1
             self.layout.addWidget(self.armorbonuslabel, 12 + self.oplinecounter + self.otcounter, 5)
             self.layout.addWidget(self.armorbonusbox, 12 + self.oplinecounter + self.otcounter, 6)
@@ -915,7 +960,7 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.initiative, 13 + self.oplinecounter + self.otcounter, 5)
         self.layout.addWidget(self.initiativeval, 13 + self.oplinecounter + self.otcounter, 6)
 
-        if self.othertraitsflag != True:
+        if self.othertraitsflag == 0:
             self.otcounter += 1
             self.layout.addWidget(self.initiativebonuslabel, 13 + self.oplinecounter + self.otcounter, 5)
             self.layout.addWidget(self.initiativebonusbox, 13 + self.oplinecounter, 6)
@@ -925,7 +970,7 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.maxhealthlabel, 15 + self.oplinecounter + self.otcounter, 5)
         self.layout.addWidget(self.maxhealthbox, 15 + self.oplinecounter + self.otcounter, 6)
 
-        if self.othertraitsflag != True:
+        if self.othertraitsflag == 0:
             self.otcounter += 1
             self.layout.addWidget(self.maxhealthmodlabel, 15 + self.oplinecounter + self.otcounter, 5)
             self.layout.addWidget(self.maxhealthmodbox, 15 + self.oplinecounter + self.otcounter, 6)

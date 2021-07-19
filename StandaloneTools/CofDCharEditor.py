@@ -658,14 +658,16 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.concept, 3, 1)
         self.layout.addWidget(self.boxconcept, 3, 2)
 
-        if self.vvflag and self.runonce1:
+        if self.vvflag:
             self.layout.addWidget(self.vice, 3, 3)
             self.layout.addWidget(self.boxvice, 3, 4)
             self.layout.addWidget(self.virtue, 3, 5)
             self.layout.addWidget(self.boxvirtue, 3, 6)
             self.runonce1 = False
 
-        if self.occultflag[0] and self.runonce2:
+        self.oplinecounter = 0
+
+        if self.occultflag[0]:
             self.oplinecounter += 1
             self.layout.addWidget(self.clan, 3 + self.oplinecounter, 1)
             self.layout.addWidget(self.boxclan, 3 + self.oplinecounter, 2)
@@ -681,7 +683,7 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.boxdirge, 3 + self.oplinecounter, 5)
             self.runonce2 = False
 
-        if self.occultflag[1] and self.runonce3:
+        if self.occultflag[1]:
             self.oplinecounter += 1
             self.layout.addWidget(self.auspice, 3 + self.oplinecounter, 1)
             self.layout.addWidget(self.boxauspice, 3 + self.oplinecounter, 2)

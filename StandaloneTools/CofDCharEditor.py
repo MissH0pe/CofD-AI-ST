@@ -1115,6 +1115,7 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.cunning, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter, 3)
             self.layout.addWidget(self.cunningbox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter, 4)
 
+        self.otoplinecounter = 0
         if self.occultflag[0]:
             self.otoplinecounter = 1
             self.layout.addWidget(self.bloodpotencytitle, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)

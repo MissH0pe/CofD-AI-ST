@@ -238,6 +238,11 @@ class MyWidget(QtWidgets.QWidget):
             stats['fleshtouchstone'] = self.fleshtouchstonebox.text()
             stats['spirittouchstone'] = self.spirittouchstonebox.text()
 
+            stats['kuruth'] = {}
+            stats['kuruth']['passive'] = self.passivekuruthbox.toPlainText()
+            stats['kuruth']['common'] = self.commonkuruthbox.toPlainText()
+            stats['kuruth']['specific'] = self.specifickuruthbox.toPlainText()
+
         self.filledmerits = 0
         stats['merits'] = []
         stats['merits'].append(['filledmerits', 0])
@@ -651,6 +656,10 @@ class MyWidget(QtWidgets.QWidget):
                         self.harmonybox.setText(stats.get('harmony'))
                         self.fleshtouchstonebox.setText(stats.get('fleshtouchstone'))
                         self.spirittouchstonebox.setText(stats.get('spirittouchstone'))
+
+                        self.passivekuruthbox.setText(stats.get('kuruth').get('passive'))
+                        self.commonkuruthbox.setText(stats.get('kuruth').get('common'))
+                        self.specifickuruthbox.setText(stats.get('kuruth').get('specific'))
 
                         self.occultflag[1] = True
 
@@ -1221,6 +1230,18 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.spirittouchstone, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
             self.layout.addWidget(self.spirittouchstonebox, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
 
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.passivekuruth, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.passivekuruthbox, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.commonkuruth, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.commonkuruthbox, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.specifickuruth, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.specifickuruthbox, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+
         self.layout.addWidget(self.experiences, 22 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
         self.layout.addWidget(self.experiencesbox, 22 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
 
@@ -1654,6 +1675,18 @@ class MyWidget(QtWidgets.QWidget):
             self.spirittouchstone = QtWidgets.QLabel(self)
             self.spirittouchstone.setText("Spirit Touchstone: ")
             self.spirittouchstonebox = QtWidgets.QLineEdit(self)
+
+            self.passivekuruth = QtWidgets.QLabel(self)
+            self.passivekuruth.setText("Passive Kuruth Trigger: ")
+            self.passivekuruthbox = QtWidgets.QTextEdit(self)
+
+            self.commonkuruth = QtWidgets.QLabel(self)
+            self.commonkuruth.setText("Common Kuruth Trigger: ")
+            self.commonkuruthbox = QtWidgets.QTextEdit(self)
+
+            self.specifickuruth = QtWidgets.QLabel(self)
+            self.specifickuruth.setText("Specific Kuruth Trigger: ")
+            self.specifickuruthbox = QtWidgets.QTextEdit(self)
         else:
             self.wolftoggle.setChecked(False)
             self.occultflag[1] = False
@@ -1774,6 +1807,25 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.removeWidget(self.spirittouchstonebox)
             self.spirittouchstonebox.deleteLater()
             self.spirittouchstonebox = None
+
+            self.layout.removeWidget(self.passivekuruth)
+            self.passivekuruth.deleteLater()
+            self.passivekuruth = None
+            self.layout.removeWidget(self.passivekuruthbox)
+            self.passivekuruthbox.deleteLater()
+            self.passivekuruthbox = None
+            self.layout.removeWidget(self.commonkuruth)
+            self.commonkuruth.deleteLater()
+            self.commonkuruth = None
+            self.layout.removeWidget(self.commonkuruthbox)
+            self.commonkuruthbox.deleteLater()
+            self.commonkuruthbox = None
+            self.layout.removeWidget(self.specifickuruth)
+            self.specifickuruth.deleteLater()
+            self.specifickuruth = None
+            self.layout.removeWidget(self.specifickuruthbox)
+            self.specifickuruthbox.deleteLater()
+            self.specifickuruthbox = None
 
             self.oplinecounter -= 2
             self.oldmeritcount = self.meritcount
@@ -2782,6 +2834,18 @@ class MyWidget(QtWidgets.QWidget):
             self.spirittouchstone = QtWidgets.QLabel(self)
             self.spirittouchstone.setText("Spirit Touchstone: ")
             self.spirittouchstonebox = QtWidgets.QLineEdit(self)
+
+            self.passivekuruth = QtWidgets.QLabel(self)
+            self.passivekuruth.setText("Passive Kuruth Trigger: ")
+            self.passivekuruthbox = QtWidgets.QTextEdit(self)
+
+            self.commonkuruth = QtWidgets.QLabel(self)
+            self.commonkuruth.setText("Common Kuruth Trigger: ")
+            self.commonkuruthbox = QtWidgets.QTextEdit(self)
+
+            self.specifickuruth = QtWidgets.QLabel(self)
+            self.specifickuruth.setText("Specific Kuruth Trigger: ")
+            self.specifickuruthbox = QtWidgets.QTextEdit(self)
 
         self.makesheet()
 

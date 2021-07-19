@@ -25,6 +25,13 @@ class MyWidget(QtWidgets.QWidget):
                 f.write('False# Is Vampire\n')
             if self.occultflag[0]:
                 f.write(str(self.disciplinecount)+'# Discipline Slots Displayed Count\n')
+            else:
+                f.write('\n')
+            if self.occultflag[1]:
+                f.write('True# Is Werewolf\n')
+            else:
+                f.write('False# Is Werewolf\n')
+
 
     def savedef(self):
         if path.exists(self.saveloc.text()+'.json'):
@@ -194,6 +201,14 @@ class MyWidget(QtWidgets.QWidget):
                 stats['humanity']['humanityarray'].append(True)
             else:
                 stats['humanity']['humanityarray'].append(False)
+
+        if self.occultflag[1] == True:
+            stats['supernaturaltags'].append('werewolf')
+            stats['blood'] = self.boxblood.text()
+            stats['bone'] = self.boxbone.text()
+            stats['auspice'] = self.boxauspice.text()
+            stats['tribe'] = self.boxtribe.text()
+            stats['lodge'] = self.boxlodge.text()
 
         self.filledmerits = 0
         stats['merits'] = []
@@ -512,6 +527,13 @@ class MyWidget(QtWidgets.QWidget):
                         self.humanitybox10.setText(str(stats.get('humanity').get('touchstone10')))
                         if stats.get('humanity').get('humanityarray')[9]:
                             self.humanitycheck10.setChecked(True)
+                    if x == 'werewolf':
+                        self.boxauspice.setText(stats.get('auspice'))
+                        self.boxtribe.setText(stats.get('tribe'))
+                        self.boxlodge.setText(stats.get('lodge'))
+                        self.boxblood.setText(stats.get('blood'))
+                        self.boxbone.setText(stats.get('bone'))
+                        self.occultflag[1] = True
 
                 self.savesettings()
         else:
@@ -529,36 +551,18 @@ class MyWidget(QtWidgets.QWidget):
         self.composurestat = int(self.boxcomposure.text())
         self.athleticsskill = int(self.boxathletics.text())
 
-
-        self.layout.removeWidget(self.sizeval)
-        self.sizeval.deleteLater()
-        self.sizeval = None
-        self.layout.removeWidget(self.speedval)
-        self.speedval.deleteLater()
-        self.speedval = None
-        self.layout.removeWidget(self.defenseval)
-        self.defenseval.deleteLater()
-        self.defenseval = None
-        self.layout.removeWidget(self.armorval)
-        self.armorval.deleteLater()
-        self.armorval = None
-        self.layout.removeWidget(self.initiativeval)
-        self.initiativeval.deleteLater()
-        self.initiativeval = None
-
-
-        self.sizeval = QtWidgets.QLabel(self)
+        # self.sizeval = QtWidgets.QLabel(self)
         self.sizeval.setText(str(5 + self.sizebonus))
-        self.speedval = QtWidgets.QLabel(self)
+        # self.speedval = QtWidgets.QLabel(self)
         self.speedval.setText(str(int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus))
-        self.defenseval = QtWidgets.QLabel(self)
+        # self.defenseval = QtWidgets.QLabel(self)
         if self.dexteritystat <= self.witsstat:
             self.defenseval.setText(str(self.athleticsskill + self.dexteritystat + self.defensebonus))
         else:
             self.defenseval.setText(str(self.athleticsskill + self.witsstat + self.defensebonus))
-        self.armorval = QtWidgets.QLabel(self)
+        # self.armorval = QtWidgets.QLabel(self)
         self.armorval.setText(str(self.armorbonus))
-        self.initiativeval = QtWidgets.QLabel(self)
+        # self.initiativeval = QtWidgets.QLabel(self)
         self.initiativeval.setText(str(self.composurestat + self.dexteritystat + self.initiativebonus))
 
         self.layout.addWidget(self.sizeval, 9 + self.oplinecounter, 5)
@@ -570,327 +574,44 @@ class MyWidget(QtWidgets.QWidget):
     def makesheet(self):
         #make here delete all stuff in here if not in first run
         if self.makesheetflag:
-            self.layout.removeWidget(self.cat3)
-            self.cat3.deleteLater()
-            self.cat3 = None
-            self.layout.removeWidget(self.merits)
-            self.merits.deleteLater()
-            self.merits = None
-            self.layout.removeWidget(self.meritslevel)
-            self.meritslevel.deleteLater()
-            self.meritslevel = None
-
             self.meritcounter = 0
             for x in range(self.oldmeritcount):
                 if self.oldmeritcount >= x + 1:
+                    self.savedmeritnames.append(self.meritnamebox[x])
                     self.layout.removeWidget(self.meritnamebox[x])
                     self.meritnamebox[x].deleteLater()
                     self.meritnamebox[x] = None
+
+                    self.savedmeritlevels.append(self.meritlevelbox[x])
                     self.layout.removeWidget(self.meritlevelbox[x])
                     self.meritlevelbox[x].deleteLater()
                     self.meritlevelbox[x] = None
 
-            self.layout.removeWidget(self.aspirations)
-            self.aspirations.deleteLater()
-            self.aspirations = None
-            self.layout.removeWidget(self.conditions)
-            self.conditions.deleteLater()
-            self.conditions = None
-
             self.aspirationcounter = 0
             for x in range(self.oldaspirationcount):
                 if self.oldaspirationcount >= x + 1:
+                    self.savedaspirationnames.append(self.aspirationnamebox[x])
                     self.layout.removeWidget(self.aspirationnamebox[x])
                     self.aspirationnamebox[x].deleteLater()
                     self.aspirationnamebox[x] = None
+
             self.conditioncounter = 0
             for x in range(self.oldconditioncount):
                 if self.oldconditioncount >= x + 1:
+                    self.savedconditionnames.append(self.conditionnamebox[x])
                     self.layout.removeWidget(self.conditionnamebox[x])
                     self.conditionnamebox[x].deleteLater()
                     self.conditionnamebox[x] = None
+
             self.banecounter = 0
             for x in range(self.oldbanecount):
                 if self.oldbanecount >= x + 1:
+                    self.savedbanenames.append(self.banenamebox[x])
                     self.layout.removeWidget(self.banenamebox[x])
                     self.banenamebox[x].deleteLater()
                     self.banenamebox[x] = None
 
-            self.layout.removeWidget(self.updatestats)
-            self.updatestats.deleteLater()
-            self.updatestats = None
-
-            self.layout.removeWidget(self.size)
-            self.size.deleteLater()
-            self.size = None
-            self.layout.removeWidget(self.sizeval)
-            self.sizeval.deleteLater()
-            self.sizeval = None
-            self.layout.removeWidget(self.sizebonuslabel)
-            self.sizebonuslabel.deleteLater()
-            self.sizebonuslabel = None
-            self.layout.removeWidget(self.sizebonusbox)
-            self.sizebonusbox.deleteLater()
-            self.sizebonusbox = None
-
-            self.layout.removeWidget(self.speed)
-            self.speed.deleteLater()
-            self.speed = None
-            self.layout.removeWidget(self.speedval)
-            self.speedval.deleteLater()
-            self.speedval = None
-            self.layout.removeWidget(self.speedbonuslabel)
-            self.speedbonuslabel.deleteLater()
-            self.speedbonuslabel = None
-            self.layout.removeWidget(self.speedbonusbox)
-            self.speedbonusbox.deleteLater()
-            self.speedbonusbox = None
-
-            self.layout.removeWidget(self.defense)
-            self.defense.deleteLater()
-            self.defense = None
-            self.layout.removeWidget(self.defenseval)
-            self.defenseval.deleteLater()
-            self.defenseval = None
-            self.layout.removeWidget(self.defensebonuslabel)
-            self.defensebonuslabel.deleteLater()
-            self.defensebonuslabel = None
-            self.layout.removeWidget(self.defensebonusbox)
-            self.defensebonusbox.deleteLater()
-            self.defensebonusbox = None
-
-            self.layout.removeWidget(self.armor)
-            self.armor.deleteLater()
-            self.armor = None
-            self.layout.removeWidget(self.armorval)
-            self.armorval.deleteLater()
-            self.armorval = None
-            self.layout.removeWidget(self.armorbonuslabel)
-            self.armorbonuslabel.deleteLater()
-            self.armorbonuslabel = None
-            self.layout.removeWidget(self.armorbonusbox)
-            self.armorbonusbox.deleteLater()
-            self.armorbonusbox = None
-
-            self.layout.removeWidget(self.initiative)
-            self.initiative.deleteLater()
-            self.initiative = None
-            self.layout.removeWidget(self.initiativeval)
-            self.initiativeval.deleteLater()
-            self.initiativeval = None
-            self.layout.removeWidget(self.initiativebonuslabel)
-            self.initiativebonuslabel.deleteLater()
-            self.initiativebonuslabel = None
-            self.layout.removeWidget(self.initiativebonusbox)
-            self.initiativebonusbox.deleteLater()
-            self.initiativebonusbox = None
-
-            self.layout.removeWidget(self.healthlabel)
-            self.healthlabel.deleteLater()
-            self.healthlabel = None
-
-            self.layout.removeWidget(self.maxhealthlabel)
-            self.maxhealthlabel.deleteLater()
-            self.maxhealthlabel = None
-            self.layout.removeWidget(self.maxhealthbox)
-            self.maxhealthbox.deleteLater()
-            self.maxhealthbox = None
-            self.layout.removeWidget(self.maxhealthmodlabel)
-            self.maxhealthmodlabel.deleteLater()
-            self.maxhealthmodlabel = None
-            self.layout.removeWidget(self.maxhealthmodbox)
-            self.maxhealthmodbox.deleteLater()
-            self.maxhealthmodbox = None
-            self.layout.removeWidget(self.bashingdamagelabel)
-            self.bashingdamagelabel.deleteLater()
-            self.bashingdamagelabel = None
-            self.layout.removeWidget(self.bashingdamagebox)
-            self.bashingdamagebox.deleteLater()
-            self.bashingdamagebox = None
-            self.layout.removeWidget(self.lethaldamagelabel)
-            self.lethaldamagelabel.deleteLater()
-            self.lethaldamagelabel = None
-            self.layout.removeWidget(self.lethaldamagebox)
-            self.lethaldamagebox.deleteLater()
-            self.lethaldamagebox = None
-            self.layout.removeWidget(self.aggravateddamagelabel)
-            self.aggravateddamagelabel.deleteLater()
-            self.aggravateddamagelabel = None
-            self.layout.removeWidget(self.aggravateddamagebox)
-            self.aggravateddamagebox.deleteLater()
-            self.aggravateddamagebox = None
-
-            self.layout.removeWidget(self.willpowerlabel)
-            self.willpowerlabel.deleteLater()
-            self.willpowerlabel = None
-
-            self.layout.removeWidget(self.willpowerdotlabel)
-            self.willpowerdotlabel.deleteLater()
-            self.willpowerdotlabel = None
-            self.layout.removeWidget(self.willpowerdotbox)
-            self.willpowerdotbox.deleteLater()
-            self.willpowerdotbox = None
-            self.layout.removeWidget(self.willpowerpointlabel)
-            self.willpowerpointlabel.deleteLater()
-            self.willpowerpointlabel = None
-            self.layout.removeWidget(self.willpowerpointbox)
-            self.willpowerpointbox.deleteLater()
-            self.willpowerpointbox = None
-
-            if self.occultflag[0]:
-                # self.layout.removeWidget(self.disciplines)
-                # self.disciplines.deleteLater()
-                # self.disciplines = None
-                self.layout.removeWidget(self.disciplineslevel)
-                self.disciplineslevel.deleteLater()
-                self.disciplineslevel = None
-
-                self.disciplinecounter = 0
-                self.olddisciplinecount = self.disciplinecount
-                self.disciplinecount = 0
-                for x in range(self.olddisciplinecount):
-                    if self.olddisciplinecount >= x:
-                        self.layout.removeWidget(self.disciplinenamebox[x])
-                        self.disciplinenamebox[x].deleteLater()
-                        self.disciplinenamebox[x] = None
-                        self.layout.removeWidget(self.disciplinelevelbox[x])
-                        self.disciplinelevelbox[x].deleteLater()
-                        self.disciplinelevelbox[x] = None
-
-                self.layout.removeWidget(self.bloodpotencytitle)
-                # self.bloodpotencytitle.deleteLater()
-                # self.bloodpotencytitle = None
-
-                self.layout.removeWidget(self.bloodpotencylabel)
-                # self.bloodpotencylabel.deleteLater()
-                # self.bloodpotencylabel = None
-                self.layout.removeWidget(self.bloodpotencybox)
-                self.bloodpotencybox.deleteLater()
-                self.bloodpotencybox = None
-
-                self.layout.removeWidget(self.vitaetitle)
-                # self.vitaetitle.deleteLater()
-                # self.vitaetitle = None
-
-                self.layout.removeWidget(self.maxvitaelabel)
-                # self.maxvitaelabel.deleteLater()
-                # self.maxvitaelabel = None
-                self.layout.removeWidget(self.maxvitaebox)
-                self.maxvitaebox.deleteLater()
-                self.maxvitaebox = None
-                self.layout.removeWidget(self.currentvitaelabel)
-                # self.currentvitaelabel.deleteLater()
-                # self.currentvitaelabel = None
-                self.layout.removeWidget(self.currentvitaebox)
-                self.currentvitaebox.deleteLater()
-                self.currentvitaebox = None
-
-
-                self.layout.removeWidget(self.humanitytitle)
-
-                self.layout.removeWidget(self.num1)
-                self.layout.removeWidget(self.humanitybox1)
-                self.humanitybox1.deleteLater()
-                self.humanitybox1 = None
-
-                self.layout.removeWidget(self.num2)
-                self.layout.removeWidget(self.humanitybox2)
-                self.humanitybox2.deleteLater()
-                self.humanitybox2 = None
-
-                self.layout.removeWidget(self.num3)
-                self.layout.removeWidget(self.humanitybox3)
-                self.humanitybox3.deleteLater()
-                self.humanitybox3 = None
-
-                self.layout.removeWidget(self.num4)
-                self.layout.removeWidget(self.humanitybox4)
-                self.humanitybox4.deleteLater()
-                self.humanitybox4 = None
-
-                self.layout.removeWidget(self.num5)
-                self.layout.removeWidget(self.humanitybox5)
-                self.humanitybox5.deleteLater()
-                self.humanitybox5 = None
-
-                self.layout.removeWidget(self.num6)
-                self.layout.removeWidget(self.humanitybox6)
-                self.humanitybox6.deleteLater()
-                self.humanitybox6 = None
-
-                self.layout.removeWidget(self.num7)
-                self.layout.removeWidget(self.humanitybox7)
-                self.humanitybox7.deleteLater()
-                self.humanitybox7 = None
-
-                self.layout.removeWidget(self.num8)
-                self.layout.removeWidget(self.humanitybox8)
-                self.humanitybox8.deleteLater()
-                self.humanitybox8 = None
-
-                self.layout.removeWidget(self.num9)
-                self.layout.removeWidget(self.humanitybox9)
-                self.humanitybox9.deleteLater()
-                self.humanitybox9 = None
-
-                self.layout.removeWidget(self.num10)
-                self.layout.removeWidget(self.humanitybox10)
-                self.humanitybox10.deleteLater()
-                self.humanitybox10 = None
-
-                self.layout.removeWidget(self.humanitycheck1)
-                self.humanitycheck1.deleteLater()
-                self.humanitycheck1 = None
-
-                self.layout.removeWidget(self.humanitycheck2)
-                self.humanitycheck2.deleteLater()
-                self.humanitycheck2 = None
-
-                self.layout.removeWidget(self.humanitycheck3)
-                self.humanitycheck3.deleteLater()
-                self.humanitycheck3 = None
-
-                self.layout.removeWidget(self.humanitycheck4)
-                self.humanitycheck4.deleteLater()
-                self.humanitycheck4 = None
-
-                self.layout.removeWidget(self.humanitycheck5)
-                self.humanitycheck5.deleteLater()
-                self.humanitycheck5 = None
-
-                self.layout.removeWidget(self.humanitycheck6)
-                self.humanitycheck6.deleteLater()
-                self.humanitycheck6 = None
-
-                self.layout.removeWidget(self.humanitycheck7)
-                self.humanitycheck7.deleteLater()
-                self.humanitycheck7 = None
-
-                self.layout.removeWidget(self.humanitycheck8)
-                self.humanitycheck8.deleteLater()
-                self.humanitycheck8 = None
-
-                self.layout.removeWidget(self.humanitycheck9)
-                self.humanitycheck9.deleteLater()
-                self.humanitycheck9 = None
-
-                self.layout.removeWidget(self.humanitycheck10)
-                self.humanitycheck10.deleteLater()
-                self.humanitycheck10 = None
-
         #other traits
-        self.cat3 = QtWidgets.QLabel(self)
-        self.allwidgets['cat3'] = True
-        self.cat3.setText("Other Traits")
-        self.cat3.setFont(self.titlefont)
-
-        self.merits = QtWidgets.QLabel(self)
-        self.allwidgets['merits'] = True
-        self.merits.setText("Merits")
-        self.merits.setFont(self.subtitlefont)
-        self.meritslevel = QtWidgets.QLabel(self)
-        self.allwidgets['meritslevel'] = True
-        self.meritslevel.setText("Level")
 
         #initialize merits
         self.meritnamebox = []
@@ -901,18 +622,6 @@ class MyWidget(QtWidgets.QWidget):
                 self.meritlevelbox.append(QtWidgets.QLineEdit(self))
 
         #begin aspirations
-        self.aspirations = QtWidgets.QLabel(self)
-        self.aspirations.setText("Aspirations")
-        self.aspirations.setFont(self.subtitlefont)
-
-        self.conditions = QtWidgets.QLabel(self)
-        self.conditions.setText("Conditions")
-        self.conditions.setFont(self.subtitlefont)
-
-        self.banes = QtWidgets.QLabel(self)
-        self.banes.setText("Banes")
-        self.banes.setFont(self.subtitlefont)
-
         self.aspirationnamebox = []
         for x in range(self.aspirationcount):
             if self.aspirationcount >= x:
@@ -928,192 +637,14 @@ class MyWidget(QtWidgets.QWidget):
             if self.banecount >= x:
                 self.banenamebox.append(QtWidgets.QLineEdit(self))
 
-        #begin other traits
-
-        self.updatestats = QtWidgets.QPushButton('Update Derived Stats')
-        self.updatestats.clicked.connect(self.updatestatsdef)
-
-        self.size = QtWidgets.QLabel(self)
-        self.size.setText("Size: ")
-        self.sizeval = QtWidgets.QLabel(self)
-        self.sizeval.setText(str(5 + self.sizebonus))
-
-        self.sizebonuslabel = QtWidgets.QLabel(self)
-        self.sizebonuslabel.setText("Size Bonus: ")
-        self.sizebonusbox = QtWidgets.QLineEdit(self)
-
-        self.speed = QtWidgets.QLabel(self)
-        self.speed.setText("Speed: ")
-        self.speedval = QtWidgets.QLabel(self)
-        self.speedval.setText(str(int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus))
-
-        self.speedbonuslabel = QtWidgets.QLabel(self)
-        self.speedbonuslabel.setText("Speed Bonus: ")
-        self.speedbonusbox = QtWidgets.QLineEdit(self)
-
-        self.defense = QtWidgets.QLabel(self)
-        self.defense.setText("Defense: ")
-        self.defenseval = QtWidgets.QLabel(self)
-        if self.dexteritystat <= self.witsstat:
-            self.defenseval.setText(str(self.athleticsskill + self.dexteritystat + self.defensebonus))
-        else:
-            self.defenseval.setText(str(self.athleticsskill + self.witsstat + self.defensebonus))
-
-        self.defensebonuslabel = QtWidgets.QLabel(self)
-        self.defensebonuslabel.setText("Defense Bonus: ")
-        self.defensebonusbox = QtWidgets.QLineEdit(self)
-
-        self.armor = QtWidgets.QLabel(self)
-        self.armor.setText("Armor: ")
-        self.armorval = QtWidgets.QLabel(self)
-        self.armorval.setText(str(self.armorbonus))
-
-        self.armorbonuslabel = QtWidgets.QLabel(self)
-        self.armorbonuslabel.setText("Armor Bonus: ")
-        self.armorbonusbox = QtWidgets.QLineEdit(self)
-
-        self.initiative = QtWidgets.QLabel(self)
-        self.initiative.setText("Initiative Mod: ")
-        self.initiativeval = QtWidgets.QLabel(self)
-        self.initiativeval.setText(str(self.composurestat + self.dexteritystat + self.initiativebonus))
-
-        self.initiativebonuslabel = QtWidgets.QLabel(self)
-        self.initiativebonuslabel.setText("Initiative Bonus: ")
-        self.initiativebonusbox = QtWidgets.QLineEdit(self)
-
-        self.healthlabel = QtWidgets.QLabel(self)
-        self.healthlabel.setText("Health")
-        self.healthlabel.setFont(self.subtitlefont)
-
-        self.maxhealthmodlabel = QtWidgets.QLabel(self)
-        self.maxhealthmodlabel.setText("Max Health Mod: ")
-        self.maxhealthmodbox = QtWidgets.QLineEdit(self)
-
-        self.maxhealthlabel = QtWidgets.QLabel(self)
-        self.maxhealthlabel.setText("Max Health: ")
-        self.maxhealthbox = QtWidgets.QLabel(self)
-        if self.maxhealthmodbox.text() != "":
-            self.maxhealthbox.setText(str(int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat))
-        else:
-            self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
-        self.bashingdamagelabel = QtWidgets.QLabel(self)
-        self.bashingdamagelabel.setText("Bashing Damage: ")
-        self.bashingdamagebox = QtWidgets.QLineEdit(self)
-
-        self.lethaldamagelabel = QtWidgets.QLabel(self)
-        self.lethaldamagelabel.setText("Lethal Damage: ")
-        self.lethaldamagebox = QtWidgets.QLineEdit(self)
-
-        self.aggravateddamagelabel = QtWidgets.QLabel(self)
-        self.aggravateddamagelabel.setText("Aggravated Damage: ")
-        self.aggravateddamagebox = QtWidgets.QLineEdit(self)
-
-        self.willpowerlabel = QtWidgets.QLabel(self)
-        self.willpowerlabel.setText("Willpower")
-        self.willpowerlabel.setFont(self.subtitlefont)
-
-        self.willpowerdotlabel = QtWidgets.QLabel(self)
-        self.willpowerdotlabel.setText("Willpower Dot: ")
-        self.willpowerdotbox = QtWidgets.QLineEdit(self)
-        self.willpowerdotbox.setText(str(self.composurestat + self.resolvestat))
-
-        self.willpowerpointlabel = QtWidgets.QLabel(self)
-        self.willpowerpointlabel.setText("Willpower Point: ")
-        self.willpowerpointbox = QtWidgets.QLineEdit(self)
-
+        self.disciplinenamebox = []
+        self.disciplinelevelbox = []
         if self.occultflag[0]:
-            self.disciplines = QtWidgets.QLabel(self)
-            self.disciplines.setText("Disciplines")
-            self.disciplines.setFont(self.subtitlefont)
-            self.disciplineslevel = QtWidgets.QLabel(self)
-            self.disciplineslevel.setText("Level")
-
             #initialize disciplines
-            self.disciplinenamebox = []
-            self.disciplinelevelbox = []
             for x in range(self.disciplinecount):
                 if self.disciplinecount >= x:
                     self.disciplinenamebox.append(QtWidgets.QLineEdit(self))
                     self.disciplinelevelbox.append(QtWidgets.QLineEdit(self))
-
-
-            self.bloodpotencytitle = QtWidgets.QLabel(self)
-            self.bloodpotencytitle.setText("Blood Potency")
-            self.bloodpotencytitle.setFont(self.subtitlefont)
-
-            self.bloodpotencylabel = QtWidgets.QLabel(self)
-            self.bloodpotencylabel.setText("Blood Potency: ")
-            self.bloodpotencybox = QtWidgets.QLineEdit(self)
-
-            self.vitaetitle = QtWidgets.QLabel(self)
-            self.vitaetitle.setText("Vitae")
-            self.vitaetitle.setFont(self.subtitlefont)
-
-            self.maxvitaelabel = QtWidgets.QLabel(self)
-            self.maxvitaelabel.setText("Max Vitae: ")
-            self.maxvitaebox = QtWidgets.QLineEdit(self)
-
-            self.currentvitaelabel = QtWidgets.QLabel(self)
-            self.currentvitaelabel.setText("Current Vitae: ")
-            self.currentvitaebox = QtWidgets.QLineEdit(self)
-
-
-            self.humanitytitle = QtWidgets.QLabel(self)
-            self.humanitytitle.setText("Humanity")
-            self.humanitytitle.setFont(self.subtitlefont)
-
-            self.num1 = QtWidgets.QLabel(self)
-            self.num1.setText("1")
-            self.num2 = QtWidgets.QLabel(self)
-            self.num2.setText("2")
-            self.num3 = QtWidgets.QLabel(self)
-            self.num3.setText("3")
-            self.num4 = QtWidgets.QLabel(self)
-            self.num4.setText("4")
-            self.num5 = QtWidgets.QLabel(self)
-            self.num5.setText("5")
-            self.num6 = QtWidgets.QLabel(self)
-            self.num6.setText("6")
-            self.num7 = QtWidgets.QLabel(self)
-            self.num7.setText("7")
-            self.num8 = QtWidgets.QLabel(self)
-            self.num8.setText("8")
-            self.num9 = QtWidgets.QLabel(self)
-            self.num9.setText("9")
-            self.num10 = QtWidgets.QLabel(self)
-            self.num10.setText("10")
-
-            self.humanitybox1 = QtWidgets.QLineEdit(self)
-            self.humanitybox2 = QtWidgets.QLineEdit(self)
-            self.humanitybox3 = QtWidgets.QLineEdit(self)
-            self.humanitybox4 = QtWidgets.QLineEdit(self)
-            self.humanitybox5 = QtWidgets.QLineEdit(self)
-            self.humanitybox6 = QtWidgets.QLineEdit(self)
-            self.humanitybox7 = QtWidgets.QLineEdit(self)
-            self.humanitybox8 = QtWidgets.QLineEdit(self)
-            self.humanitybox9 = QtWidgets.QLineEdit(self)
-            self.humanitybox10 = QtWidgets.QLineEdit(self)
-
-            self.humanitycheck1 = QtWidgets.QCheckBox()
-            self.humanitycheck1.clicked.connect(self.humanitycheckdef(1))
-            self.humanitycheck2 = QtWidgets.QCheckBox()
-            self.humanitycheck2.clicked.connect(self.humanitycheckdef(2))
-            self.humanitycheck3 = QtWidgets.QCheckBox()
-            self.humanitycheck3.clicked.connect(self.humanitycheckdef(3))
-            self.humanitycheck4 = QtWidgets.QCheckBox()
-            self.humanitycheck4.clicked.connect(self.humanitycheckdef(4))
-            self.humanitycheck5 = QtWidgets.QCheckBox()
-            self.humanitycheck5.clicked.connect(self.humanitycheckdef(5))
-            self.humanitycheck6 = QtWidgets.QCheckBox()
-            self.humanitycheck6.clicked.connect(self.humanitycheckdef(6))
-            self.humanitycheck7 = QtWidgets.QCheckBox()
-            self.humanitycheck7.clicked.connect(self.humanitycheckdef(7))
-            self.humanitycheck8 = QtWidgets.QCheckBox()
-            self.humanitycheck8.clicked.connect(self.humanitycheckdef(8))
-            self.humanitycheck9 = QtWidgets.QCheckBox()
-            self.humanitycheck9.clicked.connect(self.humanitycheckdef(9))
-            self.humanitycheck10 = QtWidgets.QCheckBox()
-            self.humanitycheck10.clicked.connect(self.humanitycheckdef(10))
 
         #begin layout
 
@@ -1128,12 +659,6 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.boxconcept, 3, 2)
 
         if self.vvflag and self.runonce1:
-            self.virtue = QtWidgets.QLabel(self)
-            self.virtue.setText("Virtue: ")
-            self.boxvirtue = QtWidgets.QLineEdit(self)
-            self.vice = QtWidgets.QLabel(self)
-            self.vice.setText("Vice: ")
-            self.boxvice = QtWidgets.QLineEdit(self)
             self.layout.addWidget(self.vice, 3, 3)
             self.layout.addWidget(self.boxvice, 3, 4)
             self.layout.addWidget(self.virtue, 3, 5)
@@ -1141,23 +666,6 @@ class MyWidget(QtWidgets.QWidget):
             self.runonce1 = False
 
         if self.occultflag[0] and self.runonce2:
-            self.clan = QtWidgets.QLabel(self)
-            self.clan.setText("Clan: ")
-            self.boxclan = QtWidgets.QLineEdit(self)
-            self.bloodline = QtWidgets.QLabel(self)
-            self.bloodline.setText("Bloodline: ")
-            self.boxbloodline = QtWidgets.QLineEdit(self)
-            self.covenant = QtWidgets.QLabel(self)
-            self.covenant.setText("Covenant: ")
-            self.boxcovenant = QtWidgets.QLineEdit(self)
-
-            self.mask = QtWidgets.QLabel(self)
-            self.mask.setText("Mask: ")
-            self.boxmask = QtWidgets.QLineEdit(self)
-            self.dirge = QtWidgets.QLabel(self)
-            self.dirge.setText("Dirge: ")
-            self.boxdirge = QtWidgets.QLineEdit(self)
-
             self.oplinecounter += 1
             self.layout.addWidget(self.clan, 3 + self.oplinecounter, 1)
             self.layout.addWidget(self.boxclan, 3 + self.oplinecounter, 2)
@@ -1174,23 +682,6 @@ class MyWidget(QtWidgets.QWidget):
             self.runonce2 = False
 
         if self.occultflag[1] and self.runonce3:
-            self.auspice = QtWidgets.QLabel(self)
-            self.auspice.setText("Auspice: ")
-            self.boxauspice = QtWidgets.QLineEdit(self)
-            self.tribe = QtWidgets.QLabel(self)
-            self.tribe.setText("Tribe: ")
-            self.boxtribe = QtWidgets.QLineEdit(self)
-            self.lodge = QtWidgets.QLabel(self)
-            self.lodge.setText("Lodge: ")
-            self.boxlodge = QtWidgets.QLineEdit(self)
-
-            self.blood = QtWidgets.QLabel(self)
-            self.blood.setText("Blood: ")
-            self.boxblood = QtWidgets.QLineEdit(self)
-            self.bone = QtWidgets.QLabel(self)
-            self.bone.setText("Bone: ")
-            self.boxbone = QtWidgets.QLineEdit(self)
-
             self.oplinecounter += 1
             self.layout.addWidget(self.auspice, 3 + self.oplinecounter, 1)
             self.layout.addWidget(self.boxauspice, 3 + self.oplinecounter, 2)
@@ -1328,6 +819,12 @@ class MyWidget(QtWidgets.QWidget):
                 self.meritcounter += 1
                 self.layout.addWidget(self.meritnamebox[x], 9 + self.oplinecounter + self.meritcounter, 3)
                 self.layout.addWidget(self.meritlevelbox[x], 9 + self.oplinecounter + self.meritcounter, 4)
+                if x < len(self.savedmeritnames):
+                    self.meritnamebox[x].setText(self.savedmeritnames[x].text())
+                    self.meritlevelbox[x].setText(self.savedmeritlevels[x].text())
+
+        self.savedmeritnames = []
+        self.savedmeritlevels = []
 
         self.layout.addWidget(self.aspirations, 10 + self.oplinecounter + self.meritcounter, 3)
 
@@ -1339,11 +836,20 @@ class MyWidget(QtWidgets.QWidget):
             if self.aspirationcount >= 1:
                 self.aspirationcounter += 1
                 self.layout.addWidget(self.aspirationnamebox[x], 10 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
+                if x < len(self.savedaspirationnames):
+                    self.aspirationnamebox[x].setText(self.savedaspirationnames[x].text())
+
+        self.savedaspirationnames = []
+
         self.conditioncounter = 0
         for x in range(self.conditioncount):
             if self.conditioncount >= 1:
                 self.conditioncounter += 1
                 self.layout.addWidget(self.conditionnamebox[x], 10 + self.oplinecounter + self.meritcounter + self.conditioncounter, 4)
+                if x < len(self.savedconditionnames):
+                    self.conditionnamebox[x].setText(self.savedconditionnames[x].text())
+
+        self.savedconditionnames = []
 
         if self.aspirationcounter <= self.conditioncounter:
             self.layout.addWidget(self.banes, 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter, 3)
@@ -1360,6 +866,10 @@ class MyWidget(QtWidgets.QWidget):
                     self.layout.addWidget(self.banenamebox[x], 11 + self.oplinecounter + self.meritcounter + self.aspirationcounter + self.banecounter, 3)
                 else:
                     self.layout.addWidget(self.banenamebox[x], 11 + self.oplinecounter + self.meritcounter + self.conditioncounter + self.banecounter, 4)
+                if x < len(self.savedbanenames):
+                    self.banenamebox[x].setText(self.savedbanenames[x].text())
+
+        self.savedbanenames = []
 
         self.mabc += self.banecounter
 
@@ -1421,6 +931,12 @@ class MyWidget(QtWidgets.QWidget):
                     self.disciplinecounter += 1
                     self.layout.addWidget(self.disciplinenamebox[x], 12 + self.oplinecounter + self.mabc + self.disciplinecounter, 3)
                     self.layout.addWidget(self.disciplinelevelbox[x], 12 + self.oplinecounter + self.mabc + self.disciplinecounter, 4)
+                    if x < len(self.saveddisciplinenames):
+                        self.disciplinenamebox[x].setText(self.saveddisciplinenames[x].text())
+                        self.disciplinelevelbox[x].setText(self.saveddisciplinelevels[x].text())
+
+            self.saveddisciplinenames = []
+            self.saveddisciplinelevels = []
 
             self.otoplinecounter = 1
             self.layout.addWidget(self.bloodpotencytitle, 27 + self.oplinecounter + self.otoplinecounter, 6)
@@ -1501,6 +1017,14 @@ class MyWidget(QtWidgets.QWidget):
         if self.humantoggle.isChecked():
             self.humantoggle.setChecked(True)
             self.vvflag = True
+
+            if self.runonce1:
+                self.virtue = QtWidgets.QLabel(self)
+                self.virtue.setText("Virtue: ")
+                self.boxvirtue = QtWidgets.QLineEdit(self)
+                self.vice = QtWidgets.QLabel(self)
+                self.vice.setText("Vice: ")
+                self.boxvice = QtWidgets.QLineEdit(self)
         else:
             self.humantoggle.setChecked(False)
             self.vvflag = False
@@ -1530,6 +1054,108 @@ class MyWidget(QtWidgets.QWidget):
             self.oldaspirationcount = self.aspirationcount
             self.oldconditioncount = self.conditioncount
             self.oldbanecount = self.banecount
+
+            self.disciplines = QtWidgets.QLabel(self)
+            self.disciplines.setText("Disciplines")
+            self.disciplines.setFont(self.subtitlefont)
+            self.disciplineslevel = QtWidgets.QLabel(self)
+            self.disciplineslevel.setText("Level")
+
+            self.bloodpotencytitle = QtWidgets.QLabel(self)
+            self.bloodpotencytitle.setText("Blood Potency")
+            self.bloodpotencytitle.setFont(self.subtitlefont)
+
+            self.bloodpotencylabel = QtWidgets.QLabel(self)
+            self.bloodpotencylabel.setText("Blood Potency: ")
+            self.bloodpotencybox = QtWidgets.QLineEdit(self)
+
+            self.vitaetitle = QtWidgets.QLabel(self)
+            self.vitaetitle.setText("Vitae")
+            self.vitaetitle.setFont(self.subtitlefont)
+
+            self.maxvitaelabel = QtWidgets.QLabel(self)
+            self.maxvitaelabel.setText("Max Vitae: ")
+            self.maxvitaebox = QtWidgets.QLineEdit(self)
+
+            self.currentvitaelabel = QtWidgets.QLabel(self)
+            self.currentvitaelabel.setText("Current Vitae: ")
+            self.currentvitaebox = QtWidgets.QLineEdit(self)
+
+
+            self.humanitytitle = QtWidgets.QLabel(self)
+            self.humanitytitle.setText("Humanity")
+            self.humanitytitle.setFont(self.subtitlefont)
+
+            self.num1 = QtWidgets.QLabel(self)
+            self.num1.setText("1")
+            self.num2 = QtWidgets.QLabel(self)
+            self.num2.setText("2")
+            self.num3 = QtWidgets.QLabel(self)
+            self.num3.setText("3")
+            self.num4 = QtWidgets.QLabel(self)
+            self.num4.setText("4")
+            self.num5 = QtWidgets.QLabel(self)
+            self.num5.setText("5")
+            self.num6 = QtWidgets.QLabel(self)
+            self.num6.setText("6")
+            self.num7 = QtWidgets.QLabel(self)
+            self.num7.setText("7")
+            self.num8 = QtWidgets.QLabel(self)
+            self.num8.setText("8")
+            self.num9 = QtWidgets.QLabel(self)
+            self.num9.setText("9")
+            self.num10 = QtWidgets.QLabel(self)
+            self.num10.setText("10")
+
+            self.humanitybox1 = QtWidgets.QLineEdit(self)
+            self.humanitybox2 = QtWidgets.QLineEdit(self)
+            self.humanitybox3 = QtWidgets.QLineEdit(self)
+            self.humanitybox4 = QtWidgets.QLineEdit(self)
+            self.humanitybox5 = QtWidgets.QLineEdit(self)
+            self.humanitybox6 = QtWidgets.QLineEdit(self)
+            self.humanitybox7 = QtWidgets.QLineEdit(self)
+            self.humanitybox8 = QtWidgets.QLineEdit(self)
+            self.humanitybox9 = QtWidgets.QLineEdit(self)
+            self.humanitybox10 = QtWidgets.QLineEdit(self)
+
+            self.humanitycheck1 = QtWidgets.QCheckBox()
+            self.humanitycheck1.clicked.connect(self.humanitycheckdef(1))
+            self.humanitycheck2 = QtWidgets.QCheckBox()
+            self.humanitycheck2.clicked.connect(self.humanitycheckdef(2))
+            self.humanitycheck3 = QtWidgets.QCheckBox()
+            self.humanitycheck3.clicked.connect(self.humanitycheckdef(3))
+            self.humanitycheck4 = QtWidgets.QCheckBox()
+            self.humanitycheck4.clicked.connect(self.humanitycheckdef(4))
+            self.humanitycheck5 = QtWidgets.QCheckBox()
+            self.humanitycheck5.clicked.connect(self.humanitycheckdef(5))
+            self.humanitycheck6 = QtWidgets.QCheckBox()
+            self.humanitycheck6.clicked.connect(self.humanitycheckdef(6))
+            self.humanitycheck7 = QtWidgets.QCheckBox()
+            self.humanitycheck7.clicked.connect(self.humanitycheckdef(7))
+            self.humanitycheck8 = QtWidgets.QCheckBox()
+            self.humanitycheck8.clicked.connect(self.humanitycheckdef(8))
+            self.humanitycheck9 = QtWidgets.QCheckBox()
+            self.humanitycheck9.clicked.connect(self.humanitycheckdef(9))
+            self.humanitycheck10 = QtWidgets.QCheckBox()
+            self.humanitycheck10.clicked.connect(self.humanitycheckdef(10))
+
+            if self.runonce2:
+                self.clan = QtWidgets.QLabel(self)
+                self.clan.setText("Clan: ")
+                self.boxclan = QtWidgets.QLineEdit(self)
+                self.bloodline = QtWidgets.QLabel(self)
+                self.bloodline.setText("Bloodline: ")
+                self.boxbloodline = QtWidgets.QLineEdit(self)
+                self.covenant = QtWidgets.QLabel(self)
+                self.covenant.setText("Covenant: ")
+                self.boxcovenant = QtWidgets.QLineEdit(self)
+
+                self.mask = QtWidgets.QLabel(self)
+                self.mask.setText("Mask: ")
+                self.boxmask = QtWidgets.QLineEdit(self)
+                self.dirge = QtWidgets.QLabel(self)
+                self.dirge.setText("Dirge: ")
+                self.boxdirge = QtWidgets.QLineEdit(self)
         else:
             self.vamptoggle.setChecked(False)
             self.occultflag[0] = False
@@ -1567,9 +1193,9 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.removeWidget(self.disciplines)
             self.disciplines.deleteLater()
             self.disciplines = None
-            # self.layout.removeWidget(self.disciplineslevel)
-            # self.disciplineslevel.deleteLater()
-            # self.disciplineslevel = None
+            self.layout.removeWidget(self.disciplineslevel)
+            self.disciplineslevel.deleteLater()
+            self.disciplineslevel = None
 
             self.disciplinecounter = 0
             # for x in range(self.olddisciplinecount):
@@ -1717,85 +1343,27 @@ class MyWidget(QtWidgets.QWidget):
             self.oldaspirationcount = self.aspirationcount
             self.oldconditioncount = self.conditioncount
             self.oldbanecount = self.banecount
+
+            if self.runonce3:
+                self.auspice = QtWidgets.QLabel(self)
+                self.auspice.setText("Auspice: ")
+                self.boxauspice = QtWidgets.QLineEdit(self)
+                self.tribe = QtWidgets.QLabel(self)
+                self.tribe.setText("Tribe: ")
+                self.boxtribe = QtWidgets.QLineEdit(self)
+                self.lodge = QtWidgets.QLabel(self)
+                self.lodge.setText("Lodge: ")
+                self.boxlodge = QtWidgets.QLineEdit(self)
+
+                self.blood = QtWidgets.QLabel(self)
+                self.blood.setText("Blood: ")
+                self.boxblood = QtWidgets.QLineEdit(self)
+                self.bone = QtWidgets.QLabel(self)
+                self.bone.setText("Bone: ")
+                self.boxbone = QtWidgets.QLineEdit(self)
         else:
             self.wolftoggle.setChecked(False)
             self.occultflag[1] = False
-            # self.layout.removeWidget(self.clan)
-            # self.clan.deleteLater()
-            # self.clan = None
-            # self.layout.removeWidget(self.boxclan)
-            # self.boxclan.deleteLater()
-            # self.boxclan = None
-            # self.layout.removeWidget(self.bloodline)
-            # self.bloodline.deleteLater()
-            # self.bloodline = None
-            # self.layout.removeWidget(self.boxbloodline)
-            # self.boxbloodline.deleteLater()
-            # self.boxbloodline = None
-            # self.layout.removeWidget(self.covenant)
-            # self.covenant.deleteLater()
-            # self.covenant = None
-            # self.layout.removeWidget(self.boxcovenant)
-            # self.boxcovenant.deleteLater()
-            # self.boxcovenant = None
-            # self.layout.removeWidget(self.mask)
-            # self.mask.deleteLater()
-            # self.mask = None
-            # self.layout.removeWidget(self.boxmask)
-            # self.boxmask.deleteLater()
-            # self.boxmask = None
-            # self.layout.removeWidget(self.dirge)
-            # self.dirge.deleteLater()
-            # self.dirge = None
-            # self.layout.removeWidget(self.boxdirge)
-            # self.boxdirge.deleteLater()
-            # self.boxdirge = None
-            #
-            # self.layout.removeWidget(self.disciplines)
-            # self.disciplines.deleteLater()
-            # self.disciplines = None
-            # self.layout.removeWidget(self.disciplineslevel)
-            # self.disciplineslevel.deleteLater()
-            # self.disciplineslevel = None
-
-            # self.disciplinecounter = 0
-            # for x in range(self.olddisciplinecount):
-            #     if self.olddisciplinecount >= x:
-            #         self.layout.removeWidget(self.disciplinenamebox[x])
-            #         self.disciplinenamebox[x].deleteLater()
-            #         self.disciplinenamebox[x] = None
-            #         self.layout.removeWidget(self.disciplinelevelbox[x])
-            #         self.disciplinelevelbox[x].deleteLater()
-            #         self.disciplinelevelbox[x] = None
-
-            # self.layout.removeWidget(self.bloodpotencytitle)
-            # self.bloodpotencytitle.deleteLater()
-            # self.bloodpotencytitle = None
-            #
-            # self.layout.removeWidget(self.bloodpotencylabel)
-            # self.bloodpotencylabel.deleteLater()
-            # self.bloodpotencylabel = None
-            # self.layout.removeWidget(self.bloodpotencybox)
-            # self.bloodpotencybox.deleteLater()
-            # self.bloodpotencybox = None
-            #
-            # self.layout.removeWidget(self.vitaetitle)
-            # self.vitaetitle.deleteLater()
-            # self.vitaetitle = None
-            #
-            # self.layout.removeWidget(self.maxvitaelabel)
-            # self.maxvitaelabel.deleteLater()
-            # self.maxvitaelabel = None
-            # self.layout.removeWidget(self.maxvitaebox)
-            # self.maxvitaebox.deleteLater()
-            # self.maxvitaebox = None
-            # self.layout.removeWidget(self.currentvitaelabel)
-            # self.currentvitaelabel.deleteLater()
-            # self.currentvitaelabel = None
-            # self.layout.removeWidget(self.currentvitaebox)
-            # self.currentvitaebox.deleteLater()
-            # self.currentvitaebox = None
-
             self.oplinecounter -= 2
             self.oldmeritcount = self.meritcount
             self.runonce2 = True
@@ -1974,9 +1542,20 @@ class MyWidget(QtWidgets.QWidget):
                             splitline = line.split('#')
                             self.olddisciplinecount = self.disciplinecount
                             self.disciplinecount = int(splitline[0])
+                    if i == 7:
+                        splitline = line.split('#')
+                        if splitline[0] == 'True':
+                            self.occultflag[1] = True
+                            self.oldmeritcount = self.meritcount
+                            self.oldaspirationcount = self.aspirationcount
+                            self.oldconditioncount = self.conditioncount
+                            self.oldbanecount = self.banecount
 
         self.resize(1024, 768)
-        self.makesheet()
+        if self.initmakesheet:
+            self.makesheet()
+        else:
+            self.initmakesheet = True
 
     def __init__(self):
         super(MyWidget, self).__init__()
@@ -2032,9 +1611,21 @@ class MyWidget(QtWidgets.QWidget):
         self.runonce3 = True
         self.makesheetflag = False
 
+        self.initmakesheet = False
+
         self.vvflag = False
 
         self.occultflag = [False, False, False]
+
+        self.savedmeritnames = []
+        self.savedmeritlevels = []
+        self.savedaspirationnames = []
+        self.savedconditionnames = []
+        self.savedbanenames = []
+        self.saveddisciplinenames = []
+        self.saveddisciplinelevels = []
+
+        self.initsettings()
 
         self.title = QtWidgets.QLabel()
 
@@ -2384,7 +1975,253 @@ class MyWidget(QtWidgets.QWidget):
         self.allwidgets['boxsubterfuge'] = True
         self.boxsubterfuge.setText("0")
 
-        self.initsettings()
+        self.cat3 = QtWidgets.QLabel(self)
+        self.allwidgets['cat3'] = True
+        self.cat3.setText("Other Traits")
+        self.cat3.setFont(self.titlefont)
+
+        self.merits = QtWidgets.QLabel(self)
+        self.allwidgets['merits'] = True
+        self.merits.setText("Merits")
+        self.merits.setFont(self.subtitlefont)
+        self.meritslevel = QtWidgets.QLabel(self)
+        self.allwidgets['meritslevel'] = True
+        self.meritslevel.setText("Level")
+
+        self.aspirations = QtWidgets.QLabel(self)
+        self.aspirations.setText("Aspirations")
+        self.aspirations.setFont(self.subtitlefont)
+
+        self.conditions = QtWidgets.QLabel(self)
+        self.conditions.setText("Conditions")
+        self.conditions.setFont(self.subtitlefont)
+
+        self.banes = QtWidgets.QLabel(self)
+        self.banes.setText("Banes")
+        self.banes.setFont(self.subtitlefont)
+
+        #begin other traits
+
+        self.updatestats = QtWidgets.QPushButton('Update Derived Stats')
+        self.updatestats.clicked.connect(self.updatestatsdef)
+
+        self.size = QtWidgets.QLabel(self)
+        self.size.setText("Size: ")
+        self.sizeval = QtWidgets.QLabel(self)
+        self.sizeval.setText(str(5 + self.sizebonus))
+
+        self.sizebonuslabel = QtWidgets.QLabel(self)
+        self.sizebonuslabel.setText("Size Bonus: ")
+        self.sizebonusbox = QtWidgets.QLineEdit(self)
+
+        self.speed = QtWidgets.QLabel(self)
+        self.speed.setText("Speed: ")
+        self.speedval = QtWidgets.QLabel(self)
+        self.speedval.setText(str(int(self.sizeval.text()) + self.strengthstat + self.dexteritystat + self.speedbonus))
+
+        self.speedbonuslabel = QtWidgets.QLabel(self)
+        self.speedbonuslabel.setText("Speed Bonus: ")
+        self.speedbonusbox = QtWidgets.QLineEdit(self)
+
+        self.defense = QtWidgets.QLabel(self)
+        self.defense.setText("Defense: ")
+        self.defenseval = QtWidgets.QLabel(self)
+        if self.dexteritystat <= self.witsstat:
+            self.defenseval.setText(str(self.athleticsskill + self.dexteritystat + self.defensebonus))
+        else:
+            self.defenseval.setText(str(self.athleticsskill + self.witsstat + self.defensebonus))
+
+        self.defensebonuslabel = QtWidgets.QLabel(self)
+        self.defensebonuslabel.setText("Defense Bonus: ")
+        self.defensebonusbox = QtWidgets.QLineEdit(self)
+
+        self.armor = QtWidgets.QLabel(self)
+        self.armor.setText("Armor: ")
+        self.armorval = QtWidgets.QLabel(self)
+        self.armorval.setText(str(self.armorbonus))
+
+        self.armorbonuslabel = QtWidgets.QLabel(self)
+        self.armorbonuslabel.setText("Armor Bonus: ")
+        self.armorbonusbox = QtWidgets.QLineEdit(self)
+
+        self.initiative = QtWidgets.QLabel(self)
+        self.initiative.setText("Initiative Mod: ")
+        self.initiativeval = QtWidgets.QLabel(self)
+        self.initiativeval.setText(str(self.composurestat + self.dexteritystat + self.initiativebonus))
+
+        self.initiativebonuslabel = QtWidgets.QLabel(self)
+        self.initiativebonuslabel.setText("Initiative Bonus: ")
+        self.initiativebonusbox = QtWidgets.QLineEdit(self)
+
+        self.healthlabel = QtWidgets.QLabel(self)
+        self.healthlabel.setText("Health")
+        self.healthlabel.setFont(self.subtitlefont)
+
+        self.maxhealthmodlabel = QtWidgets.QLabel(self)
+        self.maxhealthmodlabel.setText("Max Health Mod: ")
+        self.maxhealthmodbox = QtWidgets.QLineEdit(self)
+
+        self.maxhealthlabel = QtWidgets.QLabel(self)
+        self.maxhealthlabel.setText("Max Health: ")
+        self.maxhealthbox = QtWidgets.QLabel(self)
+        if self.maxhealthmodbox.text() != "":
+            self.maxhealthbox.setText(str(int(self.maxhealthmodbox.text()) + int(self.sizeval.text()) + self.staminastat))
+        else:
+            self.maxhealthbox.setText(str(int(self.sizeval.text()) + self.staminastat))
+        self.bashingdamagelabel = QtWidgets.QLabel(self)
+        self.bashingdamagelabel.setText("Bashing Damage: ")
+        self.bashingdamagebox = QtWidgets.QLineEdit(self)
+
+        self.lethaldamagelabel = QtWidgets.QLabel(self)
+        self.lethaldamagelabel.setText("Lethal Damage: ")
+        self.lethaldamagebox = QtWidgets.QLineEdit(self)
+
+        self.aggravateddamagelabel = QtWidgets.QLabel(self)
+        self.aggravateddamagelabel.setText("Aggravated Damage: ")
+        self.aggravateddamagebox = QtWidgets.QLineEdit(self)
+
+        self.willpowerlabel = QtWidgets.QLabel(self)
+        self.willpowerlabel.setText("Willpower")
+        self.willpowerlabel.setFont(self.subtitlefont)
+
+        self.willpowerdotlabel = QtWidgets.QLabel(self)
+        self.willpowerdotlabel.setText("Willpower Dot: ")
+        self.willpowerdotbox = QtWidgets.QLineEdit(self)
+        self.willpowerdotbox.setText(str(self.composurestat + self.resolvestat))
+
+        self.willpowerpointlabel = QtWidgets.QLabel(self)
+        self.willpowerpointlabel.setText("Willpower Point: ")
+        self.willpowerpointbox = QtWidgets.QLineEdit(self)
+
+        if self.vvflag:
+            self.virtue = QtWidgets.QLabel(self)
+            self.virtue.setText("Virtue: ")
+            self.boxvirtue = QtWidgets.QLineEdit(self)
+            self.vice = QtWidgets.QLabel(self)
+            self.vice.setText("Vice: ")
+            self.boxvice = QtWidgets.QLineEdit(self)
+
+        if self.occultflag[0]:
+            self.disciplines = QtWidgets.QLabel(self)
+            self.disciplines.setText("Disciplines")
+            self.disciplines.setFont(self.subtitlefont)
+            self.disciplineslevel = QtWidgets.QLabel(self)
+            self.disciplineslevel.setText("Level")
+
+            self.bloodpotencytitle = QtWidgets.QLabel(self)
+            self.bloodpotencytitle.setText("Blood Potency")
+            self.bloodpotencytitle.setFont(self.subtitlefont)
+
+            self.bloodpotencylabel = QtWidgets.QLabel(self)
+            self.bloodpotencylabel.setText("Blood Potency: ")
+            self.bloodpotencybox = QtWidgets.QLineEdit(self)
+
+            self.vitaetitle = QtWidgets.QLabel(self)
+            self.vitaetitle.setText("Vitae")
+            self.vitaetitle.setFont(self.subtitlefont)
+
+            self.maxvitaelabel = QtWidgets.QLabel(self)
+            self.maxvitaelabel.setText("Max Vitae: ")
+            self.maxvitaebox = QtWidgets.QLineEdit(self)
+
+            self.currentvitaelabel = QtWidgets.QLabel(self)
+            self.currentvitaelabel.setText("Current Vitae: ")
+            self.currentvitaebox = QtWidgets.QLineEdit(self)
+
+
+            self.humanitytitle = QtWidgets.QLabel(self)
+            self.humanitytitle.setText("Humanity")
+            self.humanitytitle.setFont(self.subtitlefont)
+
+            self.num1 = QtWidgets.QLabel(self)
+            self.num1.setText("1")
+            self.num2 = QtWidgets.QLabel(self)
+            self.num2.setText("2")
+            self.num3 = QtWidgets.QLabel(self)
+            self.num3.setText("3")
+            self.num4 = QtWidgets.QLabel(self)
+            self.num4.setText("4")
+            self.num5 = QtWidgets.QLabel(self)
+            self.num5.setText("5")
+            self.num6 = QtWidgets.QLabel(self)
+            self.num6.setText("6")
+            self.num7 = QtWidgets.QLabel(self)
+            self.num7.setText("7")
+            self.num8 = QtWidgets.QLabel(self)
+            self.num8.setText("8")
+            self.num9 = QtWidgets.QLabel(self)
+            self.num9.setText("9")
+            self.num10 = QtWidgets.QLabel(self)
+            self.num10.setText("10")
+
+            self.humanitybox1 = QtWidgets.QLineEdit(self)
+            self.humanitybox2 = QtWidgets.QLineEdit(self)
+            self.humanitybox3 = QtWidgets.QLineEdit(self)
+            self.humanitybox4 = QtWidgets.QLineEdit(self)
+            self.humanitybox5 = QtWidgets.QLineEdit(self)
+            self.humanitybox6 = QtWidgets.QLineEdit(self)
+            self.humanitybox7 = QtWidgets.QLineEdit(self)
+            self.humanitybox8 = QtWidgets.QLineEdit(self)
+            self.humanitybox9 = QtWidgets.QLineEdit(self)
+            self.humanitybox10 = QtWidgets.QLineEdit(self)
+
+            self.humanitycheck1 = QtWidgets.QCheckBox()
+            self.humanitycheck1.clicked.connect(self.humanitycheckdef(1))
+            self.humanitycheck2 = QtWidgets.QCheckBox()
+            self.humanitycheck2.clicked.connect(self.humanitycheckdef(2))
+            self.humanitycheck3 = QtWidgets.QCheckBox()
+            self.humanitycheck3.clicked.connect(self.humanitycheckdef(3))
+            self.humanitycheck4 = QtWidgets.QCheckBox()
+            self.humanitycheck4.clicked.connect(self.humanitycheckdef(4))
+            self.humanitycheck5 = QtWidgets.QCheckBox()
+            self.humanitycheck5.clicked.connect(self.humanitycheckdef(5))
+            self.humanitycheck6 = QtWidgets.QCheckBox()
+            self.humanitycheck6.clicked.connect(self.humanitycheckdef(6))
+            self.humanitycheck7 = QtWidgets.QCheckBox()
+            self.humanitycheck7.clicked.connect(self.humanitycheckdef(7))
+            self.humanitycheck8 = QtWidgets.QCheckBox()
+            self.humanitycheck8.clicked.connect(self.humanitycheckdef(8))
+            self.humanitycheck9 = QtWidgets.QCheckBox()
+            self.humanitycheck9.clicked.connect(self.humanitycheckdef(9))
+            self.humanitycheck10 = QtWidgets.QCheckBox()
+            self.humanitycheck10.clicked.connect(self.humanitycheckdef(10))
+
+            self.clan = QtWidgets.QLabel(self)
+            self.clan.setText("Clan: ")
+            self.boxclan = QtWidgets.QLineEdit(self)
+            self.bloodline = QtWidgets.QLabel(self)
+            self.bloodline.setText("Bloodline: ")
+            self.boxbloodline = QtWidgets.QLineEdit(self)
+            self.covenant = QtWidgets.QLabel(self)
+            self.covenant.setText("Covenant: ")
+            self.boxcovenant = QtWidgets.QLineEdit(self)
+
+            self.mask = QtWidgets.QLabel(self)
+            self.mask.setText("Mask: ")
+            self.boxmask = QtWidgets.QLineEdit(self)
+            self.dirge = QtWidgets.QLabel(self)
+            self.dirge.setText("Dirge: ")
+            self.boxdirge = QtWidgets.QLineEdit(self)
+
+        if self.occultflag[1]:
+            self.auspice = QtWidgets.QLabel(self)
+            self.auspice.setText("Auspice: ")
+            self.boxauspice = QtWidgets.QLineEdit(self)
+            self.tribe = QtWidgets.QLabel(self)
+            self.tribe.setText("Tribe: ")
+            self.boxtribe = QtWidgets.QLineEdit(self)
+            self.lodge = QtWidgets.QLabel(self)
+            self.lodge.setText("Lodge: ")
+            self.boxlodge = QtWidgets.QLineEdit(self)
+
+            self.blood = QtWidgets.QLabel(self)
+            self.blood.setText("Blood: ")
+            self.boxblood = QtWidgets.QLineEdit(self)
+            self.bone = QtWidgets.QLabel(self)
+            self.bone.setText("Bone: ")
+            self.boxbone = QtWidgets.QLineEdit(self)
+
+        self.makesheet()
 
 app = QtWidgets.QApplication([])
 

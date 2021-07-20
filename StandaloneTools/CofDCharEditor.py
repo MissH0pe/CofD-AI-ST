@@ -31,6 +31,10 @@ class MyWidget(QtWidgets.QWidget):
                 f.write('True# Is Werewolf\n')
             else:
                 f.write('False# Is Werewolf\n')
+            if self.occultflag[2]:
+                f.write('True# Is Mage\n')
+            else:
+                f.write('False# Is Mage\n')
 
 
     def savedef(self):
@@ -243,6 +247,42 @@ class MyWidget(QtWidgets.QWidget):
             stats['kuruth']['common'] = self.commonkuruthbox.toPlainText()
             stats['kuruth']['specific'] = self.specifickuruthbox.toPlainText()
 
+        if self.occultflag[2] == True:
+            stats['supernaturaltags'].append('mage')
+            stats['shadowname'] = self.shadownamebox.text()
+
+            stats['path'] = self.pathbox.text()
+            stats['order'] = self.orderbox.text()
+            stats['legacy'] = self.legacybox.text()
+
+            stats['arcana'] = {}
+            stats['arcana']['death'] = self.deathbox.text()
+            stats['arcana']['fate'] = self.fatebox.text()
+            stats['arcana']['forces'] = self.forcesbox.text()
+            stats['arcana']['life'] = self.lifebox.text()
+            stats['arcana']['matter'] = self.matterbox.text()
+            stats['arcana']['mind'] = self.mindbox.text()
+            stats['arcana']['prime'] = self.primebox.text()
+            stats['arcana']['spirit'] = self.spiritbox.text()
+            stats['arcana']['space'] = self.spacebox.text()
+            stats['arcana']['time'] = self.timebox.text()
+
+            stats['obsessions'] = []
+            stats['obsessions'].append(self.obsession1box.text())
+            stats['obsessions'].append(self.obsession2box.text())
+            stats['obsessions'].append(self.obsession3box.text())
+            stats['obsessions'].append(self.obsession4box.text())
+
+            stats['gnosis'] = self.gnosisbox.text()
+            stats['mana'] = {}
+            stats['mana']['maxmana'] = self.maxmanabox.text()
+            stats['mana']['currentmana'] = self.currentmanabox.text()
+            stats['wisdom'] = self.mwisdombox.text()
+
+            stats['arcaneexperience'] = {}
+            stats['arcaneexperience']['arcaneexperiences'] = self.arcaneexperiencesbox.text()
+            stats['arcaneexperience']['arcanebeats'] = [self.arcanebeat1.isChecked(), self.arcanebeat2.isChecked(), self.arcanebeat3.isChecked(), self.arcanebeat4.isChecked(), self.arcanebeat5.isChecked()]
+
         self.filledmerits = 0
         stats['merits'] = []
         stats['merits'].append(['filledmerits', 0])
@@ -404,6 +444,34 @@ class MyWidget(QtWidgets.QWidget):
                 self.beat5.setChecked(True)
             else:
                 self.beat5.setChecked(False)
+
+    def arcanebeatscheckdef(self, num):
+        if num == 1:
+            # print('test')
+            if self.arcanebeat1.isChecked():
+                self.arcanebeat1.setChecked(True)
+            else:
+                self.arcanebeat1.setChecked(False)
+        elif num == 2:
+            if self.arcanebeat2.isChecked():
+                self.arcanebeat2.setChecked(True)
+            else:
+                self.arcanebeat2.setChecked(False)
+        elif num == 3:
+            if self.arcanebeat3.isChecked():
+                self.arcanebeat3.setChecked(True)
+            else:
+                self.arcanebeat3.setChecked(False)
+        elif num == 4:
+            if self.arcanebeat4.isChecked():
+                self.arcanebeat4.setChecked(True)
+            else:
+                self.arcanebeat4.setChecked(False)
+        elif num == 5:
+            if self.arcanebeat5.isChecked():
+                self.arcanebeat5.setChecked(True)
+            else:
+                self.arcanebeat5.setChecked(False)
 
     def loaddef(self):
         if path.exists(self.loadloc.text()+'.json'):
@@ -662,6 +730,52 @@ class MyWidget(QtWidgets.QWidget):
                         self.specifickuruthbox.setText(stats.get('kuruth').get('specific'))
 
                         self.occultflag[1] = True
+                    if x == 'mage':
+                        self.shadownamebox.setText(stats.get('shadowname'))
+
+                        self.pathbox.setText(stats.get('path'))
+                        self.orderbox.setText(stats.get('order'))
+                        self.legacybox.setText(stats.get('legacy'))
+
+                        self.deathbox.setText(stats.get('arcana').get('death'))
+                        self.fatebox.setText(stats.get('arcana').get('fate'))
+                        self.forcesbox.setText(stats.get('arcana').get('forces'))
+                        self.lifebox.setText(stats.get('arcana').get('life'))
+                        self.matterbox.setText(stats.get('arcana').get('matter'))
+                        self.mindbox.setText(stats.get('arcana').get('mind'))
+                        self.primebox.setText(stats.get('arcana').get('prime'))
+                        self.spiritbox.setText(stats.get('arcana').get('spirit'))
+                        self.spacebox.setText(stats.get('arcana').get('space'))
+                        self.timebox.setText(stats.get('arcana').get('time'))
+
+                        self.gnosisbox.setText(stats.get('gnosis'))
+                        self.maxmanabox.setText(stats.get('mana').get('maxmana'))
+                        self.currentmanabox.setText(stats.get('mana').get('currentmana'))
+                        self.mwisdombox.setText(stats.get('wisdom'))
+
+                        if len(stats.get('obsessions')) >= 1:
+                            self.obsession1box.setText(stats.get('obsessions')[0])
+                        if len(stats.get('obsessions')) >= 2:
+                            self.obsession2box.setText(stats.get('obsessions')[1])
+                        if len(stats.get('obsessions')) >= 3:
+                            self.obsession3box.setText(stats.get('obsessions')[2])
+                        if len(stats.get('obsessions')) >= 4:
+                            self.obsession4box.setText(stats.get('obsessions')[3])
+
+                        self.arcaneexperiencesbox.setText(str(stats.get('arcaneexperience').get('arcaneexperiences')))
+
+                        if stats.get('arcaneexperience').get('arcanebeats')[0]:
+                            self.arcanebeat1.setChecked(True)
+                        if stats.get('arcaneexperience').get('arcanebeats')[1]:
+                            self.arcanebeat2.setChecked(True)
+                        if stats.get('arcaneexperience').get('arcanebeats')[2]:
+                            self.arcanebeat3.setChecked(True)
+                        if stats.get('arcaneexperience').get('arcanebeats')[3]:
+                            self.arcanebeat4.setChecked(True)
+                        if stats.get('arcaneexperience').get('arcanebeats')[4]:
+                            self.arcanebeat5.setChecked(True)
+
+                        self.occultflag[2] = True
 
                 self.savesettings()
         else:
@@ -826,6 +940,19 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.bone, 3 + self.oplinecounter, 4)
             self.layout.addWidget(self.boxbone, 3 + self.oplinecounter, 5)
             self.runonce3 = False
+
+        if self.occultflag[2]:
+            self.oplinecounter += 1
+            self.layout.addWidget(self.shadowname, 3 + self.oplinecounter, 3)
+            self.layout.addWidget(self.shadownamebox, 3 + self.oplinecounter, 4)
+
+            self.oplinecounter += 1
+            self.layout.addWidget(self.path, 3 + self.oplinecounter, 1)
+            self.layout.addWidget(self.pathbox, 3 + self.oplinecounter, 2)
+            self.layout.addWidget(self.order, 3 + self.oplinecounter, 3)
+            self.layout.addWidget(self.orderbox, 3 + self.oplinecounter, 4)
+            self.layout.addWidget(self.legacy, 3 + self.oplinecounter, 5)
+            self.layout.addWidget(self.legacybox, 3 + self.oplinecounter, 6)
 
         self.layout.addWidget(self.cat1, 4 + self.oplinecounter, 3)
 
@@ -1124,6 +1251,52 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.cunning, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter, 3)
             self.layout.addWidget(self.cunningbox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter, 4)
 
+        self.arcanacounter = 0
+
+        if self.occultflag[2]:
+            self.arcanacounter += 1
+            self.layout.addWidget(self.arcana, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
+            self.arcanacounter += 1
+            self.layout.addWidget(self.death, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 3)
+            self.layout.addWidget(self.deathbox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
+            self.arcanacounter += 1
+            self.layout.addWidget(self.fate, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 3)
+            self.layout.addWidget(self.fatebox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
+            self.arcanacounter += 1
+            self.layout.addWidget(self.forces, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 3)
+            self.layout.addWidget(self.forcesbox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
+            self.arcanacounter += 1
+            self.layout.addWidget(self.life, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 3)
+            self.layout.addWidget(self.lifebox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
+            self.arcanacounter += 1
+            self.layout.addWidget(self.matter, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 3)
+            self.layout.addWidget(self.matterbox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
+            self.arcanacounter += 1
+            self.layout.addWidget(self.mind, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 3)
+            self.layout.addWidget(self.mindbox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
+            self.arcanacounter += 1
+            self.layout.addWidget(self.prime, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 3)
+            self.layout.addWidget(self.primebox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
+            self.arcanacounter += 1
+            self.layout.addWidget(self.spirit, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 3)
+            self.layout.addWidget(self.spiritbox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
+            self.arcanacounter += 1
+            self.layout.addWidget(self.space, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 3)
+            self.layout.addWidget(self.spacebox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
+            self.arcanacounter += 1
+            self.layout.addWidget(self.time, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 3)
+            self.layout.addWidget(self.timebox, 12 + self.oplinecounter + self.mabc + self.disciplinecounter + self.renowncounter + self.arcanacounter, 4)
+
         self.otoplinecounter = 0
         if self.occultflag[0]:
             self.otoplinecounter = 1
@@ -1242,6 +1415,43 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.specifickuruth, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
             self.layout.addWidget(self.specifickuruthbox, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
 
+        if self.occultflag[2]:
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.gnosistitle, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.gnosis, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.gnosisbox, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.manatitle, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.maxmana, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.maxmanabox, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.currentmana, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.currentmanabox, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.mwisdomtitle, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.mwisdom, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.mwisdombox, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.obsessiontitle, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.obsession1, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.obsession1box, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.obsession2, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.obsession2box, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.obsession3, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.obsession3box, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+            self.otoplinecounter += 1
+            self.layout.addWidget(self.obsession4, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.obsession4box, 21 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+
         self.layout.addWidget(self.experiences, 22 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
         self.layout.addWidget(self.experiencesbox, 22 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
 
@@ -1251,6 +1461,22 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.beat3, 24 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
         self.layout.addWidget(self.beat4, 25 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
         self.layout.addWidget(self.beat5, 25 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+
+        self.aecounter = 0
+        if self.occultflag[2]:
+            self.aecounter += 1
+            self.layout.addWidget(self.arcaneexperiences, 26 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.arcaneexperiencesbox, 26 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+
+            self.aecounter += 1
+            self.layout.addWidget(self.arcanebeats, 27 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.arcanebeat1, 27 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+            self.aecounter += 1
+            self.layout.addWidget(self.arcanebeat2, 28 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.arcanebeat3, 28 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
+            self.aecounter += 1
+            self.layout.addWidget(self.arcanebeat4, 29 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 5)
+            self.layout.addWidget(self.arcanebeat5, 29 + self.oplinecounter + self.otcounter + self.whealthcounter + self.otoplinecounter, 6)
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
@@ -1590,6 +1816,13 @@ class MyWidget(QtWidgets.QWidget):
 
             self.whealth = True
 
+            self.whealthcounter = 0
+
+            self.whealthtext1 = QtWidgets.QLabel(self)
+            self.whealthtext1.setText("(+2 Dalu Form, +4 Gauru")
+            self.whealthtext2 = QtWidgets.QLabel(self)
+            self.whealthtext2.setText("Form, +3 Urshul Form)")
+
             # if self.runonce3:
             self.auspice = QtWidgets.QLabel(self)
             self.auspice.setText("Auspice: ")
@@ -1693,6 +1926,13 @@ class MyWidget(QtWidgets.QWidget):
 
             self.whealth = False
 
+            self.layout.removeWidget(self.whealthtext1)
+            self.whealthtext1.deleteLater()
+            self.whealthtext1 = None
+            self.layout.removeWidget(self.whealthtext2)
+            self.whealthtext2.deleteLater()
+            self.whealthtext2 = None
+
             self.layout.removeWidget(self.auspice)
             self.auspice.deleteLater()
             self.auspice = None
@@ -1768,15 +2008,18 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.removeWidget(self.primalurgebox)
             self.primalurgebox.deleteLater()
             self.primalurgebox = None
-            self.layout.removeWidget(self.essence)
-            self.essence.deleteLater()
-            self.essence = None
             self.layout.removeWidget(self.essencetitle)
             self.essencetitle.deleteLater()
             self.essencetitle = None
+            self.layout.removeWidget(self.maxessence)
+            self.maxessence.deleteLater()
+            self.maxessence = None
             self.layout.removeWidget(self.maxessencebox)
             self.maxessencebox.deleteLater()
             self.maxessencebox = None
+            self.layout.removeWidget(self.currentessence)
+            self.currentessence.deleteLater()
+            self.currentessence = None
             self.layout.removeWidget(self.currentessencebox)
             self.currentessencebox.deleteLater()
             self.currentessencebox = None
@@ -1830,6 +2073,328 @@ class MyWidget(QtWidgets.QWidget):
             self.oplinecounter -= 2
             self.oldmeritcount = self.meritcount
             self.runonce2 = True
+
+        self.savesettings()
+
+        self.makesheet()
+
+    def magetoggledef(self):
+        if self.magetoggle.isChecked():
+            self.magetoggle.setChecked(True)
+            self.occultflag[2] = True
+            self.oldmeritcount = self.meritcount
+            self.oldaspirationcount = self.aspirationcount
+            self.oldconditioncount = self.conditioncount
+            self.oldbanecount = self.banecount
+
+            # if self.runonce3:
+            self.shadowname = QtWidgets.QLabel(self)
+            self.shadowname.setText("Shadow Name: ")
+            self.shadownamebox = QtWidgets.QLineEdit(self)
+
+            self.path = QtWidgets.QLabel(self)
+            self.path.setText("Path: ")
+            self.pathbox = QtWidgets.QLineEdit(self)
+            self.order = QtWidgets.QLabel(self)
+            self.order.setText("Order: ")
+            self.orderbox = QtWidgets.QLineEdit(self)
+            self.legacy = QtWidgets.QLabel(self)
+            self.legacy.setText("Legacy: ")
+            self.legacybox = QtWidgets.QLineEdit(self)
+
+            self.arcana = QtWidgets.QLabel(self)
+            self.arcana.setText("Arcana")
+            self.arcana.setFont(self.subtitlefont)
+
+            self.death = QtWidgets.QLabel(self)
+            self.death.setText("Death: ")
+            self.deathbox = QtWidgets.QLineEdit(self)
+
+            self.fate = QtWidgets.QLabel(self)
+            self.fate.setText("Fate: ")
+            self.fatebox = QtWidgets.QLineEdit(self)
+
+            self.forces = QtWidgets.QLabel(self)
+            self.forces.setText("Forces: ")
+            self.forcesbox = QtWidgets.QLineEdit(self)
+
+            self.life = QtWidgets.QLabel(self)
+            self.life.setText("Life: ")
+            self.lifebox = QtWidgets.QLineEdit(self)
+
+            self.matter = QtWidgets.QLabel(self)
+            self.matter.setText("Matter: ")
+            self.matterbox = QtWidgets.QLineEdit(self)
+
+            self.mind = QtWidgets.QLabel(self)
+            self.mind.setText("Mind: ")
+            self.mindbox = QtWidgets.QLineEdit(self)
+
+            self.prime = QtWidgets.QLabel(self)
+            self.prime.setText("Prime: ")
+            self.primebox = QtWidgets.QLineEdit(self)
+
+            self.spirit = QtWidgets.QLabel(self)
+            self.spirit.setText("Spirit: ")
+            self.spiritbox = QtWidgets.QLineEdit(self)
+
+            self.space = QtWidgets.QLabel(self)
+            self.space.setText("Space: ")
+            self.spacebox = QtWidgets.QLineEdit(self)
+
+            self.time = QtWidgets.QLabel(self)
+            self.time.setText("Time: ")
+            self.timebox = QtWidgets.QLineEdit(self)
+
+            self.gnosistitle = QtWidgets.QLabel(self)
+            self.gnosistitle.setText("Gnosis")
+            self.gnosistitle.setFont(self.subtitlefont)
+
+            self.gnosis = QtWidgets.QLabel(self)
+            self.gnosis.setText("Gnosis: ")
+            self.gnosisbox = QtWidgets.QLineEdit(self)
+
+            self.manatitle = QtWidgets.QLabel(self)
+            self.manatitle.setText("Mana")
+            self.manatitle.setFont(self.subtitlefont)
+
+            self.maxmana = QtWidgets.QLabel(self)
+            self.maxmana.setText("Max Mana: ")
+            self.maxmanabox = QtWidgets.QLineEdit(self)
+
+            self.currentmana = QtWidgets.QLabel(self)
+            self.currentmana.setText("Current Mana: ")
+            self.currentmanabox = QtWidgets.QLineEdit(self)
+
+            self.mwisdomtitle = QtWidgets.QLabel(self)
+            self.mwisdomtitle.setText("Wisdom")
+            self.mwisdomtitle.setFont(self.subtitlefont)
+
+            self.mwisdom = QtWidgets.QLabel(self)
+            self.mwisdom.setText("Wisdom: ")
+            self.mwisdombox = QtWidgets.QLineEdit(self)
+
+            self.obsessiontitle = QtWidgets.QLabel(self)
+            self.obsessiontitle.setText("Obsessions")
+            self.obsessiontitle.setFont(self.subtitlefont)
+
+            self.obsession1 = QtWidgets.QLabel(self)
+            self.obsession1.setText("Obsession 1: ")
+            self.obsession1box = QtWidgets.QLineEdit(self)
+
+            self.obsession2 = QtWidgets.QLabel(self)
+            self.obsession2.setText("Obsession 2: ")
+            self.obsession2box = QtWidgets.QLineEdit(self)
+
+            self.obsession3 = QtWidgets.QLabel(self)
+            self.obsession3.setText("Obsession 3: ")
+            self.obsession3box = QtWidgets.QLineEdit(self)
+
+            self.obsession4 = QtWidgets.QLabel(self)
+            self.obsession4.setText("Obsession 4: ")
+            self.obsession4box = QtWidgets.QLineEdit(self)
+
+            self.arcaneexperiences = QtWidgets.QLabel(self)
+            self.arcaneexperiences.setText("Arcane Experiences:")
+            self.arcaneexperiencesbox = QtWidgets.QLineEdit(self)
+
+            self.arcanebeats = QtWidgets.QLabel(self)
+            self.arcanebeats.setText("Arcane Beats:")
+            self.arcanebeat1 = QtWidgets.QCheckBox()
+            self.arcanebeat1.clicked.connect(self.arcanebeatscheckdef(1))
+            self.arcanebeat2 = QtWidgets.QCheckBox()
+            self.arcanebeat2.clicked.connect(self.arcanebeatscheckdef(2))
+            self.arcanebeat3 = QtWidgets.QCheckBox()
+            self.arcanebeat3.clicked.connect(self.arcanebeatscheckdef(3))
+            self.arcanebeat4 = QtWidgets.QCheckBox()
+            self.arcanebeat4.clicked.connect(self.arcanebeatscheckdef(4))
+            self.arcanebeat5 = QtWidgets.QCheckBox()
+            self.arcanebeat5.clicked.connect(self.arcanebeatscheckdef(5))
+        else:
+            self.magetoggle.setChecked(False)
+            self.occultflag[2] = False
+
+            self.layout.removeWidget(self.shadowname)
+            self.shadowname.deleteLater()
+            self.shadowname = None
+            self.layout.removeWidget(self.shadownamebox)
+            self.shadownamebox.deleteLater()
+            self.shadownamebox = None
+
+            self.layout.removeWidget(self.path)
+            self.path.deleteLater()
+            self.path = None
+            self.layout.removeWidget(self.pathbox)
+            self.pathbox.deleteLater()
+            self.pathbox = None
+            self.layout.removeWidget(self.order)
+            self.order.deleteLater()
+            self.order = None
+            self.layout.removeWidget(self.orderbox)
+            self.orderbox.deleteLater()
+            self.orderbox = None
+            self.layout.removeWidget(self.legacy)
+            self.legacy.deleteLater()
+            self.legacy = None
+            self.layout.removeWidget(self.legacybox)
+            self.legacybox.deleteLater()
+            self.legacybox = None
+
+            self.layout.removeWidget(self.arcana)
+            self.arcana.deleteLater()
+            self.arcana = None
+
+            self.layout.removeWidget(self.death)
+            self.death.deleteLater()
+            self.death = None
+            self.layout.removeWidget(self.deathbox)
+            self.deathbox.deleteLater()
+            self.deathbox = None
+            self.layout.removeWidget(self.fate)
+            self.fate.deleteLater()
+            self.fate = None
+            self.layout.removeWidget(self.fatebox)
+            self.fatebox.deleteLater()
+            self.fatebox = None
+            self.layout.removeWidget(self.forces)
+            self.forces.deleteLater()
+            self.forces = None
+            self.layout.removeWidget(self.forcesbox)
+            self.forcesbox.deleteLater()
+            self.forcesbox = None
+            self.layout.removeWidget(self.life)
+            self.life.deleteLater()
+            self.life = None
+            self.layout.removeWidget(self.lifebox)
+            self.lifebox.deleteLater()
+            self.lifebox = None
+            self.layout.removeWidget(self.matter)
+            self.matter.deleteLater()
+            self.matter = None
+            self.layout.removeWidget(self.matterbox)
+            self.matterbox.deleteLater()
+            self.matterbox = None
+            self.layout.removeWidget(self.mind)
+            self.mind.deleteLater()
+            self.mind = None
+            self.layout.removeWidget(self.mindbox)
+            self.mindbox.deleteLater()
+            self.mindbox = None
+            self.layout.removeWidget(self.prime)
+            self.prime.deleteLater()
+            self.prime = None
+            self.layout.removeWidget(self.primebox)
+            self.primebox.deleteLater()
+            self.primebox = None
+            self.layout.removeWidget(self.spirit)
+            self.spirit.deleteLater()
+            self.spirit = None
+            self.layout.removeWidget(self.spiritbox)
+            self.spiritbox.deleteLater()
+            self.spiritbox = None
+            self.layout.removeWidget(self.space)
+            self.space.deleteLater()
+            self.space = None
+            self.layout.removeWidget(self.spacebox)
+            self.spacebox.deleteLater()
+            self.spacebox = None
+            self.layout.removeWidget(self.time)
+            self.time.deleteLater()
+            self.time = None
+            self.layout.removeWidget(self.timebox)
+            self.timebox.deleteLater()
+            self.timebox = None
+
+            self.layout.removeWidget(self.gnosis)
+            self.gnosis.deleteLater()
+            self.gnosis = None
+            self.layout.removeWidget(self.gnosistitle)
+            self.gnosistitle.deleteLater()
+            self.gnosistitle = None
+            self.layout.removeWidget(self.gnosisbox)
+            self.gnosisbox.deleteLater()
+            self.gnosisbox = None
+            self.layout.removeWidget(self.manatitle)
+            self.manatitle.deleteLater()
+            self.manatitle = None
+            self.layout.removeWidget(self.maxmana)
+            self.maxmana.deleteLater()
+            self.maxmana = None
+            self.layout.removeWidget(self.maxmanabox)
+            self.maxmanabox.deleteLater()
+            self.maxmanabox = None
+            self.layout.removeWidget(self.currentmana)
+            self.currentmana.deleteLater()
+            self.currentmana = None
+            self.layout.removeWidget(self.currentmanabox)
+            self.currentmanabox.deleteLater()
+            self.currentmanabox = None
+
+            self.layout.removeWidget(self.mwisdom)
+            self.mwisdom.deleteLater()
+            self.mwisdom = None
+            self.layout.removeWidget(self.mwisdomtitle)
+            self.mwisdomtitle.deleteLater()
+            self.mwisdomtitle = None
+            self.layout.removeWidget(self.mwisdombox)
+            self.mwisdombox.deleteLater()
+            self.mwisdombox = None
+
+            self.layout.removeWidget(self.obsessiontitle)
+            self.obsessiontitle.deleteLater()
+            self.obsessiontitle = None
+            self.layout.removeWidget(self.obsession1)
+            self.obsession1.deleteLater()
+            self.obsession1 = None
+            self.layout.removeWidget(self.obsession1box)
+            self.obsession1box.deleteLater()
+            self.obsession1box = None
+            self.layout.removeWidget(self.obsession2)
+            self.obsession2.deleteLater()
+            self.obsession2 = None
+            self.layout.removeWidget(self.obsession2box)
+            self.obsession2box.deleteLater()
+            self.obsession2box = None
+            self.layout.removeWidget(self.obsession3)
+            self.obsession3.deleteLater()
+            self.obsession3 = None
+            self.layout.removeWidget(self.obsession3box)
+            self.obsession3box.deleteLater()
+            self.obsession3box = None
+            self.layout.removeWidget(self.obsession4)
+            self.obsession4.deleteLater()
+            self.obsession4 = None
+            self.layout.removeWidget(self.obsession4box)
+            self.obsession4box.deleteLater()
+            self.obsession4box = None
+
+            self.layout.removeWidget(self.arcaneexperiences)
+            self.arcaneexperiences.deleteLater()
+            self.arcaneexperiences = None
+            self.layout.removeWidget(self.arcaneexperiencesbox)
+            self.arcaneexperiencesbox.deleteLater()
+            self.arcaneexperiencesbox = None
+            self.layout.removeWidget(self.arcanebeats)
+            self.arcanebeats.deleteLater()
+            self.arcanebeats = None
+            self.layout.removeWidget(self.arcanebeat1)
+            self.arcanebeat1.deleteLater()
+            self.arcanebeat1 = None
+            self.layout.removeWidget(self.arcanebeat2)
+            self.arcanebeat2.deleteLater()
+            self.arcanebeat2 = None
+            self.layout.removeWidget(self.arcanebeat3)
+            self.arcanebeat3.deleteLater()
+            self.arcanebeat3 = None
+            self.layout.removeWidget(self.arcanebeat4)
+            self.arcanebeat4.deleteLater()
+            self.arcanebeat4 = None
+            self.layout.removeWidget(self.arcanebeat5)
+            self.arcanebeat5.deleteLater()
+            self.arcanebeat5 = None
+
+            self.oplinecounter -= 2
+            self.oldmeritcount = self.meritcount
 
         self.savesettings()
 
@@ -1901,6 +2466,11 @@ class MyWidget(QtWidgets.QWidget):
         self.wolftoggle = QtWidgets.QCheckBox()
         self.wolftoggle.clicked.connect(self.wolftoggledef)
 
+        self.magelabel = QtWidgets.QLabel()
+        self.magelabel.setText("Character is Mage: ")
+        self.magetoggle = QtWidgets.QCheckBox()
+        self.magetoggle.clicked.connect(self.magetoggledef)
+
         self.meritslotslabel = QtWidgets.QLabel()
         self.meritslotslabel.setText("Merit Slots Available: ")
         self.meritslotsbox = QtWidgets.QLineEdit()
@@ -1963,6 +2533,8 @@ class MyWidget(QtWidgets.QWidget):
         self.settingslayout.addWidget(self.vamptoggle, 7, 2)
         self.settingslayout.addWidget(self.wolflabel, 7, 3)
         self.settingslayout.addWidget(self.wolftoggle, 7, 4)
+        self.settingslayout.addWidget(self.magelabel, 7, 5)
+        self.settingslayout.addWidget(self.magetoggle, 7, 6)
         self.setLayout(self.layout)
 
     def initsettings(self):
@@ -2009,6 +2581,14 @@ class MyWidget(QtWidgets.QWidget):
                         splitline = line.split('#')
                         if splitline[0] == 'True':
                             self.occultflag[1] = True
+                            self.oldmeritcount = self.meritcount
+                            self.oldaspirationcount = self.aspirationcount
+                            self.oldconditioncount = self.conditioncount
+                            self.oldbanecount = self.banecount
+                    if i == 8:
+                        splitline = line.split('#')
+                        if splitline[0] == 'True':
+                            self.occultflag[2] = True
                             self.oldmeritcount = self.meritcount
                             self.oldaspirationcount = self.aspirationcount
                             self.oldconditioncount = self.conditioncount
@@ -2632,10 +3212,6 @@ class MyWidget(QtWidgets.QWidget):
             self.willpowerpointbox = QtWidgets.QLineEdit(self)
 
         whealthcounter = 0
-        self.whealthtext1 = QtWidgets.QLabel(self)
-        self.whealthtext1.setText("(+2 Dalu Form, +4 Gauru")
-        self.whealthtext2 = QtWidgets.QLabel(self)
-        self.whealthtext2.setText("Form, +3 Urshul Form)")
 
         if self.vvflag:
             self.virtue = QtWidgets.QLabel(self)
@@ -2750,6 +3326,11 @@ class MyWidget(QtWidgets.QWidget):
         if self.occultflag[1]:
             self.whealth = True
 
+            self.whealthtext1 = QtWidgets.QLabel(self)
+            self.whealthtext1.setText("(+2 Dalu Form, +4 Gauru")
+            self.whealthtext2 = QtWidgets.QLabel(self)
+            self.whealthtext2.setText("Form, +3 Urshul Form)")
+
             self.auspice = QtWidgets.QLabel(self)
             self.auspice.setText("Auspice: ")
             self.boxauspice = QtWidgets.QLineEdit(self)
@@ -2846,6 +3427,130 @@ class MyWidget(QtWidgets.QWidget):
             self.specifickuruth = QtWidgets.QLabel(self)
             self.specifickuruth.setText("Specific Kuruth Trigger: ")
             self.specifickuruthbox = QtWidgets.QTextEdit(self)
+
+        if self.occultflag[2]:
+            self.shadowname = QtWidgets.QLabel(self)
+            self.shadowname.setText("Shadow Name: ")
+            self.shadownamebox = QtWidgets.QLineEdit(self)
+
+            self.path = QtWidgets.QLabel(self)
+            self.path.setText("Path: ")
+            self.pathbox = QtWidgets.QLineEdit(self)
+            self.order = QtWidgets.QLabel(self)
+            self.order.setText("Order: ")
+            self.orderbox = QtWidgets.QLineEdit(self)
+            self.legacy = QtWidgets.QLabel(self)
+            self.legacy.setText("Legacy: ")
+            self.legacybox = QtWidgets.QLineEdit(self)
+
+            self.arcana = QtWidgets.QLabel(self)
+            self.arcana.setText("Arcana")
+            self.arcana.setFont(self.subtitlefont)
+
+            self.death = QtWidgets.QLabel(self)
+            self.death.setText("Death: ")
+            self.deathbox = QtWidgets.QLineEdit(self)
+
+            self.fate = QtWidgets.QLabel(self)
+            self.fate.setText("Fate: ")
+            self.fatebox = QtWidgets.QLineEdit(self)
+
+            self.forces = QtWidgets.QLabel(self)
+            self.forces.setText("Forces: ")
+            self.forcesbox = QtWidgets.QLineEdit(self)
+
+            self.life = QtWidgets.QLabel(self)
+            self.life.setText("Life: ")
+            self.lifebox = QtWidgets.QLineEdit(self)
+
+            self.matter = QtWidgets.QLabel(self)
+            self.matter.setText("Matter: ")
+            self.matterbox = QtWidgets.QLineEdit(self)
+
+            self.mind = QtWidgets.QLabel(self)
+            self.mind.setText("Mind: ")
+            self.mindbox = QtWidgets.QLineEdit(self)
+
+            self.prime = QtWidgets.QLabel(self)
+            self.prime.setText("Prime: ")
+            self.primebox = QtWidgets.QLineEdit(self)
+
+            self.spirit = QtWidgets.QLabel(self)
+            self.spirit.setText("Spirit: ")
+            self.spiritbox = QtWidgets.QLineEdit(self)
+
+            self.space = QtWidgets.QLabel(self)
+            self.space.setText("Space: ")
+            self.spacebox = QtWidgets.QLineEdit(self)
+
+            self.time = QtWidgets.QLabel(self)
+            self.time.setText("Time: ")
+            self.timebox = QtWidgets.QLineEdit(self)
+
+            self.gnosistitle = QtWidgets.QLabel(self)
+            self.gnosistitle.setText("Gnosis")
+            self.gnosistitle.setFont(self.subtitlefont)
+
+            self.gnosis = QtWidgets.QLabel(self)
+            self.gnosis.setText("Gnosis: ")
+            self.gnosisbox = QtWidgets.QLineEdit(self)
+
+            self.manatitle = QtWidgets.QLabel(self)
+            self.manatitle.setText("Mana")
+            self.manatitle.setFont(self.subtitlefont)
+
+            self.maxmana = QtWidgets.QLabel(self)
+            self.maxmana.setText("Max Mana: ")
+            self.maxmanabox = QtWidgets.QLineEdit(self)
+
+            self.currentmana = QtWidgets.QLabel(self)
+            self.currentmana.setText("Current Mana: ")
+            self.currentmanabox = QtWidgets.QLineEdit(self)
+
+            self.mwisdomtitle = QtWidgets.QLabel(self)
+            self.mwisdomtitle.setText("Wisdom")
+            self.mwisdomtitle.setFont(self.subtitlefont)
+
+            self.mwisdom = QtWidgets.QLabel(self)
+            self.mwisdom.setText("Wisdom: ")
+            self.mwisdombox = QtWidgets.QLineEdit(self)
+
+            self.obsessiontitle = QtWidgets.QLabel(self)
+            self.obsessiontitle.setText("Obsessions")
+            self.obsessiontitle.setFont(self.subtitlefont)
+
+            self.obsession1 = QtWidgets.QLabel(self)
+            self.obsession1.setText("Obsession 1: ")
+            self.obsession1box = QtWidgets.QLineEdit(self)
+
+            self.obsession2 = QtWidgets.QLabel(self)
+            self.obsession2.setText("Obsession 2: ")
+            self.obsession2box = QtWidgets.QLineEdit(self)
+
+            self.obsession3 = QtWidgets.QLabel(self)
+            self.obsession3.setText("Obsession 3: ")
+            self.obsession3box = QtWidgets.QLineEdit(self)
+
+            self.obsession4 = QtWidgets.QLabel(self)
+            self.obsession4.setText("Obsession 4: ")
+            self.obsession4box = QtWidgets.QLineEdit(self)
+
+            self.arcaneexperiences = QtWidgets.QLabel(self)
+            self.arcaneexperiences.setText("Arcane Experiences:")
+            self.arcaneexperiencesbox = QtWidgets.QLineEdit(self)
+
+            self.arcanebeats = QtWidgets.QLabel(self)
+            self.arcanebeats.setText("Arcane Beats:")
+            self.arcanebeat1 = QtWidgets.QCheckBox()
+            self.arcanebeat1.clicked.connect(self.arcanebeatscheckdef(1))
+            self.arcanebeat2 = QtWidgets.QCheckBox()
+            self.arcanebeat2.clicked.connect(self.arcanebeatscheckdef(2))
+            self.arcanebeat3 = QtWidgets.QCheckBox()
+            self.arcanebeat3.clicked.connect(self.arcanebeatscheckdef(3))
+            self.arcanebeat4 = QtWidgets.QCheckBox()
+            self.arcanebeat4.clicked.connect(self.arcanebeatscheckdef(4))
+            self.arcanebeat5 = QtWidgets.QCheckBox()
+            self.arcanebeat5.clicked.connect(self.arcanebeatscheckdef(5))
 
         self.makesheet()
 

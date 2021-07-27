@@ -35,6 +35,7 @@ class MyWidget(QtWidgets.QWidget):
                 f.write('True# Is Mage\n')
             else:
                 f.write('False# Is Mage\n')
+            f.write(str(self.othertraitcount)+'# Other Trait Slots Displayed Count\n')
 
 
     def savedef(self):
@@ -358,6 +359,15 @@ class MyWidget(QtWidgets.QWidget):
         stats['experience'] = {}
         stats['experience']['experiences'] = self.experiencesbox.text()
         stats['experience']['beats'] = [self.beat1.isChecked(), self.beat2.isChecked(), self.beat3.isChecked(), self.beat4.isChecked(), self.beat5.isChecked()]
+
+        self.filledothertraits = 0
+        stats['othertraits'] = []
+        stats['othertraits'].append(['filledothertraits', 0])
+        for x in range(self.othertraitcount):
+            if self.othertraitcount >= x and self.othertraitnamebox[x].text() != "" and self.othertraitlevelbox[x].text() != "":
+                stats['othertraits'].append([self.othertraitnamebox[x].text(), self.othertraitlevelbox[x].text()])
+                self.filledothertraits += 1
+        stats['othertraits'][0] = ['filledothertraits', self.filledothertraits]
 
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
@@ -776,6 +786,16 @@ class MyWidget(QtWidgets.QWidget):
                             self.arcanebeat5.setChecked(True)
 
                         self.occultflag[2] = True
+                if stats.get('othertraits')[0][1] > self.othertraitcount:
+                    self.oldothertraitcount = self.othertraitcount
+                    self.othertraitcount = stats.get('othertraits')[0][1]
+
+                    self.makesheet()
+
+                for x in range(stats.get('othertraits')[0][1]):
+                    if stats.get('othertraits')[0][1] >= x:
+                        self.othertraitnamebox[x].setText(stats.get('othertraits')[x+1][0])
+                        self.othertraitlevelbox[x].setText(stats.get('othertraits')[x+1][1])
 
                 self.savesettings()
         else:
@@ -887,6 +907,14 @@ class MyWidget(QtWidgets.QWidget):
                 if self.disciplinecount >= x:
                     self.disciplinenamebox.append(QtWidgets.QLineEdit(self))
                     self.disciplinelevelbox.append(QtWidgets.QLineEdit(self))
+
+        self.othertraitnamebox = []
+        self.othertraitlevelbox = []
+        #initialize othertraits
+        for x in range(self.othertraitcount):
+            if self.othertraitcount >= x:
+                self.othertraitnamebox.append(QtWidgets.QLineEdit(self))
+                self.othertraitlevelbox.append(QtWidgets.QLineEdit(self))
 
         #begin layout
 
@@ -1467,15 +1495,84 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.beat5, 29 + self.oplinecounter + self.p1c3counter, 6)
 
         if self.occultflag[2]:
-            self.layout.addWidget(self.arcaneexperiences, 30 + self.oplinecounter + self.p1c3counter, 5)
-            self.layout.addWidget(self.arcaneexperiencesbox, 30 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.arcaneexperiences, 29 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.arcaneexperiencesbox, 29 + self.oplinecounter + self.p1c3counter, 6)
 
-            self.layout.addWidget(self.arcanebeats, 31 + self.oplinecounter + self.p1c3counter, 5)
-            self.layout.addWidget(self.arcanebeat1, 31 + self.oplinecounter + self.p1c3counter, 6)
-            self.layout.addWidget(self.arcanebeat2, 32 + self.oplinecounter + self.p1c3counter, 5)
-            self.layout.addWidget(self.arcanebeat3, 32 + self.oplinecounter + self.p1c3counter, 6)
-            self.layout.addWidget(self.arcanebeat4, 33 + self.oplinecounter + self.p1c3counter, 5)
-            self.layout.addWidget(self.arcanebeat5, 33 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.arcanebeats, 29 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.arcanebeat1, 29 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.arcanebeat2, 29 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.arcanebeat3, 29 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.arcanebeat4, 29 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.arcanebeat5, 29 + self.oplinecounter + self.p1c3counter, 6)
+
+        self.p2counter = 0
+        if 41 >= self.p1c2counter:
+            if 41 >= self.p1c3counter:
+                self.p2counter = 41 + self.oplinecounter
+            else:
+                self.p2counter = 29 + self.oplinecounter + self.p1c3counter
+        else:
+            if self.p1c2counter >= self.p1c3counter:
+                self.p2counter = 15 + self.oplinecounter + self.p1c2counter
+            else:
+                self.p2counter = 29 + self.oplinecounter + self.p1c3counter
+
+        self.layout.addWidget(self.blanks[2], self.p2counter + 1, 3)
+        self.layout.addWidget(self.blanks[3], self.p2counter + 2, 3)
+        self.layout.addWidget(self.blanks[2], self.p2counter + 3, 3)
+        self.layout.addWidget(self.blanks[3], self.p2counter + 4, 3)
+        self.layout.addWidget(self.blanks[2], self.p2counter + 5, 3)
+
+        self.p2counter += 5
+        # self.layout.addWidget(self.titlep2, self.p2counter, 3, self.p2counter, 6)
+
+        self.p2counter += 1
+        self.layout.addWidget(self.othertraits, self.p2counter, 4)
+
+        self.othertraitcounter = self.othertraitcount
+
+        # self.layout.addWidget(self.othertraits, 15 + self.oplinecounter + self.p1c2counter, 3)
+        # self.layout.addWidget(self.othertraitslevel, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+        #othertraits
+        while self.othertraitcounter > 0:
+            if self.othertraitcounter >= 3:
+                self.p2counter += 1
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 1], self.p2counter, 1)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 1], self.p2counter, 2)
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 2], self.p2counter, 3)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 2], self.p2counter, 4)
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 3], self.p2counter, 5)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 3], self.p2counter, 6)
+                # if x < len(self.savedothertraitnames):
+                #     self.othertraitnamebox[x].setText(self.savedothertraitnames[x].text())
+                #     self.othertraitlevelbox[x].setText(self.savedothertraitlevels[x].text())
+                self.othertraitcounter -= 3
+            elif self.othertraitcounter >= 2:
+                self.p2counter += 1
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 1], self.p2counter, 2)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 1], self.p2counter, 3)
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 2], self.p2counter, 4)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 2], self.p2counter, 5)
+                self.othertraitcounter -= 2
+                # if x < len(self.savedothertraitnames):
+                #     self.othertraitnamebox[x].setText(self.savedothertraitnames[x].text())
+                #     self.othertraitlevelbox[x].setText(self.savedothertraitlevels[x].text())
+            else:
+                self.p2counter += 1
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 1], self.p2counter, 3)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 1], self.p2counter, 4)
+                self.othertraitcounter -= 1
+                # if x < len(self.savedothertraitnames):
+                #     self.othertraitnamebox[x].setText(self.savedothertraitnames[x].text())
+                #     self.othertraitlevelbox[x].setText(self.savedothertraitlevels[x].text())
+
+        # self.savedothertraitnames = []
+        # self.savedothertraitlevels = []
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
@@ -2439,6 +2536,14 @@ class MyWidget(QtWidgets.QWidget):
 
         self.makesheet()
 
+    def othertraitdef(self):
+        self.oldothertraitcount = self.othertraitcount
+        self.othertraitcount = int(self.othertraitslotsbox.text())
+
+        self.savesettings()
+
+        self.makesheet()
+
     def settingsdef(self):
         self.settings = QtWidgets.QWidget()
         self.settings.setWindowTitle('Settings')
@@ -2505,6 +2610,13 @@ class MyWidget(QtWidgets.QWidget):
         self.disciplineslotsupdate = QtWidgets.QPushButton('Update Discipline Slots')
         self.disciplineslotsupdate.clicked.connect(self.disciplinedef)
 
+        self.othertraitslotslabel = QtWidgets.QLabel()
+        self.othertraitslotslabel.setText("Other Trait Slots Available: ")
+        self.othertraitslotsbox = QtWidgets.QLineEdit()
+        self.othertraitslotsbox.setText(str(self.othertraitcount))
+        self.othertraitslotsupdate = QtWidgets.QPushButton('Update Other Trait Slots')
+        self.othertraitslotsupdate.clicked.connect(self.othertraitdef)
+
         self.settingslayout.addWidget(self.settingstitle, 0, 2, 0, 5)
 
         self.settingslayout.addWidget(self.meritslotslabel, 2, 0)
@@ -2525,15 +2637,19 @@ class MyWidget(QtWidgets.QWidget):
         self.settingslayout.addWidget(self.disciplineslotsbox, 4, 1)
         self.settingslayout.addWidget(self.disciplineslotsupdate, 4, 2)
 
-        self.settingslayout.addWidget(self.humanlabel, 6, 2)
-        self.settingslayout.addWidget(self.humantoggle, 6, 3)
+        self.settingslayout.addWidget(self.othertraitslotslabel, 5, 0)
+        self.settingslayout.addWidget(self.othertraitslotsbox, 5, 1)
+        self.settingslayout.addWidget(self.othertraitslotsupdate, 5, 2)
 
-        self.settingslayout.addWidget(self.vamplabel, 7, 1)
-        self.settingslayout.addWidget(self.vamptoggle, 7, 2)
-        self.settingslayout.addWidget(self.wolflabel, 7, 3)
-        self.settingslayout.addWidget(self.wolftoggle, 7, 4)
-        self.settingslayout.addWidget(self.magelabel, 7, 5)
-        self.settingslayout.addWidget(self.magetoggle, 7, 6)
+        self.settingslayout.addWidget(self.humanlabel, 7, 2)
+        self.settingslayout.addWidget(self.humantoggle, 7, 3)
+
+        self.settingslayout.addWidget(self.vamplabel, 8, 1)
+        self.settingslayout.addWidget(self.vamptoggle, 8, 2)
+        self.settingslayout.addWidget(self.wolflabel, 8, 3)
+        self.settingslayout.addWidget(self.wolftoggle, 8, 4)
+        self.settingslayout.addWidget(self.magelabel, 8, 5)
+        self.settingslayout.addWidget(self.magetoggle, 8, 6)
         self.setLayout(self.layout)
 
     def initsettings(self):
@@ -2592,6 +2708,10 @@ class MyWidget(QtWidgets.QWidget):
                             self.oldaspirationcount = self.aspirationcount
                             self.oldconditioncount = self.conditioncount
                             self.oldbanecount = self.banecount
+                    if i == 9:
+                        splitline = line.split('#')
+                        self.oldothertraitcount = self.othertraitcount
+                        self.othertraitcount = int(splitline[0])
 
         self.resize(1024, 768)
         if self.initmakesheet:
@@ -2673,6 +2793,9 @@ class MyWidget(QtWidgets.QWidget):
 
         self.blankcount = 0
         self.blanks = []
+
+        self.oldothertraitcount = 0
+        self.othertraitcount = 9
 
         self.initsettings()
 
@@ -3056,10 +3179,6 @@ class MyWidget(QtWidgets.QWidget):
         self.banes = QtWidgets.QLabel(self)
         self.banes.setText("Banes")
         self.banes.setFont(self.subtitlefont)
-
-        self.blanks.append(QtWidgets.QLabel(self))
-        self.blankcount += 1
-        self.blanks[self.blankcount - 1].setText(" ")
 
         self.experiencestitle = QtWidgets.QLabel(self)
         self.experiencestitle.setText("Experiences")
@@ -3572,7 +3691,30 @@ class MyWidget(QtWidgets.QWidget):
 
         #page 2
 
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
 
+        # self.titlep2 = QtWidgets.QLabel()
+        #
+        # self.titlep2.setPixmap( pixMap )
+        # self.titlep2.show()
+
+        self.othertraits = QtWidgets.QLabel(self)
+        self.othertraits.setText("Other Traits")
+        self.othertraits.setFont(self.titlefont)
 
         self.makesheet()
 

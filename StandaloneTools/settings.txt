@@ -7,3 +7,4 @@ True# Is Vampire
 5# Discipline Slots Displayed Count
 True# Is Werewolf
 True# Is Mage
+9# Other Trait Slots Displayed Count

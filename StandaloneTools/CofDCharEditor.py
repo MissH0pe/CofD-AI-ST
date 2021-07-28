@@ -561,10 +561,252 @@ class MyWidget(QtWidgets.QWidget):
             else:
                 self.arcanebeat5.setChecked(False)
 
+    def addvvdef(self):
+        if self.vvflag == False:
+            self.virtue = QtWidgets.QLabel(self)
+            self.virtue.setText("Virtue: ")
+            self.boxvirtue = QtWidgets.QLineEdit(self)
+            self.vice = QtWidgets.QLabel(self)
+            self.vice.setText("Vice: ")
+            self.boxvice = QtWidgets.QLineEdit(self)
+
+            self.layout.addWidget(self.concept, 4, 1)
+            self.layout.addWidget(self.boxconcept, 4, 2)
+            self.layout.addWidget(self.vice, 4, 3)
+            self.layout.addWidget(self.boxvice, 4, 4)
+            self.layout.addWidget(self.virtue, 4, 5)
+            self.layout.addWidget(self.boxvirtue, 4, 6)
+
+    def addvampdef(self):
+        if self.occultflag[0] == False:
+            self.occultflag[0] = True
+            self.oldmeritcount = self.meritcount
+            self.oldaspirationcount = self.aspirationcount
+            self.oldconditioncount = self.conditioncount
+            self.oldbanecount = self.banecount
+
+            self.disciplines = QtWidgets.QLabel(self)
+            self.disciplines.setText("Disciplines")
+            self.disciplines.setFont(self.subtitlefont)
+            self.disciplineslevel = QtWidgets.QLabel(self)
+            self.disciplineslevel.setText("Level")
+
+            self.bloodpotencytitle = QtWidgets.QLabel(self)
+            self.bloodpotencytitle.setText("Blood Potency")
+            self.bloodpotencytitle.setFont(self.subtitlefont)
+
+            self.bloodpotencylabel = QtWidgets.QLabel(self)
+            self.bloodpotencylabel.setText("Blood Potency: ")
+            self.bloodpotencybox = QtWidgets.QLineEdit(self)
+
+            self.vitaetitle = QtWidgets.QLabel(self)
+            self.vitaetitle.setText("Vitae")
+            self.vitaetitle.setFont(self.subtitlefont)
+
+            self.maxvitaelabel = QtWidgets.QLabel(self)
+            self.maxvitaelabel.setText("Max Vitae: ")
+            self.maxvitaebox = QtWidgets.QLineEdit(self)
+
+            self.currentvitaelabel = QtWidgets.QLabel(self)
+            self.currentvitaelabel.setText("Current Vitae: ")
+            self.currentvitaebox = QtWidgets.QLineEdit(self)
+
+
+            self.humanitytitle = QtWidgets.QLabel(self)
+            self.humanitytitle.setText("Humanity")
+            self.humanitytitle.setFont(self.subtitlefont)
+
+            self.num1 = QtWidgets.QLabel(self)
+            self.num1.setText("1")
+            self.num2 = QtWidgets.QLabel(self)
+            self.num2.setText("2")
+            self.num3 = QtWidgets.QLabel(self)
+            self.num3.setText("3")
+            self.num4 = QtWidgets.QLabel(self)
+            self.num4.setText("4")
+            self.num5 = QtWidgets.QLabel(self)
+            self.num5.setText("5")
+            self.num6 = QtWidgets.QLabel(self)
+            self.num6.setText("6")
+            self.num7 = QtWidgets.QLabel(self)
+            self.num7.setText("7")
+            self.num8 = QtWidgets.QLabel(self)
+            self.num8.setText("8")
+            self.num9 = QtWidgets.QLabel(self)
+            self.num9.setText("9")
+            self.num10 = QtWidgets.QLabel(self)
+            self.num10.setText("10")
+
+            self.humanitybox1 = QtWidgets.QLineEdit(self)
+            self.humanitybox2 = QtWidgets.QLineEdit(self)
+            self.humanitybox3 = QtWidgets.QLineEdit(self)
+            self.humanitybox4 = QtWidgets.QLineEdit(self)
+            self.humanitybox5 = QtWidgets.QLineEdit(self)
+            self.humanitybox6 = QtWidgets.QLineEdit(self)
+            self.humanitybox7 = QtWidgets.QLineEdit(self)
+            self.humanitybox8 = QtWidgets.QLineEdit(self)
+            self.humanitybox9 = QtWidgets.QLineEdit(self)
+            self.humanitybox10 = QtWidgets.QLineEdit(self)
+
+            self.humanitycheck1 = QtWidgets.QCheckBox()
+            self.humanitycheck1.clicked.connect(self.humanitycheckdef(1))
+            self.humanitycheck2 = QtWidgets.QCheckBox()
+            self.humanitycheck2.clicked.connect(self.humanitycheckdef(2))
+            self.humanitycheck3 = QtWidgets.QCheckBox()
+            self.humanitycheck3.clicked.connect(self.humanitycheckdef(3))
+            self.humanitycheck4 = QtWidgets.QCheckBox()
+            self.humanitycheck4.clicked.connect(self.humanitycheckdef(4))
+            self.humanitycheck5 = QtWidgets.QCheckBox()
+            self.humanitycheck5.clicked.connect(self.humanitycheckdef(5))
+            self.humanitycheck6 = QtWidgets.QCheckBox()
+            self.humanitycheck6.clicked.connect(self.humanitycheckdef(6))
+            self.humanitycheck7 = QtWidgets.QCheckBox()
+            self.humanitycheck7.clicked.connect(self.humanitycheckdef(7))
+            self.humanitycheck8 = QtWidgets.QCheckBox()
+            self.humanitycheck8.clicked.connect(self.humanitycheckdef(8))
+            self.humanitycheck9 = QtWidgets.QCheckBox()
+            self.humanitycheck9.clicked.connect(self.humanitycheckdef(9))
+            self.humanitycheck10 = QtWidgets.QCheckBox()
+            self.humanitycheck10.clicked.connect(self.humanitycheckdef(10))
+
+            self.clan = QtWidgets.QLabel(self)
+            self.clan.setText("Clan: ")
+            self.boxclan = QtWidgets.QLineEdit(self)
+            self.bloodline = QtWidgets.QLabel(self)
+            self.bloodline.setText("Bloodline: ")
+            self.boxbloodline = QtWidgets.QLineEdit(self)
+            self.covenant = QtWidgets.QLabel(self)
+            self.covenant.setText("Covenant: ")
+            self.boxcovenant = QtWidgets.QLineEdit(self)
+
+            self.mask = QtWidgets.QLabel(self)
+            self.mask.setText("Mask: ")
+            self.boxmask = QtWidgets.QLineEdit(self)
+            self.dirge = QtWidgets.QLabel(self)
+            self.dirge.setText("Dirge: ")
+            self.boxdirge = QtWidgets.QLineEdit(self)
+
+            self.oplinecounter += 1
+            self.layout.addWidget(self.clan, 4 + self.oplinecounter, 1)
+            self.layout.addWidget(self.boxclan, 4 + self.oplinecounter, 2)
+            self.layout.addWidget(self.bloodline, 4 + self.oplinecounter, 3)
+            self.layout.addWidget(self.boxbloodline, 4 + self.oplinecounter, 4)
+            self.layout.addWidget(self.covenant, 4 + self.oplinecounter, 5)
+            self.layout.addWidget(self.boxcovenant, 4 + self.oplinecounter, 6)
+
+            self.oplinecounter += 1
+            self.layout.addWidget(self.mask, 4 + self.oplinecounter, 2)
+            self.layout.addWidget(self.boxmask, 4 + self.oplinecounter, 3)
+            self.layout.addWidget(self.dirge, 4 + self.oplinecounter, 4)
+            self.layout.addWidget(self.boxdirge, 4 + self.oplinecounter, 5)
+
+            self.layout.addWidget(self.disciplines, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.disciplineslevel, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            #disciplines
+            for x in range(self.disciplinecount):
+                if self.disciplinecount >= 1:
+                    self.p1c2counter += 1
+                    self.layout.addWidget(self.disciplinenamebox[x], 15 + self.oplinecounter + self.p1c2counter, 3)
+                    self.layout.addWidget(self.disciplinelevelbox[x], 15 + self.oplinecounter + self.p1c2counter, 4)
+                    if x < len(self.saveddisciplinenames):
+                        self.disciplinenamebox[x].setText(self.saveddisciplinenames[x].text())
+                        self.disciplinelevelbox[x].setText(self.saveddisciplinelevels[x].text())
+
+            self.saveddisciplinenames = []
+            self.saveddisciplinelevels = []
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.bloodpotencytitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.bloodpotencylabel, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.bloodpotencybox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.vitaetitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.maxvitaelabel, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.maxvitaebox, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.currentvitaelabel, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.currentvitaebox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.humanitytitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.num1, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.humanitybox1, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.layout.addWidget(self.humanitycheck1, 24 + self.oplinecounter + self.p1c3counter, 7)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.num2, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.humanitybox2, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.layout.addWidget(self.humanitycheck2, 24 + self.oplinecounter + self.p1c3counter, 7)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.num3, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.humanitybox3, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.layout.addWidget(self.humanitycheck3, 24 + self.oplinecounter  + self.p1c3counter, 7)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.num4, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.humanitybox4, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.layout.addWidget(self.humanitycheck4, 24 + self.oplinecounter + self.p1c3counter, 7)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.num5, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.humanitybox5, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.layout.addWidget(self.humanitycheck5, 24 + self.oplinecounter + self.p1c3counter, 7)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.num6, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.humanitybox6, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.layout.addWidget(self.humanitycheck6, 24 + self.oplinecounter + self.p1c3counter, 7)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.num7, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.humanitybox7, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.layout.addWidget(self.humanitycheck7, 24 + self.oplinecounter + self.p1c3counter, 7)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.num8, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.humanitybox8, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.layout.addWidget(self.humanitycheck8, 24 + self.oplinecounter + self.p1c3counter, 7)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.num9, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.humanitybox9, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.layout.addWidget(self.humanitycheck9, 24 + self.oplinecounter + self.p1c3counter, 7)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.num10, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.humanitybox10, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.layout.addWidget(self.humanitycheck10, 24 + self.oplinecounter + self.p1c3counter, 7)
+
+    # def addwolfdef(self):
+    #     if self.occultflag[1] == False:
+    #
+    # def addmagedef(self):
+    #     if self.occultflag[2] == False:
+
     def loaddef(self):
         if path.exists(self.loadloc.text()+'.json'):
             with open(self.loadloc.text()+'.json') as f:
                 stats = json.load(f)
+
+                for x in stats.get('supernaturaltags'):
+                    if x == 'human':
+                        self.addvvdef()
+                    if x == 'vampire':
+                        self.addvampdef()
+                    # if x == 'werewolf':
+                    #     self.addwolfdef()
+                    # if x == 'mage':
+                    #     self.addmagedef()
+
                 self.boxname.setText(stats.get('name'))
                 self.boxplayer.setText(stats.get('player'))
                 self.boxchronicle.setText(stats.get('chronicle'))
@@ -1046,7 +1288,7 @@ class MyWidget(QtWidgets.QWidget):
             self.emalliescounter = 0
             for x in range(self.oldemalliescount):
                 if self.oldemalliescount >= x + 1:
-                    self.savedemalliess.append(self.emalliesbox[x])
+                    self.savedemallies.append(self.emalliesbox[x])
                     self.layout.removeWidget(self.emalliesbox[x])
                     self.emalliesbox[x].deleteLater()
                     self.emalliesbox[x] = None
@@ -1054,7 +1296,7 @@ class MyWidget(QtWidgets.QWidget):
             self.emmentorcounter = 0
             for x in range(self.oldemmentorcount):
                 if self.oldemmentorcount >= x + 1:
-                    self.savedemmentors.append(self.emmentorbox[x])
+                    self.savedemmentor.append(self.emmentorbox[x])
                     self.layout.removeWidget(self.emmentorbox[x])
                     self.emmentorbox[x].deleteLater()
                     self.emmentorbox[x] = None
@@ -1062,7 +1304,7 @@ class MyWidget(QtWidgets.QWidget):
             self.emcontactscounter = 0
             for x in range(self.oldemcontactscount):
                 if self.oldemcontactscount >= x + 1:
-                    self.savedemcontactss.append(self.emcontactsbox[x])
+                    self.savedemcontacts.append(self.emcontactsbox[x])
                     self.layout.removeWidget(self.emcontactsbox[x])
                     self.emcontactsbox[x].deleteLater()
                     self.emcontactsbox[x] = None
@@ -1070,7 +1312,7 @@ class MyWidget(QtWidgets.QWidget):
             self.emresourcescounter = 0
             for x in range(self.oldemresourcescount):
                 if self.oldemresourcescount >= x + 1:
-                    self.savedemresourcess.append(self.emresourcesbox[x])
+                    self.savedemresources.append(self.emresourcesbox[x])
                     self.layout.removeWidget(self.emresourcesbox[x])
                     self.emresourcesbox[x].deleteLater()
                     self.emresourcesbox[x] = None
@@ -1078,7 +1320,7 @@ class MyWidget(QtWidgets.QWidget):
             self.emfamecounter = 0
             for x in range(self.oldemfamecount):
                 if self.oldemfamecount >= x + 1:
-                    self.savedemfames.append(self.emfamebox[x])
+                    self.savedemfame.append(self.emfamebox[x])
                     self.layout.removeWidget(self.emfamebox[x])
                     self.emfamebox[x].deleteLater()
                     self.emfamebox[x] = None
@@ -1086,7 +1328,7 @@ class MyWidget(QtWidgets.QWidget):
             self.emretainercounter = 0
             for x in range(self.oldemretainercount):
                 if self.oldemretainercount >= x + 1:
-                    self.savedemretainers.append(self.emretainerbox[x])
+                    self.savedemretainer.append(self.emretainerbox[x])
                     self.layout.removeWidget(self.emretainerbox[x])
                     self.emretainerbox[x].deleteLater()
                     self.emretainerbox[x] = None
@@ -1971,6 +2213,12 @@ class MyWidget(QtWidgets.QWidget):
                 self.emfamebox[x].setText(self.savedemfame[x].toPlainText())
             if x < len(self.savedemretainer):
                 self.emretainerbox[x].setText(self.savedemretainer[x].toPlainText())
+
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+        self.p2counter += 1
+        self.layout.addWidget(self.blanks[self.blankcount - 1], self.p2counter, 4)
 
         self.savedemallies = []
         self.savedemmentor = []
@@ -3022,7 +3270,7 @@ class MyWidget(QtWidgets.QWidget):
         self.othertraitslotsupdate = QtWidgets.QPushButton('Update Other Trait Slots')
         self.othertraitslotsupdate.clicked.connect(self.othertraitdef)
 
-        self.settingslayout.addWidget(self.settingstitle, 0, 2, 0, 5)
+        self.settingslayout.addWidget(self.settingstitle, 0, 2)
 
         self.settingslayout.addWidget(self.meritslotslabel, 2, 0)
         self.settingslayout.addWidget(self.meritslotsbox, 2, 1)
@@ -3242,6 +3490,13 @@ class MyWidget(QtWidgets.QWidget):
         self.emresourcescount = 4
         self.emfamecount = 4
         self.emretainercount = 4
+
+        self.oldemalliescount = 4
+        self.oldemmentorcount = 4
+        self.oldemcontactscount = 4
+        self.oldemresourcescount = 4
+        self.oldemfamecount = 4
+        self.oldemretainercount = 4
 
         self.savedemallies = []
         self.savedemmentor = []

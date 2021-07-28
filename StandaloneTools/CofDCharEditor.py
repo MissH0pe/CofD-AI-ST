@@ -8,35 +8,34 @@ class MyWidget(QtWidgets.QWidget):
 #if importing this character to a table i need to make sure that it's added under a in that is the name with the space
 
     def savesettings(self):
-        with open('settings.txt', 'w') as f:
-            f.write(str(self.meritcount)+'# Merit Slots Displayed Count\n')
-            f.write(str(self.aspirationcount)+'# Aspiration Slots Displayed Count\n')
-            f.write(str(self.conditioncount)+'# Condition Slots Displayed Count\n')
-            f.write(str(self.banecount)+'# Bane Slots Displayed Count\n')
-            # print(self.vvflag)
-            if self.vvflag:
-                f.write('True# Has a Vice and Virtue\n')
-            else:
-                f.write('False# Has a Vice and Virtue\n')
-
-            if self.occultflag[0]:
-                f.write('True# Is Vampire\n')
-            else:
-                f.write('False# Is Vampire\n')
-            if self.occultflag[0]:
-                f.write(str(self.disciplinecount)+'# Discipline Slots Displayed Count\n')
-            else:
-                f.write('\n')
-            if self.occultflag[1]:
-                f.write('True# Is Werewolf\n')
-            else:
-                f.write('False# Is Werewolf\n')
-            if self.occultflag[2]:
-                f.write('True# Is Mage\n')
-            else:
-                f.write('False# Is Mage\n')
-            f.write(str(self.othertraitcount)+'# Other Trait Slots Displayed Count\n')
-
+        settingsdict = {}
+        settingsdict['meritslots'] = self.meritcount
+        settingsdict['aspirationslots'] = self.aspirationcount
+        settingsdict['conditionslots'] = self.conditioncount
+        settingsdict['baneslots'] = self.banecount
+        if self.vvflag:
+            settingsdict['hasvicevirtueslots'] = True
+        else:
+            settingsdict['hasvicevirtueslots'] = False
+        if self.occultflag[0]:
+            settingsdict['hasvampireslots'] = True
+        else:
+            settingsdict['hasvampireslots'] = False
+        if self.occultflag[0]:
+            settingsdict['disciplineslots'] = self.disciplinecount
+        else:
+            settingsdict['disciplineslots'] = -1
+        if self.occultflag[1]:
+            settingsdict['haswerewolfslots'] = True
+        else:
+            settingsdict['haswerewolfslots'] = False
+        if self.occultflag[2]:
+            settingsdict['hasmageslots'] = True
+        else:
+            settingsdict['hasmageslots'] = False
+        settingsdict['othertraitslots'] = self.othertraitcount
+        with open('settings.json', 'w') as f:
+            json.dump(settingsdict, f)
 
     def savedef(self):
         if path.exists(self.saveloc.text()+'.json'):
@@ -2653,65 +2652,45 @@ class MyWidget(QtWidgets.QWidget):
         self.setLayout(self.layout)
 
     def initsettings(self):
-        if path.exists('settings.txt'):
-            with open('settings.txt') as f:
-                nonemptylines = [line.strip("\n") for line in f if line != "\n"]
-                for i, line in enumerate(nonemptylines):
-                    if i == 0:
-                        splitline = line.split('#')
-                        self.oldmeritcount = self.meritcount
-                        self.meritcount = int(splitline[0])
-                    if i == 1:
-                        splitline = line.split('#')
-                        self.oldaspirationcount = self.aspirationcount
-                        self.aspirationcount = int(splitline[0])
-                    if i == 2:
-                        splitline = line.split('#')
-                        self.oldconditioncount = self.conditioncount
-                        self.conditioncount = int(splitline[0])
-                    if i == 3:
-                        splitline = line.split('#')
-                        self.oldbanecount = self.banecount
-                        self.banecount = int(splitline[0])
-                    if i == 4:
-                        splitline = line.split('#')
-                        if splitline[0] == 'True':
-                            self.vvflag = True
-                    if i == 5:
-                        # print('test')
-                        splitline = line.split('#')
-                        if splitline[0] == 'True':
-                            # print('test2')
-                            self.occultflag[0] = True
-                            self.oldmeritcount = self.meritcount
-                            self.oldaspirationcount = self.aspirationcount
-                            self.oldconditioncount = self.conditioncount
-                            self.oldbanecount = self.banecount
-                    if i == 6:
-                        if self.occultflag[0] == True:
-                            splitline = line.split('#')
-                            self.olddisciplinecount = self.disciplinecount
-                            self.disciplinecount = int(splitline[0])
-                    if i == 7:
-                        splitline = line.split('#')
-                        if splitline[0] == 'True':
-                            self.occultflag[1] = True
-                            self.oldmeritcount = self.meritcount
-                            self.oldaspirationcount = self.aspirationcount
-                            self.oldconditioncount = self.conditioncount
-                            self.oldbanecount = self.banecount
-                    if i == 8:
-                        splitline = line.split('#')
-                        if splitline[0] == 'True':
-                            self.occultflag[2] = True
-                            self.oldmeritcount = self.meritcount
-                            self.oldaspirationcount = self.aspirationcount
-                            self.oldconditioncount = self.conditioncount
-                            self.oldbanecount = self.banecount
-                    if i == 9:
-                        splitline = line.split('#')
-                        self.oldothertraitcount = self.othertraitcount
-                        self.othertraitcount = int(splitline[0])
+        if path.exists('settings.json'):
+            with open('settings.json') as f:
+                settingsdict = json.load(f)
+            self.oldmeritcount = self.meritcount
+            self.meritcount = settingsdict['meritslots']
+            self.oldaspirationcount = self.aspirationcount
+            self.aspirationcount = settingsdict['aspirationslots']
+            self.oldconditioncount = self.conditioncount
+            self.conditioncount = settingsdict['conditionslots']
+            self.oldbanecount = self.banecount
+            self.banecount = settingsdict['baneslots']
+            if settingsdict['hasvicevirtueslots'] == True:
+                self.vvflag = True
+            if settingsdict['hasvampireslots'] == True:
+                self.occultflag[0] = True
+                self.oldmeritcount = self.meritcount
+                self.oldaspirationcount = self.aspirationcount
+                self.oldconditioncount = self.conditioncount
+                self.oldbanecount = self.banecount
+            if settingsdict['disciplineslots'] == -1:
+                self.olddisciplinecount = self.disciplinecount
+                self.disciplinecount = 0
+            else:
+                self.olddisciplinecount = self.disciplinecount
+                self.disciplinecount = settingsdict['disciplineslots']
+            if settingsdict['haswerewolfslots'] == True:
+                self.occultflag[1] = True
+                self.oldmeritcount = self.meritcount
+                self.oldaspirationcount = self.aspirationcount
+                self.oldconditioncount = self.conditioncount
+                self.oldbanecount = self.banecount
+            if settingsdict['hasmageslots'] == True:
+                self.occultflag[2] = True
+                self.oldmeritcount = self.meritcount
+                self.oldaspirationcount = self.aspirationcount
+                self.oldconditioncount = self.conditioncount
+                self.oldbanecount = self.banecount
+            self.oldothertraitcount = self.othertraitcount
+            self.othertraitcount = settingsdict['othertraitslots']
 
         self.resize(1024, 768)
         if self.initmakesheet:

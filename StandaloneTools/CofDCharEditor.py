@@ -872,6 +872,19 @@ class MyWidget(QtWidgets.QWidget):
                     self.banenamebox[x].deleteLater()
                     self.banenamebox[x] = None
 
+            self.othertraitcounter = 0
+            for x in range(self.oldothertraitcount):
+                if self.oldothertraitcount >= x + 1:
+                    self.savedothertraitnames.append(self.othertraitnamebox[x])
+                    self.layout.removeWidget(self.othertraitnamebox[x])
+                    self.othertraitnamebox[x].deleteLater()
+                    self.othertraitnamebox[x] = None
+
+                    self.savedothertraitlevels.append(self.othertraitlevelbox[x])
+                    self.layout.removeWidget(self.othertraitlevelbox[x])
+                    self.othertraitlevelbox[x].deleteLater()
+                    self.othertraitlevelbox[x] = None
+
         #other traits
 
         #initialize merits
@@ -1520,11 +1533,11 @@ class MyWidget(QtWidgets.QWidget):
             else:
                 self.p2counter = 29 + self.oplinecounter + self.p1c3counter
 
-        self.layout.addWidget(self.blanks[2], self.p2counter + 1, 3)
-        self.layout.addWidget(self.blanks[3], self.p2counter + 2, 3)
-        self.layout.addWidget(self.blanks[2], self.p2counter + 3, 3)
-        self.layout.addWidget(self.blanks[3], self.p2counter + 4, 3)
-        self.layout.addWidget(self.blanks[2], self.p2counter + 5, 3)
+        self.layout.addWidget(self.blanks[2], self.p2counter + 1, 4)
+        self.layout.addWidget(self.blanks[3], self.p2counter + 2, 4)
+        self.layout.addWidget(self.blanks[4], self.p2counter + 3, 4)
+        self.layout.addWidget(self.blanks[5], self.p2counter + 4, 4)
+        self.layout.addWidget(self.blanks[6], self.p2counter + 5, 4)
 
         self.p2counter += 5
         # self.layout.addWidget(self.titlep2, self.p2counter, 3, self.p2counter, 6)
@@ -1534,44 +1547,51 @@ class MyWidget(QtWidgets.QWidget):
 
         self.othertraitcounter = self.othertraitcount
 
-        # self.layout.addWidget(self.othertraits, 15 + self.oplinecounter + self.p1c2counter, 3)
-        # self.layout.addWidget(self.othertraitslevel, 15 + self.oplinecounter + self.p1c2counter, 4)
-
         #othertraits
         while self.othertraitcounter > 0:
+            # print(self.p2counter)
             if self.othertraitcounter >= 3:
                 self.p2counter += 1
-                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 1], self.p2counter, 1)
-                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 1], self.p2counter, 2)
-                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 2], self.p2counter, 3)
-                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 2], self.p2counter, 4)
-                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 3], self.p2counter, 5)
-                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 3], self.p2counter, 6)
-                # if x < len(self.savedothertraitnames):
-                #     self.othertraitnamebox[x].setText(self.savedothertraitnames[x].text())
-                #     self.othertraitlevelbox[x].setText(self.savedothertraitlevels[x].text())
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcounter - 1], self.p2counter, 1)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcounter - 1], self.p2counter, 2)
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcounter - 2], self.p2counter, 3)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcounter - 2], self.p2counter, 4)
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcounter - 3], self.p2counter, 5)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcounter - 3], self.p2counter, 6)
+                if self.othertraitcount - self.othertraitcounter < len(self.savedothertraitnames):
+                    self.othertraitnamebox[self.othertraitcount - self.othertraitcounter].setText(self.savedothertraitnames[self.othertraitcount - self.othertraitcounter].text())
+                    self.othertraitlevelbox[self.othertraitcount - self.othertraitcounter].setText(self.savedothertraitlevels[self.othertraitcount - self.othertraitcounter].text())
+                if self.othertraitcount - self.othertraitcounter + 1 < len(self.savedothertraitnames):
+                    self.othertraitnamebox[self.othertraitcount - self.othertraitcounter + 1].setText(self.savedothertraitnames[self.othertraitcount - self.othertraitcounter + 1].text())
+                    self.othertraitlevelbox[self.othertraitcount - self.othertraitcounter + 1].setText(self.savedothertraitlevels[self.othertraitcount - self.othertraitcounter + 1].text())
+                if self.othertraitcount - self.othertraitcounter + 2 < len(self.savedothertraitnames):
+                    self.othertraitnamebox[self.othertraitcount - self.othertraitcounter + 2].setText(self.savedothertraitnames[self.othertraitcount - self.othertraitcounter + 2].text())
+                    self.othertraitlevelbox[self.othertraitcount - self.othertraitcounter + 2].setText(self.savedothertraitlevels[self.othertraitcount - self.othertraitcounter + 2].text())
                 self.othertraitcounter -= 3
             elif self.othertraitcounter >= 2:
                 self.p2counter += 1
-                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 1], self.p2counter, 2)
-                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 1], self.p2counter, 3)
-                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 2], self.p2counter, 4)
-                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 2], self.p2counter, 5)
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcounter - 1], self.p2counter, 2)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcounter - 1], self.p2counter, 3)
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcounter - 2], self.p2counter, 4)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcounter - 2], self.p2counter, 5)
                 self.othertraitcounter -= 2
-                # if x < len(self.savedothertraitnames):
-                #     self.othertraitnamebox[x].setText(self.savedothertraitnames[x].text())
-                #     self.othertraitlevelbox[x].setText(self.savedothertraitlevels[x].text())
+                if self.othertraitcount - self.othertraitcounter < len(self.savedothertraitnames):
+                    self.othertraitnamebox[self.othertraitcount - self.othertraitcounter].setText(self.savedothertraitnames[self.othertraitcount - self.othertraitcounter].text())
+                    self.othertraitlevelbox[self.othertraitcount - self.othertraitcounter].setText(self.savedothertraitlevels[self.othertraitcount - self.othertraitcounter].text())
+                if self.othertraitcount - self.othertraitcounter + 1 < len(self.savedothertraitnames):
+                    self.othertraitnamebox[self.othertraitcount - self.othertraitcounter + 1].setText(self.savedothertraitnames[self.othertraitcount - self.othertraitcounter + 1].text())
+                    self.othertraitlevelbox[self.othertraitcount - self.othertraitcounter + 1].setText(self.savedothertraitlevels[self.othertraitcount - self.othertraitcounter + 1].text())
             else:
                 self.p2counter += 1
-                self.layout.addWidget(self.othertraitnamebox[self.othertraitcount - 1], self.p2counter, 3)
-                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcount - 1], self.p2counter, 4)
+                self.layout.addWidget(self.othertraitnamebox[self.othertraitcounter - 1], self.p2counter, 3)
+                self.layout.addWidget(self.othertraitlevelbox[self.othertraitcounter - 1], self.p2counter, 4)
                 self.othertraitcounter -= 1
-                # if x < len(self.savedothertraitnames):
-                #     self.othertraitnamebox[x].setText(self.savedothertraitnames[x].text())
-                #     self.othertraitlevelbox[x].setText(self.savedothertraitlevels[x].text())
+                if self.othertraitcount - self.othertraitcounter < len(self.savedothertraitnames):
+                    self.othertraitnamebox[self.othertraitcount - self.othertraitcounter].setText(self.savedothertraitnames[self.othertraitcount - self.othertraitcounter].text())
+                    self.othertraitlevelbox[self.othertraitcount - self.othertraitcounter].setText(self.savedothertraitlevels[self.othertraitcount - self.othertraitcounter].text())
 
-        # self.savedothertraitnames = []
-        # self.savedothertraitlevels = []
+        self.savedothertraitnames = []
+        self.savedothertraitlevels = []
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
@@ -2775,6 +2795,9 @@ class MyWidget(QtWidgets.QWidget):
         self.savedbanenames = []
         self.saveddisciplinenames = []
         self.saveddisciplinelevels = []
+
+        self.savedothertraitnames = []
+        self.savedothertraitlevels = []
 
         self.othertraitsflag = 1
 

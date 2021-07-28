@@ -44,12 +44,12 @@ class MyWidget(QtWidgets.QWidget):
         with open('settings.json', 'w') as f:
             json.dump(settingsdict, f)
 
-    def savedef(self):
-        if path.exists(self.saveloc.text()+'.json'):
-            with open(self.saveloc.text()+'.json') as f:
-                backup = json.load(f)
-            with open(self.saveloc.text()+'backup.json', 'w') as f:
-                json.dump(backup, f)
+    def savedef(self, saveloc):
+        # if path.exists(saveloc.text()+'.json'):
+        #     with open(saveloc.text()+'.json') as f:
+        #         backup = json.load(f)
+        #     with open(saveloc.text()+'backup.json', 'w') as f:
+        #         json.dump(backup, f)
 
         stats = {'name': self.boxname.text(), 'supernaturaltags': [], 'player': self.boxplayer.text(), 'chronicle': self.boxchronicle.text(), 'concept': self.boxconcept.text(), 'stats': {'intelligence': self.boxintelligence.text(), 'strength': self.boxstrength.text(), 'presence': self.boxpresence.text(), 'wits': self.boxwits.text(), 'dexterity': self.boxdexterity.text(), 'manipulation': self.boxmanipulation.text(), 'resolve': self.boxresolve.text(), 'stamina': self.boxstamina.text(), 'composure': self.boxcomposure.text()}, 'skills': {'academics': self.boxacademics.text(), 'academicsspec': self.boxspecacademics.text(), 'computer': self.boxcomputer.text(), 'computerspec': self.boxspeccomputer.text(), 'crafts': self.boxcrafts.text(), 'craftsspec': self.boxspeccrafts.text(), 'investigation': self.boxinvestigation.text(), 'investigationspec': self.boxspecinvestigation.text(), 'medicine': self.boxmedicine.text(), 'medicinespec': self.boxspecmedicine.text(), 'occult': self.boxoccult.text(), 'occultspec': self.boxspecoccult.text(), 'politics': self.boxpolitics.text(), 'politicsspec': self.boxspecpolitics.text(), 'science': self.boxscience.text(), 'sciencespec': self.boxspecscience.text(), 'athletics': self.boxathletics.text(), 'athleticsspec': self.boxspecathletics.text(), 'brawl': self.boxbrawl.text(), 'brawlspec': self.boxspecbrawl.text(), 'drive': self.boxdrive.text(), 'drivespec': self.boxspecdrive.text(), 'firearms': self.boxfirearms.text(), 'firearmsspec': self.boxspecfirearms.text(), 'larceny': self.boxlarceny.text(), 'larcenyspec': self.boxspeclarceny.text(), 'stealth': self.boxstealth.text(), 'stealthspec': self.boxspecstealth.text(), 'survival': self.boxsurvival.text(), 'survivalspec': self.boxspecsurvival.text(), 'weaponry': self.boxweaponry.text(), 'weaponryspec': self.boxspecweaponry.text(), 'animalken': self.boxanimalken.text(), 'animalkenspec': self.boxspecanimalken.text(), 'empathy': self.boxempathy.text(), 'empathyspec': self.boxspecempathy.text(), 'expression': self.boxexpression.text(), 'expressionspec': self.boxspecexpression.text(), 'intimidation': self.boxintimidation.text(), 'intimidationspec': self.boxspecintimidation.text(), 'persuasion': self.boxpersuasion.text(), 'persuasionspec': self.boxspecpersuasion.text(), 'socialize': self.boxsocialize.text(), 'socializespec': self.boxspecsocialize.text(), 'streetwise': self.boxstreetwise.text(), 'streetwisespec': self.boxspecstreetwise.text(), 'subterfuge': self.boxsubterfuge.text(), 'subterfugespec': self.boxspecsubterfuge.text()}}
         if self.othertraitsflag == 0:
@@ -447,7 +447,7 @@ class MyWidget(QtWidgets.QWidget):
                 self.filledemretainer += 1
         stats['expandedmerits']['emretainer'][0] = ['filledemretainer', self.filledemretainer]
 
-        with open(self.saveloc.text()+'.json', 'w') as f:
+        with open(saveloc, 'w') as f:
             json.dump(stats, f)
 
         self.savesettings()
@@ -1181,9 +1181,9 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.arcanebeat4, 29 + self.oplinecounter + self.p1c3counter, 5)
             self.layout.addWidget(self.arcanebeat5, 29 + self.oplinecounter + self.p1c3counter, 6)
 
-    def loaddef(self):
-        if path.exists(self.loadloc.text()+'.json'):
-            with open(self.loadloc.text()+'.json') as f:
+    def loaddef(self, loadloc):
+        if path.exists(loadloc):
+            with open(loadloc) as f:
                 stats = json.load(f)
 
                 for x in stats.get('supernaturaltags'):
@@ -1992,7 +1992,7 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.boxpersuasion, 38 + self.oplinecounter, 2)
         self.layout.addWidget(self.socialize, 39 + self.oplinecounter, 0)
         self.layout.addWidget(self.boxsocialize, 39 + self.oplinecounter, 2)
-        self.layout.addWidget(self.boxspecsocialize, 30 + self.oplinecounter, 1)
+        self.layout.addWidget(self.boxspecsocialize, 39 + self.oplinecounter, 1)
         self.layout.addWidget(self.streetwise, 40 + self.oplinecounter, 0)
         self.layout.addWidget(self.boxspecstreetwise, 40 + self.oplinecounter, 1)
         self.layout.addWidget(self.boxstreetwise, 40 + self.oplinecounter, 2)
@@ -3781,6 +3781,16 @@ class MyWidget(QtWidgets.QWidget):
         else:
             self.initmakesheet = True
 
+    def open(self):
+        path = QtWidgets.QFileDialog.getOpenFileName(self, 'Open a file', '', 'Json Files (*.json)')
+        if path != ('', 'json'):
+            self.loaddef(path[0])
+
+    def save(self):
+        path = QtWidgets.QFileDialog.getSaveFileName(self, 'Save as')
+        self.savedef(path[0])
+
+
     def __init__(self):
         super(MyWidget, self).__init__()
 
@@ -3896,6 +3906,33 @@ class MyWidget(QtWidgets.QWidget):
 
         self.initsettings()
 
+        # menu = self.createMenuBar()
+
+        # exitAction = QtGui.QAction(QtGui.QIcon('exit.png'), '&Exit', self)
+        # exitAction.setShortcut('Ctrl+Q')
+        # exitAction.setStatusTip('Exit application')
+        # exitAction.triggered.connect(self.close)
+
+        saveAction = QtGui.QAction('&Save', self)
+        saveAction.setShortcut('Ctrl+S')
+        saveAction.setStatusTip('Save Character')
+        saveAction.triggered.connect(self.save)
+
+        loadAction = QtGui.QAction('&Open', self)
+        loadAction.setShortcut('Ctrl+O')
+        loadAction.setStatusTip('Open Character')
+        loadAction.triggered.connect(self.open)
+
+        QtWidgets.QStatusBar()
+
+        self.menubar = QtWidgets.QMenuBar()
+        self.fileMenu = self.menubar.addMenu('&File')
+        # self.fileMenu.addAction(exitAction)
+        self.fileMenu.addAction(saveAction)
+        self.fileMenu.addAction(loadAction)
+        # self.editMenu = self.menubar.addMenu("&Edit")
+        # self.helpMenu = self.menubar.addMenu("&Help")
+
         self.title = QtWidgets.QLabel()
 
         pixMap = QtGui.QPixmap.fromImage('CofD.png')
@@ -3920,35 +3957,36 @@ class MyWidget(QtWidgets.QWidget):
         # font.setItalic(True)  # tilt
         self.subtitlefont.setPointSize(12)  # Set font size
 
-        self.save = QtWidgets.QPushButton('Save')
-        self.allwidgets['save'] = True
-        self.save.clicked.connect(self.savedef)
-        self.load = QtWidgets.QPushButton('Load')
-        self.allwidgets['load'] = True
-        self.load.clicked.connect(self.loaddef)
+        # self.save = QtWidgets.QPushButton('Save')
+        # self.allwidgets['save'] = True
+        # self.save.clicked.connect(self.savedef)
+        # self.load = QtWidgets.QPushButton('Load')
+        # self.allwidgets['load'] = True
+        # self.load.clicked.connect(self.loaddef)
 
         # self.title = QtWidgets.QLabel(self)
         # self.title.setText("CofD Interactive Character Sheet")
         # self.title.setFont(self.titlefont)
 
-        self.saveloclabel = QtWidgets.QLabel(self)
-        self.allwidgets['saveloclabel'] = True
-        self.saveloclabel.setText("Save Location: ")
-        self.saveloc = QtWidgets.QLineEdit(self)
-        self.allwidgets['saveloc'] = True
-        self.loadloclabel = QtWidgets.QLabel(self)
-        self.allwidgets['loadloclabel'] = True
-        self.loadloclabel.setText("Load Location: ")
-        self.loadloc = QtWidgets.QLineEdit(self)
-        self.allwidgets['loadloc'] = True
+        # self.saveloclabel = QtWidgets.QLabel(self)
+        # self.allwidgets['saveloclabel'] = True
+        # self.saveloclabel.setText("Save Location: ")
+        # self.saveloc = QtWidgets.QLineEdit(self)
+        # self.allwidgets['saveloc'] = True
+        # self.loadloclabel = QtWidgets.QLabel(self)
+        # self.allwidgets['loadloclabel'] = True
+        # self.loadloclabel.setText("Load Location: ")
+        # self.loadloc = QtWidgets.QLineEdit(self)
+        # self.allwidgets['loadloc'] = True
 
         self.layout = QtWidgets.QGridLayout(self)
-        self.layout.addWidget(self.saveloclabel, 0, 1)
-        self.layout.addWidget(self.saveloc, 0, 2)
-        self.layout.addWidget(self.save, 0, 3)
-        self.layout.addWidget(self.load, 0, 4)
-        self.layout.addWidget(self.loadloclabel, 0, 5)
-        self.layout.addWidget(self.loadloc, 0, 6)
+        self.layout.addWidget(self.menubar, 0, 0, 0, 8)
+        # self.layout.addWidget(self.saveloclabel, 0, 1)
+        # self.layout.addWidget(self.saveloc, 0, 2)
+        # self.layout.addWidget(self.save, 0, 3)
+        # self.layout.addWidget(self.load, 0, 4)
+        # self.layout.addWidget(self.loadloclabel, 0, 5)
+        # self.layout.addWidget(self.loadloc, 0, 6)
 
         self.layout.addWidget(self.title, 1, 3, 1, 6)
         self.layout.addWidget(self.settings, 0, 7)
@@ -4915,8 +4953,8 @@ class MyWidget(QtWidgets.QWidget):
 app = QtWidgets.QApplication([])
 
 widget = MyWidget()
-widget.resize(1024, 768)
-widget.show()
+# widget.resize(1024, 768)
+# widget.show()
 
 w = QtWidgets.QWidget()
 

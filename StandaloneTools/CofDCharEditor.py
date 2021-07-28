@@ -786,11 +786,400 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.humanitybox10, 24 + self.oplinecounter + self.p1c3counter, 6)
             self.layout.addWidget(self.humanitycheck10, 24 + self.oplinecounter + self.p1c3counter, 7)
 
-    # def addwolfdef(self):
-    #     if self.occultflag[1] == False:
-    #
-    # def addmagedef(self):
-    #     if self.occultflag[2] == False:
+    def addwolfdef(self):
+        if self.occultflag[1] == False:
+            self.whealth = True
+
+            self.whealthcounter = 0
+
+            self.whealthtext1 = QtWidgets.QLabel(self)
+            self.whealthtext1.setText("(+2 Dalu Form, +4 Gauru")
+            self.whealthtext2 = QtWidgets.QLabel(self)
+            self.whealthtext2.setText("Form, +3 Urshul Form)")
+
+            # if self.runonce3:
+            self.auspice = QtWidgets.QLabel(self)
+            self.auspice.setText("Auspice: ")
+            self.boxauspice = QtWidgets.QLineEdit(self)
+            self.tribe = QtWidgets.QLabel(self)
+            self.tribe.setText("Tribe: ")
+            self.boxtribe = QtWidgets.QLineEdit(self)
+            self.lodge = QtWidgets.QLabel(self)
+            self.lodge.setText("Lodge: ")
+            self.boxlodge = QtWidgets.QLineEdit(self)
+
+            self.blood = QtWidgets.QLabel(self)
+            self.blood.setText("Blood: ")
+            self.boxblood = QtWidgets.QLineEdit(self)
+            self.bone = QtWidgets.QLabel(self)
+            self.bone.setText("Bone: ")
+            self.boxbone = QtWidgets.QLineEdit(self)
+
+            self.renown = QtWidgets.QLabel(self)
+            self.renown.setText("Renown")
+            self.renown.setFont(self.subtitlefont)
+
+            self.purity = QtWidgets.QLabel(self)
+            self.purity.setText("Purity: ")
+            self.puritybox = QtWidgets.QLineEdit(self)
+
+            self.glory = QtWidgets.QLabel(self)
+            self.glory.setText("Glory: ")
+            self.glorybox = QtWidgets.QLineEdit(self)
+
+            self.honor = QtWidgets.QLabel(self)
+            self.honor.setText("Honor: ")
+            self.honorbox = QtWidgets.QLineEdit(self)
+
+            self.wisdom = QtWidgets.QLabel(self)
+            self.wisdom.setText("Wisdom: ")
+            self.wisdombox = QtWidgets.QLineEdit(self)
+
+            self.cunning = QtWidgets.QLabel(self)
+            self.cunning.setText("Cunning: ")
+            self.cunningbox = QtWidgets.QLineEdit(self)
+
+            self.primalurgetitle = QtWidgets.QLabel(self)
+            self.primalurgetitle.setText("Primal Urge")
+            self.primalurgetitle.setFont(self.subtitlefont)
+
+            self.primalurge = QtWidgets.QLabel(self)
+            self.primalurge.setText("Primal Urge: ")
+            self.primalurgebox = QtWidgets.QLineEdit(self)
+
+            self.essencetitle = QtWidgets.QLabel(self)
+            self.essencetitle.setText("Essence")
+            self.essencetitle.setFont(self.subtitlefont)
+
+            self.maxessence = QtWidgets.QLabel(self)
+            self.maxessence.setText("Max Essence: ")
+            self.maxessencebox = QtWidgets.QLineEdit(self)
+
+            self.currentessence = QtWidgets.QLabel(self)
+            self.currentessence.setText("Current Essence: ")
+            self.currentessencebox = QtWidgets.QLineEdit(self)
+
+            self.harmonytitle = QtWidgets.QLabel(self)
+            self.harmonytitle.setText("Harmony")
+            self.harmonytitle.setFont(self.subtitlefont)
+
+            self.harmony = QtWidgets.QLabel(self)
+            self.harmony.setText("Harmony: ")
+            self.harmonybox = QtWidgets.QLineEdit(self)
+
+            self.fleshtouchstonetitle = QtWidgets.QLabel(self)
+            self.fleshtouchstonetitle.setText("Flesh Touchstone")
+            self.fleshtouchstonetitle.setFont(self.subtitlefont)
+
+            self.fleshtouchstone = QtWidgets.QLabel(self)
+            self.fleshtouchstone.setText("Flesh Touchstone: ")
+            self.fleshtouchstonebox = QtWidgets.QLineEdit(self)
+
+            self.spirittouchstonetitle = QtWidgets.QLabel(self)
+            self.spirittouchstonetitle.setText("Spirit Touchstone")
+            self.spirittouchstonetitle.setFont(self.subtitlefont)
+
+            self.spirittouchstone = QtWidgets.QLabel(self)
+            self.spirittouchstone.setText("Spirit Touchstone: ")
+            self.spirittouchstonebox = QtWidgets.QLineEdit(self)
+
+            self.passivekuruth = QtWidgets.QLabel(self)
+            self.passivekuruth.setText("Passive Kuruth Trigger: ")
+            self.passivekuruthbox = QtWidgets.QTextEdit(self)
+
+            self.commonkuruth = QtWidgets.QLabel(self)
+            self.commonkuruth.setText("Common Kuruth Trigger: ")
+            self.commonkuruthbox = QtWidgets.QTextEdit(self)
+
+            self.specifickuruth = QtWidgets.QLabel(self)
+            self.specifickuruth.setText("Specific Kuruth Trigger: ")
+            self.specifickuruthbox = QtWidgets.QTextEdit(self)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.renown, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.purity, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.puritybox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.glory, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.glorybox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.honor, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.honorbox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.wisdom, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.wisdombox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.cunning, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.cunningbox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.primalurgetitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.primalurge, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.primalurgebox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.essencetitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.maxessence, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.maxessencebox, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.currentessence, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.currentessencebox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.fleshtouchstonetitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.fleshtouchstone, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.fleshtouchstonebox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.harmonytitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.harmony, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.harmonybox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.spirittouchstonetitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.spirittouchstone, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.spirittouchstonebox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.passivekuruth, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.passivekuruthbox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.commonkuruth, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.commonkuruthbox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.specifickuruth, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.specifickuruthbox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+    def addmagedef(self):
+        if self.occultflag[2] == False:
+            self.shadowname = QtWidgets.QLabel(self)
+            self.shadowname.setText("Shadow Name: ")
+            self.shadownamebox = QtWidgets.QLineEdit(self)
+
+            self.path = QtWidgets.QLabel(self)
+            self.path.setText("Path: ")
+            self.pathbox = QtWidgets.QLineEdit(self)
+            self.order = QtWidgets.QLabel(self)
+            self.order.setText("Order: ")
+            self.orderbox = QtWidgets.QLineEdit(self)
+            self.legacy = QtWidgets.QLabel(self)
+            self.legacy.setText("Legacy: ")
+            self.legacybox = QtWidgets.QLineEdit(self)
+
+            self.arcana = QtWidgets.QLabel(self)
+            self.arcana.setText("Arcana")
+            self.arcana.setFont(self.subtitlefont)
+
+            self.death = QtWidgets.QLabel(self)
+            self.death.setText("Death: ")
+            self.deathbox = QtWidgets.QLineEdit(self)
+
+            self.fate = QtWidgets.QLabel(self)
+            self.fate.setText("Fate: ")
+            self.fatebox = QtWidgets.QLineEdit(self)
+
+            self.forces = QtWidgets.QLabel(self)
+            self.forces.setText("Forces: ")
+            self.forcesbox = QtWidgets.QLineEdit(self)
+
+            self.life = QtWidgets.QLabel(self)
+            self.life.setText("Life: ")
+            self.lifebox = QtWidgets.QLineEdit(self)
+
+            self.matter = QtWidgets.QLabel(self)
+            self.matter.setText("Matter: ")
+            self.matterbox = QtWidgets.QLineEdit(self)
+
+            self.mind = QtWidgets.QLabel(self)
+            self.mind.setText("Mind: ")
+            self.mindbox = QtWidgets.QLineEdit(self)
+
+            self.prime = QtWidgets.QLabel(self)
+            self.prime.setText("Prime: ")
+            self.primebox = QtWidgets.QLineEdit(self)
+
+            self.spirit = QtWidgets.QLabel(self)
+            self.spirit.setText("Spirit: ")
+            self.spiritbox = QtWidgets.QLineEdit(self)
+
+            self.space = QtWidgets.QLabel(self)
+            self.space.setText("Space: ")
+            self.spacebox = QtWidgets.QLineEdit(self)
+
+            self.time = QtWidgets.QLabel(self)
+            self.time.setText("Time: ")
+            self.timebox = QtWidgets.QLineEdit(self)
+
+            self.gnosistitle = QtWidgets.QLabel(self)
+            self.gnosistitle.setText("Gnosis")
+            self.gnosistitle.setFont(self.subtitlefont)
+
+            self.gnosis = QtWidgets.QLabel(self)
+            self.gnosis.setText("Gnosis: ")
+            self.gnosisbox = QtWidgets.QLineEdit(self)
+
+            self.manatitle = QtWidgets.QLabel(self)
+            self.manatitle.setText("Mana")
+            self.manatitle.setFont(self.subtitlefont)
+
+            self.maxmana = QtWidgets.QLabel(self)
+            self.maxmana.setText("Max Mana: ")
+            self.maxmanabox = QtWidgets.QLineEdit(self)
+
+            self.currentmana = QtWidgets.QLabel(self)
+            self.currentmana.setText("Current Mana: ")
+            self.currentmanabox = QtWidgets.QLineEdit(self)
+
+            self.mwisdomtitle = QtWidgets.QLabel(self)
+            self.mwisdomtitle.setText("Wisdom")
+            self.mwisdomtitle.setFont(self.subtitlefont)
+
+            self.mwisdom = QtWidgets.QLabel(self)
+            self.mwisdom.setText("Wisdom: ")
+            self.mwisdombox = QtWidgets.QLineEdit(self)
+
+            self.obsessiontitle = QtWidgets.QLabel(self)
+            self.obsessiontitle.setText("Obsessions")
+            self.obsessiontitle.setFont(self.subtitlefont)
+
+            self.obsession1 = QtWidgets.QLabel(self)
+            self.obsession1.setText("Obsession 1: ")
+            self.obsession1box = QtWidgets.QLineEdit(self)
+
+            self.obsession2 = QtWidgets.QLabel(self)
+            self.obsession2.setText("Obsession 2: ")
+            self.obsession2box = QtWidgets.QLineEdit(self)
+
+            self.obsession3 = QtWidgets.QLabel(self)
+            self.obsession3.setText("Obsession 3: ")
+            self.obsession3box = QtWidgets.QLineEdit(self)
+
+            self.obsession4 = QtWidgets.QLabel(self)
+            self.obsession4.setText("Obsession 4: ")
+            self.obsession4box = QtWidgets.QLineEdit(self)
+
+            self.arcaneexperiences = QtWidgets.QLabel(self)
+            self.arcaneexperiences.setText("Arcane Experiences:")
+            self.arcaneexperiencesbox = QtWidgets.QLineEdit(self)
+
+            self.arcanebeats = QtWidgets.QLabel(self)
+            self.arcanebeats.setText("Arcane Beats:")
+            self.arcanebeat1 = QtWidgets.QCheckBox()
+            self.arcanebeat1.clicked.connect(self.arcanebeatscheckdef(1))
+            self.arcanebeat2 = QtWidgets.QCheckBox()
+            self.arcanebeat2.clicked.connect(self.arcanebeatscheckdef(2))
+            self.arcanebeat3 = QtWidgets.QCheckBox()
+            self.arcanebeat3.clicked.connect(self.arcanebeatscheckdef(3))
+            self.arcanebeat4 = QtWidgets.QCheckBox()
+            self.arcanebeat4.clicked.connect(self.arcanebeatscheckdef(4))
+            self.arcanebeat5 = QtWidgets.QCheckBox()
+            self.arcanebeat5.clicked.connect(self.arcanebeatscheckdef(5))
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.arcana, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.death, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.deathbox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.fate, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.fatebox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.forces, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.forcesbox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.life, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.lifebox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.matter, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.matterbox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.mind, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.mindbox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.prime, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.primebox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.spirit, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.spiritbox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.space, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.spacebox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c2counter += 1
+            self.layout.addWidget(self.time, 15 + self.oplinecounter + self.p1c2counter, 3)
+            self.layout.addWidget(self.timebox, 15 + self.oplinecounter + self.p1c2counter, 4)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.gnosistitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.gnosis, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.gnosisbox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.manatitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.maxmana, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.maxmanabox, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.currentmana, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.currentmanabox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.mwisdomtitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.mwisdom, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.mwisdombox, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.obsessiontitle, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.obsession1, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.obsession1box, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.obsession2, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.obsession2box, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.obsession3, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.obsession3box, 24 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.obsession4, 24 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.obsession4box, 24 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.arcaneexperiences, 29 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.arcaneexperiencesbox, 29 + self.oplinecounter + self.p1c3counter, 6)
+
+            self.p1c3counter += 1
+            self.layout.addWidget(self.arcanebeats, 29 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.arcanebeat1, 29 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.arcanebeat2, 29 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.arcanebeat3, 29 + self.oplinecounter + self.p1c3counter, 6)
+            self.p1c3counter += 1
+            self.layout.addWidget(self.arcanebeat4, 29 + self.oplinecounter + self.p1c3counter, 5)
+            self.layout.addWidget(self.arcanebeat5, 29 + self.oplinecounter + self.p1c3counter, 6)
 
     def loaddef(self):
         if path.exists(self.loadloc.text()+'.json'):
@@ -802,10 +1191,10 @@ class MyWidget(QtWidgets.QWidget):
                         self.addvvdef()
                     if x == 'vampire':
                         self.addvampdef()
-                    # if x == 'werewolf':
-                    #     self.addwolfdef()
-                    # if x == 'mage':
-                    #     self.addmagedef()
+                    if x == 'werewolf':
+                        self.addwolfdef()
+                    if x == 'mage':
+                        self.addmagedef()
 
                 self.boxname.setText(stats.get('name'))
                 self.boxplayer.setText(stats.get('player'))

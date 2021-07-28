@@ -35,6 +35,12 @@ class MyWidget(QtWidgets.QWidget):
             settingsdict['hasmageslots'] = False
         settingsdict['othertraitslots'] = self.othertraitcount
         settingsdict['attackslots'] = self.attackcount
+        settingsdict['emalliesslots'] = self.emalliescount
+        settingsdict['emmentorslots'] = self.emmentorcount
+        settingsdict['emcontactsslots'] = self.emcontactscount
+        settingsdict['emresourcesslots'] = self.emresourcescount
+        settingsdict['emfameslots'] = self.emfamecount
+        settingsdict['emretainerslots'] = self.emretainercount
         with open('settings.json', 'w') as f:
             json.dump(settingsdict, f)
 
@@ -378,12 +384,68 @@ class MyWidget(QtWidgets.QWidget):
                 self.filledattacks += 1
         stats['attacks'][0] = ['filledattacks', self.filledattacks]
 
-        stats['armor'] = {}
-        stats['armor']['rating'] = self.armorratingbox.text()
-        stats['armor']['strength'] = self.armorstrengthbox.text()
-        stats['armor']['defense'] = self.armordefensebox.text()
-        stats['armor']['speed'] = self.armorspeedbox.text()
-        stats['armor']['description'] = self.armordescriptionbox.toPlainText()
+        stats['armorp2'] = {}
+        stats['armorp2']['rating'] = self.armorratingbox.text()
+        stats['armorp2']['strength'] = self.armorstrengthbox.text()
+        stats['armorp2']['defense'] = self.armordefensebox.text()
+        stats['armorp2']['speed'] = self.armorspeedbox.text()
+        stats['armorp2']['description'] = self.armordescriptionbox.toPlainText()
+
+        stats['expandedmerits'] = {}
+
+        self.filledemallies = 0
+        stats['expandedmerits']['emallies'] = []
+        stats['expandedmerits']['emallies'].append(['filledemallies', 0])
+        for x in range(self.emalliescount):
+            if self.emalliescount >= x and self.emalliesbox[x].toPlainText() != "":
+                stats['expandedmerits']['emallies'].append(self.emalliesbox[x].toPlainText())
+                self.filledemallies += 1
+        stats['expandedmerits']['emallies'][0] = ['filledemallies', self.filledemallies]
+
+        self.filledemmentor = 0
+        stats['expandedmerits']['emmentor'] = []
+        stats['expandedmerits']['emmentor'].append(['filledemmentor', 0])
+        for x in range(self.emmentorcount):
+            if self.emmentorcount >= x and self.emmentorbox[x].toPlainText() != "":
+                stats['expandedmerits']['emmentor'].append(self.emmentorbox[x].toPlainText())
+                self.filledemmentor += 1
+        stats['expandedmerits']['emmentor'][0] = ['filledemmentor', self.filledemmentor]
+
+        self.filledemcontacts = 0
+        stats['expandedmerits']['emcontacts'] = []
+        stats['expandedmerits']['emcontacts'].append(['filledemcontacts', 0])
+        for x in range(self.emcontactscount):
+            if self.emcontactscount >= x and self.emcontactsbox[x].toPlainText() != "":
+                stats['expandedmerits']['emcontacts'].append(self.emcontactsbox[x].toPlainText())
+                self.filledemcontacts += 1
+        stats['expandedmerits']['emcontacts'][0] = ['filledemcontacts', self.filledemcontacts]
+
+        self.filledemresources = 0
+        stats['expandedmerits']['emresources'] = []
+        stats['expandedmerits']['emresources'].append(['filledemresources', 0])
+        for x in range(self.emresourcescount):
+            if self.emresourcescount >= x and self.emresourcesbox[x].toPlainText() != "":
+                stats['expandedmerits']['emresources'].append(self.emresourcesbox[x].toPlainText())
+                self.filledemresources += 1
+        stats['expandedmerits']['emresources'][0] = ['filledemresources', self.filledemresources]
+
+        self.filledemfame = 0
+        stats['expandedmerits']['emfame'] = []
+        stats['expandedmerits']['emfame'].append(['filledemfame', 0])
+        for x in range(self.emfamecount):
+            if self.emfamecount >= x and self.emfamebox[x].toPlainText() != "":
+                stats['expandedmerits']['emfame'].append(self.emfamebox[x].toPlainText())
+                self.filledemfame += 1
+        stats['expandedmerits']['emfame'][0] = ['filledemfame', self.filledemfame]
+
+        self.filledemretainer = 0
+        stats['expandedmerits']['emretainer'] = []
+        stats['expandedmerits']['emretainer'].append(['filledemretainer', 0])
+        for x in range(self.emretainercount):
+            if self.emretainercount >= x and self.emretainerbox[x].toPlainText() != "":
+                stats['expandedmerits']['emretainer'].append(self.emretainerbox[x].toPlainText())
+                self.filledemretainer += 1
+        stats['expandedmerits']['emretainer'][0] = ['filledemretainer', self.filledemretainer]
 
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
@@ -829,11 +891,30 @@ class MyWidget(QtWidgets.QWidget):
                         self.attackstrengthbox[x].setText(stats.get('attacks')[x+1][5])
                         self.attacksizebox[x].setText(stats.get('attacks')[x+1][6])
 
-                self.armorratingbox.setText(stats.get('armor').get('rating'))
-                self.armorstrengthbox.setText(stats.get('armor').get('strength'))
-                self.armordefensebox.setText(stats.get('armor').get('defense'))
-                self.armorspeedbox.setText(stats.get('armor').get('speed'))
-                self.armordescriptionbox.setText(stats.get('armor').get('description'))
+                self.armorratingbox.setText(stats.get('armorp2').get('rating'))
+                self.armorstrengthbox.setText(stats.get('armorp2').get('strength'))
+                self.armordefensebox.setText(stats.get('armorp2').get('defense'))
+                self.armorspeedbox.setText(stats.get('armorp2').get('speed'))
+                self.armordescriptionbox.setText(stats.get('armorp2').get('description'))
+
+                for x in range(stats.get('expandedmerits').get('emallies')[0][1]):
+                    if stats.get('expandedmerits').get('emallies')[0][1] >= x:
+                        self.emalliesbox[x].setText(stats.get('expandedmerits').get('emallies')[x+1])
+                for x in range(stats.get('expandedmerits').get('emmentor')[0][1]):
+                    if stats.get('expandedmerits').get('emmentor')[0][1] >= x:
+                        self.emmentorbox[x].setText(stats.get('expandedmerits').get('emmentor')[x+1])
+                for x in range(stats.get('expandedmerits').get('emcontacts')[0][1]):
+                    if stats.get('expandedmerits').get('emcontacts')[0][1] >= x:
+                        self.emcontactsbox[x].setText(stats.get('expandedmerits').get('emcontacts')[x+1])
+                for x in range(stats.get('expandedmerits').get('emresources')[0][1]):
+                    if stats.get('expandedmerits').get('emresources')[0][1] >= x:
+                        self.emresourcesbox[x].setText(stats.get('expandedmerits').get('emresources')[x+1])
+                for x in range(stats.get('expandedmerits').get('emfame')[0][1]):
+                    if stats.get('expandedmerits').get('emfame')[0][1] >= x:
+                        self.emfamebox[x].setText(stats.get('expandedmerits').get('emfame')[x+1])
+                for x in range(stats.get('expandedmerits').get('emretainer')[0][1]):
+                    if stats.get('expandedmerits').get('emretainer')[0][1] >= x:
+                        self.emretainerbox[x].setText(stats.get('expandedmerits').get('emretainer')[x+1])
 
                 self.savesettings()
         else:
@@ -962,6 +1043,54 @@ class MyWidget(QtWidgets.QWidget):
                     self.attacksizebox[x].deleteLater()
                     self.attacksizebox[x] = None
 
+            self.emalliescounter = 0
+            for x in range(self.oldemalliescount):
+                if self.oldemalliescount >= x + 1:
+                    self.savedemalliess.append(self.emalliesbox[x])
+                    self.layout.removeWidget(self.emalliesbox[x])
+                    self.emalliesbox[x].deleteLater()
+                    self.emalliesbox[x] = None
+
+            self.emmentorcounter = 0
+            for x in range(self.oldemmentorcount):
+                if self.oldemmentorcount >= x + 1:
+                    self.savedemmentors.append(self.emmentorbox[x])
+                    self.layout.removeWidget(self.emmentorbox[x])
+                    self.emmentorbox[x].deleteLater()
+                    self.emmentorbox[x] = None
+
+            self.emcontactscounter = 0
+            for x in range(self.oldemcontactscount):
+                if self.oldemcontactscount >= x + 1:
+                    self.savedemcontactss.append(self.emcontactsbox[x])
+                    self.layout.removeWidget(self.emcontactsbox[x])
+                    self.emcontactsbox[x].deleteLater()
+                    self.emcontactsbox[x] = None
+
+            self.emresourcescounter = 0
+            for x in range(self.oldemresourcescount):
+                if self.oldemresourcescount >= x + 1:
+                    self.savedemresourcess.append(self.emresourcesbox[x])
+                    self.layout.removeWidget(self.emresourcesbox[x])
+                    self.emresourcesbox[x].deleteLater()
+                    self.emresourcesbox[x] = None
+
+            self.emfamecounter = 0
+            for x in range(self.oldemfamecount):
+                if self.oldemfamecount >= x + 1:
+                    self.savedemfames.append(self.emfamebox[x])
+                    self.layout.removeWidget(self.emfamebox[x])
+                    self.emfamebox[x].deleteLater()
+                    self.emfamebox[x] = None
+
+            self.emretainercounter = 0
+            for x in range(self.oldemretainercount):
+                if self.oldemretainercount >= x + 1:
+                    self.savedemretainers.append(self.emretainerbox[x])
+                    self.layout.removeWidget(self.emretainerbox[x])
+                    self.emretainerbox[x].deleteLater()
+                    self.emretainerbox[x] = None
+
         #other traits
 
         #initialize merits
@@ -1022,6 +1151,39 @@ class MyWidget(QtWidgets.QWidget):
                 self.attackinitiativebox.append(QtWidgets.QLineEdit(self))
                 self.attackstrengthbox.append(QtWidgets.QLineEdit(self))
                 self.attacksizebox.append(QtWidgets.QLineEdit(self))
+
+        #expanded merits
+
+        self.emalliesbox = []
+        self.emmentorbox = []
+        self.emcontactsbox = []
+        self.emresourcesbox = []
+        self.emfamebox = []
+        self.emretainerbox = []
+
+        for x in range(self.emalliescount):
+            if self.emalliescount >= x:
+                self.emalliesbox.append(QtWidgets.QTextEdit(self))
+
+        for x in range(self.emmentorcount):
+            if self.emmentorcount >= x:
+                self.emmentorbox.append(QtWidgets.QTextEdit(self))
+
+        for x in range(self.emcontactscount):
+            if self.emcontactscount >= x:
+                self.emcontactsbox.append(QtWidgets.QTextEdit(self))
+
+        for x in range(self.emresourcescount):
+            if self.emresourcescount >= x:
+                self.emresourcesbox.append(QtWidgets.QTextEdit(self))
+
+        for x in range(self.emfamecount):
+            if self.emfamecount >= x:
+                self.emfamebox.append(QtWidgets.QTextEdit(self))
+
+        for x in range(self.emretainercount):
+            if self.emretainercount >= x:
+                self.emretainerbox.append(QtWidgets.QTextEdit(self))
 
         #begin layout
 
@@ -1628,6 +1790,8 @@ class MyWidget(QtWidgets.QWidget):
             else:
                 self.p2counter = 29 + self.oplinecounter + self.p1c3counter
 
+        #begin page 2
+
         self.layout.addWidget(self.blanks[2], self.p2counter + 1, 4)
         self.layout.addWidget(self.blanks[3], self.p2counter + 2, 4)
         self.layout.addWidget(self.blanks[4], self.p2counter + 3, 4)
@@ -1635,6 +1799,7 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.blanks[6], self.p2counter + 5, 4)
 
         self.p2counter += 5
+
         # self.layout.addWidget(self.titlep2, self.p2counter, 3, self.p2counter, 6)
 
         self.p2counter += 1
@@ -1741,7 +1906,7 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.blanks[8], self.p2counter, 4)
 
         self.p2counter += 1
-        self.layout.addWidget(self.armor, self.p2counter, 3)
+        self.layout.addWidget(self.armortitle, self.p2counter, 3)
 
         self.p2counter += 1
         self.layout.addWidget(self.armorrating, self.p2counter, 1)
@@ -1755,6 +1920,64 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.armorspeedbox, self.p2counter, 3)
         self.layout.addWidget(self.armordescription, self.p2counter, 4)
         self.layout.addWidget(self.armordescriptionbox, self.p2counter, 5)
+
+        #begin page 3
+
+        self.layout.addWidget(self.blanks[9], self.p2counter + 1, 4)
+        self.layout.addWidget(self.blanks[10], self.p2counter + 2, 4)
+        self.layout.addWidget(self.blanks[11], self.p2counter + 3, 4)
+        self.layout.addWidget(self.blanks[12], self.p2counter + 4, 4)
+        self.layout.addWidget(self.blanks[13], self.p2counter + 5, 4)
+
+        self.p2counter += 5
+
+        self.p2counter += 1
+        self.layout.addWidget(self.expandedmerits, self.p2counter, 3)
+
+        self.p2counter += 1
+        self.layout.addWidget(self.emallies, self.p2counter, 1)
+        self.layout.addWidget(self.emmentor, self.p2counter, 2)
+        self.layout.addWidget(self.emcontacts, self.p2counter, 3)
+        self.layout.addWidget(self.emresources, self.p2counter, 4)
+        self.layout.addWidget(self.emfame, self.p2counter, 5)
+        self.layout.addWidget(self.emretainer, self.p2counter, 6)
+
+        self.savedemallies = []
+        self.savedemmentor = []
+        self.savedemcontacts = []
+        self.savedemresources = []
+        self.savedemfame = []
+        self.savedemretainer = []
+
+        self.emcount = max(self.emalliescount, self.emmentorcount, self.emcontactscount, self.emresourcescount, self.emfamecount, self.emretainercount)
+
+        for x in range(self.emcount):
+            self.p2counter += 1
+            self.layout.addWidget(self.emalliesbox[x], self.p2counter, 1)
+            self.layout.addWidget(self.emmentorbox[x], self.p2counter, 2)
+            self.layout.addWidget(self.emcontactsbox[x], self.p2counter, 3)
+            self.layout.addWidget(self.emresourcesbox[x], self.p2counter, 4)
+            self.layout.addWidget(self.emfamebox[x], self.p2counter, 5)
+            self.layout.addWidget(self.emretainerbox[x], self.p2counter, 6)
+            if x < len(self.savedemallies):
+                self.emalliesbox[x].setText(self.savedemallies[x].toPlainText())
+            if x < len(self.savedemmentor):
+                self.emmentorbox[x].setText(self.savedemmentor[x].toPlainText())
+            if x < len(self.savedemcontacts):
+                self.emcontactsbox[x].setText(self.savedemcontacts[x].toPlainText())
+            if x < len(self.savedemresources):
+                self.emresourcesbox[x].setText(self.savedemresources[x].toPlainText())
+            if x < len(self.savedemfame):
+                self.emfamebox[x].setText(self.savedemfame[x].toPlainText())
+            if x < len(self.savedemretainer):
+                self.emretainerbox[x].setText(self.savedemretainer[x].toPlainText())
+
+        self.savedemallies = []
+        self.savedemmentor = []
+        self.savedemcontacts = []
+        self.savedemresources = []
+        self.savedemfame = []
+        self.savedemretainer = []
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
@@ -2890,6 +3113,30 @@ class MyWidget(QtWidgets.QWidget):
                 self.attackcount = self.attackcount
             else:
                 self.attackcount = 6
+            if self.emalliescount:
+                self.emalliescount = self.emalliescount
+            else:
+                self.emalliescount = 4
+            if self.emmentorcount:
+                self.emmentorcount = self.emmentorcount
+            else:
+                self.emmentorcount = 4
+            if self.emcontactscount:
+                self.emcontactscount = self.emcontactscount
+            else:
+                self.emcontactscount = 4
+            if self.emresourcescount:
+                self.emresourcescount = self.emresourcescount
+            else:
+                self.emresourcescount = 4
+            if self.emfamecount:
+                self.emfamecount = self.emfamecount
+            else:
+                self.emfamecount = 4
+            if self.emretainercount:
+                self.emretainercount = self.emretainercount
+            else:
+                self.emretainercount = 4
 
         self.resize(1024, 768)
         if self.initmakesheet:
@@ -2988,6 +3235,20 @@ class MyWidget(QtWidgets.QWidget):
         self.savedattackinitiatives = []
         self.savedattackstrengths = []
         self.savedattacksizes = []
+
+        self.emalliescount = 4
+        self.emmentorcount = 4
+        self.emcontactscount = 4
+        self.emresourcescount = 4
+        self.emfamecount = 4
+        self.emretainercount = 4
+
+        self.savedemallies = []
+        self.savedemmentor = []
+        self.savedemcontacts = []
+        self.savedemresources = []
+        self.savedemfame = []
+        self.savedemretainer = []
 
         self.initsettings()
 
@@ -3939,9 +4200,9 @@ class MyWidget(QtWidgets.QWidget):
         self.blankcount += 1
         self.blanks[self.blankcount - 1].setText(" ")
 
-        self.armor = QtWidgets.QLabel(self)
-        self.armor.setText("Armor")
-        self.armor.setFont(self.subtitlefont)
+        self.armortitle = QtWidgets.QLabel(self)
+        self.armortitle.setText("Armor")
+        self.armortitle.setFont(self.subtitlefont)
 
         self.armorrating = QtWidgets.QLabel(self)
         self.armorrating.setText("Rating: ")
@@ -3958,6 +4219,52 @@ class MyWidget(QtWidgets.QWidget):
         self.armordescription = QtWidgets.QLabel(self)
         self.armordescription.setText("Description: ")
         self.armordescriptionbox = QtWidgets.QTextEdit(self)
+
+        #page 3
+
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+
+        self.expandedmerits = QtWidgets.QLabel(self)
+        self.expandedmerits.setText("Expanded Merits")
+        self.expandedmerits.setFont(self.titlefont)
+
+        self.emallies = QtWidgets.QLabel(self)
+        self.emallies.setText("Allies")
+        self.emallies.setFont(self.subtitlefont)
+
+        self.emmentor = QtWidgets.QLabel(self)
+        self.emmentor.setText("Mentor")
+        self.emmentor.setFont(self.subtitlefont)
+
+        self.emcontacts = QtWidgets.QLabel(self)
+        self.emcontacts.setText("Contacts")
+        self.emcontacts.setFont(self.subtitlefont)
+
+        self.emresources = QtWidgets.QLabel(self)
+        self.emresources.setText("Resources")
+        self.emresources.setFont(self.subtitlefont)
+
+        self.emfame = QtWidgets.QLabel(self)
+        self.emfame.setText("Fame")
+        self.emfame.setFont(self.subtitlefont)
+
+        self.emretainer = QtWidgets.QLabel(self)
+        self.emretainer.setText("Retainer")
+        self.emretainer.setFont(self.subtitlefont)
 
         self.makesheet()
 

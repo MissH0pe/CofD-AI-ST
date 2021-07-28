@@ -1763,14 +1763,14 @@ class MyWidget(QtWidgets.QWidget):
             self.disciplineslevel = None
 
             self.disciplinecounter = 0
-            # for x in range(self.olddisciplinecount):
-            #     if self.olddisciplinecount >= x:
-            #         self.layout.removeWidget(self.disciplinenamebox[x])
-            #         self.disciplinenamebox[x].deleteLater()
-            #         self.disciplinenamebox[x] = None
-            #         self.layout.removeWidget(self.disciplinelevelbox[x])
-            #         self.disciplinelevelbox[x].deleteLater()
-            #         self.disciplinelevelbox[x] = None
+            for x in range(self.olddisciplinecount):
+                if self.olddisciplinecount >= x:
+                    self.layout.removeWidget(self.disciplinenamebox[x])
+                    self.disciplinenamebox[x].deleteLater()
+                    self.disciplinenamebox[x] = None
+                    self.layout.removeWidget(self.disciplinelevelbox[x])
+                    self.disciplinelevelbox[x].deleteLater()
+                    self.disciplinelevelbox[x] = None
 
             self.layout.removeWidget(self.bloodpotencytitle)
             self.bloodpotencytitle.deleteLater()
@@ -2649,6 +2649,16 @@ class MyWidget(QtWidgets.QWidget):
         self.settingslayout.addWidget(self.wolftoggle, 8, 4)
         self.settingslayout.addWidget(self.magelabel, 8, 5)
         self.settingslayout.addWidget(self.magetoggle, 8, 6)
+
+        if self.vvflag == True:
+            self.humantoggle.setChecked(True)
+        if self.occultflag[0] == True:
+            self.vamptoggle.setChecked(True)
+        if self.occultflag[1] == True:
+            self.wolftoggle.setChecked(True)
+        if self.occultflag[2] == True:
+            self.magetoggle.setChecked(True)
+
         self.setLayout(self.layout)
 
     def initsettings(self):

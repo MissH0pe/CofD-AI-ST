@@ -34,6 +34,7 @@ class MyWidget(QtWidgets.QWidget):
         else:
             settingsdict['hasmageslots'] = False
         settingsdict['othertraitslots'] = self.othertraitcount
+        settingsdict['attackslots'] = self.attackcount
         with open('settings.json', 'w') as f:
             json.dump(settingsdict, f)
 
@@ -367,6 +368,15 @@ class MyWidget(QtWidgets.QWidget):
                 stats['othertraits'].append([self.othertraitnamebox[x].text(), self.othertraitlevelbox[x].text()])
                 self.filledothertraits += 1
         stats['othertraits'][0] = ['filledothertraits', self.filledothertraits]
+
+        self.filledattacks = 0
+        stats['attacks'] = []
+        stats['attacks'].append(['filledattacks', 0])
+        for x in range(self.attackcount):
+            if self.attackcount >= x and self.attacknamebox[x].text() != "":
+                stats['attacks'].append([self.attacknamebox[x].text(), self.attackdamagebox[x].text(), self.attackrangebox[x].text(), self.attackclipbox[x].text(), self.attackinitiativebox[x].text(), self.attackstrengthbox[x].text(), self.attacksizebox[x].text()])
+                self.filledattacks += 1
+        stats['attacks'][0] = ['filledattacks', self.filledattacks]
 
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
@@ -796,6 +806,22 @@ class MyWidget(QtWidgets.QWidget):
                         self.othertraitnamebox[x].setText(stats.get('othertraits')[x+1][0])
                         self.othertraitlevelbox[x].setText(stats.get('othertraits')[x+1][1])
 
+                if stats.get('attacks')[0][1] > self.attackcount:
+                    self.oldattackcount = self.attackcount
+                    self.attackcount = stats.get('attacks')[0][1]
+
+                    self.makesheet()
+
+                for x in range(stats.get('attacks')[0][1]):
+                    if stats.get('attacks')[0][1] >= x:
+                        self.attacknamebox[x].setText(stats.get('attacks')[x+1][0])
+                        self.attackdamagebox[x].setText(stats.get('attacks')[x+1][1])
+                        self.attackrangebox[x].setText(stats.get('attacks')[x+1][2])
+                        self.attackclipbox[x].setText(stats.get('attacks')[x+1][3])
+                        self.attackinitiativebox[x].setText(stats.get('attacks')[x+1][4])
+                        self.attackstrengthbox[x].setText(stats.get('attacks')[x+1][5])
+                        self.attacksizebox[x].setText(stats.get('attacks')[x+1][6])
+
                 self.savesettings()
         else:
             stats = {}
@@ -885,6 +911,44 @@ class MyWidget(QtWidgets.QWidget):
                     self.othertraitlevelbox[x].deleteLater()
                     self.othertraitlevelbox[x] = None
 
+            self.attackcounter = 0
+            for x in range(self.oldattackcount):
+                if self.oldattackcount >= x + 1:
+                    self.savedattacknames.append(self.attacknamebox[x])
+                    self.layout.removeWidget(self.attacknamebox[x])
+                    self.attacknamebox[x].deleteLater()
+                    self.attacknamebox[x] = None
+
+                    self.savedattackdamages.append(self.attackdamagebox[x])
+                    self.layout.removeWidget(self.attackdamagebox[x])
+                    self.attackdamagebox[x].deleteLater()
+                    self.attackdamagebox[x] = None
+
+                    self.savedattackranges.append(self.attackrangebox[x])
+                    self.layout.removeWidget(self.attackrangebox[x])
+                    self.attackrangebox[x].deleteLater()
+                    self.attackrangebox[x] = None
+
+                    self.savedattackclips.append(self.attackclipbox[x])
+                    self.layout.removeWidget(self.attackclipbox[x])
+                    self.attackclipbox[x].deleteLater()
+                    self.attackclipbox[x] = None
+
+                    self.savedattackinitiatives.append(self.attackinitiativebox[x])
+                    self.layout.removeWidget(self.attackinitiativebox[x])
+                    self.attackinitiativebox[x].deleteLater()
+                    self.attackinitiativebox[x] = None
+
+                    self.savedattackstrengths.append(self.attackstrengthbox[x])
+                    self.layout.removeWidget(self.attackstrengthbox[x])
+                    self.attackstrengthbox[x].deleteLater()
+                    self.attackstrengthbox[x] = None
+
+                    self.savedattacksizes.append(self.attacksizebox[x])
+                    self.layout.removeWidget(self.attacksizebox[x])
+                    self.attacksizebox[x].deleteLater()
+                    self.attacksizebox[x] = None
+
         #other traits
 
         #initialize merits
@@ -927,6 +991,24 @@ class MyWidget(QtWidgets.QWidget):
             if self.othertraitcount >= x:
                 self.othertraitnamebox.append(QtWidgets.QLineEdit(self))
                 self.othertraitlevelbox.append(QtWidgets.QLineEdit(self))
+
+        #initialize weapons / attacks
+        self.attacknamebox = []
+        self.attackdamagebox = []
+        self.attackrangebox = []
+        self.attackclipbox = []
+        self.attackinitiativebox = []
+        self.attackstrengthbox = []
+        self.attacksizebox = []
+        for x in range(self.attackcount):
+            if self.attackcount >= x:
+                self.attacknamebox.append(QtWidgets.QLineEdit(self))
+                self.attackdamagebox.append(QtWidgets.QLineEdit(self))
+                self.attackrangebox.append(QtWidgets.QLineEdit(self))
+                self.attackclipbox.append(QtWidgets.QLineEdit(self))
+                self.attackinitiativebox.append(QtWidgets.QLineEdit(self))
+                self.attackstrengthbox.append(QtWidgets.QLineEdit(self))
+                self.attacksizebox.append(QtWidgets.QLineEdit(self))
 
         #begin layout
 
@@ -1543,7 +1625,7 @@ class MyWidget(QtWidgets.QWidget):
         # self.layout.addWidget(self.titlep2, self.p2counter, 3, self.p2counter, 6)
 
         self.p2counter += 1
-        self.layout.addWidget(self.othertraits, self.p2counter, 4)
+        self.layout.addWidget(self.othertraits, self.p2counter, 3)
 
         self.othertraitcounter = self.othertraitcount
 
@@ -1590,8 +1672,54 @@ class MyWidget(QtWidgets.QWidget):
                     self.othertraitnamebox[self.othertraitcount - self.othertraitcounter].setText(self.savedothertraitnames[self.othertraitcount - self.othertraitcounter].text())
                     self.othertraitlevelbox[self.othertraitcount - self.othertraitcounter].setText(self.savedothertraitlevels[self.othertraitcount - self.othertraitcounter].text())
 
-        self.savedothertraitnames = []
-        self.savedothertraitlevels = []
+        self.p2counter += 1
+        self.layout.addWidget(self.combat, self.p2counter, 3)
+
+        self.p2counter += 1
+        self.layout.addWidget(self.weapons, self.p2counter, 3)
+
+        self.p2counter += 1
+        self.layout.addWidget(self.attackname, self.p2counter, 0)
+        self.layout.addWidget(self.attackdamage, self.p2counter, 1)
+        self.layout.addWidget(self.attackrange, self.p2counter, 2)
+        self.layout.addWidget(self.attackclip, self.p2counter, 3)
+        self.layout.addWidget(self.attackinitiative, self.p2counter, 4)
+        self.layout.addWidget(self.attackstrength, self.p2counter, 5)
+        self.layout.addWidget(self.attacksize, self.p2counter, 6)
+
+        self.savedattacknames = []
+        self.savedattackdamages = []
+        self.savedattackranges = []
+        self.savedattackclips = []
+        self.savedattackinitiatives = []
+        self.savedattackstrengths = []
+        self.savedattacksizes = []
+
+        for x in range(self.attackcount):
+            self.p2counter += 1
+            self.layout.addWidget(self.attacknamebox[x], self.p2counter, 0)
+            self.layout.addWidget(self.attackdamagebox[x], self.p2counter, 1)
+            self.layout.addWidget(self.attackrangebox[x], self.p2counter, 2)
+            self.layout.addWidget(self.attackclipbox[x], self.p2counter, 3)
+            self.layout.addWidget(self.attackinitiativebox[x], self.p2counter, 4)
+            self.layout.addWidget(self.attackstrengthbox[x], self.p2counter, 5)
+            self.layout.addWidget(self.attacksizebox[x], self.p2counter, 6)
+            if x < len(self.savedattacknames):
+                self.attacknamebox[x].setText(self.savedattacknames[x].text())
+                self.attackdamagebox[x].setText(self.savedattackdamages[x].text())
+                self.attackrangebox[x].setText(self.savedattackranges[x].text())
+                self.attackclipbox[x].setText(self.savedattackclips[x].text())
+                self.attackinitiativebox[x].setText(self.savedattackinitiatives[x].text())
+                self.attackstrengthbox[x].setText(self.savedattackstrengths[x].text())
+                self.attacksizebox[x].setText(self.savedattacksizes[x].text())
+
+        self.savedattacknames = []
+        self.savedattackdamages = []
+        self.savedattackranges = []
+        self.savedattackclips = []
+        self.savedattackinitiatives = []
+        self.savedattackstrengths = []
+        self.savedattacksizes = []
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
@@ -2686,41 +2814,47 @@ class MyWidget(QtWidgets.QWidget):
             with open('settings.json') as f:
                 settingsdict = json.load(f)
             self.oldmeritcount = self.meritcount
-            self.meritcount = settingsdict['meritslots']
+            self.meritcount = settingsdict.get('meritslots')
             self.oldaspirationcount = self.aspirationcount
-            self.aspirationcount = settingsdict['aspirationslots']
+            self.aspirationcount = settingsdict.get('aspirationslots')
             self.oldconditioncount = self.conditioncount
-            self.conditioncount = settingsdict['conditionslots']
+            self.conditioncount = settingsdict.get('conditionslots')
             self.oldbanecount = self.banecount
-            self.banecount = settingsdict['baneslots']
-            if settingsdict['hasvicevirtueslots'] == True:
+            self.banecount = settingsdict.get('baneslots')
+            if settingsdict.get('hasvicevirtueslots') == True:
                 self.vvflag = True
-            if settingsdict['hasvampireslots'] == True:
+            if settingsdict.get('hasvampireslots') == True:
                 self.occultflag[0] = True
                 self.oldmeritcount = self.meritcount
                 self.oldaspirationcount = self.aspirationcount
                 self.oldconditioncount = self.conditioncount
                 self.oldbanecount = self.banecount
-            if settingsdict['disciplineslots'] == -1:
+            if settingsdict.get('disciplineslots') == -1:
                 self.olddisciplinecount = self.disciplinecount
                 self.disciplinecount = 0
             else:
                 self.olddisciplinecount = self.disciplinecount
-                self.disciplinecount = settingsdict['disciplineslots']
-            if settingsdict['haswerewolfslots'] == True:
+                self.disciplinecount = settingsdict.get('disciplineslots')
+            if settingsdict.get('haswerewolfslots') == True:
                 self.occultflag[1] = True
                 self.oldmeritcount = self.meritcount
                 self.oldaspirationcount = self.aspirationcount
                 self.oldconditioncount = self.conditioncount
                 self.oldbanecount = self.banecount
-            if settingsdict['hasmageslots'] == True:
+            if settingsdict.get('hasmageslots') == True:
                 self.occultflag[2] = True
                 self.oldmeritcount = self.meritcount
                 self.oldaspirationcount = self.aspirationcount
                 self.oldconditioncount = self.conditioncount
                 self.oldbanecount = self.banecount
             self.oldothertraitcount = self.othertraitcount
-            self.othertraitcount = settingsdict['othertraitslots']
+            self.othertraitcount = settingsdict.get('othertraitslots')
+            self.oldattackcount = self.attackcount
+            self.attackcount = settingsdict.get('attackslots')
+            if self.attackcount:
+                self.attackcount = self.attackcount
+            else:
+                self.attackcount = 6
 
         self.resize(1024, 768)
         if self.initmakesheet:
@@ -2808,6 +2942,17 @@ class MyWidget(QtWidgets.QWidget):
 
         self.oldothertraitcount = 0
         self.othertraitcount = 9
+
+        self.oldattackcount = 0
+        self.attackcount = 6
+
+        self.savedattacknames = []
+        self.savedattackdamages = []
+        self.savedattackranges = []
+        self.savedattackclips = []
+        self.savedattackinitiatives = []
+        self.savedattackstrengths = []
+        self.savedattacksizes = []
 
         self.initsettings()
 
@@ -3727,6 +3872,33 @@ class MyWidget(QtWidgets.QWidget):
         self.othertraits = QtWidgets.QLabel(self)
         self.othertraits.setText("Other Traits")
         self.othertraits.setFont(self.titlefont)
+
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+
+        self.combat = QtWidgets.QLabel(self)
+        self.combat.setText("Combat")
+        self.combat.setFont(self.titlefont)
+
+        self.weapons = QtWidgets.QLabel(self)
+        self.weapons.setText("Weapon / Attack")
+        self.weapons.setFont(self.subtitlefont)
+
+        self.attackname = QtWidgets.QLabel(self)
+        self.attackname.setText("Attack")
+        self.attackdamage = QtWidgets.QLabel(self)
+        self.attackdamage.setText("Damage")
+        self.attackrange = QtWidgets.QLabel(self)
+        self.attackrange.setText("Range")
+        self.attackclip = QtWidgets.QLabel(self)
+        self.attackclip.setText("Clip")
+        self.attackinitiative = QtWidgets.QLabel(self)
+        self.attackinitiative.setText("Initiative")
+        self.attackstrength = QtWidgets.QLabel(self)
+        self.attackstrength.setText("Strength")
+        self.attacksize = QtWidgets.QLabel(self)
+        self.attacksize.setText("Size")
 
         self.makesheet()
 

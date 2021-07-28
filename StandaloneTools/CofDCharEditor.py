@@ -378,6 +378,13 @@ class MyWidget(QtWidgets.QWidget):
                 self.filledattacks += 1
         stats['attacks'][0] = ['filledattacks', self.filledattacks]
 
+        stats['armor'] = {}
+        stats['armor']['rating'] = self.armorratingbox.text()
+        stats['armor']['strength'] = self.armorstrengthbox.text()
+        stats['armor']['defense'] = self.armordefensebox.text()
+        stats['armor']['speed'] = self.armorspeedbox.text()
+        stats['armor']['description'] = self.armordescriptionbox.toPlainText()
+
         with open(self.saveloc.text()+'.json', 'w') as f:
             json.dump(stats, f)
 
@@ -821,6 +828,12 @@ class MyWidget(QtWidgets.QWidget):
                         self.attackinitiativebox[x].setText(stats.get('attacks')[x+1][4])
                         self.attackstrengthbox[x].setText(stats.get('attacks')[x+1][5])
                         self.attacksizebox[x].setText(stats.get('attacks')[x+1][6])
+
+                self.armorratingbox.setText(stats.get('armor').get('rating'))
+                self.armorstrengthbox.setText(stats.get('armor').get('strength'))
+                self.armordefensebox.setText(stats.get('armor').get('defense'))
+                self.armorspeedbox.setText(stats.get('armor').get('speed'))
+                self.armordescriptionbox.setText(stats.get('armor').get('description'))
 
                 self.savesettings()
         else:
@@ -1673,6 +1686,9 @@ class MyWidget(QtWidgets.QWidget):
                     self.othertraitlevelbox[self.othertraitcount - self.othertraitcounter].setText(self.savedothertraitlevels[self.othertraitcount - self.othertraitcounter].text())
 
         self.p2counter += 1
+        self.layout.addWidget(self.blanks[7], self.p2counter, 4)
+
+        self.p2counter += 1
         self.layout.addWidget(self.combat, self.p2counter, 3)
 
         self.p2counter += 1
@@ -1720,6 +1736,25 @@ class MyWidget(QtWidgets.QWidget):
         self.savedattackinitiatives = []
         self.savedattackstrengths = []
         self.savedattacksizes = []
+
+        self.p2counter += 1
+        self.layout.addWidget(self.blanks[8], self.p2counter, 4)
+
+        self.p2counter += 1
+        self.layout.addWidget(self.armor, self.p2counter, 3)
+
+        self.p2counter += 1
+        self.layout.addWidget(self.armorrating, self.p2counter, 1)
+        self.layout.addWidget(self.armorratingbox, self.p2counter, 2)
+        self.layout.addWidget(self.armorstrength, self.p2counter, 3)
+        self.layout.addWidget(self.armorstrengthbox, self.p2counter, 4)
+        self.layout.addWidget(self.armordefense, self.p2counter, 5)
+        self.layout.addWidget(self.armordefensebox, self.p2counter, 6)
+        self.p2counter += 1
+        self.layout.addWidget(self.armorspeed, self.p2counter, 2)
+        self.layout.addWidget(self.armorspeedbox, self.p2counter, 3)
+        self.layout.addWidget(self.armordescription, self.p2counter, 4)
+        self.layout.addWidget(self.armordescriptionbox, self.p2counter, 5)
 
         self.setLayout(self.layout)
         self.setGeometry(300, 75, 1024, 768)
@@ -3899,6 +3934,30 @@ class MyWidget(QtWidgets.QWidget):
         self.attackstrength.setText("Strength")
         self.attacksize = QtWidgets.QLabel(self)
         self.attacksize.setText("Size")
+
+        self.blanks.append(QtWidgets.QLabel(self))
+        self.blankcount += 1
+        self.blanks[self.blankcount - 1].setText(" ")
+
+        self.armor = QtWidgets.QLabel(self)
+        self.armor.setText("Armor")
+        self.armor.setFont(self.subtitlefont)
+
+        self.armorrating = QtWidgets.QLabel(self)
+        self.armorrating.setText("Rating: ")
+        self.armorratingbox = QtWidgets.QLineEdit(self)
+        self.armorstrength = QtWidgets.QLabel(self)
+        self.armorstrength.setText("Strength: ")
+        self.armorstrengthbox = QtWidgets.QLineEdit(self)
+        self.armordefense = QtWidgets.QLabel(self)
+        self.armordefense.setText("Defense: ")
+        self.armordefensebox = QtWidgets.QLineEdit(self)
+        self.armorspeed = QtWidgets.QLabel(self)
+        self.armorspeed.setText("Speed: ")
+        self.armorspeedbox = QtWidgets.QLineEdit(self)
+        self.armordescription = QtWidgets.QLabel(self)
+        self.armordescription.setText("Description: ")
+        self.armordescriptionbox = QtWidgets.QTextEdit(self)
 
         self.makesheet()
 

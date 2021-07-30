@@ -1,84 +1,74 @@
 from PIL import Image, ImageDraw, ImageFont
 import sys
-# import random
+from os import path
+from PySide6 import QtCore, QtWidgets, QtGui
 
-def genlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-    draw.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, x * imgsizex / xrooms, (y + 1) * imgsizey / yrooms), fill=256, width=innerlinewidthf)
+def genlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf):
+    draw.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, x * imgsizex / xroomsf, (y + 1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def genrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-    draw.line(((x+1) * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xrooms, (y + 1) * imgsizey / yrooms), fill=256, width=innerlinewidthf)
+def genrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf):
+    draw.line(((x+1) * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, (y + 1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def gentwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-    draw.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xrooms, y * imgsizey / yrooms), fill=256, width=innerlinewidthf)
+def gentwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf):
+    draw.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, y * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def genbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-    draw.line((x * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf, (x+1) * imgsizex / xrooms, (y + 1) * imgsizey / yrooms), fill=256, width=innerlinewidthf)
+def genbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf):
+    draw.line((x * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, (y + 1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-# def gentlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     gentwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#
-# def gentrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     gentwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#
-# def gentbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     gentwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#
-# def genlrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     genlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#
-# def genlbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     genlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#
-# def gerbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     genrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#
-# def gentlrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     gentwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#
-# def gentlbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     gentwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#
-# def genlrbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     genlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#
-# def gentrbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     gentwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#
-# def gentlrbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-#     gentwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
-#     genbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf)
+def genldoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf):
+    draw.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, x * imgsizex / xroomsf, (y + 0.3333) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+    draw.line((x * imgsizex / xroomsf, (y + 0.6667) * imgsizey / yroomsf, x * imgsizex / xroomsf, (y + 1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def genldoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-    draw.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, x * imgsizex / xrooms, (y + 0.3333) * imgsizey / yrooms), fill=256, width=innerlinewidthf)
-    draw.line((x * imgsizex / xroomsf, (y + 0.6667) * imgsizey / yroomsf, x * imgsizex / xrooms, (y + 1) * imgsizey / yrooms), fill=256, width=innerlinewidthf)
+def genrdoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf):
+    draw.line(((x+1) * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, (y + 0.3333) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+    draw.line(((x+1) * imgsizex / xroomsf, (y + 0.6667) * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, (y + 1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def genrdoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-    draw.line(((x+1) * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xrooms, (y + 0.3333) * imgsizey / yrooms), fill=256, width=innerlinewidthf)
-    draw.line(((x+1) * imgsizex / xroomsf, (y + 0.6667) * imgsizey / yroomsf, (x+1) * imgsizex / xrooms, (y + 1) * imgsizey / yrooms), fill=256, width=innerlinewidthf)
+def gentdoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf):
+    draw.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, (x + 0.3333) * imgsizex / xroomsf, y * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+    draw.line(((x + 0.6667) * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, y * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def gentdoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-    draw.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, (x + 0.3333) * imgsizex / xrooms, y * imgsizey / yrooms), fill=256, width=innerlinewidthf)
-    draw.line(((x + 0.6667) * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xrooms, y * imgsizey / yrooms), fill=256, width=innerlinewidthf)
+def genbdoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf):
+    draw.line((x * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf, (x + 0.3333) * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+    draw.line(((x + 0.6667) * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def genbdoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, outerlinewidthf, innerlinewidthf):
-    draw.line((x * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf, (x + 0.3333) * imgsizex / xrooms, (y+1) * imgsizey / yrooms), fill=256, width=innerlinewidthf)
-    draw.line(((x + 0.6667) * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf, (x+1) * imgsizex / xrooms, (y+1) * imgsizey / yrooms), fill=256, width=innerlinewidthf)
+class MyWidget(QtWidgets.QWidget):
+    def __init__(self):
+        super(MyWidget, self).__init__()
+
+        self.setGeometry(300, 75, 1024, 768)
+        self.setWindowTitle('Chronicles of Darkness Building Generator')
+        self.layout = QtWidgets.QGridLayout(self)
+
+        self.display = []
+
+        self.display.append([])
+
+        pixMap = QtGui.QPixmap.fromImage('resources/blank.png')
+
+        for xit in range(xrooms):
+            self.display[0].append([])
+            for yit in range(yrooms):
+                self.display[0][xit].append(QtWidgets.QLabel())
+                self.display[0][xit][yit].setPixmap( pixMap )
+                self.layout.addWidget(self.display[0][xit][yit], yit, xit)
+
+        twallt = QtGui.QPixmap.fromImage('resources/twallt.png')
+
+        self.display.append([])
+
+        for it in range(xrooms):
+            self.display[1].append(QtWidgets.QLabel())
+            self.display[1][it].setPixmap(twallt)
+            self.layout.addWidget(self.display[1][it], 0, it)
+
+        lwallt = QtGui.QPixmap.fromImage('resources/lwallt.png')
+
+        self.display.append([])
+
+        for it in range(xrooms):
+            self.display[2].append(QtWidgets.QLabel())
+            self.display[2][it].setPixmap(lwallt)
+            self.layout.addWidget(self.display[2][it], it, 0)
 
 xdim = int(sys.argv[1])
 ydim = int(sys.argv[2])
@@ -94,11 +84,167 @@ linewidthmod = int(sys.argv[7])
 outerlinewidth = int((((xdim + ydim) / 2) / 50) * linewidthmod)
 innerlinewidth = int(outerlinewidth / 2)
 
-img = Image.new('RGB', (xdim, ydim), color = (255, 255, 255))
-draw = ImageDraw.Draw(img)
-font = ImageFont.truetype("arial.ttf", 50)
+if path.exists('resources/blank.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
 
-genbdoor(0, 0, xrooms, yrooms, img.size[0], img.size[1], outerlinewidth, innerlinewidth)
-# gentlrbwall(1, 0, xrooms, yrooms, img.size[0], img.size[1], outerlinewidth, innerlinewidth)
+    img.save('resources/blank.png')
 
-img.save(filename+'.'+extension)
+if path.exists('resources/twallt.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    gentwall(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/twallt.png')
+
+if path.exists('resources/lwallt.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    genlwall(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/lwallt.png')
+
+if path.exists('resources/rwallt.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    genrwall(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/rwallt.png')
+
+if path.exists('resources/bwallt.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    genbwall(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/bwallt.png')
+
+if path.exists('resources/tdoort.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    gentdoor(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/tdoort.png')
+
+if path.exists('resources/ldoort.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    genldoor(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/ldoort.png')
+
+if path.exists('resources/rdoort.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    genrdoor(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/rdoort.png')
+
+if path.exists('resources/bdoort.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    genbdoor(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/bdoort.png')
+
+
+
+if path.exists('resources/twallw.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    draw = ImageDraw.Draw(img)
+
+    gentwall(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/twallw.png')
+
+if path.exists('resources/lwallw.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    draw = ImageDraw.Draw(img)
+
+    genlwall(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/lwallw.png')
+
+if path.exists('resources/rwallw.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    draw = ImageDraw.Draw(img)
+
+    genrwall(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/rwallw.png')
+
+if path.exists('resources/bwallw.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    draw = ImageDraw.Draw(img)
+
+    genbwall(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/bwallw.png')
+
+if path.exists('resources/tdoorw.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    draw = ImageDraw.Draw(img)
+
+    gentdoor(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/tdoorw.png')
+
+if path.exists('resources/ldoorw.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    draw = ImageDraw.Draw(img)
+
+    genldoor(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/ldoorw.png')
+
+if path.exists('resources/rdoorw.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    draw = ImageDraw.Draw(img)
+
+    genrdoor(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/rdoorw.png')
+
+if path.exists('resources/bdoorw.png') == False:
+    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    draw = ImageDraw.Draw(img)
+
+    genbdoor(0, 0, 1, 1, 16, 16, 2)
+
+    img.save('resources/bdoorw.png')
+
+# img = Image.new('RGBA', (xdim, ydim), color = (255, 255, 255, 255))
+# draw = ImageDraw.Draw(img)
+# font = ImageFont.truetype("arial.ttf", 50)
+#
+# gentwall(0, 0, xrooms, yrooms, img.size[0], img.size[1], innerlinewidth)
+#
+# img.save(filename+'.'+extension)
+
+app = QtWidgets.QApplication([])
+
+widget = MyWidget()
+# widget.resize(1024, 768)
+# widget.show()
+
+w = QtWidgets.QWidget()
+
+w.setWindowTitle('Chronicles of Darkness Building Generator')
+
+layout = QtWidgets.QGridLayout(w)
+scroll = QtWidgets.QScrollArea()
+
+scroll.setWidget(widget)
+scroll.setWidgetResizable(True)
+scroll.resize(16, 768)
+layout.addWidget(scroll)
+w.show()
+
+
+sys.exit(app.exec())

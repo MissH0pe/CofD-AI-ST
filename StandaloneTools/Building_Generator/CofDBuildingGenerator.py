@@ -3,33 +3,33 @@ import sys
 from os import path
 from PySide6 import QtCore, QtWidgets, QtGui
 
-def genlwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf, drawf):
-    drawf.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, x * imgsizex / xroomsf, (y + 1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+def genlwall(x, y, xroomsf, yroomsf, linewidthf, drawf):
+    drawf.line((x, y, x, yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def genrwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf, drawf):
-    drawf.line(((x+1) * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, (y + 1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+def genrwall(x, y, xroomsf, yroomsf, linewidthf, drawf):
+    drawf.line((xroomsf - 2, y, xroomsf - 2, yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def gentwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf, drawf):
-    drawf.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, y * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+def gentwall(x, y, xroomsf, yroomsf, linewidthf, drawf):
+    drawf.line((x, y, xroomsf, y), fill=(0, 0, 0, 255), width=linewidthf)
 
-def genbwall(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf, drawf):
-    drawf.line((x * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, (y + 1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+def genbwall(x, y, xroomsf, yroomsf, linewidthf, drawf):
+    drawf.line((x, yroomsf - 2, xroomsf, yroomsf - 2), fill=(0, 0, 0, 255), width=linewidthf)
 
-def genldoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf, drawf):
-    drawf.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, x * imgsizex / xroomsf, (y + 0.3333) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
-    drawf.line((x * imgsizex / xroomsf, (y + 0.6667) * imgsizey / yroomsf, x * imgsizex / xroomsf, (y + 1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+def genldoor(x, y, xroomsf, yroomsf, linewidthf, drawf):
+    drawf.line((x, y, x, (0.3333 * yroomsf)), fill=(0, 0, 0, 255), width=linewidthf)
+    drawf.line((x, (yroomsf * 0.6667), x, yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def genrdoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf, drawf):
-    drawf.line(((x+1) * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, (y + 0.3333) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
-    drawf.line(((x+1) * imgsizex / xroomsf, (y + 0.6667) * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, (y + 1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+def genrdoor(x, y, xroomsf, yroomsf, linewidthf, drawf):
+    drawf.line((xroomsf - 2, y, xroomsf - 2, (0.3333 * yroomsf)), fill=(0, 0, 0, 255), width=linewidthf)
+    drawf.line((xroomsf - 2, (yroomsf * 0.6667), xroomsf - 2, yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
 
-def gentdoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf, drawf):
-    drawf.line((x * imgsizex / xroomsf, y * imgsizey / yroomsf, (x + 0.3333) * imgsizex / xroomsf, y * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
-    drawf.line(((x + 0.6667) * imgsizex / xroomsf, y * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, y * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+def gentdoor(x, y, xroomsf, yroomsf, linewidthf, drawf):
+    drawf.line((x, y, (0.3333 * xroomsf), y), fill=(0, 0, 0, 255), width=linewidthf)
+    drawf.line(((0.6667 * xroomsf), y, xroomsf, y), fill=(0, 0, 0, 255), width=linewidthf)
 
-def genbdoor(x, y, xroomsf, yroomsf, imgsizex, imgsizey, linewidthf, drawf):
-    drawf.line((x * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf, (x + 0.3333) * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
-    drawf.line(((x + 0.6667) * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf, (x+1) * imgsizex / xroomsf, (y+1) * imgsizey / yroomsf), fill=(0, 0, 0, 255), width=linewidthf)
+def genbdoor(x, y, xroomsf, yroomsf, linewidthf, drawf):
+    drawf.line((x, yroomsf - 2, (0.3333 * xroomsf), yroomsf - 2,), fill=(0, 0, 0, 255), width=linewidthf)
+    drawf.line(((0.6667 * xroomsf), yroomsf - 2, xroomsf, yroomsf - 2,), fill=(0, 0, 0, 255), width=linewidthf)
 
 class MyWidget(QtWidgets.QWidget):
     def __init__(self):
@@ -42,7 +42,7 @@ class MyWidget(QtWidgets.QWidget):
         saveAction = QtGui.QAction('&Save', self)
         saveAction.setShortcut('Ctrl+S')
         saveAction.setStatusTip('Save Building')
-        saveAction.triggered.connect(self.saveimage)
+        saveAction.triggered.connect(self.save)
         #
         # QtWidgets.QStatusBar()
         #
@@ -118,6 +118,22 @@ class MyWidget(QtWidgets.QWidget):
         self.undobutton = QtWidgets.QPushButton()
         self.undobutton.setText('Undo')
 
+        self.xdimtext = QtWidgets.QLabel()
+        self.xdimtext.setText('Final Image Pixel Width: ')
+        self.xdimbox = QtWidgets.QLineEdit()
+        self.xdimbox.setText('2048')
+        self.ydimtext = QtWidgets.QLabel()
+        self.ydimtext.setText('Final Image Pixel Height: ')
+        self.ydimbox = QtWidgets.QLineEdit()
+        self.ydimbox.setText('2048')
+
+        self.extension = 'png'
+
+        self.linewidthtext = QtWidgets.QLabel()
+        self.linewidthtext.setText('Line Width Modifier: ')
+        self.linewidthbox = QtWidgets.QLineEdit()
+        self.linewidthbox.setText('1')
+
         self.undobutton.clicked.connect(self.undo)
         self.addbutton.clicked.connect(self.add)
 
@@ -152,6 +168,14 @@ class MyWidget(QtWidgets.QWidget):
 
         self.layout.addWidget(self.addbutton, 5, 9)
         self.layout.addWidget(self.undobutton, 6, 9)
+
+        self.layout.addWidget(self.xdimtext, 7, 5)
+        self.layout.addWidget(self.xdimbox, 7, 6)
+        self.layout.addWidget(self.ydimtext, 7, 7)
+        self.layout.addWidget(self.ydimbox, 7, 8)
+
+        self.layout.addWidget(self.linewidthtext, 8, 5)
+        self.layout.addWidget(self.linewidthbox, 8, 6)
 
     def undo(self):
         self.display.pop()
@@ -279,9 +303,20 @@ class MyWidget(QtWidgets.QWidget):
             self.layout.addWidget(self.addbutton, 5, 9 + self.xoff)
             self.layout.addWidget(self.undobutton, 6, 9 + self.xoff)
 
-    def saveimage(self):
-        img = Image.new('RGBA', (xdim, ydim), color = (255, 255, 255, 255))
+            self.layout.addWidget(self.xdimtext, 7, 5 + self.xoff)
+            self.layout.addWidget(self.xdimbox, 7, 6 + self.xoff)
+            self.layout.addWidget(self.ydimtext, 7, 7 + self.xoff)
+            self.layout.addWidget(self.ydimbox, 7, 8 + self.xoff)
+
+            self.layout.addWidget(self.linewidthtext, 8, 5 + self.xoff)
+            self.layout.addWidget(self.linewidthbox, 8, 6 + self.xoff)
+
+    def saveimage(self, filename):
+        img = Image.new('RGBA', (int(self.xdimbox.text()), int(self.ydimbox.text())), color = (255, 255, 255, 255))
         draw = ImageDraw.Draw(img)
+
+        self.outerlinewidth = int((((int(self.xdimbox.text()) + int(self.ydimbox.text()))) / 100) * int(self.linewidthbox.text()))
+        self.innerlinewidth = int(self.outerlinewidth / 2)
 
         for it in range(len(self.displaydata)):
             for xit in range(len(self.displaydata[it])):
@@ -289,23 +324,27 @@ class MyWidget(QtWidgets.QWidget):
                     # print('test')
                     if self.displaydata[it][xit][yit][0] == 0:
                         # print('test2')
-                        gentwall(self.displaydata[it][xit][yit][1], self.displaydata[it][xit][yit][2], xrooms, yrooms, img.size[0], img.size[1], innerlinewidth, draw)
+                        gentwall(img.size[0]*(self.displaydata[it][xit][yit][1]/len(self.display[0])), img.size[1]*(self.displaydata[it][xit][yit][2]/len(self.display[0][0])), img.size[0]*((self.displaydata[it][xit][yit][1] + 1)/len(self.display[0])), img.size[1]*((self.displaydata[it][xit][yit][2] + 1)/len(self.display[0][0])), self.innerlinewidth, draw)
                     elif self.displaydata[it][xit][yit][0] == 1:
-                        genlwall(self.displaydata[it][xit][yit][1], self.displaydata[it][xit][yit][2], xrooms, yrooms, img.size[0], img.size[1], innerlinewidth, draw)
+                        genlwall(img.size[0]*(self.displaydata[it][xit][yit][1]/len(self.display[0])), img.size[1]*(self.displaydata[it][xit][yit][2]/len(self.display[0][0])), img.size[0]*((self.displaydata[it][xit][yit][1] + 1)/len(self.display[0])), img.size[1]*((self.displaydata[it][xit][yit][2] + 1)/len(self.display[0][0])), self.innerlinewidth, draw)
                     elif self.displaydata[it][xit][yit][0] == 2:
-                        genrwall(self.displaydata[it][xit][yit][1], self.displaydata[it][xit][yit][2], xrooms, yrooms, img.size[0], img.size[1], innerlinewidth, draw)
+                        genrwall(img.size[0]*(self.displaydata[it][xit][yit][1]/len(self.display[0])), img.size[1]*(self.displaydata[it][xit][yit][2]/len(self.display[0][0])), img.size[0]*((self.displaydata[it][xit][yit][1] + 1)/len(self.display[0])), img.size[1]*((self.displaydata[it][xit][yit][2] + 1)/len(self.display[0][0])), self.innerlinewidth, draw)
                     elif self.displaydata[it][xit][yit][0] == 3:
-                        genbwall(self.displaydata[it][xit][yit][1], self.displaydata[it][xit][yit][2], xrooms, yrooms, img.size[0], img.size[1], innerlinewidth, draw)
+                        genbwall(img.size[0]*(self.displaydata[it][xit][yit][1]/len(self.display[0])), img.size[1]*(self.displaydata[it][xit][yit][2]/len(self.display[0][0])), img.size[0]*((self.displaydata[it][xit][yit][1] + 1)/len(self.display[0])), img.size[1]*((self.displaydata[it][xit][yit][2] + 1)/len(self.display[0][0])), self.innerlinewidth, draw)
                     elif self.displaydata[it][xit][yit][0] == 4:
-                        gentdoor(self.displaydata[it][xit][yit][1], self.displaydata[it][xit][yit][2], xrooms, yrooms, img.size[0], img.size[1], innerlinewidth, draw)
+                        gentdoor(img.size[0]*(self.displaydata[it][xit][yit][1]/len(self.display[0])), img.size[1]*(self.displaydata[it][xit][yit][2]/len(self.display[0][0])), img.size[0]*((self.displaydata[it][xit][yit][1] + 1)/len(self.display[0])), img.size[1]*((self.displaydata[it][xit][yit][2] + 1)/len(self.display[0][0])), self.innerlinewidth, draw)
                     elif self.displaydata[it][xit][yit][0] == 5:
-                        genldoor(self.displaydata[it][xit][yit][1], self.displaydata[it][xit][yit][2], xrooms, yrooms, img.size[0], img.size[1], innerlinewidth, draw)
+                        genldoor(img.size[0]*(self.displaydata[it][xit][yit][1]/len(self.display[0])), img.size[1]*(self.displaydata[it][xit][yit][2]/len(self.display[0][0])), img.size[0]*((self.displaydata[it][xit][yit][1] + 1)/len(self.display[0])), img.size[1]*((self.displaydata[it][xit][yit][2] + 1)/len(self.display[0][0])), self.innerlinewidth, draw)
                     elif self.displaydata[it][xit][yit][0] == 6:
-                        genrdoor(self.displaydata[it][xit][yit][1], self.displaydata[it][xit][yit][2], xrooms, yrooms, img.size[0], img.size[1], innerlinewidth, draw)
+                        genrdoor(img.size[0]*(self.displaydata[it][xit][yit][1]/len(self.display[0])), img.size[1]*(self.displaydata[it][xit][yit][2]/len(self.display[0][0])), img.size[0]*((self.displaydata[it][xit][yit][1] + 1)/len(self.display[0])), img.size[1]*((self.displaydata[it][xit][yit][2] + 1)/len(self.display[0][0])), self.innerlinewidth, draw)
                     elif self.displaydata[it][xit][yit][0] == 7:
-                        genbdoor(self.displaydata[it][xit][yit][1], self.displaydata[it][xit][yit][2], xrooms, yrooms, img.size[0], img.size[1], innerlinewidth, draw)
+                        genbdoor(img.size[0]*(self.displaydata[it][xit][yit][1]/len(self.display[0])), img.size[1]*(self.displaydata[it][xit][yit][2]/len(self.display[0][0])), img.size[0]*((self.displaydata[it][xit][yit][1] + 1)/len(self.display[0])), img.size[1]*((self.displaydata[it][xit][yit][2] + 1)/len(self.display[0][0])), self.innerlinewidth, draw)
 
-        img.save(filename+'.'+extension)
+        img.save(filename)
+
+    def save(self):
+        path = QtWidgets.QFileDialog.getSaveFileName(self, 'Save as')
+        self.saveimage(path[0])
             # twallt = QtGui.QPixmap.fromImage('resources/twallt.png')
             #
             # self.display.append([])
@@ -331,20 +370,6 @@ class MyWidget(QtWidgets.QWidget):
     #
     #     layout = QtWidgets.QGridLayout(w)
 
-xdim = int(sys.argv[1])
-ydim = int(sys.argv[2])
-
-xrooms = int(sys.argv[3])
-yrooms = int(sys.argv[4])
-
-filename = sys.argv[5]
-extension = sys.argv[6]
-
-linewidthmod = int(sys.argv[7])
-
-outerlinewidth = int((((xdim + ydim) / 2) / 50) * linewidthmod)
-innerlinewidth = int(outerlinewidth / 2)
-
 if path.exists('resources/blank.png') == False:
     img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
 
@@ -354,7 +379,7 @@ if path.exists('resources/twallt.png') == False:
     img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    gentwall(0, 0, 1, 1, 16, 16, 8, draw)
+    gentwall(0, 0, 16, 16, 8, draw)
 
     img.save('resources/twallt.png')
 
@@ -362,7 +387,7 @@ if path.exists('resources/lwallt.png') == False:
     img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genlwall(0, 0, 1, 1, 16, 16, 8, draw)
+    genlwall(0, 0, 16, 16, 8, draw)
 
     img.save('resources/lwallt.png')
 
@@ -370,7 +395,7 @@ if path.exists('resources/rwallt.png') == False:
     img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genrwall(0, 0, 1, 1, 16, 16, 8, draw)
+    genrwall(0, 0, 16, 16, 8, draw)
 
     img.save('resources/rwallt.png')
 
@@ -378,7 +403,7 @@ if path.exists('resources/bwallt.png') == False:
     img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genbwall(0, 0, 1, 1, 16, 16, 8, draw)
+    genbwall(0, 0, 16, 16, 8, draw)
 
     img.save('resources/bwallt.png')
 
@@ -386,7 +411,7 @@ if path.exists('resources/tdoort.png') == False:
     img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    gentdoor(0, 0, 1, 1, 16, 16, 8, draw)
+    gentdoor(0, 0, 16, 16, 8, draw)
 
     img.save('resources/tdoort.png')
 
@@ -394,7 +419,7 @@ if path.exists('resources/ldoort.png') == False:
     img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genldoor(0, 0, 1, 1, 16, 16, 8, draw)
+    genldoor(0, 0, 16, 16, 8, draw)
 
     img.save('resources/ldoort.png')
 
@@ -402,7 +427,7 @@ if path.exists('resources/rdoort.png') == False:
     img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genrdoor(0, 0, 1, 1, 16, 16, 8, draw)
+    genrdoor(0, 0, 16, 16, 8, draw)
 
     img.save('resources/rdoort.png')
 
@@ -410,7 +435,7 @@ if path.exists('resources/bdoort.png') == False:
     img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genbdoor(0, 0, 1, 1, 16, 16, 8, draw)
+    genbdoor(0, 0, 16, 16, 8, draw)
 
     img.save('resources/bdoort.png')
 
@@ -420,7 +445,7 @@ if path.exists('resources/twallw.png') == False:
     img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    gentwall(0, 0, 1, 1, 16, 16, 8, draw)
+    gentwall(0, 0, 16, 16, 8, draw)
 
     img.save('resources/twallw.png')
 
@@ -428,7 +453,7 @@ if path.exists('resources/lwallw.png') == False:
     img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genlwall(0, 0, 1, 1, 16, 16, 8, draw)
+    genlwall(0, 0, 16, 16, 8, draw)
 
     img.save('resources/lwallw.png')
 
@@ -436,7 +461,7 @@ if path.exists('resources/rwallw.png') == False:
     img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genrwall(0, 0, 1, 1, 16, 16, 8, draw)
+    genrwall(0, 0, 16, 16, 8, draw)
 
     img.save('resources/rwallw.png')
 
@@ -444,7 +469,7 @@ if path.exists('resources/bwallw.png') == False:
     img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genbwall(0, 0, 1, 1, 16, 16, 8, draw)
+    genbwall(0, 0, 16, 16, 8, draw)
 
     img.save('resources/bwallw.png')
 
@@ -452,7 +477,7 @@ if path.exists('resources/tdoorw.png') == False:
     img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    gentdoor(0, 0, 1, 1, 16, 16, 8, draw)
+    gentdoor(0, 0, 16, 16, 8, draw)
 
     img.save('resources/tdoorw.png')
 
@@ -460,7 +485,7 @@ if path.exists('resources/ldoorw.png') == False:
     img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genldoor(0, 0, 1, 1, 16, 16, 8, draw)
+    genldoor(0, 0, 16, 16, 8, draw)
 
     img.save('resources/ldoorw.png')
 
@@ -468,7 +493,7 @@ if path.exists('resources/rdoorw.png') == False:
     img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genrdoor(0, 0, 1, 1, 16, 16, 8, draw)
+    genrdoor(0, 0, 16, 16, 8, draw)
 
     img.save('resources/rdoorw.png')
 
@@ -476,7 +501,7 @@ if path.exists('resources/bdoorw.png') == False:
     img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genbdoor(0, 0, 1, 1, 16, 16, 8, draw)
+    genbdoor(0, 0, 16, 16, 8, draw)
 
     img.save('resources/bdoorw.png')
 

@@ -41,6 +41,8 @@ class MyWidget(QtWidgets.QWidget):
         settingsdict['emresourcesslots'] = self.emresourcescount
         settingsdict['emfameslots'] = self.emfamecount
         settingsdict['emretainerslots'] = self.emretainercount
+        settingsdict['emothertypesslots'] = self.emothertypecount
+        settingsdict['emotherslots'] = self.emothercount
         with open('settings.json', 'w') as f:
             json.dump(settingsdict, f)
 
@@ -446,6 +448,24 @@ class MyWidget(QtWidgets.QWidget):
                 stats['expandedmerits']['emretainer'].append(self.emretainerbox[x].toPlainText())
                 self.filledemretainer += 1
         stats['expandedmerits']['emretainer'][0] = ['filledemretainer', self.filledemretainer]
+
+        self.filledemothertype = 0
+        stats['expandedmerits']['emothertype'] = []
+        stats['expandedmerits']['emother'] = []
+        stats['expandedmerits']['emothertype'].append(['filledemothertype', 0])
+        for x in range(self.emothertypecount):
+            if self.emothertypecount >= x and self.emothertype[x].text() != "":
+                stats['expandedmerits']['emothertype'].append(self.emothertype[x].text())
+                self.filledemothertype += 1
+            stats['expandedmerits']['emother'].append([])
+            self.filledemother = 0
+            stats['expandedmerits']['emother'][x].append(['filledemother', 0])
+            for y in range(self.emothercount):
+                if self.emothercount >= y and self.emother[x][y].toPlainText() != "":
+                    stats['expandedmerits']['emother'][x].append(self.emother[x][y].toPlainText())
+                    self.filledemother += 1
+            stats['expandedmerits']['emother'][x][0] = ['filledemother', self.filledemother]
+        stats['expandedmerits']['emothertype'][0] = ['filledemothertype', self.filledemothertype]
 
         with open(saveloc, 'w') as f:
             json.dump(stats, f)
@@ -1547,6 +1567,13 @@ class MyWidget(QtWidgets.QWidget):
                     if stats.get('expandedmerits').get('emretainer')[0][1] >= x:
                         self.emretainerbox[x].setText(stats.get('expandedmerits').get('emretainer')[x+1])
 
+                for x in range(stats.get('expandedmerits').get('emothertype')[0][1]):
+                    if stats.get('expandedmerits').get('emothertype')[0][1] >= x:
+                        self.emothertype[x].setText(stats.get('expandedmerits').get('emothertype')[x+1])
+                    for y in range(stats.get('expandedmerits').get('emother')[x][0][1]):
+                        if stats.get('expandedmerits').get('emother')[x][0][1] >= y :
+                            self.emother[x][y].setText(stats.get('expandedmerits').get('emother')[x][y+1])
+
                 self.savesettings()
         else:
             stats = {}
@@ -1815,6 +1842,16 @@ class MyWidget(QtWidgets.QWidget):
         for x in range(self.emretainercount):
             if self.emretainercount >= x:
                 self.emretainerbox.append(QtWidgets.QTextEdit(self))
+
+        self.emothertype = []
+        self.emother = []
+        for x in range(self.emothertypecount):
+            if self.emothertypecount >= x:
+                self.emothertype.append(QtWidgets.QLineEdit(self))
+                self.emother.append([])
+                for y in range(self.emothercount):
+                    if self.emothercount >= y:
+                        self.emother[x].append(QtWidgets.QTextEdit(self))
 
         #begin layout
 
@@ -2608,6 +2645,79 @@ class MyWidget(QtWidgets.QWidget):
         self.blanks[self.blankcount - 1].setText(" ")
         self.p2counter += 1
         self.layout.addWidget(self.blanks[self.blankcount - 1], self.p2counter, 4)
+
+        for x in range(int(self.emothertypecount / 6) + 1):
+            if self.emothertypecount >= 6:
+                self.p2counter += 1
+                self.layout.addWidget(self.emothertype[6*x], self.p2counter, 1)
+                self.layout.addWidget(self.emothertype[6*x+1], self.p2counter, 2)
+                self.layout.addWidget(self.emothertype[6*x+2], self.p2counter, 3)
+                self.layout.addWidget(self.emothertype[6*x+3], self.p2counter, 4)
+                self.layout.addWidget(self.emothertype[6*x+4], self.p2counter, 5)
+                self.layout.addWidget(self.emothertype[6*x+5], self.p2counter, 6)
+                for y in range(self.emothercount):
+                    self.p2counter += 1
+                    self.layout.addWidget(self.emother[6*x][y], self.p2counter, 1)
+                    self.layout.addWidget(self.emother[6*x+1][y], self.p2counter, 2)
+                    self.layout.addWidget(self.emother[6*x+2][y], self.p2counter, 3)
+                    self.layout.addWidget(self.emother[6*x+3][y], self.p2counter, 4)
+                    self.layout.addWidget(self.emother[6*x+4][y], self.p2counter, 5)
+                    self.layout.addWidget(self.emother[6*x+5][y], self.p2counter, 6)
+            elif self.emothertypecount >= 5:
+                self.p2counter += 1
+                self.layout.addWidget(self.emothertype[6*x], self.p2counter, 1)
+                self.layout.addWidget(self.emothertype[6*x+1], self.p2counter, 2)
+                self.layout.addWidget(self.emothertype[6*x+2], self.p2counter, 3)
+                self.layout.addWidget(self.emothertype[6*x+3], self.p2counter, 4)
+                self.layout.addWidget(self.emothertype[6*x+4], self.p2counter, 5)
+                for y in range(self.emothercount):
+                    self.p2counter += 1
+                    self.layout.addWidget(self.emother[6*x][y], self.p2counter, 1)
+                    self.layout.addWidget(self.emother[6*x+1][y], self.p2counter, 2)
+                    self.layout.addWidget(self.emother[6*x+2][y], self.p2counter, 3)
+                    self.layout.addWidget(self.emother[6*x+3][y], self.p2counter, 4)
+                    self.layout.addWidget(self.emother[6*x+4][y], self.p2counter, 5)
+            elif self.emothertypecount >= 4:
+                self.p2counter += 1
+                self.layout.addWidget(self.emothertype[6*x], self.p2counter, 2)
+                self.layout.addWidget(self.emothertype[6*x+1], self.p2counter, 3)
+                self.layout.addWidget(self.emothertype[6*x+2], self.p2counter, 4)
+                self.layout.addWidget(self.emothertype[6*x+3], self.p2counter, 5)
+                for y in range(self.emothercount):
+                    self.p2counter += 1
+                    self.layout.addWidget(self.emother[6*x][y], self.p2counter, 2)
+                    self.layout.addWidget(self.emother[6*x+1][y], self.p2counter, 3)
+                    self.layout.addWidget(self.emother[6*x+2][y], self.p2counter, 4)
+                    self.layout.addWidget(self.emother[6*x+3][y], self.p2counter, 5)
+            elif self.emothertypecount >= 3:
+                self.p2counter += 1
+                self.layout.addWidget(self.emothertype[6*x], self.p2counter, 2)
+                self.layout.addWidget(self.emothertype[6*x+1], self.p2counter, 3)
+                self.layout.addWidget(self.emothertype[6*x+2], self.p2counter, 4)
+                for y in range(self.emothercount):
+                    self.p2counter += 1
+                    self.layout.addWidget(self.emother[6*x][y], self.p2counter, 2)
+                    self.layout.addWidget(self.emother[6*x+1][y], self.p2counter, 3)
+                    self.layout.addWidget(self.emother[6*x+2][y], self.p2counter, 4)
+            elif self.emothertypecount >= 2:
+                self.p2counter += 1
+                self.layout.addWidget(self.emothertype[6*x], self.p2counter, 3)
+                self.layout.addWidget(self.emothertype[6*x+1], self.p2counter, 4)
+                for y in range(self.emothercount):
+                    self.p2counter += 1
+                    self.layout.addWidget(self.emother[6*x][y], self.p2counter, 3)
+                    self.layout.addWidget(self.emother[6*x+1][y], self.p2counter, 4)
+            else:
+                self.p2counter += 1
+                self.layout.addWidget(self.emothertype[6*x], self.p2counter, 3)
+                for y in range(self.emothercount):
+                    self.p2counter += 1
+                    self.layout.addWidget(self.emother[6*x][y], self.p2counter, 3)
+            self.blanks.append(QtWidgets.QLabel(self))
+            self.blankcount += 1
+            self.blanks[self.blankcount - 1].setText(" ")
+            self.p2counter += 1
+            self.layout.addWidget(self.blanks[self.blankcount - 1], self.p2counter, 4)
 
         self.savedemallies = []
         self.savedemmentor = []
@@ -3750,30 +3860,46 @@ class MyWidget(QtWidgets.QWidget):
                 self.attackcount = self.attackcount
             else:
                 self.attackcount = 6
+            self.emalliescount = settingsdict.get('emalliesslots')
             if self.emalliescount:
                 self.emalliescount = self.emalliescount
             else:
                 self.emalliescount = 4
+            self.emmentorcount = settingsdict.get('emmentorslots')
             if self.emmentorcount:
                 self.emmentorcount = self.emmentorcount
             else:
                 self.emmentorcount = 4
+            self.emcontactscount = settingsdict.get('emcontactsslots')
             if self.emcontactscount:
                 self.emcontactscount = self.emcontactscount
             else:
                 self.emcontactscount = 4
+            self.emresourcescount = settingsdict.get('emresourcesslots')
             if self.emresourcescount:
                 self.emresourcescount = self.emresourcescount
             else:
                 self.emresourcescount = 4
+            self.emfamecount = settingsdict.get('emfameslots')
             if self.emfamecount:
                 self.emfamecount = self.emfamecount
             else:
                 self.emfamecount = 4
+            self.emretainercount = settingsdict.get('emretainerslots')
             if self.emretainercount:
                 self.emretainercount = self.emretainercount
             else:
                 self.emretainercount = 4
+            self.emothertypecount = settingsdict.get('emothertypeslots')
+            if self.emothertypecount:
+                self.emothertypecount = self.emothertypecount
+            else:
+                self.emothertypecount = 2
+            self.emothercount = settingsdict.get('emotherslots')
+            if self.emothercount:
+                self.emothercount = self.emothercount
+            else:
+                self.emothercount = 4
 
         self.resize(1024, 768)
         if self.initmakesheet:
@@ -3904,14 +4030,15 @@ class MyWidget(QtWidgets.QWidget):
         self.savedemfame = []
         self.savedemretainer = []
 
+        self.emothertypecount = 2
+        self.oldemothertypecount = 2
+        self.emothercount = 4
+        self.oldemothercount = 4
+
+        self.savedemothertype = []
+        self.savedemother = []
+
         self.initsettings()
-
-        # menu = self.createMenuBar()
-
-        # exitAction = QtGui.QAction(QtGui.QIcon('exit.png'), '&Exit', self)
-        # exitAction.setShortcut('Ctrl+Q')
-        # exitAction.setStatusTip('Exit application')
-        # exitAction.triggered.connect(self.close)
 
         saveAction = QtGui.QAction('&Save', self)
         saveAction.setShortcut('Ctrl+S')
@@ -3927,7 +4054,6 @@ class MyWidget(QtWidgets.QWidget):
 
         self.menubar = QtWidgets.QMenuBar()
         self.fileMenu = self.menubar.addMenu('&File')
-        # self.fileMenu.addAction(exitAction)
         self.fileMenu.addAction(saveAction)
         self.fileMenu.addAction(loadAction)
         # self.editMenu = self.menubar.addMenu("&Edit")

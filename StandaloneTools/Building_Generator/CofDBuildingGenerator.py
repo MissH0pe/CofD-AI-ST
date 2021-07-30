@@ -72,6 +72,17 @@ class MyWidget(QtWidgets.QWidget):
         # print('test')
         if self.gendisplaysizexbox.text() != '' and self.gendisplaysizeybox.text() != '':
             self.display = []
+            self.numsx = []
+            self.numsy = []
+
+            for it in range(int(self.gendisplaysizexbox.text())):
+                self.numsx.append(QtWidgets.QLabel())
+                self.numsx[it].setText(str(it))
+                self.layout.addWidget(self.numsx[it], 2, it + 6)
+            for it in range(int(self.gendisplaysizeybox.text())):
+                self.numsy.append(QtWidgets.QLabel())
+                self.numsy[it].setText(str(it))
+                self.layout.addWidget(self.numsy[it], it + 3, 5)
 
             self.display.append([])
 
@@ -82,7 +93,7 @@ class MyWidget(QtWidgets.QWidget):
                 for yit in range(int(float(self.gendisplaysizeybox.text()))):
                     self.display[0][xit].append(QtWidgets.QLabel())
                     self.display[0][xit][yit].setPixmap( pixMap )
-                    self.layout.addWidget(self.display[0][xit][yit], yit + 2, xit + 5)
+                    self.layout.addWidget(self.display[0][xit][yit], yit + 3, xit + 6)
 
             twallt = QtGui.QPixmap.fromImage('resources/twallt.png')
 
@@ -91,7 +102,7 @@ class MyWidget(QtWidgets.QWidget):
             for it in range(xrooms):
                 self.display[1].append(QtWidgets.QLabel())
                 self.display[1][it].setPixmap(twallt)
-                self.layout.addWidget(self.display[1][it], 2, it + 5)
+                self.layout.addWidget(self.display[1][it], 3, it + 6)
 
             lwallt = QtGui.QPixmap.fromImage('resources/lwallt.png')
 
@@ -100,7 +111,7 @@ class MyWidget(QtWidgets.QWidget):
             for it in range(xrooms):
                 self.display[2].append(QtWidgets.QLabel())
                 self.display[2][it].setPixmap(lwallt)
-                self.layout.addWidget(self.display[2][it], it + 2, 5)
+                self.layout.addWidget(self.display[2][it], it + 3, 6)
 
     # def new(self):
     #     w = QtWidgets.QWidget()

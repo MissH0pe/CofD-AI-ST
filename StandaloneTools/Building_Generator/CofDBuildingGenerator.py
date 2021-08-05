@@ -31,6 +31,32 @@ def genbdoor(x, y, xroomsf, yroomsf, linewidthf, drawf):
     drawf.line((x, yroomsf - 2, (0.3333 * xroomsf), yroomsf - 2,), fill=(0, 0, 0, 255), width=linewidthf)
     drawf.line(((0.6667 * xroomsf), yroomsf - 2, xroomsf, yroomsf - 2,), fill=(0, 0, 0, 255), width=linewidthf)
 
+class QLabel_alterada(QtWidgets.QLabel):
+    clicked=QtCore.Signal()
+
+    def mousePressEvent(self, ev):
+        self.clicked.emit()
+        self.display.append([])
+        self.display[len(self.display) - 1].append(QtWidgets.QLabel())
+        self.display[len(self.display) - 1][0].setPixmap(self.currenttile)
+        self.layout.addWidget(self.display[len(self.display) - 1][0], self.y + 3, self.x + 1)
+        self.displaydata.append([])
+        self.displaydata[len(self.displaydata) - 1].append([])
+        self.displaydata[len(self.displaydata) - 1][0].append([self.tileid, self.x, self.y])
+
+    def mouseCoord(self, x, y):
+        self.x = x
+        self.y = y
+
+    def updateTile(self, tile, tileid):
+        self.currenttile = tile
+        self.tileid = tileid
+
+    def updateDisplay(self, display, layout, displaydata):
+        self.display = display
+        self.layout = layout
+        self.displaydata = displaydata
+
 class MyWidget(QtWidgets.QWidget):
     def __init__(self):
         super(MyWidget, self).__init__()
@@ -193,58 +219,87 @@ class MyWidget(QtWidgets.QWidget):
                 self.layout.addWidget(self.display[len(self.display) - 1][xit][yit], yit + int(self.sypbox.text()) + 3, xit + int(self.sxpbox.text()) + 1)
                 self.displaydata[len(self.displaydata) - 1][xit].append([self.currenttileid, xit, yit])
 
+        for x in range(len(self.displayclicks)):
+            for y in range(len(self.displayclicks[x])):
+                self.displayclicks[x][y].updateDisplay(self.display, self.layout, self.displaydata)
+
     def settile0(self):
         self.currenttilepm = QtGui.QPixmap.fromImage('resources/twallw.png')
         self.currenttilepmt = QtGui.QPixmap.fromImage('resources/twallt.png')
         self.currenttileid = 0
         self.currenttile.setPixmap(self.currenttilepm)
+        for x in range(len(self.displayclicks)):
+            for y in range(len(self.displayclicks[x])):
+                self.displayclicks[x][y].updateTile(self.currenttilepmt, 0)
 
     def settile1(self):
         self.currenttilepm = QtGui.QPixmap.fromImage('resources/lwallw.png')
         self.currenttilepmt = QtGui.QPixmap.fromImage('resources/lwallt.png')
         self.currenttileid = 1
         self.currenttile.setPixmap(self.currenttilepm)
+        for x in range(len(self.displayclicks)):
+            for y in range(len(self.displayclicks[x])):
+                self.displayclicks[x][y].updateTile(self.currenttilepmt, 1)
 
     def settile2(self):
         self.currenttilepm = QtGui.QPixmap.fromImage('resources/rwallw.png')
         self.currenttilepmt = QtGui.QPixmap.fromImage('resources/rwallt.png')
         self.currenttileid = 2
         self.currenttile.setPixmap(self.currenttilepm)
+        for x in range(len(self.displayclicks)):
+            for y in range(len(self.displayclicks[x])):
+                self.displayclicks[x][y].updateTile(self.currenttilepmt, 2)
 
     def settile3(self):
         self.currenttilepm = QtGui.QPixmap.fromImage('resources/bwallw.png')
         self.currenttilepmt = QtGui.QPixmap.fromImage('resources/bwallt.png')
         self.currenttileid = 3
         self.currenttile.setPixmap(self.currenttilepm)
+        for x in range(len(self.displayclicks)):
+            for y in range(len(self.displayclicks[x])):
+                self.displayclicks[x][y].updateTile(self.currenttilepmt, 3)
 
     def settile4(self):
         self.currenttilepm = QtGui.QPixmap.fromImage('resources/tdoorw.png')
         self.currenttilepmt = QtGui.QPixmap.fromImage('resources/tdoort.png')
         self.currenttileid = 4
         self.currenttile.setPixmap(self.currenttilepm)
+        for x in range(len(self.displayclicks)):
+            for y in range(len(self.displayclicks[x])):
+                self.displayclicks[x][y].updateTile(self.currenttilepmt, 4)
 
     def settile5(self):
         self.currenttilepm = QtGui.QPixmap.fromImage('resources/ldoorw.png')
         self.currenttilepmt = QtGui.QPixmap.fromImage('resources/ldoort.png')
         self.currenttileid = 5
         self.currenttile.setPixmap(self.currenttilepm)
+        for x in range(len(self.displayclicks)):
+            for y in range(len(self.displayclicks[x])):
+                self.displayclicks[x][y].updateTile(self.currenttilepmt, 5)
 
     def settile6(self):
         self.currenttilepm = QtGui.QPixmap.fromImage('resources/rdoorw.png')
         self.currenttilepmt = QtGui.QPixmap.fromImage('resources/rdoort.png')
         self.currenttileid = 6
         self.currenttile.setPixmap(self.currenttilepm)
+        for x in range(len(self.displayclicks)):
+            for y in range(len(self.displayclicks[x])):
+                self.displayclicks[x][y].updateTile(self.currenttilepmt, 6)
 
     def settile7(self):
         self.currenttilepm = QtGui.QPixmap.fromImage('resources/bdoorw.png')
         self.currenttilepmt = QtGui.QPixmap.fromImage('resources/bdoort.png')
         self.currenttileid = 7
         self.currenttile.setPixmap(self.currenttilepm)
+        for x in range(len(self.displayclicks)):
+            for y in range(len(self.displayclicks[x])):
+                self.displayclicks[x][y].updateTile(self.currenttilepmt, 7)
 
     def gendisplay(self):
         # print('test')
         if self.gendisplaysizexbox.text() != '' and self.gendisplaysizeybox.text() != '':
             self.display = []
+            self.displayclicks = []
             self.displaydata = []
             self.numsx = []
             self.numsy = []
@@ -259,13 +314,19 @@ class MyWidget(QtWidgets.QWidget):
                 self.layout.addWidget(self.numsy[it], it + 3, 0)
 
             self.display.append([])
+            self.displayclicks.append([])
 
             pixMap = QtGui.QPixmap.fromImage('resources/blank.png')
 
             for xit in range(int(float(self.gendisplaysizexbox.text()))):
                 self.display[0].append([])
+                self.displayclicks.append([])
                 for yit in range(int(float(self.gendisplaysizeybox.text()))):
                     self.display[0][xit].append(QtWidgets.QLabel())
+                    self.displayclicks[xit].append(QLabel_alterada(self.display[0][xit][yit]))
+                    self.displayclicks[xit][yit].mousePressEvent
+                    self.displayclicks[xit][yit].mouseCoord(xit, yit)
+                    self.displayclicks[xit][yit].updateDisplay(self.display, self.layout, self.displaydata)
                     self.display[0][xit][yit].setPixmap( pixMap )
                     self.layout.addWidget(self.display[0][xit][yit], yit + 3, xit + 1)
 

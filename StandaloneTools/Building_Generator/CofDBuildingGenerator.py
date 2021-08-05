@@ -37,12 +37,18 @@ class QLabel_alterada(QtWidgets.QLabel):
     def mousePressEvent(self, ev):
         self.clicked.emit()
         self.display.append([])
-        self.display[len(self.display) - 1].append(QtWidgets.QLabel())
-        self.display[len(self.display) - 1][0].setPixmap(self.currenttile)
-        self.layout.addWidget(self.display[len(self.display) - 1][0], self.y + 3, self.x + 1)
+        self.display[len(self.display) - 1].append([])
+        self.display[len(self.display) - 1][0].append(QtWidgets.QLabel())
+        self.display[len(self.display) - 1][0][0].setPixmap(self.currenttile)
+        self.layout.addWidget(self.display[len(self.display) - 1][0][0], self.y + 3, self.x + 1)
         self.displaydata.append([])
         self.displaydata[len(self.displaydata) - 1].append([])
         self.displaydata[len(self.displaydata) - 1][0].append([self.tileid, self.x, self.y])
+
+        # self.displayclicks[self.x][self.y] = QLabel_alterada(self.display[len(self.display) - 1][self.x][self.y])
+        # self.displayclicks[self.x][self.y].mousePressEvent
+        # self.displayclicks[self.x][self.y].mouseCoord(self.x, self.y)
+        # self.displayclicks[self.x][self.y].updateDisplay(self.display, self.layout, self.displaydata)
 
     def mouseCoord(self, x, y):
         self.x = x
@@ -432,137 +438,137 @@ class MyWidget(QtWidgets.QWidget):
     #     layout = QtWidgets.QGridLayout(w)
 
 if path.exists('resources/blank.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    img = Image.new('RGBA', (64, 64), color = (255, 255, 255, 255))
 
     img.save('resources/blank.png')
 
 if path.exists('resources/twallt.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    img = Image.new('RGBA', (64, 64), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    gentwall(0, 0, 16, 16, 8, draw)
+    gentwall(0, 0, 64, 64, 32, draw)
 
     img.save('resources/twallt.png')
 
 if path.exists('resources/lwallt.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    img = Image.new('RGBA', (64, 64), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genlwall(0, 0, 16, 16, 8, draw)
+    genlwall(0, 0, 64, 64, 32, draw)
 
     img.save('resources/lwallt.png')
 
 if path.exists('resources/rwallt.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    img = Image.new('RGBA', (64, 64), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genrwall(0, 0, 16, 16, 8, draw)
+    genrwall(0, 0, 64, 64, 32, draw)
 
     img.save('resources/rwallt.png')
 
 if path.exists('resources/bwallt.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    img = Image.new('RGBA', (64, 64), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genbwall(0, 0, 16, 16, 8, draw)
+    genbwall(0, 0, 64, 64, 32, draw)
 
     img.save('resources/bwallt.png')
 
 if path.exists('resources/tdoort.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    img = Image.new('RGBA', (64, 64), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    gentdoor(0, 0, 16, 16, 8, draw)
+    gentdoor(0, 0, 64, 64, 32, draw)
 
     img.save('resources/tdoort.png')
 
 if path.exists('resources/ldoort.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    img = Image.new('RGBA', (64, 64), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genldoor(0, 0, 16, 16, 8, draw)
+    genldoor(0, 0, 64, 64, 32, draw)
 
     img.save('resources/ldoort.png')
 
 if path.exists('resources/rdoort.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    img = Image.new('RGBA', (64, 64), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genrdoor(0, 0, 16, 16, 8, draw)
+    genrdoor(0, 0, 64, 64, 32, draw)
 
     img.save('resources/rdoort.png')
 
 if path.exists('resources/bdoort.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (0, 0, 0, 0))
+    img = Image.new('RGBA', (64, 64), color = (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
 
-    genbdoor(0, 0, 16, 16, 8, draw)
+    genbdoor(0, 0, 64, 64, 32, draw)
 
     img.save('resources/bdoort.png')
 
 
 
 if path.exists('resources/twallw.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    img = Image.new('RGBA', (64, 64), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    gentwall(0, 0, 16, 16, 8, draw)
+    gentwall(0, 0, 64, 64, 32, draw)
 
     img.save('resources/twallw.png')
 
 if path.exists('resources/lwallw.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    img = Image.new('RGBA', (64, 64), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genlwall(0, 0, 16, 16, 8, draw)
+    genlwall(0, 0, 64, 64, 32, draw)
 
     img.save('resources/lwallw.png')
 
 if path.exists('resources/rwallw.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    img = Image.new('RGBA', (64, 64), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genrwall(0, 0, 16, 16, 8, draw)
+    genrwall(0, 0, 64, 64, 32, draw)
 
     img.save('resources/rwallw.png')
 
 if path.exists('resources/bwallw.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    img = Image.new('RGBA', (64, 64), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genbwall(0, 0, 16, 16, 8, draw)
+    genbwall(0, 0, 64, 64, 32, draw)
 
     img.save('resources/bwallw.png')
 
 if path.exists('resources/tdoorw.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    img = Image.new('RGBA', (64, 64), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    gentdoor(0, 0, 16, 16, 8, draw)
+    gentdoor(0, 0, 64, 64, 32, draw)
 
     img.save('resources/tdoorw.png')
 
 if path.exists('resources/ldoorw.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    img = Image.new('RGBA', (64, 64), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genldoor(0, 0, 16, 16, 8, draw)
+    genldoor(0, 0, 64, 64, 32, draw)
 
     img.save('resources/ldoorw.png')
 
 if path.exists('resources/rdoorw.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    img = Image.new('RGBA', (64, 64), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genrdoor(0, 0, 16, 16, 8, draw)
+    genrdoor(0, 0, 64, 64, 32, draw)
 
     img.save('resources/rdoorw.png')
 
 if path.exists('resources/bdoorw.png') == False:
-    img = Image.new('RGBA', (16, 16), color = (255, 255, 255, 255))
+    img = Image.new('RGBA', (64, 64), color = (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
 
-    genbdoor(0, 0, 16, 16, 8, draw)
+    genbdoor(0, 0, 64, 64, 32, draw)
 
     img.save('resources/bdoorw.png')
 

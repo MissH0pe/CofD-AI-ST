@@ -21,10 +21,10 @@ def makeScrollBar(layout, widget):
     layout.addWidget(scroll_area)
     return layout
 
-class MyWidget(QtWidgets.QWidget):
+class CharEditor(QtWidgets.QWidget):
 
     def pullData(self):
-        data = {"name": self.name[1].text(), "player": self.player[1].text(), "chronicle": self.chronicle[1].text(), "concept": self.concept[1].text(), "age": self.age[1].text()}
+        data = {"name": self.name[1].text(), "player": self.player[1].text(), "chronicle": self.chronicle[1].text(), "concept": self.concept[1].text(), "age": self.age[1].text(), "strength": self.strength[1].text(), "intelligence": self.intelligence[1].text(), "presence": self.presence[1].text(), "dexterity": self.dexterity[1].text(), "wits": self.wits[1].text(), "manipulation": self.manipulation[1].text(), "stamina": self.stamina[1].text(), "resolve": self.resolve[1].text(), "composure": self.composure[1].text()}
         if self.settingsdict['isHuman'] == True:
             data["is human"] = True
             data = data | {"group name": self.groupname[1].text(), "virtue": self.virtue[1].text(), "vice": self.vice[1].text(), "faction": self.faction[1].text()}
@@ -67,6 +67,15 @@ class MyWidget(QtWidgets.QWidget):
                 self.chronicle[1].setText(data.get('chronicle'))
                 self.concept[1].setText(data.get('concept'))
                 self.age[1].setText(data.get('age'))
+                self.strength[1].setText(data.get('strength'))
+                self.intelligence[1].setText(data.get('intelligence'))
+                self.presence[1].setText(data.get('presence'))
+                self.dexterity[1].setText(data.get('dexterity'))
+                self.wits[1].setText(data.get('wits'))
+                self.manipulation[1].setText(data.get('manipulation'))
+                self.stamina[1].setText(data.get('stamina'))
+                self.resolve[1].setText(data.get('resolve'))
+                self.composure[1].setText(data.get('composure'))
 
                 if data['is human'] == True:
                     if self.settingsdict['isHuman'] == False:
@@ -219,6 +228,11 @@ class MyWidget(QtWidgets.QWidget):
         self.addArraystoGridIndividualGroups([self.name, self.player, self.chronicle, self.concept, self.age], self.charDetailsGrid)
         if self.settingsdict['isHuman'] == True:
             self.addArraystoGridIndividualGroups([self.groupname, self.virtue, self.vice, self.faction], self.charDetailsGrid)
+        # self.attributesCatGrid[2] = 0
+        # self.attributesCatGrid[3] = 0
+        self.attributesGrid[2] = 0
+        self.attributesGrid[3] = 0
+        self.addArraystoGridIndividualGroups([[self.powerSubtitle], self.intelligence, self.strength, self.presence, [self.finesseSubtitle], self.wits, self.dexterity, self.manipulation, [self.resistanceSubtitle], self.resolve, self.stamina, self.composure], self.attributesGrid)
 
     def makeMenu(self):
         saveAction = QtGui.QAction('&Save', self)
@@ -257,7 +271,33 @@ class MyWidget(QtWidgets.QWidget):
         self.settingsMenu = self.menubar.addMenu('&Settings')
         self.settingsMenu.addAction(settingsAction)
 
-    def charDetailsUniversal(self):
+    def attributes(self):
+        self.attributesCatGrid = self.MakeGrid(1)
+        self.attributesTitleGrid = self.MakeGrid(3)
+        self.attributesGrid = self.MakeGrid(7)
+        self.attributesTitle = self.makeLabel("Attributes")
+        self.attributesTitle.setFont(self.titlefont)
+
+        self.powerSubtitle = self.makeLabel("Power")
+        self.powerSubtitle.setFont(self.subtitlefont)
+        self.finesseSubtitle = self.makeLabel("Finesse")
+        self.finesseSubtitle.setFont(self.subtitlefont)
+        self.resistanceSubtitle = self.makeLabel("Resistance")
+        self.resistanceSubtitle.setFont(self.subtitlefont)
+
+        self.intelligence = self.LabeledTextBox("Intelligence")
+        self.strength = self.LabeledTextBox("Strength")
+        self.presence = self.LabeledTextBox("Presence")
+
+        self.wits = self.LabeledTextBox("Wits")
+        self.dexterity = self.LabeledTextBox("Dexterity")
+        self.manipulation = self.LabeledTextBox("Manipulation")
+
+        self.resolve = self.LabeledTextBox("Resolve")
+        self.stamina = self.LabeledTextBox("Stamina")
+        self.composure = self.LabeledTextBox("Composure")
+
+    def charDetails(self):
         self.charDetailsGrid = self.MakeGrid(6)
 
         self.name = self.LabeledTextBox("Name")
@@ -292,7 +332,7 @@ class MyWidget(QtWidgets.QWidget):
                 json.dump(self.settingsdict, f)
 
     def __init__(self):
-        super(MyWidget, self).__init__()
+        super(CharEditor, self).__init__()
 
         self.setGeometry(300, 75, 1024, 768)
         self.setWindowTitle('Chronicles of Darkness Interactive Character Sheet')
@@ -306,6 +346,10 @@ class MyWidget(QtWidgets.QWidget):
         self.titlefont.setBold(True)  # Bold
         self.titlefont.setPointSize(16)  # Set font size
 
+        self.subtitlefont = QtGui.QFont()
+        self.subtitlefont.setFamily("stcaiyun")  # Set Font
+        self.subtitlefont.setPointSize(12)  # Set font size
+
         self.mainSheet = self.MakeGrid(1)
         self.setLayout(self.mainSheet[0])
         self.mainSheet[0].setContentsMargins(0,0,0,0)
@@ -316,14 +360,21 @@ class MyWidget(QtWidgets.QWidget):
         self.addGridtoLayout(self.titleGrid[0], self.mainSheet)
         self.addArraystoGridIndividual([self.makeBlankLabel(), self.title, self.makeBlankLabel()], self.titleGrid)
 
-        self.charDetailsUniversal()
+        self.charDetails()
 
         self.addGridtoLayout(self.charDetailsGrid[0], self.mainSheet)
+
+        self.attributes()
+
+        self.addGridtoLayout(self.attributesCatGrid[0], self.mainSheet)
+        self.addGridtoLayout(self.attributesTitleGrid[0], self.attributesCatGrid)
+        self.addGridtoLayout(self.attributesGrid[0], self.attributesCatGrid)
+        self.addArraystoGridIndividual([self.makeBlankLabel(), self.attributesTitle, self.makeBlankLabel()], self.attributesTitleGrid)
 
         self.positionElements()
 
 app = QtWidgets.QApplication([])
-widget = MyWidget()
+widget = CharEditor()
 w = QtWidgets.QWidget()
 w.setWindowTitle('Chronicles of Darkness Interactive Character Sheet')
 

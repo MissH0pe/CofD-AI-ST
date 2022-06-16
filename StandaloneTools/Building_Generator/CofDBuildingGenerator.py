@@ -329,6 +329,7 @@ class MyWidget(QtWidgets.QWidget):
                 self.displayclicks.append([])
                 for yit in range(int(float(self.gendisplaysizeybox.text()))):
                     self.display[0][xit].append(QtWidgets.QLabel())
+                    self.display[0][xit][yit].mousePressEvent
                     self.displayclicks[xit].append(QLabel_alterada(self.display[0][xit][yit]))
                     self.displayclicks[xit][yit].mousePressEvent
                     self.displayclicks[xit][yit].mouseCoord(xit, yit)
